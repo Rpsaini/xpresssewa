@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_linearlayoutadditional"
+    android:background="@color/white_color"
+    tools:context=".View.AdditionInformation">
+
+    <include layout="@layout/toolbar_with_back"/>
+
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:background="@color/white_color"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/txt_howtosendyou"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="How to send you"
+            android:textColor="@color/black_color"
+            android:textSize="22sp"
+            ></TextView>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:visibility="gone"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choosepaymentoption"
+        android:textColor="@color/black_color"
+        android:textSize="14sp"
+        ></TextView>
+
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/textcolor"
+        android:alpha=".5"
+        ></View>
+
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_weight=".88"
+            android:layout_marginBottom="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/recycler_view_default_payment"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".12"
+            >
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/tv_Continue"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:text="CONTINUE"
+                style="@style/button_style"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/font_eighteen" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_with_back"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/toolbarlayout"
+        android:textColor="@color/black_color"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verifying..."
+        android:gravity="center|left"
+        android:textStyle="bold"
+        android:textSize="25dp"
+
+        ></TextView>
+
+    <ImageView
+        android:id="@+id/verifying_documenst"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/verification_image"
+        android:layout_centerInParent="true"
+        ></ImageView>
+
+    <TextView
+        android:textColor="@color/black_color"
+       android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/verifying_documenst"
+        android:text="We're confirming your details"
+        android:gravity="center"
+        android:textSize="16dp"
+
+        ></TextView>
+
+
+</RelativeLayout>

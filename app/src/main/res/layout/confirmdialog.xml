@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/outerlinearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:background="@drawable/roundbuttondrawable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/title"
+            android:background="@color/blue_bt_color"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/white_color"
+            android:text="@string/app_name"
+            android:gravity="center"
+            android:textSize="20dp"
+            ></TextView>
+
+
+
+
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/logoutMaintitle"
+            android:layout_width="match_parent"
+            android:padding="7dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Logout"
+            android:textColor="@color/white_20"
+            android:textSize="17dp"
+            android:textStyle="bold"></TextView>
+
+
+
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:textSize="17dp"
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Are you sure you want to logout?"
+            android:textColor="@color/black_color">
+        </TextView>
+
+
+
+        <TextView
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/textok"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@color/title_black_color"
+            android:background="@drawable/round_drawable_border"
+            android:text="CLOSE"
+            android:gravity="center"
+            android:textSize="15dp"
+            ></TextView>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/logoutno"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|right"
+                android:checked="false"
+                android:gravity="center"
+                android:hint="No"
+                android:padding="5dp"
+                android:textColorHint="#000" />
+
+            <View
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/viewline"
+                ></View>
+
+
+
+
+            <Button
+                android:id="@+id/logoutyes"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center|right"
+                android:checked="false"
+                android:gravity="center"
+                android:hint="Yes"
+                android:padding="5dp"
+                android:tag="0"
+                android:textColorHint="#000"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

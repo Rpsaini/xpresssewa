@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".View.PriceComparisonActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@android:color/transparent"
+        >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_color"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+
+            android:id="@+id/iv_drop_down"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="25dp"
+            android:src="@drawable/close_button"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_color"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price_comparison"
+                android:textColor="@color/title_black_color"
+                android:textSize="@dimen/font_twenty_five" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:text="@string/cheapest_way_to_send"
+                android:textColor="@color/title_black_color"
+                android:textSize="@dimen/font_fifteen" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:text="@string/they_received"
+                    />
+                <TextView
+                    android:layout_weight="5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/Price"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_color_offwhite"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_20"
+            android:paddingRight="@dimen/margin_20"
+            android:paddingBottom="@dimen/margin_20"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_price_comparison"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               >
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

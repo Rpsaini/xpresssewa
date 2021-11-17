@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_margin="7dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:background="@drawable/wallet_drawable"
+    android:id="@+id/ll_perform_action_on_curreny"
+    android:layout_height="80dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/img_currencyicon"
+            android:padding="5dp"
+            android:src="@drawable/send_money"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            ></ImageView>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            >
+            <TextView
+                android:id="@+id/txt_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textSize="16dp"
+                android:gravity="center|left"
+                android:textColor="@color/black_color"
+                android:textStyle="bold"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/txt_currency"
+                android:textAllCaps="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AUD"
+                android:textSize="12dp"
+                android:gravity="center|left"
+                android:textColor="@color/textheadercolor"
+                android:textStyle="bold"
+                ></TextView>
+            <TextView
+                android:textAllCaps="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="balance"
+                android:textSize="12dp"
+                android:gravity="center|left"
+                android:textColor="@color/textheadercolor"
+                android:textStyle="bold"
+                ></TextView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

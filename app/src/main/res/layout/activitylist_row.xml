@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:id="@+id/ll_selectrecipient"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:padding="7dp"
+        android:weightSum="1"
+        android:layout_marginLeft="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:translationX="0dp"
+            android:layout_width="70dp"
+            android:layout_gravity="center"
+            >
+
+
+<!--            <ImageView-->
+<!--                android:textAllCaps="true"-->
+<!--                android:id="@+id/user_short_name"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:src="@drawable/send_money"-->
+<!--                android:textColor="@color/white_color"-->
+<!--                android:scaleType="fitXY"-->
+<!--                ></ImageView>-->
+
+
+            <RelativeLayout
+                android:id="@+id/rr_round"
+                android:background="@drawable/round_drwable_magenta"
+                android:layout_height="60dp"
+                android:translationX="0dp"
+                android:layout_width="60dp"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:id="@+id/img_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_transcationicon"
+                    ></ImageView>
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tt_username_short"
+                    android:layout_centerInParent="true"
+                    android:layout_width="@dimen/margin_40"
+                    android:layout_height="@dimen/margin_40"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:src="@mipmap/ic_launcher"
+                    ></TextView>
+
+                <TextView
+                    android:visibility="gone"
+                    android:textAllCaps="true"
+                    android:id="@+id/user_short_name"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="AZ"
+                    android:textColor="@color/white_color"
+                    android:textSize="22dp"
+                    ></TextView>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:layout_weight=".6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tt_username"
+                android:gravity="center|left"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/username"
+                android:textSize="15dp"
+                android:textAllCaps="false"
+                android:textColor="@color/black_color"
+
+
+                ></TextView>
+
+            <TextView
+                 android:layout_marginTop="5dp"
+                android:id="@+id/tt_status"
+                android:gravity="center|left"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text=""
+                style="@style/white12"
+                android:textColor="@color/bt_green_color"
+
+                ></TextView>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight=".4"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:visibility="gone"
+                    android:padding="1dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/img_userflag"
+                    android:id="@+id/date"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="20 Aud"
+                    android:textSize="11dp"
+                    android:textColor="@color/black_color"
+                    ></TextView>
+
+                <TextView
+                    android:padding="1dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/img_userflag"
+                    android:id="@+id/tt_from_currency"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="20 Aud"
+                    style="16dp"
+                    android:textColor="@color/black_color"
+                    ></TextView>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:padding="1dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/img_userflag"
+                    android:id="@+id/tt_to_currency"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="10 INR"
+                    android:textSize="10dp"
+                    android:textColor="@color/textheadercolor"
+                    ></TextView>
+            </LinearLayout>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:gravity="center|left"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/account_type"
+                style="@style/white12"
+                ></TextView>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+        <View
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey_color"
+            android:alpha=".5"
+            ></View>
+
+</LinearLayout>

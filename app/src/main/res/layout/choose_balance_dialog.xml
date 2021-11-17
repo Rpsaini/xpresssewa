@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_relativelayout"
+    >
+
+    <!--    <include layout="@layout/custom_tool_bar"/>-->
+
+
+    <LinearLayout
+        android:id="@+id/ll_iiner"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/drawable_upper_round"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/img_hideview"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+
+
+            android:src="@drawable/ic_drop_down"></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/white_color"
+            android:orientation="vertical">
+
+            <!--            <TextView-->
+            <!--                style="@style/black22wb"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--              -->
+            <!--                android:text="Transfer Purpose"-->
+            <!--                android:textStyle="bold"-->
+            <!--                ></TextView>-->
+            <TextView
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/transfer_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose a balance"
+                android:textColor="@color/black_color"
+                android:textSize="22sp"></TextView>
+
+
+
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/ll_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/toolbar_header_drawable"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_search"
+                   android:tint="@color/textcolor"
+                    ></ImageView>
+
+                <EditText
+                    android:id="@+id/ed_search"
+                    style="@style/edittext_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center|left"
+                    android:hint="@string/search"
+                    android:maxLines="1"
+                    android:textColor="@color/black_color" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center|left"
+                android:text="Choose a balance to open"
+                android:textColor="@color/black_color"
+                android:textSize="15dp"></TextView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_grey_color"></View>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/balance_currency_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

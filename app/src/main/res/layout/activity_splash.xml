@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.SplashActivity">
+
+
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+         android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:translationY="0dp"
+        android:background="@drawable/logo_sign_in" />
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/iv_logo"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_marginBottom="@dimen/margin_20"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:id="@+id/tv_transfer_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_twenty_five"
+            android:textColor="@color/black_color"
+
+
+            android:text="@string/transfer_money"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:id="@+id/tv_cheapest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_fifteen"
+            android:textColor="@color/black_color"
+            android:layout_below="@+id/tv_transfer_money"
+            android:layout_marginTop="@dimen/margin_15"
+            android:text="@string/cheapest_way"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_get_started"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cheapest"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:layout_marginRight="@dimen/margin_30"
+            android:background="@drawable/green_drawable"
+            android:gravity="center"
+            android:padding="@dimen/font_sixteen"
+            android:text="@string/get_started"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/font_sixteen" />
+    </RelativeLayout>
+</RelativeLayout>

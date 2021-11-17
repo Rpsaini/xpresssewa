@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_20"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_25"
+
+            android:text="@string/buisnessdetail"
+            android:textColor="@color/title_black_color"
+            />
+        <ScrollView
+            android:scrollbarThumbVertical="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_business_name"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_40"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/business_name"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:popupBackground="@color/white_color"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/spinner_roleincompany"
+                    ></Spinner>
+
+                <View
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height=".9dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/black_color"
+                    ></View>
+
+
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registration_number"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:hint="@string/registration_number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_website"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:hint="@string/website" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <Spinner
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:popupBackground="@color/white_color"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/spinner_buisnessdo_category"
+                    ></Spinner>
+                <View
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height=".9dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/black_color"
+                    ></View>
+
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:popupBackground="@color/white_color"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/spinner_buisnessdo_subcategory"
+                    ></Spinner>
+                <View
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height=".9dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/black_color"
+                    ></View>
+
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_business_address"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:hint="@string/business_address"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:weightSum="2"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_city"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:hint="@string/city"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_postcode"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+
+                            style="@style/edittext_style"
+                            android:layout_width="match_parent"
+                            android:inputType="number"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/post_code"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/company_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/font_eighteen"
+                    android:layout_marginTop="@dimen/margin_35"
+                    android:layout_marginLeft="@dimen/margin_30"
+                    android:layout_marginBottom="@dimen/margin_35"
+                    android:layout_marginRight="@dimen/margin_30"
+                    style="@style/button_style"
+                    android:padding="@dimen/margin_15"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textAllCaps="true"
+                    android:text="@string/update"
+                    />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

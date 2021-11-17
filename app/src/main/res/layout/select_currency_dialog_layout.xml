@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/toolbar_background"
+    android:weightSum="1"
+    >
+
+
+    <LinearLayout
+
+        android:id="@+id/listviewout"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+
+        <include layout="@layout/toolbar_customization"/>
+
+
+
+    <TextView
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="15dp"
+        android:alpha=".6"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/allcurrency"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/font_twelve"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        ></TextView>
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/currencyRecycler"
+    ></androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>
+</LinearLayout>

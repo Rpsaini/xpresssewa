@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:background="@drawable/incoming_buuble_drawable"
+        android:id="@+id/ll_myview"
+        android:layout_margin="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+         <androidx.recyclerview.widget.RecyclerView
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/recycler_view_for_my"
+             ></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:gravity="right"
+            android:padding="5dp"
+            android:id="@+id/txt_my_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+
+            android:textColor="@color/black_color"
+            ></TextView>
+            <TextView
+                android:padding="4dp"
+                android:textSize="11dp"
+                android:id="@+id/txt_mytime"
+                android:gravity="end"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="time"
+
+                android:textColor="@color/grey_color"
+                ></TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/outgoing_bubble_drawable"
+        android:id="@+id/ll_you"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/ll_myview"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_view_for_you"
+                ></androidx.recyclerview.widget.RecyclerView>
+
+<!--            android:background="@drawable/blue_drawable"-->
+        <TextView
+            android:padding="5dp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/txt_you"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="left"
+            android:textColor="@color/white"
+            ></TextView>
+
+            <TextView
+                android:id="@+id/txt_you_time"
+                android:gravity="left"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:textSize="11dp"
+                android:text="time"
+                android:textColor="@color/white"
+                android:padding="4dp"
+                ></TextView>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

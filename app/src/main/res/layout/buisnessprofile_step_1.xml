@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_25"
+            android:layout_marginTop="@dimen/margin_20"
+            android:text="@string/getStarted"
+            android:textColor="@color/title_black_color"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_60"
+            android:orientation="vertical"
+            >
+
+
+
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country"
+                    android:textSize="@dimen/font_fourteen"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:gravity="center_vertical"
+                    />
+                <Spinner
+                    android:layout_marginTop="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:id="@+id/spinner_country"
+                    ></Spinner>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        //company type===
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1"
+            >
+            <TextView
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/businesstype"
+                android:textSize="@dimen/font_fourteen"
+                android:drawablePadding="@dimen/margin_10"
+                android:gravity="center_vertical"
+                />
+            <Spinner
+                android:layout_marginTop="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/spinner_buisnesstype"
+                ></Spinner>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/light_grey_color"/>
+
+      </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="30dp"
+        android:text="@string/profilecontent"
+        ></TextView>
+
+
+    <TextView
+        android:id="@+id/continuebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/font_eighteen"
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_30"
+        style="@style/button_style"
+        android:padding="@dimen/margin_15"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="@string/continue_"
+        />
+
+
+</LinearLayout>

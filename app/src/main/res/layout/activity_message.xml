@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white_color"
+    tools:context=".View.MessageActivity">
+    <include layout="@layout/toolbar_with_back"/>
+
+    <LinearLayout
+        android:layout_below="@+id/toolbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <TextView
+        android:layout_margin="@dimen/margin_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/title_black_color"
+        android:textSize="22sp"
+        android:text="Confirm Your Identity"
+        /><ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey_color"
+        android:textColor="@color/dark_grey_color"
+        android:paddingLeft="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/margin_10"
+        android:text="Upload a Photo or Scan of your National ID"
+        />
+
+        <RelativeLayout
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/border_five"
+            >
+            <ImageView
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_screenshot_front"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_20"
+                android:src="@drawable/photo"
+                />
+
+
+            <TextView
+                android:id="@+id/front_id_message"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/iv_screenshot_front"
+                android:translationY="-10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/title_black_color"
+                android:textSize="@dimen/font_fourteen"
+                android:text="Confirm Your Identity"
+                />
+      </RelativeLayout>
+
+
+        <RelativeLayout
+
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/border_five"
+            >
+            <ImageView
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_screenshot_back"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_20"
+                android:src="@drawable/photo"
+                />
+            <TextView
+                android:id="@+id/backidentitymessage"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/iv_screenshot_back"
+                android:translationY="-10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_black_color"
+                android:textSize="@dimen/font_fourteen"
+                android:text="Confirm Your Identity"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/border_five"
+            >
+            <ImageView
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_screenshot_proof"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_20"
+                android:src="@drawable/photo"
+                />
+            <TextView
+                android:id="@+id/addressidentitymessage"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/iv_screenshot_proof"
+                android:translationY="-10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_black_color"
+                android:textSize="@dimen/font_fourteen"
+                android:text="Address proof"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+
+<!--    <RelativeLayout-->
+<!--        vi-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        >-->
+<!--    <EditText-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:gravity="top|left"-->
+<!--        android:padding="10dp"-->
+<!--        android:id="@+id/tv_message"-->
+<!--        android:textSize="@dimen/font_sixteen"-->
+<!--        android:textColor="@color/title_black_color"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginLeft="@dimen/margin_20"-->
+<!--        android:layout_marginRight="@dimen/margin_20"-->
+<!--        android:inputType="textMultiLine"-->
+<!--        android:background="@drawable/round_drawable_border"-->
+<!--        />-->
+<!--        <ImageView-->
+<!--            android:visibility="gone"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/roundwhitedrawable"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:src="@drawable/checked"-->
+<!--            ></ImageView>-->
+<!--    </RelativeLayout>-->
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/dimen_05"-->
+<!--        android:background="@color/light_grey_color"/>-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/have_you_read"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        android:textSize="@dimen/font_fourteen"-->
+<!--        android:padding="@dimen/margin_12"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/light_grey_color"-->
+<!--        android:textColor="@color/dark_grey_color"-->
+<!--        android:paddingLeft="@dimen/margin_20"-->
+<!--        android:paddingTop="@dimen/margin_10"-->
+<!--        android:paddingBottom="@dimen/margin_10"-->
+<!--        android:text="@string/add_screenshot"-->
+<!--        />-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:gravity="bottom"-->
+<!--        android:layout_height="match_parent"-->
+<!--        >-->
+<!--      &lt;!&ndash;  <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/round_grey_with_border"-->
+<!--            >-->
+
+<!--        </LinearLayout>&ndash;&gt;-->
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_screenshot"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_margin="@dimen/margin_20"-->
+<!--                android:src="@drawable/add_screenshot"-->
+<!--                />-->
+
+    <TextView
+        android:id="@+id/tv_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/margin_30"
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_30"
+        style="@style/button_style"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/margin_15"
+        android:text="COntinue"
+        android:textAllCaps="true"
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/font_eighteen" />
+    </LinearLayout>
+
+    </ScrollView>
+    </LinearLayout>
+
+
+    <include layout="@layout/chooseimage_layout"></include>
+</RelativeLayout>

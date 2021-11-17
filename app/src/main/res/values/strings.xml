@@ -1,0 +1,336 @@
+<resources>
+    <string name="app_name">Xpress Sewa</string>
+    <string name="transfer_money">Transfer Money</string>
+    <string name="cheapest_way">This is the cheapest way to send money</string>
+    <string name="get_started">Get Started</string>
+    <string name="aud">AUD</string>
+
+    <string name="your_email">Email</string>
+
+    <string name="sign_in">LOG IN</string>
+    <string name="forgot_pwd_">Forgot Password</string>
+    <string name="password">Password</string>
+    <string name="password_confirm">Confirm Password</string>
+    <string name="forgotpin">Forgot PIN</string>
+    <string name="otp">Enter OTP</string>
+    <string name="forgot_pwd">Forgot Password?</string>
+    <string name="forgot_pwd_exl">Forgot Password</string>
+    <string name="or">Or log in with</string>
+    <string name="have_no_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="business_profile">Business Profile</string>
+    <string name="by_continuing">By continuing you accept our Terms of use and Privacy Policy</string>
+    <string name="terms_of_use"> Terms of use</string>
+
+    <string name="activity">Activity </string>
+    <string name="account">Account </string>
+    <string name="send">Send </string>
+    <string name="account_type">Account type</string>
+    <string name="reviewyourtransfer">Confirm details</string>
+    <string name="transferdetail">Transfer details</string>
+
+    <string name="youare_sending">You are sending</string>
+    <string name="userget">username gets</string>
+    <string name="rateguranteed">Guaranteed rate</string>
+    <string name="totalfee">Totalfee</string>
+
+
+    <string name="recipients">Recipients</string>
+    <string name="invite">Invite</string>
+    <string name="verify_your_account">Verify your account</string>
+    <string name="verification_pending">Verification Pending</string>
+
+    <!--Activity-->
+    <string name="activity_send_money">Send money, get paid &amp; spend abroad up to 8x cheaper than with a bank</string>
+    <string name="find_out_how_it_works">Find out how it works</string>
+    <string name="create_account">Create an account</string>
+    <string name="changepassword">Change Password</string>
+    <string name="createnewpassword">Create new password</string>
+    <string name="have_any_question">Have any question</string>
+    <string name="faq">FAQs</string>
+    <!--Profile-->
+
+    <string name="who_is_this_account_for">Who is this account for?</string>
+
+    <string name="my_profile"> My Profile</string>
+
+    <string name="refer_and_earn_message">Earn a reward of $100 for every 3 friends who transfer over a $500</string>
+    <string name="learn_more">Learn More</string>
+    <string name="invite_friends">Invite A Friends</string>
+    <string name="copy_link">Copy My Invite Link</string>
+    <string name="send_money">Send Money</string>
+    <string name="i_sent">I send</string>
+    <string name="recepient_receive">Receipient receive</string>
+    <string name="see_more">See more</string>
+
+    <string name="usd">USD</string>
+    <string name="gbp">GBP</string>
+    <string name="referandEarn">Refer &amp; Earn</string>
+
+
+    <string name="total_fees">Total fees</string>
+    <string name="price_comparison">Price Comparison</string>
+    <!--    <string name="guaranteed_rate">  Guaranteed rate</string>-->
+    <string name="amount_convert">Amount we will convert</string>
+
+    <string name="rate">Rate</string>
+
+
+    <string name="send_transfer"></string>
+    <string name="they_received">They Received:</string>
+
+
+    <string name="Price">Price</string>
+    <string name="confirmation_your_identity">Confirmation your identity</string>
+    <string name="next">Next</string>
+    <string name="upload_picture">Upload Picture</string>
+    <string name="open_camera">Open Camera</string>
+
+
+    <string name="notifications">Notifications</string>
+    <string name="please_describe">Please Describe your problem</string>
+
+    <string name="message">Message</string>
+    <string name="have_you_read">Have you read our FAQ yet ?</string>
+    <string name="add_screenshot"> Add screenshot (optional)</string>
+
+    <string name="cheapest_way_to_send">This is a cheapest way to send</string>
+    <string name="here_below_is_list">here below is list</string>
+
+    <!--Profile-->
+    <string name="edit_profile">Edit Your Account</string>
+    <string name="add_a_business">Add a business</string>
+    <string name="help">Help</string>
+    <string name="setting">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="complete_your_profile">Complete your profile</string>
+
+
+    <!--Business setup-->
+    <string name="get_your_business_set_up">Let\'s get your business set up</string>
+    <string name="take_few_minutes">It\'s only take few minutes. You\'ll need to:</string>
+    <string name="tell_us_about_your_business">  Tell us about your Business</string>
+    <string name="tell_us_about_you"> Tell us about you</string>
+
+
+    <string name="continue_">Continue</string>
+    <string name="country">Country</string>
+    <string name="state">State</string>
+    <string name="zipcode">Post code</string>
+    <string name="type_of_company"> Type of company</string>
+    <string name="please_note_we_cannot_offer">  Please note we cannot offer services to trust or \n charities from the selected country</string>
+
+
+    <string name="what_does_your_business_do">What does your business do?</string>
+    <string name="company_category">Company category</string>
+    <string name="company_subcategory">Company subcategory</string>
+    <string name="business_do_notes">By clicking continue, you confirm you are an authorized representative of transfer money and have authorization to make payments on behalf of transfer money</string>
+    <string name="save_and_continue">Save and continue</string>
+    <string name="save">Save</string>
+
+    <string name="verification">Verification</string>
+    <string name="Verifying">Verifying….</string>
+    <string name="we_are_confirming_your_details">We\'re confirming your details.</string>
+
+    <string name="verification_note">We confirm all our customers account details. This helps keep everyones money safe</string>
+    <string name="verifying_note">We\'re confirming your details.</string>
+
+    <string name="tell_us_what_you_are">Tell us what you\'re using TransferWise for</string>
+    <string name="please_select_an_option"> Please select an option from the list below.</string>
+    <string name="account_purpose">Account Purpose</string>
+
+
+    <string name="confirm_your_identity"> Confirm your identity</string>
+    <string name="national_id_card">National ID Card </string>
+    <string name="passport">Passport</string>
+    <string name="drivers_licence">Driver\'s Licence  </string>
+
+
+    <string name="upload_national_id_card">Upload a photo or scan of your national ID card.</string>
+    <string name="upload_driver_licence">  Upload a photo or scan of your Driver\'s Licence.</string>
+    <string name="upload_passport">Upload a photo or scan of your passport.</string>
+
+    <string name="upload_front_national_id">Upload the front side of your national ID card.</string>
+    <string name="upload_back_national_id">Upload the back side of your national ID card.</string>
+    <string name="upload_front_passport">Upload the front side of your passport.</string>
+    <string name="upload_back_passport">Upload the back side of your passport.</string>
+    <string name="upload_front_driver_license">Upload the front side of your Driver\'s Licence.</string>
+    <string name="upload_back_driver_license">Upload the back side of your Driver\'s Licence</string>
+
+
+    <string name="your_documents_updated">Your documents have been uploded</string>
+    <string name="someone_from_our_team">Someone from our team will check them over and if they\'re good to go.</string>
+    <string name="done">Done</string>
+    <string name="who_are_the_business_owners"> Who are the Business Owners?</string>
+    <string name="i_am_the_only_owner">I am the only owner</string>
+    <string name="there_are_other_owners">There are other owners</string>
+
+
+    <string name="who_are_the_business_directors"> Who are the Business directors?</string>
+    <string name="i_am_the_only_director"> I am the only director</string>
+    <string name="there_are_other_director">  There are other directors</string>
+
+    <string name="no_one_else_directly">No-one else directly or indirectly controls more than 25% of my company</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="country_of_residence">Country of residence</string>
+
+    <string name="name">Name</string>
+    <string name="fullname">Full name</string>
+    <string name="accountholdername">Account holder name</string>
+
+
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+
+    <string name="dd">DD</string>
+    <string name="mm">MM</string>
+    <string name="yyyy">YYYY</string>
+
+
+    <string name="submit">Submit</string>
+    <string name="registermsg">For verification an email has been send to your register email address.</string>
+
+    <string name="selectImage">Add Screen Short</string>
+
+    <string name="getStarted">Get Started</string>
+    <string name="countryname">Country</string>
+
+    <string name="typeofcomapnay">Type of company</string>
+
+    <string name="profilecontent">Please note,we do not offer services to trust or charties from the selected country</string>
+    <string name="buisnessdetail">Enter your buisness details</string>
+
+
+    <string name="business_name"> Business name</string>
+    <string name="nameof_buisness">Name of Business</string>
+    <string name="company_role">Company role</string>
+    <string name="registration_number"> Registration number</string>
+    <string name="website"> Website (Optional)</string>
+    <string name="business_address"> Business address</string>
+    <string name="city">  City</string>
+    <string name="post_code">Post code</string>
+    <string name="select_currency">Select Currency</string>
+    <string name="select_country">Select country</string>
+    <string name="allcurrency">All Currency</string>
+    <string name="personal_or_buisness">Personal</string>
+    <string name="enter_personal">Personal Details</string>
+    <string name="businesstype">Buisness Type</string>
+    <string name="country_code">Code</string>
+    <string name="mobile">Mobile</string>
+    <string name="youraddress">Your Address</string>
+    <string name="confirm">Confirm</string>
+    <string name="login">Sign In</string>
+    <string name="whoare_you_sending">Who are you sending to?</string>
+
+
+    <string name="add_recipent">Recipients</string>
+    <string name="select_recipent">Select Recipients</string>
+    <string name="add_first_recipient">Add recipients, and send money anywhere in the world</string>
+
+    <string name="earnandinvite">Earn 100 INR by inviting your friend to Entremit</string>
+
+    <string name="add_a_recipient">Add a Recipient</string>
+    <string name="add_recipient">Add Recipient</string>
+
+    <string name="myself">Myself</string>
+    <string name="some_one_else">Other person</string>
+    <string name="recipientType">Myself</string>
+
+    <string name="yourcurrency">Your Currency</string>
+
+    <string name="bankdetail">Your bank details</string>
+
+    <string name="buisness_profile">A business</string>
+
+    <string name="accountendingwith">Account ending with 000</string>
+    <string name="username">username</string>
+
+    <string name="myaccount">My Accounts</string>
+    <string name="otheraccount">Other Recipients</string>
+    <string name="choosecountry">Choose your country</string>
+    <string name="your_referral">Referral code(Optional)</string>
+    <string name="creteourpin">Create Your PIN</string>
+    <string name="usepin">Use this PIN to securely log into the app</string>
+    <string name="forgotpassword">Forgot Password</string>
+    <string name="forgottonpassword">Forgotten password</string>
+    <string name="reset">Reset Password</string>
+    <string name="sendmoneyfast">Send Money Fast</string>
+    <string name="securetransaction">95% transactions are authorized in seconds</string>
+    <string name="safeandsecure">Safe and Secure</string>
+    <string name="protect_transaction">We use the latest technology to protect your money and information</string>
+    <string name="trustedbymillion">Trusted by Millions</string>
+    <string name="trustedtext">Our safe and secure platform lead us to the most trusted app for sending money.</string>
+    <string name="getStart">Get Started</string>
+    <string name="additioninformation">Additional Information</string>
+    <string name="transferpurpose">Reason of your transfer</string>
+    <string name="referenceby">Reference by</string>
+    <string name="choosepaymentoption">Choose payment method</string>
+    <string name="forgotpasswordtext">Please enter your email address associated with your account and we will send you a password reset link on it.</string>
+
+
+    <string-array name="array_name">
+        <item>Personal Profile</item>
+        <item>Buisness Profile</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_wallet_money_msg">Add,send,convert and receive money here in wallet.</string>
+    <string name="search">Search</string>
+    <string name="enter_email">Enter your registered email </string>
+    <string name="welcome">Welcome!</string>
+    <string name="logintocontinue">Log in to continue</string>
+    <string name="addaccount_data">Add recipients, and send money anywhere in the world</string>
+    <string name="addaccount_button">Add Your First Recipients</string>
+    <string name="security">Security</string>
+    <string name="usetouchid">Use Touch ID to log in</string>
+    <string name="autolock">Auto-Lock security</string>
+    <string name="changeemail">Change email</string>
+    <string name="twosetuplogin">changeemail</string>
+    <string name="General">General</string>
+    <string name="noti_pref">Notification preferences</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="report_a_bug">Report a Bug</string>
+    <string name="about">About</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="contact">Contacts on Intremit</string>
+    <string name="peronaldetail">Personal Details</string>
+    <string name="deleteaccount">Delete Account</string>
+    <string name="view_edit">View or edits your personal details</string>
+    <string name="personal_account">Personal account</string>
+    <string name="account_type_msg">Which account would you like?</string>
+    <string name="create_personal_account">Create a personal account?</string>
+    <string name="create_business_account">Create a business account</string>
+    <string name="update">update</string>
+    <string name="personal_account_msg">Send and receive money from any corner of the world</string>
+    <string name="txt_identity_heading">Choose any of below as identity proof for verifying KYC.</string>
+    <string name="buisness_account_msg">Create an account for your business and manage your money from one platform.</string>
+    <string name="payment_msg">Kindly wait we are redirecting you to payment gateway. Do not refresh or move back from this page.</string>
+    <string name="title_activity_forgot_pin_new">ForgotPinNew</string>
+    <string name="select_date">Date of birth</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+
+
+    <string name="biometric_error_sdk_not_supported">Sdk version not supported</string>
+    <string name="biometric_error_hardware_not_supported">Device does not support biometric authentication</string>
+    <string name="biometric_error_fingerprint_not_available">Fingerprint is not registered in device</string>
+    <string name="biometric_error_permission_not_granted">Permission is not granted by user</string>
+    <string name="biometric_failure">Login not successful!</string>
+    <string name="biometric_cancelled">Authentication cancelled by user</string>
+    <string name="biometric_success">Authentication Done</string>
+    <string name="biometric_title">Authentication</string>
+    <string name="biometric_subtitle">Authenticate to your Xpress Sewa India account</string>
+    <string name="biometric_description">Place your finger on the device home button to verify your identity</string>
+    <string name="biometric_negative_button_text">CANCEL</string>
+
+
+</resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <include layout="@layout/toolbar_with_back"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/margin_20"
+    android:layout_marginRight="@dimen/margin_20"
+    android:layout_height="wrap_content">
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/margin_25"
+    android:layout_marginTop="@dimen/margin_20"
+    android:text="@string/complete_your_profile"
+    android:textColor="@color/title_black_color"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/margin_12"
+        android:layout_marginTop="@dimen/margin_2"
+        android:text="userid"
+        android:textColor="@color/title_black_color"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_60"
+        android:orientation="vertical"
+        >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/margin_15"
+
+        android:background="@color/grey_color"/>
+
+        <TextView
+            android:id="@+id/tv_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_profile"
+            android:textSize="@dimen/font_fourteen"
+            android:drawablePadding="@dimen/margin_10"
+
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/edit_profile"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="@dimen/margin_15"
+android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/grey_color"/>
+
+        <TextView
+            android:id="@+id/tv_add_business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_a_business"
+            android:textSize="@dimen/font_fourteen"
+            android:drawablePadding="@dimen/margin_10"
+
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/add_a_business"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/grey_color"/>
+
+        <TextView
+            android:id="@+id/tv_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/help"
+            android:textSize="@dimen/font_fourteen"
+            android:drawablePadding="@dimen/margin_10"
+
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/help_icon"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/grey_color"/>
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/setting"
+            android:textSize="@dimen/font_fourteen"
+            android:drawablePadding="@dimen/margin_10"
+
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/setting"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/grey_color"/>
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:textSize="@dimen/font_fourteen"
+            android:drawablePadding="@dimen/margin_10"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/logout"
+            />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_transationupdatelist"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/transactiondate"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="22 Dec"
+            android:gravity="center"
+            android:textSize="@dimen/font_fourteen"
+            android:maxLines="1"
+            android:textColor="@color/textheadercolor"
+            ></TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/img_ringdrawable"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/green_ring_drawable"></ImageView>
+
+                <ImageView
+                    android:id="@+id/ring_arrow"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/price_comparison_button"
+                    android:rotation="90"
+
+                    ></ImageView>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/txt_view_line"
+                android:layout_width="2dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:background="@color/greencolor"></View>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/transaction_process"
+            android:paddingStart="15dp"
+            android:maxLines="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You setup your transfer"
+            android:gravity="center|left"
+            android:textSize="@dimen/font_fourteen"
+            android:textColor="@color/textheadercolor"
+            ></TextView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

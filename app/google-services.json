@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "911612259719",
+    "project_id": "xpresssewa",
+    "storage_bucket": "xpresssewa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911612259719:android:7e54d67d9ce693bba03722",
+        "android_client_info": {
+          "package_name": "transfer.money.com.xpresssewa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911612259719-01d49jjkh486gk27dielu5154nl9trd3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "transfer.money.com.xpresssewa",
+            "certificate_hash": "038349bf67aae968bc227570b924b125e4e27abe"
+          }
+        },
+        {
+          "client_id": "911612259719-8i57foojn8toeu6umcjkalc75aqushqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAetyeRi2RfHyCjMujf6DpDhxUXppDKP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911612259719-8i57foojn8toeu6umcjkalc75aqushqp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "911612259719-cgtutv840u82vobccs9n4bomn1mcd5bn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.webcom.samremmitance",
+                "app_store_id": "1234567890"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

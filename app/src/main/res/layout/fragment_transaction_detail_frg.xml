@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_color"
+    android:id="@+id/ll_transactiondeatil"
+    tools:context=".fragments.TransactionDetailFrg">
+
+    <ScrollView
+        android:nestedScrollingEnabled="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+    <LinearLayout
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:text="Transaction Details"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/black_color"
+            android:textSize="22sp"
+            ></TextView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <TextView
+                android:gravity="center|left"
+                android:text="Status"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"
+                ></TextView>
+            <TextView
+                android:id="@+id/txt_status"
+                android:gravity="center|left"
+                android:layout_alignParentEnd="true"
+                android:text="0 USD"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"
+                ></TextView>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <TextView
+                android:gravity="center|left"
+                android:text="You sent"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"
+                ></TextView>
+            <TextView
+                android:id="@+id/txt_yousave"
+                android:gravity="center|left"
+                android:layout_alignParentEnd="true"
+                android:text="0 USD"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"
+                ></TextView>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <TextView
+                android:gravity="center|left"
+                android:text="Total Fee"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"
+                ></TextView>
+            <TextView
+                android:id="@+id/txt_ourfee"
+                android:gravity="center|left"
+                android:layout_alignParentEnd="true"
+                android:text="0 USD"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"
+                ></TextView>
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <TextView
+                android:gravity="center|left"
+                android:text="We Converted"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/txt_convertedamount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:gravity="center|left"
+                android:text="0 USD"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"></TextView>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+           >
+
+            <TextView
+                android:id="@+id/txt_guaranteedrate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:text="Exchange Rate"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:id="@+id/txt_exchangerate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:gravity="center|left"
+                android:text="0 USD"
+                android:textColor="@color/blue_bt_color"
+                android:textSize="16sp"></TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            >
+            <TextView
+                android:gravity="center|left"
+                android:text="Reference Number"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"
+                ></TextView>
+            <TextView
+                android:id="@+id/txt_refnumber"
+                android:gravity="center|left"
+                android:layout_alignParentEnd="true"
+                android:text="Jack Peter"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_color"
+                android:textSize="16sp"
+                ></TextView>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            >
+            <TextView
+                android:gravity="center|left"
+                android:text="Transaction Number"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/grey_color"
+                android:textSize="14sp"
+                ></TextView>
+            <TextView
+                android:id="@+id/txt_transactionnumber"
+                android:gravity="center|left"
+                android:layout_alignParentEnd="true"
+                android:text="Jack Peter"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"
+                ></TextView>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:text="Recipient Details"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/black_color"
+            android:textSize="22sp"
+            ></TextView>
+
+
+     <androidx.recyclerview.widget.RecyclerView
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:id="@+id/recyclerview_showbankdetail"
+         >
+     </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    </LinearLayout>
+    </ScrollView>
+</FrameLayout>

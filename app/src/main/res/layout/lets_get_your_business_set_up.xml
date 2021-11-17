@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_25"
+            android:layout_margin="@dimen/margin_20"
+            android:text="@string/get_your_business_set_up"
+            android:textColor="@color/title_black_color"
+            />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_grey_color"
+    >
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_20"
+    android:text="@string/take_few_minutes"
+    android:paddingBottom="@dimen/margin_10"
+    android:paddingTop="@dimen/margin_10"
+    android:textColor="@color/dark_grey_color"
+    />
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_30"
+            android:orientation="vertical">
+
+       <!--     <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+
+                android:background="@color/light_grey_color" />-->
+
+            <LinearLayout
+                android:id="@+id/ll_business_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/tv_business"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8.5"
+                    android:drawableLeft="@drawable/add_a_business"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:gravity="center_vertical"
+                    android:text="@string/business_profile"
+                    android:textSize="@dimen/font_fourteen" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.5"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/comparison_expand_button" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:background="@color/light_grey_color" />
+
+            <LinearLayout
+                android:id="@+id/ll_my_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/tv_edit_profile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8.5"
+                    android:drawableLeft="@drawable/edit_profile"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:gravity="center_vertical"
+
+                    android:text="@string/my_profile"
+                    android:textSize="@dimen/font_fourteen" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.5"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/comparison_expand_button" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:background="@color/light_grey_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+
+            android:id="@+id/company_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/font_eighteen"
+            android:layout_marginTop="@dimen/margin_35"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:layout_marginRight="@dimen/margin_30"
+            style="@style/button_style"
+            android:padding="@dimen/margin_15"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/get_started"
+            />
+
+    </LinearLayout>
+</LinearLayout>

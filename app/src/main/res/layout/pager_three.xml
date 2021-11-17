@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/splashthree"></ImageView>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trustedbymillion"
+        android:textColor="@color/white_color"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/font_twenty_five"
+        />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:layout_below="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trustedtext"
+        android:textColor="@color/white_color"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:textSize="@dimen/font_sixteen"
+        />
+
+    <TextView
+        android:translationY="-30dp"
+        android:id="@+id/getSTart"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/green_button"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/getStart"
+        android:gravity="center"
+        android:textSize="@dimen/font_sixteen"
+        android:textAllCaps="true"
+        android:textColor="@color/white_color"
+        ></TextView>
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="45dp"-->
+<!--        android:layout_height="3dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="40dp"-->
+<!--        >-->
+<!--        <View-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/white_50"-->
+<!--            ></View>-->
+<!--        <View-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/white_50"-->
+<!--            ></View>-->
+<!--        <View-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/white_color"-->
+<!--            ></View>-->
+<!--    </LinearLayout>-->
+</RelativeLayout>

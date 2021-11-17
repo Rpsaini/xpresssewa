@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="60dp"
+    android:orientation="vertical"
+    >
+
+
+    <ImageView
+       android:layout_centerInParent="true"
+        android:layout_alignParentEnd="true"
+        android:tint="@color/grey_color"
+        android:id="@+id/iv_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center"
+        android:padding="5dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/profile_icon"
+        />
+
+    <ImageView
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="4dp"
+        android:tint="@color/grey_color"
+        android:id="@+id/tv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:padding="5dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/back_button"
+        />
+
+    <TextView
+
+        android:textStyle="bold"
+        android:paddingStart="20dp"
+        android:id="@+id/tv_title"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/account"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/font_twenty_five"
+        />
+
+</RelativeLayout>

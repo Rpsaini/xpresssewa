@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_linearlayoutadditional"
+    android:background="@color/white_color"
+    tools:context=".View.AdditionInformation">
+
+    <include layout="@layout/toolbar_with_back"/>
+    <include layout="@layout/chooseimage_layout"></include>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+            <LinearLayout
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:background="@color/white_color"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/txt_howtosendyou"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Support"
+                    android:textColor="@color/black_color"
+                    android:textSize="22sp"
+                    ></TextView>
+
+
+            </LinearLayout>
+
+
+            <TextView
+
+                android:paddingStart="10dp"
+                android:background="@color/bodycolor"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center|left"
+                android:text="Please Describe your problem"
+                android:textColor="@color/black_color"
+                android:textAllCaps="true"
+                android:textSize="14sp"
+                ></TextView>
+
+
+
+
+            <TextView
+                android:paddingStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center|left"
+                android:text="Department"
+                android:textColor="@color/black_color"
+                android:textAllCaps="true"
+                android:textSize="14sp"
+                ></TextView>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_selectTicketCategory"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                >
+                <TextView
+                    android:paddingBottom="3dp"
+                    android:id="@+id/txt_showselected_reason"
+                    android:layout_width="0dp"
+                    android:layout_weight=".9"
+                    android:layout_height="38dp"
+                    android:text="Select Department"
+                    android:gravity="center|left|bottom"
+                    android:textColor="@color/black_color"
+                    android:textSize="16sp"
+                    ></TextView>
+
+                <ImageView
+                    android:paddingBottom="3dp"
+                    android:layout_gravity="bottom"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight=".1"
+                    app:tint="@color/skybluecolorcode"
+                    android:src="@drawable/next_arrow"
+                    android:rotation="90"
+                    ></ImageView>
+            </LinearLayout>
+
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/textcolor"
+                android:alpha=".5"
+                ></View>
+
+
+            <TextView
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center|left"
+                android:text="Subject"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"
+                ></TextView>
+
+            <EditText
+                android:imeOptions="actionDone"
+                android:id="@+id/ed_subject"
+                android:background="@drawable/border_five"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Subjet"
+                android:gravity="center|left"
+                android:padding="4dp"
+                android:textSize="16dp"
+                android:textColorHint="@color/textcolor"
+                ></EditText>
+
+
+
+
+            <TextView
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center|left"
+                android:text="Description"
+                android:textColor="@color/black_color"
+                android:textSize="14sp"
+                ></TextView>
+
+            <EditText
+                android:id="@+id/ed_description"
+                android:background="@drawable/border_five"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Description"
+                android:gravity="top|left"
+                android:padding="4dp"
+                android:textSize="16dp"
+                android:textColor="@color/black_color"
+                android:textColorHint="@color/textcolor"
+                ></EditText>
+
+
+            <TextView
+                android:visibility="gone"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text=" Have you read our FAQ yet ?"
+                android:textColor="@color/skybluecolorcode"
+                android:textSize="14sp"
+                ></TextView>
+
+
+            <TextView
+                android:paddingStart="10dp"
+                android:background="@color/bodycolor"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center|left"
+                android:text="Add screenshot (optional)"
+                android:textColor="@color/black_color"
+                android:textAllCaps="true"
+                android:textSize="14sp"
+                ></TextView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/add_dynamic_image_recycler"
+                ></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:layout_marginBottom="20dp"
+                android:id="@+id/tv_submit"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textAllCaps="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="@string/send" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
+

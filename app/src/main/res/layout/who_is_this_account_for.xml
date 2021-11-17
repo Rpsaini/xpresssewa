@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_25"
+            android:layout_marginTop="@dimen/margin_20"
+            android:text="@string/who_is_this_account_for"
+            android:textColor="@color/title_black_color"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_60"
+            android:orientation="vertical"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+
+                android:background="@color/light_grey_color"/>
+            <LinearLayout
+                android:id="@+id/ll_my_profile"
+                android:layout_width="match_parent"
+                android:weightSum="10"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_edit_profile"
+                    android:layout_width="0dp"
+                    android:layout_weight="8.5"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_profile"
+                    android:textSize="@dimen/font_fourteen"
+                    android:drawablePadding="@dimen/margin_10"
+
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/edit_profile"
+                    />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+
+                    android:gravity="right"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/comparison_expand_button"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:background="@color/light_grey_color"/>
+            <LinearLayout
+                android:id="@+id/ll_business_profile"
+                android:layout_width="match_parent"
+                android:weightSum="10"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="8.5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_business"
+                    android:text="@string/business_profile"
+                    android:textSize="@dimen/font_fourteen"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/add_a_business"
+                    />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+
+                    android:gravity="right"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/comparison_expand_button"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:background="@color/light_grey_color"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/by_continuing"
+                android:textSize="@dimen/font_twelve"
+                android:textColor="@color/dark_grey_color"
+                />
+
+            <TextView
+                android:id="@+id/tv_terms_of_use"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/terms_of_use"
+                android:textSize="@dimen/font_twelve"
+                android:layout_marginLeft="@dimen/margin_5"
+                android:textColor="@color/colorPrimaryDark"
+                /></LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

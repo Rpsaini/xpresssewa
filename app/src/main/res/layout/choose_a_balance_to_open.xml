@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_relativelayout"
+    >
+
+    <!--    <include layout="@layout/custom_tool_bar"/>-->
+
+
+    <LinearLayout
+        android:id="@+id/ll_iiner"
+        android:background="@drawable/drawable_upper_round"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/img_hideview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/next_arrow"
+            android:rotation="90"
+            ></ImageView>
+
+        <LinearLayout
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white_color"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+
+            <!--            <TextView-->
+            <!--                style="@style/black22wb"-->
+            <!--                android:layout_marginTop="5dp"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--              -->
+            <!--                android:text="Transfer Purpose"-->
+            <!--                android:textStyle="bold"-->
+            <!--                ></TextView>-->
+            <TextView
+                android:id="@+id/transfer_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose a balance to open"
+                android:textColor="@color/black_color"
+                android:textSize="22sp"
+                ></TextView>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_grey_color"
+                android:layout_marginTop="15dp"
+                ></View>
+
+            <TextView
+                android:gravity="center|left"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:text="Balance with bank details"
+                ></TextView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_grey_color"
+                android:layout_marginTop="5dp"
+                ></View>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/balance_currency_recycler"
+                ></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

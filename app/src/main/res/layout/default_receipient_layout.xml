@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:id="@+id/llwithoutrecipient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:visibility="gone"
+            android:id="@+id/ll_recipientlayout"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:visibility="visible"
+                android:id="@+id/img_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="@dimen/margin_20"
+                android:src="@drawable/ic_adddefaultrecipient"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingStart="25dp"
+                android:paddingEnd="@dimen/margin_25"
+                android:text="@string/addaccount_data"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/font_fourteen"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:layout_marginTop="@dimen/margin_50"
+                android:visibility="visible"
+                android:id="@+id/create_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/font_fifteen"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30"
+                android:background="@drawable/green_bt_rounded_corner"
+                android:padding="@dimen/margin_15"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:textAllCaps="true"
+                android:text="@string/addaccount_button"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:weightSum="1"
+            android:id="@+id/ll_linerlayout_recycler"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:id="@+id/ll_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/toolbar_header_drawable"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_search"
+                    android:tint="@color/textcolor"
+                    ></ImageView>
+
+                <EditText
+                    android:id="@+id/ed_search"
+                    style="@style/edittext_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center|left"
+                    android:hint="Search Recipients"
+                    android:maxLines="1"
+                    android:textColor="@color/black_color" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+                >
+                <TextView
+                    android:paddingStart="15dp"
+                    android:background="@color/light_text_background"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="@string/myaccount"
+                    android:textSize="14dp"
+                    android:gravity="center|left"
+                    android:id="@+id/myAccountTV" ></TextView>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/see_more_my"
+                    android:layout_centerInParent="true"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="See more"
+                    android:textColor="@color/grey_color"
+                    ></TextView>
+            </RelativeLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:nestedScrollingEnabled="true"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/AreadyAddedRecipientRecycer"
+                ></androidx.recyclerview.widget.RecyclerView>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+
+
+                >
+                <TextView
+
+                    android:layout_marginTop="12dp"
+                    android:background="@color/light_text_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingStart="15dp"
+                    android:text="@string/otheraccount"
+                    android:textSize="14dp"
+                    android:gravity="center|left"
+                    android:id="@+id/otherRecipietTV"></TextView>
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/see_more_other"
+                    android:layout_centerInParent="true"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="See more"
+                    android:textColor="@color/grey_color"
+                    ></TextView>
+            </RelativeLayout>
+<!--            <com.tsuryo.swipeablerv.SwipeableRecyclerView-->
+<!--                android:id="@+id/rv"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                app:leftBgColor="@color/colorAccent"-->
+<!--                app:leftImage="@drawable/ic_remove"-->
+<!--                app:leftText="Delete"-->
+<!--                app:rightBgColor="@color/blue"-->
+<!--                app:rightImage="@drawable/ic_check"-->
+<!--                app:rightText="Read"-->
+<!--                app:textColor="@android:color/white"-->
+<!--                app:textSize="20sp" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:nestedScrollingEnabled="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/AreadyAddedRecipientRecycerOther"
+                ></androidx.recyclerview.widget.RecyclerView>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

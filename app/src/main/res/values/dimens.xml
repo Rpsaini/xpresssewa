@@ -1,0 +1,65 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    <dimen name="dimen_05">0.5dp</dimen>
+    <dimen name="dimen_1">1dp</dimen>
+
+
+    <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_7">7dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_33">33dp</dimen>
+    <dimen name="margin_35">35dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_45">45dp</dimen>
+    <dimen name="margin_52">52dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_70">70dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+
+    <dimen name="font_twelve">12dp</dimen>
+    <dimen name="font_fourteen">14dp</dimen>
+    <dimen name="font_fifteen">15dp</dimen>
+    <dimen name="font_sixteen">16dp</dimen>
+    <dimen name="font_eighteen">18dp</dimen>
+    <dimen name="font_twenty_two">22dp</dimen>
+    <dimen name="font_twenty_five">25dp</dimen>
+    <dimen name="font_forty_five">45dp</dimen>
+
+
+    <!-- 365 sports-->
+    <!-- Bottom Menu Override -->
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">11sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
+    <dimen name="activity_padding">14dp</dimen>
+    <dimen name="placeholder_image">50dp</dimen>
+    <dimen name="placeholder_text_height">8dp</dimen>
+    <dimen name="activity_padding_horizontal">16dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="name">15dp</dimen>
+    <dimen name="chef">12dp</dimen>
+    <dimen name="timestamp">11dp</dimen>
+    <dimen name="description">15dp</dimen>
+    <dimen name="price">13dp</dimen>
+    <!--
+    Because the window insets on round devices are larger than 15dp, this padding only applies
+    to square screens.
+    -->
+    <dimen name="box_inset_layout_padding">0dp</dimen>
+
+    <!--
+    This padding applies to both square and round screens. The total padding between the buttons
+    and the window insets is box_inset_layout_padding (above variable) on square screens and
+    inner_frame_layout_padding (below variable) on round screens.
+    -->
+    <dimen name="inner_frame_layout_padding">5dp</dimen>
+</resources>

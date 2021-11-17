@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+android:layout_gravity="center"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/margin_30"
+   android:paddingTop="@dimen/margin_30"
+
+    android:gravity="center"
+    android:background="@drawable/round_filled_white"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/upload_image"
+        android:id="@+id/iv_upload_pop"
+
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_height="@dimen/dimen_05"
+        android:background="@color/grey_color"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        >
+        <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4.95"
+            android:textColor="@color/dark_grey_color"
+            android:textSize="@dimen/font_twelve"
+            android:gravity="center"
+            android:text="@string/upload_picture"
+            android:paddingTop="@dimen/margin_15"
+            android:paddingBottom="@dimen/margin_15"
+        android:id="@+id/tv_upload_picture"
+        />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_color"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.95"
+            android:textColor="@color/dark_grey_color"
+            android:textSize="@dimen/font_twelve"
+            android:gravity="center"
+            android:text="@string/open_camera"
+            android:paddingTop="@dimen/margin_15"
+            android:paddingBottom="@dimen/margin_15"
+            android:id="@+id/tv_camera"
+            />
+    </LinearLayout>
+</LinearLayout>

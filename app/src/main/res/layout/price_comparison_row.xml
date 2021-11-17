@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:weightSum="10"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:weightSum="10"
+        android:padding="@dimen/margin_20"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:layout_height="match_parent">
+    <LinearLayout
+
+        android:layout_width="0dp"
+        android:layout_weight="3.5"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_logo"
+
+        android:src="@drawable/comparison_expand_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            >
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+
+            android:text="@string/send"
+            android:textColor="@color/blue_bt_color"
+            android:textSize="@dimen/font_fifteen" />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="3.5"
+
+        android:orientation="vertical"
+        >
+
+        <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:textSize="@dimen/font_fifteen"
+        android:textColor="@color/title_black_color"
+        />
+        <TextView
+            android:id="@+id/tv_difference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textSize="@dimen/font_twelve"
+            android:textColor="@color/blue_bt_color"
+            />
+    </LinearLayout>
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/dark_grey_color"
+        android:layout_height="@dimen/dimen_05"/>
+</LinearLayout>

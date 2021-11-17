@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:background="@color/white"
+    android:id="@+id/rr_activity_and_wallet"
+
+    tools:context=".View.TransactionDetailView">
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="@color/skybluecolorcode"
+        android:id="@+id/rr_upper_layout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        >
+
+        <ImageView
+            android:alpha=".4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_blue_background"
+            ></ImageView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:nestedScrollingEnabled="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/wallet_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/rr_upper_layout"
+        android:background="@drawable/upper_corner_drawable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+           android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity"
+            android:padding="10dp"
+            android:textColor="@color/black_color"
+            android:textSize="22dp"
+            ></TextView>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txt_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_color_f6"
+            android:textColor="@color/dark_grey_color"
+            android:paddingLeft="@dimen/margin_20"
+            android:paddingTop="@dimen/margin_10"
+            android:paddingBottom="@dimen/margin_10"
+            android:text="Recent Transaction"
+            android:textSize="14dp"
+            android:paddingStart="15dp"
+            android:textAllCaps="true"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/recycler_view_of_activity"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:id="@+id/img_nodatafound"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_no_activity"
+            ></ImageView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,166 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+
+    <style name="edittext_style">
+        <item name="android:textSize">@dimen/font_sixteen</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:textColorHint">@color/placeholdercolor</item>
+<!--        <item name="android:padding">@dimen/font_sixteen</item>-->
+
+        <!-- <item name="android:background">@drawable/round_filled_white</item>
+       <item name="android:layout_marginLeft">@dimen/margin_30</item>
+        <item name="android:layout_marginRight">@dimen/margin_30</item>-->
+    </style>
+
+    <style name="button_style">
+        <item name="android:textSize">@dimen/font_sixteen</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/white_color</item>
+
+        <item name="android:background">@drawable/round_filled_blue</item>
+        <!-- <item name="android:layout_marginLeft">@dimen/margin_30</item>
+         <item name="android:layout_marginRight">@dimen/margin_30</item>-->
+    </style>
+
+
+    <style name="greentext16" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/dark_green_color</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="white13" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white_color</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+
+    <style name="white18" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white_color</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="black13" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+
+    <style name="black22wb" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">22dp</item>
+
+    </style>
+    <style name="black20" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="black18" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="black14" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="black16" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+    <style name="black15" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="black16_grey" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/textheadercolor</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="grey12" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/grey_color</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="bluetext20" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_bt_color</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+
+    <style name="bluetext25" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_bt_color</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="bluetext25_black" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black_color</item>
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="bluetext17" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_bt_color</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="bluetext16" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/textheadercolor</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="textcolor14" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/textheadercolor</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="bluetext22" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_bt_color</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+
+    <style name="white14" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white_color</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+    <style name="white12" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white_color</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="greytext15" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/grey_color</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+
+</resources>

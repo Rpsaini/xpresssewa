@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/RRtoplayout_recipient"
+    tools:context=".View.RecipientDynamicActivity">
+
+
+    <include layout="@layout/toolbar_with_back"/>
+    <LinearLayout
+        android:id="@+id/hometitle"
+        android:layout_below="@+id/toolbarlayout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:id="@+id/recipient_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/margin_25"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/margin_20"
+            android:text="@string/recipientType"
+            android:textColor="@color/title_black_color"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_margin="17dp"
+        android:layout_below="@+id/hometitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarThumbVertical="@android:color/transparent"
+        >
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          >
+          <LinearLayout
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              >
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_name"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+                  <EditText
+                      android:maxLength="70"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/first_name"
+                      android:textSize="@dimen/font_sixteen"
+                      android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                       />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_lastname"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+                  <EditText
+                      android:maxLength="70"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/last_name"
+                      android:textSize="@dimen/font_sixteen"
+                      android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                      />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_email"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+
+                  <EditText
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/your_email"
+                      android:inputType="textEmailAddress"
+                      android:maxLength="70"
+                      android:textSize="@dimen/font_sixteen" />
+              </com.google.android.material.textfield.TextInputLayout>
+
+              <TextView
+                  android:visibility="invisible"
+                  android:paddingLeft="10dp"
+                  android:id="@+id/select_date_error"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:textSize="12dp"
+                  android:text="@string/select_date"
+                  android:textColor="@color/status_red"
+                  android:gravity="center|left"
+                  style="@style/edittext_style"
+                  ></TextView>
+
+              <TextView
+                  android:paddingLeft="10dp"
+                  android:id="@+id/select_date"
+                  android:layout_width="match_parent"
+                  android:layout_height="50dp"
+                  android:hint="@string/select_date"
+                  android:gravity="center|left"
+                  style="@style/edittext_style"
+                  ></TextView>
+              <View
+                  android:id="@+id/line_dob"
+                  android:translationY="-5dp"
+                  android:layout_marginLeft="4dp"
+                  android:layout_marginRight="4dp"
+                  android:layout_height="1.2dp"
+                  android:layout_width="match_parent"
+                  android:background="@color/grey_color"
+                  ></View>
+
+
+              <LinearLayout
+                  android:id="@+id/ll_selectCountry"
+                  android:weightSum="1"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="15dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="50dp">
+
+                  <com.hbb20.CountryCodePicker
+                      android:id="@+id/ccp"
+                      app:textSize="16dp"
+                      android:gravity="center"
+                      android:layout_width="0dp"
+                      android:layout_weight=".4"
+                      android:layout_height="match_parent" />
+
+
+                      <EditText
+                          android:maxLength="10"
+                          android:gravity="center|left"
+                          android:background="@android:color/transparent"
+                          android:inputType="number"
+                          android:id="@+id/ed_mobilenumber"
+                          style="@style/edittext_style"
+                          android:layout_width="0dp"
+                          android:layout_weight=".6"
+                          android:layout_height="match_parent"
+                          android:hint="@string/mobile"
+                          android:textSize="@dimen/font_sixteen"
+                           />
+
+
+              </LinearLayout>
+
+              <View
+                  android:translationY="-5dp"
+                  android:layout_marginLeft="5dp"
+                  android:layout_marginRight="5dp"
+                  android:layout_height="1.2dp"
+                  android:layout_width="match_parent"
+                  android:background="@color/grey_color"
+                  ></View>
+
+
+
+
+                   <Spinner
+                       android:layout_marginLeft="5dp"
+                       android:layout_marginRight="5dp"
+                       android:id="@+id/recipient_state"
+                       android:layout_marginTop="15dp"
+                          android:maxLength="70"
+                          style="@style/edittext_style"
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:hint="@string/state"
+                          android:textSize="@dimen/font_sixteen"
+                          android:inputType="textEmailAddress" />
+
+              <View
+                  android:translationY="-5dp"
+                  android:layout_marginLeft="5dp"
+                  android:layout_marginRight="5dp"
+                  android:layout_height="1.2dp"
+                  android:layout_width="match_parent"
+                  android:background="@color/grey_color"
+                  ></View>
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_city"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+                  <EditText
+                      android:maxLength="70"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/city"
+                      android:textSize="@dimen/font_sixteen"
+                      android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                      android:inputType="textEmailAddress" />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_zipcode"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+                  <EditText
+                      android:maxLength="70"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/zipcode"
+                      android:textSize="@dimen/font_sixteen"
+                      android:inputType="number" />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_address"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+
+                  <EditText
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/address"
+                      android:imeOptions="actionDone"
+                      android:maxLines="1"
+                      android:textSize="@dimen/font_sixteen" />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+
+          </LinearLayout>
+
+
+<!--          android:id="@+id/selectcurrency"-->
+
+          <LinearLayout
+              android:layout_marginLeft="5dp"
+              android:layout_marginRight="5dp"
+              android:layout_marginTop="35dp"
+              android:layout_below="@+id/hometitle"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:weightSum="10"
+              >
+              <LinearLayout
+                  android:id="@+id/selectcurrency"
+                  android:layout_marginTop="1dp"
+                  android:layout_width="0dp"
+                  android:layout_height="match_parent"
+                  android:layout_weight="3.5"
+                  android:gravity="center|left"
+                  >
+
+                  <LinearLayout
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      >
+                  <ImageView
+                      android:id="@+id/from_currency_image"
+                      android:layout_width="20dp"
+                      android:layout_height="20dp"
+                      android:src="@drawable/america_flag" />
+
+                  <TextView
+                      android:textStyle="bold"
+                      android:id="@+id/tv_currency_from"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/margin_5"
+                      android:layout_marginRight="@dimen/margin_5"
+                      android:text="@string/aud"
+                      style="@style/edittext_style"
+                      android:textColor="@color/textcolor"
+                      android:textSize="@dimen/font_sixteen"/>
+                  <ImageView
+                      android:layout_gravity="center"
+                      android:tint="@color/black_color"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+
+                      android:src="@drawable/expand_button" />
+
+                  </LinearLayout>
+
+              </LinearLayout>
+
+              <TextView
+                  android:visibility="gone"
+                  android:paddingLeft="10dp"
+                  android:layout_width="0dp"
+                  android:layout_weight="6.5"
+                  android:layout_height="40dp"
+                  android:text=""
+                  android:textColor="@color/grey_color"
+                  android:gravity="center|left"
+                  android:textSize="@dimen/font_sixteen" />
+          </LinearLayout>
+
+          <View
+              android:layout_marginTop="5dp"
+              android:layout_marginLeft="4dp"
+              android:layout_marginRight="4dp"
+             android:layout_height="1.2dp"
+              android:layout_width="match_parent"
+              android:background="@color/grey_color"
+              ></View>
+
+
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="30dp"
+              android:text="@string/bankdetail"
+              android:textColor="@color/black_color"
+              android:textSize="@dimen/font_sixteen"
+              ></TextView>
+
+          <androidx.recyclerview.widget.RecyclerView
+
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/lldynamiclayout"
+        >
+          </androidx.recyclerview.widget.RecyclerView>
+
+         <Spinner
+             android:layout_marginTop="15dp"
+             android:layout_width="match_parent"
+             android:layout_height="55dp"
+             android:id="@+id/spinner_bank_name"
+             ></Spinner>
+          <View
+              android:translationY="-8dp"
+              android:layout_marginBottom="50dp"
+              android:layout_height="1.2dp"
+              android:layout_width="match_parent"
+              android:background="@color/grey_color"
+              ></View>
+
+
+
+
+      </LinearLayout>
+    </ScrollView>
+
+
+   <LinearLayout
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:layout_height="70dp"
+       android:background="@color/white_color"
+       >
+
+       <TextView
+           android:id="@+id/tv_send_money"
+           android:layout_width="match_parent"
+           android:layout_height="45dp"
+           android:layout_gravity="bottom"
+           android:layout_marginLeft="@dimen/margin_30"
+           android:layout_marginRight="@dimen/margin_30"
+           android:layout_marginBottom="10dp"
+           style="@style/button_style"
+           android:gravity="center_horizontal"
+           android:padding="@dimen/margin_10"
+           android:text="@string/add_recipient"
+           android:textAllCaps="true"
+           android:textColor="@color/white_color"
+           android:textSize="@dimen/font_sixteen" />
+
+   </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

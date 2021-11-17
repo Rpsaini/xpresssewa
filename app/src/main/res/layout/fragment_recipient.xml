@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_recipientlayoutmain"
+    android:background="@color/white_color"
+    android:layout_height="match_parent"
+    tools:context=".View.ActivityFragment">
+
+    <include layout="@layout/toolbar_with_notification"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:scrollbarThumbVertical="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+    <include layout="@layout/default_receipient_layout"/>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

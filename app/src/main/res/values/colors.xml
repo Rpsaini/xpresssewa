@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F70BC</color>
+    <color name="colorPrimaryDark">#3F70BC</color>
+    <color name="colorAccent">#3F70BC</color>
+
+    <color name="status_green">#30B84B</color>
+    <color name="status_red">#D60000</color>
+<!--    <color name="splash_bottom_color">#12B390</color>-->
+<!--    <color name="bt_green_color">#35D987</color>-->
+
+    <color name="splash_top_color">#3F70BC</color>
+    <color name="splash_bottom_color">#3F70BC</color>
+    <color name="bt_green_color">#3F70BC</color>
+
+
+    <color name="dark_green_color">#2D8056</color>
+    <color name="lite_green_color">#428c66</color>
+
+    <color name="toolbar_dark_green">#234B3B</color>
+
+    <color name="white_color">#fff</color>
+    <color name="black_color">#000</color>
+    <color name="title_black_color">#3D3D3D</color>
+    <color name="round_dark_grey">#3D3D3D</color>
+
+    <color name="bg_color_offwhite">#F8F8F8</color>
+    <color name="forgot_pwd_color">#FC3850</color>
+<!--    <color name="blue_bt_color">#226ED4</color>-->
+    <color name="blue_bt_color">#2b3990</color>
+    <color name="yellow_bt_color">#EEFF00</color>
+
+    <color name="blue_bt_color_50">#803F70BC</color>
+    <color name="blue_bt_color_40">#8ba9d6</color>
+
+    <color name="round_drawable_color">#3D3D3D</color>
+    <color name="textcolor">#7B7B7B</color>
+
+
+<!--    #9fb7dd-->
+
+    <color name="light_grey_color">#EFEFEF</color>
+    <color name="grey_color">#7B7B7B</color>
+    <color name="grey_color_f6">#F6F6F6</color>
+    <color name="loginwith">#9B9B9B</color>
+    <color name="dark_grey_color">#7B7B7B</color>
+    <color name="placeholdercolor">#C5C5C5</color>
+
+    <color name="dark_red_color">#C20000</color>
+    <color name="white">#fff</color>
+
+
+
+    <color name="white_50">#80ffffff</color>
+    <color name="white_20">#33ffffff</color>
+    <color name="white_75">#bfffffff</color>
+    <color name="grey_25_opacity">#407B7B7B</color>
+<!--    <color name="translucent_black">#80000000</color>-->
+    <color name="translucent_black">#80000000</color>
+    <color name="translucent_black_loader">#CCFFFFFF</color>
+    <color name="loightgrey">#F6F6F6</color>
+
+    <color name="darkblue">#226ED4</color>
+    <color name="magentacolor">#FF6F00</color>
+
+    <color name="textheadercolor">#404040</color>
+    <color name="textcolorbootom">#818181</color>
+
+    <color name="internetdialogheadercolor">#FC3850</color>
+    <color name="litelemmon">#FFD7C7</color>
+
+
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="bodycolor">#f7f7f7</color>
+    <color name="item_name">#0c0c0c</color>
+    <color name="description">#1a1a1a</color>
+    <color name="chef">#777</color>
+    <color name="timestamp">#777</color>
+    <color name="light_text_background">#F9F9F9</color>
+    <color name="skybluecolorcode">#2264ed</color>
+    <color name="greencolor">#30B94C</color>
+    <color name="toolbar_background">#EFEFEF</color>
+    <color name="pending_color_code">#FC9A38</color>
+    <color name="button_green">#30B84B</color>
+    <color name="lite_green">#A9E8B6</color>
+
+    <color name="light_text_background_detail">#F1F1F1</color>
+    <color name="border_color">#C5C5C5</color>
+
+    <color name="border_color_edittext">#C5C5C5</color>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

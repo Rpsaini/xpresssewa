@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/topPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/toolbar_with_back"
+
+
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_confirmation"
+        android:layout_below="@+id/topPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_20"
+        android:text="@string/confirmation_your_identity"
+        android:textSize="@dimen/font_twenty_five"
+        android:textColor="@color/title_black_color"
+        />
+    <LinearLayout
+        android:id="@+id/ll_top_note"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_confirmation"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey_color"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:text="@string/upload_driver_licence"
+            android:paddingBottom="@dimen/margin_10"
+            android:paddingTop="@dimen/margin_10"
+            android:textColor="@color/dark_grey_color"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/margin_40"
+        android:layout_below="@+id/ll_top_note"
+
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+       <!-- <TextView
+            android:id="@+id/tv_upload_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/upload_passport_or_scan"
+            android:textSize="@dimen/font_sixteen"
+            android:textColor="@color/title_black_color"
+            />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_20"
+
+            android:background="@color/white_color"
+
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:id="@+id/iv_upload_front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/upload_image"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_20"
+                />
+            <TextView
+                android:id="@+id/tv_upload_footer_front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/upload_passport"
+                android:textSize="@dimen/font_twelve"
+                android:layout_marginTop="@dimen/margin_20"
+                android:textColor="@color/title_black_color"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@color/white_color"
+
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:id="@+id/iv_upload_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/upload_image"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_20"
+                />
+            <TextView
+                android:id="@+id/tv_upload_footer_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/upload_passport"
+                android:textSize="@dimen/font_twelve"
+                android:layout_marginTop="@dimen/margin_20"
+                android:textColor="@color/title_black_color"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:layout_marginRight="@dimen/margin_30"
+            style="@style/button_style"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/margin_15"
+            android:text="@string/next"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/font_eighteen" />
+    </LinearLayout>
+</RelativeLayout>

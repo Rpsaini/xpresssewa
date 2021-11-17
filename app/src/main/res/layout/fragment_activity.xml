@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_activitylayout"
+    android:background="@color/white"
+    tools:context=".View.ActivityFragment">
+<!--    <include layout="@layout/toolbar_with_back"/>-->
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/txt_activity_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity"
+            android:padding="10dp"
+            android:textColor="@color/black_color"
+            android:textSize="22dp"
+            ></TextView>
+
+        <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+        >
+
+    <LinearLayout
+        android:id="@+id/ll_verification_pending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="#f4f4f4"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_20"
+        android:weightSum="10">
+
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitStart"
+            android:src="@drawable/verification_pending" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/verification_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/verification_pending"
+                android:textColor="@color/dark_red_color"
+                android:textSize="@dimen/font_twenty_two" />
+
+            <TextView
+                android:id="@+id/verification_subtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/verify_your_account"
+                android:textColor="@color/dark_grey_color"
+                android:textSize="@dimen/font_fourteen" />
+        </LinearLayout>
+    </LinearLayout>
+
+       <include layout="@layout/activity_and_wallet"/>
+
+    </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/img_show_warring"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_warning"
+        android:layout_centerInParent="true"
+        ></ImageView>
+</RelativeLayout>

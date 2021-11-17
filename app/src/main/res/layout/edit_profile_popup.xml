@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/upper_corner_drawable"
+    android:layout_gravity="bottom"
+    android:visibility="gone"
+    android:id="@+id/ll_price_comparison_hidden"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/down_to_bottom"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_drop_down"
+        android:padding="5dp"
+        ></ImageView>
+
+
+    <TextView
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/account_type_msg"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="@dimen/margin_15"
+        android:textColor="@color/black_color"
+        android:textSize="14dp"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:background="@color/light_grey_color"/>
+
+
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:id="@+id/ll_alreay_added_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/ic_account_profile_image"
+                ></ImageView>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/txt_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/black_color"
+                    android:textSize="18dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Personal account"
+                    android:textColor="@color/blue_bt_color"
+                    android:textSize="14dp"
+                    ></TextView>
+
+        </LinearLayout>
+          </LinearLayout>
+        <View
+            android:visibility="gone"
+            android:id="@+id/view_lineboth"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:background="@color/light_grey_color"/>
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:id="@+id/ll_businessprofile_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/ic_account_profile_image"
+                ></ImageView>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/txt_buisnessname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/black_color"
+                    android:textSize="18dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Business account"
+                    android:textColor="@color/blue_bt_color"
+                    android:textSize="14dp"
+                    ></TextView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_my_profile"
+            android:layout_width="match_parent"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/edit_profile"
+                android:tint="@color/blue_bt_color"
+                ></ImageView>
+
+             <LinearLayout
+                 android:layout_marginStart="15dp"
+                 android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:orientation="vertical"
+                 >
+                 <TextView
+                     android:layout_height="wrap_content"
+                     android:layout_width="match_parent"
+                     android:text="@string/create_personal_account"
+
+                     android:layout_marginEnd="@dimen/margin_15"
+                     android:textColor="@color/black_color"
+                     android:textSize="14dp"
+                     ></TextView>
+
+                 <TextView
+                     android:layout_marginTop="5dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="@string/personal_account_msg"
+                     android:textSize="@dimen/font_fourteen"
+                     android:gravity="center_vertical"
+                     />
+
+             </LinearLayout>
+
+        </LinearLayout>
+
+
+        <View
+            android:visibility="gone"
+            android:id="@+id/view_linelast"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/light_grey_color"/>
+
+        <LinearLayout
+            android:id="@+id/ll_business_profile"
+            android:layout_width="match_parent"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/add_a_business"
+                android:tint="@color/blue_bt_color"
+                ></ImageView>
+
+            <LinearLayout
+                android:layout_marginStart="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="@string/create_business_account"
+
+                    android:layout_marginEnd="@dimen/margin_15"
+                    android:textColor="@color/black_color"
+                    android:textSize="14dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_account_msg"
+                    android:textSize="@dimen/font_fourteen"
+                    android:gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+</LinearLayout>
+</LinearLayout>

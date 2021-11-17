@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/rr_activity_and_wallet"
+    android:background="@color/skybluecolorcode"
+    tools:context=".View.TransactionDetailView">
+
+    <RelativeLayout
+        android:id="@+id/rr_upper_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+
+         <ImageView
+             android:id="@+id/back_arrow"
+             android:layout_centerVertical="true"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:padding="10dp"
+             android:src="@drawable/back_button"
+             android:tint="@color/white_color"
+             > </ImageView>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/rr_upper_layout"
+        android:background="@drawable/upper_corner_drawable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/curreny_icon"
+            android:layout_centerInParent="true"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/send_money"
+            ></ImageView>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txt_currency_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:gravity="center"
+            android:textColor="@color/black_color"
+            android:textSize="22dp"
+            ></TextView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/txt_symbol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/grey_color"
+            android:textSize="23dp"
+            ></TextView>
+
+        <RelativeLayout
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/ll_icons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                <ImageView
+                    android:tint="@color/blue_bt_color"
+                    android:id="@+id/add_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_add"></ImageView>
+                    <TextView
+                        android:textColor="@color/blue_bt_color"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Add"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="14dp"
+                        ></TextView>
+                </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:tint="@color/blue_bt_color"
+                    android:layout_gravity="center"
+                    android:id="@+id/convert_money"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_refresh"
+                    ></ImageView>
+                <TextView
+                    android:textColor="@color/blue_bt_color"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Convert"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    ></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:tint="@color/blue_bt_color"
+                    android:layout_gravity="center"
+                    android:id="@+id/send_money"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_send"
+                    ></ImageView>
+
+                <TextView
+                    android:textColor="@color/blue_bt_color"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Send"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    ></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:tint="@color/blue_bt_color"
+                    android:layout_gravity="center"
+                    android:id="@+id/bank_detail"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_bank"
+                    ></ImageView>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Bank Detail"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/blue_bt_color"
+                    ></TextView>
+
+            </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/ll_icons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                >
+
+
+                <TextView
+                    android:gravity="center"
+                    android:text="Add"
+                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    ></TextView>
+
+                <TextView
+                    android:gravity="center"
+                    android:text="Add"
+                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    ></TextView>
+
+                <TextView
+                    android:gravity="center"
+                    android:text="Add"
+                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    ></TextView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_image"
+            ></ImageView>
+
+
+        <TextView
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@string/add_wallet_money_msg"
+            android:gravity="center"
+            android:textColor="@color/grey_color"
+            android:textSize="16dp"
+            ></TextView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
