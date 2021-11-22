@@ -94,6 +94,46 @@
         ></View>
 
 
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_if_other_transfer"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other reason of transfer"
+            android:textColor="@color/black_color"
+            android:textSize="14sp"
+            ></TextView>
+        <EditText
+            android:layout_marginTop="5dp"
+            android:background="@android:color/transparent"
+            android:layout_height="45dp"
+            android:layout_width="match_parent"
+            android:id="@+id/txt_other_rason_of_transfer"
+            android:maxLines="1"
+            android:imeOptions="actionDone"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/textcolor"
+            android:textSize="15sp"
+            android:singleLine="true"
+            android:hint="Other reason"
+            ></EditText>
+
+        <View
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="@color/textcolor"
+            ></View>
+    </LinearLayout>
+
 
 
     <TextView
@@ -177,6 +217,7 @@
         android:textColor="@color/textcolor"
         android:textColorHint="@color/textcolor"
         android:textSize="15sp"
+        android:singleLine="true"
         android:hint="Other reference"
         ></EditText>
 

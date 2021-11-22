@@ -20,6 +20,7 @@ import io.reactivex.annotations.Nullable;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.Adapter.ChoosePaymentOptionAdapter;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.util.UtilClass;
 
 public class ChoosePaymentOptions extends AppCompatActivity {
     private String calculationData="",selectedRecipientData="";
@@ -78,7 +79,8 @@ public class ChoosePaymentOptions extends AppCompatActivity {
                 intent.putExtra("selectedRecipientData",defaultTransferAdapter.selectedRecipientData+"");
                 intent.putExtra("purposeID",getIntent().getStringExtra("purposeID"));
                 intent.putExtra("refrenceId",getIntent().getStringExtra("refrenceId"));
-                System.out.println("Purpose id=="+getIntent().getStringExtra("purposeID")+"==="+getIntent().getStringExtra("refrenceId"));
+                intent.putExtra(UtilClass.transferReason,getIntent().getStringExtra(UtilClass.transferReason));
+                intent.putExtra(UtilClass.transferReference,getIntent().getStringExtra(UtilClass.transferReference));
                 startActivityForResult(intent,1001);
             }
         });
@@ -87,7 +89,6 @@ public class ChoosePaymentOptions extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("Choose payment option==="+resultCode);
         if(requestCode==1001)
         {
             if(data!=null)

@@ -20,6 +20,16 @@ public interface UploadticketImage {
             @Part MultipartBody.Part image
     );
 
+    @POST("UploadImage.ashx")
+    @Multipart
+    Observable<String> uploadReceipt(
+            @Part("foldername") RequestBody ProofType,
+            @Part("MemberId") RequestBody MemberId,
+            @Part("transactionid") RequestBody transactionid,
+            @Part("Method") RequestBody Method,
+            @Part MultipartBody.Part image
+    );
+
 //    @POST("UploadImage.ashx")
 //    @Multipart
 //    Observable<String> uploadImageTicketReply(

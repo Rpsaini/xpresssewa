@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:tint="@color/white"
+        android:padding="10dp"
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/close"
+        android:id="@+id/txt_close"
+        ></ImageView>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/drawable_withe"
+        >
+
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/uploadreceipt"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="15dp"
+            ></TextView>
+<View
+    android:layout_marginTop="5dp"
+    android:layout_height=".5dp"
+    android:layout_width="match_parent"
+    android:background="@color/textcolor"
+    ></View>
+
+
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Reciept"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"
+            ></TextView>
+
+
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_five"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="29dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/upload_image"></ImageView>
+
+            <TextView
+                 android:id="@+id/txt_uploadimage"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Please select image"
+                android:gravity="center|left"
+                android:textColor="@color/black_color"
+                android:textSize="14dp"
+                ></TextView>
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/txt_showimage"
+            android:layout_marginLeft="10dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/no_image_select"></ImageView>
+
+
+        <TextView
+            android:id="@+id/ltxt_confirm"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            style="@style/button_style"
+            android:layout_marginTop="30dp"
+            android:text="Confirm"
+            android:textSize="15dp"
+            ></TextView>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

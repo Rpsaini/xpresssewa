@@ -6,6 +6,7 @@ import android.content.Context;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import transfer.money.com.xpresssewa.BaseActivity;
 
 
 import com.google.gson.Gson;
@@ -32,8 +33,7 @@ public class ApiProduction {
                 .create();
 
         return new Retrofit.Builder()
-
-                .baseUrl("https://samremittance.webcomsystems.net.au/")
+                .baseUrl(BaseActivity.baseurl)
                 .client(OkHttpProduction.getOkHttpClient(context, true))
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -41,7 +41,8 @@ public class ApiProduction {
                 .build();
     }
 
-    public <S> S provideService(Class<S> serviceClass) {
+    public <S> S provideService(Class<S> serviceClass)
+    {
         return provideRestAdapter().create(serviceClass);
     }
 }

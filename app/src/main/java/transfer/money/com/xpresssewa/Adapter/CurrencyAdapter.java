@@ -81,9 +81,8 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.MyView
               showImage(pos.getString("FlagImage"),holder.currencyFlag);
 
 
-
-            holder.countrrllistingouter.setTag(position+"");
-            holder.countrrllistingouter.setOnClickListener(new View.OnClickListener() {
+             holder.countrrllistingouter.setTag(position+"");
+             holder.countrrllistingouter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {

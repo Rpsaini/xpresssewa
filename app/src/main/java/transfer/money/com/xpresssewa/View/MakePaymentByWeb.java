@@ -21,6 +21,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
+import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.util.SimpleDialog;
 
@@ -80,7 +81,7 @@ public class MakePaymentByWeb extends AppCompatActivity {
                 WebView mywebview = (WebView) findViewById(R.id.webview);
                 WebSettings webSettings = mywebview.getSettings();
                 webSettings.setJavaScriptEnabled(true);
-                mywebview.loadUrl("https://expresssewa.webcomsystems.net.au/polisuccess?"+url.split("\\?")[1]);
+                mywebview.loadUrl(BaseActivity.baseurl +"/polisuccess?"+url.split("\\?")[1]);
                 viewprogressbar = findViewById(R.id.viewprogressbar);
                 mywebview.setWebViewClient(new WebViewController());
 

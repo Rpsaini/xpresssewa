@@ -78,12 +78,22 @@ public class TransferPurposeAdapter extends RecyclerView.Adapter<TransferPurpose
                              ira1.selected_reason_Id=pos.getString("Id");
                              TextView txt_showselected_reason = ira1.findViewById(R.id.txt_showselected_reason);
                              txt_showselected_reason.setText(pos.getString("Title"));
+                             if(ira1.selected_reason_Id.equalsIgnoreCase("5"))
+                             {
+                                 ira1.ll_if_other_transfer.setVisibility(View.VISIBLE);
+                             }
+                             else
+                             {
+                                 ira1.ll_if_other_transfer.setVisibility(View.GONE);
+                             }
+
+
                          }
                          else
                          {   ira1.selected_reference=pos.getString("Id");
                              TextView txt_showselected_reference = ira1.findViewById(R.id.txt_showselected_reference);
                              txt_showselected_reference.setText(pos.getString("Title"));
-                             if(pos.getString("Title").equalsIgnoreCase("Other"))
+                             if(ira1.selected_reference.equalsIgnoreCase("1"))
                              {
                                  ira1.ll_if_other.setVisibility(View.VISIBLE);
                              }

@@ -1,5 +1,4 @@
 package transfer.money.com.xpresssewa.View;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -33,6 +32,7 @@ import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.util.AnimationForView;
 import transfer.money.com.xpresssewa.util.IsAnimationEndedCallback;
 import transfer.money.com.xpresssewa.util.SimpleDialog;
+import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 
 public class AdditionInformation extends AppCompatActivity {
@@ -41,9 +41,9 @@ private int screenHeight,screenWidth;
 private ArrayList<JSONObject> TransferPurpose,TransferReference;
 public String selected_reason_Id="",selected_reference="";
 public Dialog reasonDialog;
-    public LinearLayout ll_if_other;
-    TextView txt_enter_other;
-public  View downView;
+    public LinearLayout ll_if_other,ll_if_other_transfer;
+    TextView txt_enter_other,txt_other_rason_of_transfer;
+    public  View downView;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -61,13 +61,17 @@ public  View downView;
     private void init()
     {
         ll_if_other=findViewById(R.id.ll_if_other);
+        ll_if_other_transfer=findViewById(R.id.ll_if_other_transfer);
         txt_enter_other=findViewById(R.id.txt_enter_other);
+        txt_other_rason_of_transfer=findViewById(R.id.txt_other_rason_of_transfer);
+
         findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
         findViewById(R.id.ll_selectReasonDialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -83,7 +87,6 @@ public  View downView;
             }
         });
 
-
         findViewById(R.id.tv_confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,20 +100,48 @@ public  View downView;
                     new Showtoast().showToast(AdditionInformation.this, "Required", "Select reference", findViewById(R.id.ll_linearlayoutadditional));
                     return;
                 }
-             else if(ll_if_other.getVisibility()==View.VISIBLE)
+                else if(ll_if_other_transfer.getVisibility()==View.VISIBLE)
                 {
-                    if(txt_enter_other.getText().length()>0)
+                    if(txt_other_rason_of_transfer.getText().length()<=0)
+                    {
+                        new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reason", findViewById(R.id.ll_linearlayoutadditional));
+                    }
+                    else if(ll_if_other.getVisibility()==View.VISIBLE)
+                    {
+                        if(txt_enter_other.getText().length()==0)
+                        {
+                            new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
+                        }
+                    }
+                    else
                     {
                         Intent intent=new Intent(AdditionInformation.this,ChoosePaymentOptions.class);
                         intent.putExtra("calculationData",getIntent().getStringExtra("calculationData"));
                         intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
                         intent.putExtra("purposeID",selected_reason_Id);
                         intent.putExtra("refrenceId",selected_reference);
+                        intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
+                        intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
                         startActivityForResult(intent,1001);
+                    }
+
+                }
+                else if(ll_if_other.getVisibility()==View.VISIBLE)
+                {
+                    if(txt_enter_other.getText().length()==0)
+                    {
+                        new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
                     }
                     else
                     {
-                        new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
+                        Intent intent=new Intent(AdditionInformation.this,ChoosePaymentOptions.class);
+                        intent.putExtra("calculationData",getIntent().getStringExtra("calculationData"));
+                        intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
+                        intent.putExtra("purposeID",selected_reason_Id);
+                        intent.putExtra("refrenceId",selected_reference);
+                        intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
+                        intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
+                        startActivityForResult(intent,1001);
                     }
                 }
                 else
@@ -120,6 +151,8 @@ public  View downView;
                     intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
                     intent.putExtra("purposeID",selected_reason_Id);
                     intent.putExtra("refrenceId",selected_reference);
+                    intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
+                    intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
                     startActivityForResult(intent,1001);
                 }
             }
@@ -254,8 +287,8 @@ public  View downView;
 
                     JSONObject obj = new JSONObject(dta);
                     System.out.println("response reason=="+obj);
-                    if(obj.getBoolean("status")) {
-
+                    if(obj.getBoolean("status"))
+                    {
                         JSONArray jsonObjectsAr=obj.getJSONArray("TransferPurpose");
                         JSONArray transferReferenceObj=obj.getJSONArray("TransferReference");
 
@@ -267,13 +300,15 @@ public  View downView;
                         {
                             TransferReference.add(transferReferenceObj.getJSONObject(x));
                         }
-                      } else {
+                      }
+                    else
+                        {
                         new Showtoast().showToast(AdditionInformation.this, "Response", obj.getString("Message"), findViewById(R.id.ll_linearlayoutadditional));
-                    }
+                        }
                 }
-                catch (Exception e) {
+                catch(Exception e)
+                {
                     e.printStackTrace();
-
                 }
 
             }

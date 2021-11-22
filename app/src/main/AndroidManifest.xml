@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="transfer.money.com.xpresssewa">
     <!-- 21 march -->
-<!--    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />-->
+    <!-- <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" /> -->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -23,83 +26,86 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="transfer.money.com.xpresssewa.View.ReceiptDetailsActivity"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".View.ChooseBankActivity"
             android:screenOrientation="portrait"
             ></activity>
-        <activity android:name="transfer.money.com.xpresssewa.View.ForgotPasswordWithOtpJ"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name="transfer.money.com.xpresssewa.View.ForgotPinJ"
+        <activity android:name=".View.ShowBankDetails"
             android:screenOrientation="portrait"
             />
-
-        <activity android:name="transfer.money.com.xpresssewa.View.SettingsScreenActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="transfer.money.com.xpresssewa.View.ConvertMoney"
-            android:screenOrientation="portrait"
-            /> <!-- <activity android:name=".View.RecipientActivity" /> -->
         <activity
-            android:name="transfer.money.com.xpresssewa.View.AddBalance"
+            android:name=".View.ReceiptDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.AddMoneyInWallet"
+            android:name=".View.ForgotPasswordWithOtpJ"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.TransactionDetailView"
+            android:name=".View.ForgotPinJ"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.SelectIdentityType"
+            android:name=".View.SettingsScreenActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.ChoosePaymentOptions"
+            android:name=".View.ConvertMoney"
+            android:screenOrientation="portrait" /> <!-- <activity android:name=".View.RecipientActivity" /> -->
+        <activity
+            android:name=".View.AddBalance"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.AdditionInformation"
-            android:screenOrientation="portrait" />
-
-        <activity android:name="transfer.money.com.xpresssewa.ticket.TicketDetailActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name="transfer.money.com.xpresssewa.ticket.MyTicketsActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name="transfer.money.com.xpresssewa.ticket.AddTicket"
-            android:screenOrientation="portrait"
-            />
-
-        <activity
-            android:name="transfer.money.com.xpresssewa.View.SetPinActivity"
+            android:name=".View.AddMoneyInWallet"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.CreatePersonalProfile"
+            android:name=".View.TransactionDetailView"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.ReviewTransfer"
+            android:name=".View.SelectIdentityType"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.RecipientDynamicActivity"
+            android:name=".View.ChoosePaymentOptions"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.AdditionInformation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ticket.TicketDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ticket.MyTicketsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ticket.AddTicket"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SetPinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.CreatePersonalProfile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.ReviewTransfer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.RecipientDynamicActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.SelectRecipientsTypeActivity"
+            android:name=".View.SelectRecipientsTypeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.BuisnessProfileStepII"
+            android:name=".View.BuisnessProfileStepII"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.CreateBuisnessProfile"
+            android:name=".View.CreateBuisnessProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.TransactionListActivity"
+            android:name=".View.TransactionListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.ForgotPassword"
+            android:name=".View.ForgotPassword"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.SplashActivity"
+            android:name=".View.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -107,51 +113,51 @@
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-<!--                <category android:name="android.intent.category.HOME" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
+                <!-- <category android:name="android.intent.category.HOME" /> -->
+                <!-- <category android:name="android.intent.category.DEFAULT" /> -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="transfer.money.com.xpresssewa.View.SignInActivity"
+            android:name=".View.SignInActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.SignUpActivity"
+            android:name=".View.SignUpActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.MainActivity"
+            android:name=".View.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.PriceComparisonActivity"
+            android:name=".View.PriceComparisonActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.NotificationActivity"
+            android:name=".View.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.MessageActivity"
+            android:name=".View.MessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.ChooseProfile"
+            android:name=".View.ChooseProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.viewpager.SwipeViewPager"
+            android:name=".viewpager.SwipeViewPager"
             android:screenOrientation="portrait" />
         <activity
-            android:name="transfer.money.com.xpresssewa.View.MakePaymentByWeb"
+            android:name=".View.MakePaymentByWeb"
             android:screenOrientation="portrait" />
 
         <provider
@@ -164,7 +170,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <service android:name="transfer.money.com.xpresssewa.fcm.MessagingService">
+        <service android:name=".fcm.MessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

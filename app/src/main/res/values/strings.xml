@@ -331,6 +331,21 @@
     <string name="biometric_subtitle">Authenticate to your Xpress Sewa India account</string>
     <string name="biometric_description">Place your finger on the device home button to verify your identity</string>
     <string name="biometric_negative_button_text">CANCEL</string>
+    <string name="sendusmoney">Send us money using your bank</string>
+    <string name="sendusmoney_inst">Use the instruction below to make the payment\n</string>
+    <string name="bank_transfer_inst">Bank transfer instructions</string>
+    <string name="wenever">We never takes money automatically from your account</string>
+    <string name="youcanuse">You can use your online banking or mobile app to make bank transfer to us</string>
+    <string name="uploadreceipt">Upload your bank transfer receipt</string>
+    <string name="receiptimage">Bank Transaction Receipt</string>
+
+    <string name="money_rule">1.Funds must be sent from an account in your name.<br />
+2.You must include 86151E38 in your bank transfer payment description field.<br />
+3.RTGS payments are not accepted.If you must send by RTGS,please contact customer support
+
+We never takes money automatically from your account.<br />
+
+You can use your online banking or mobile app to make your bank transfer to us.</string>
 
 
 </resources>

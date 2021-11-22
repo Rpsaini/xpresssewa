@@ -24,11 +24,11 @@ public class UtilClass
     public static  String isFingerAuth="";
     public static  String isLockScreen="";
     public static  String CountryCode="";
-
     public static String notificationBroadCast = "com.notification.broadcast";
-
-
     public static  String username,email,contactnumber;
+
+    public static String transferReason="transferReason";
+    public static String transferReference="transferReference";
 
 
 

@@ -36,14 +36,13 @@ public class KeyBoardAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-
+    public Object getItem(int position)
+    {
         return null;
     }
 
     @Override
     public long getItemId(int position) {
-
         return 10;
     }
 
@@ -55,13 +54,11 @@ public class KeyBoardAdapter extends BaseAdapter {
         View gridView = null;
 
         if (convertView == null) {
-
             gridView = new View(context);
             gridView = inflater.inflate(R.layout.keyboard_grid_layout, null);
-
-
-        } else {
-
+        }
+        else
+        {
             gridView = (View) convertView;
         }
 

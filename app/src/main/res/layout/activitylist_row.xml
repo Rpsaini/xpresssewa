@@ -187,6 +187,17 @@
     </LinearLayout>
 
 
+    <TextView
+        android:textColor="@color/blue_bt_color"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(Pending upload receipt)"
+        android:gravity="right"
+        android:id="@+id/txt_pendingreceipt"
+        ></TextView>
 
         <View
             android:layout_marginLeft="15dp"

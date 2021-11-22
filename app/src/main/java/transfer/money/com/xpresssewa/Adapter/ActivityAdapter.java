@@ -2,14 +2,22 @@ package transfer.money.com.xpresssewa.Adapter;
 
 
 
+        import android.annotation.TargetApi;
+        import android.app.Dialog;
         import android.content.Context;
         import android.content.Intent;
+        import android.graphics.Bitmap;
+        import android.graphics.drawable.ColorDrawable;
         import android.os.Build;
 
+        import android.provider.MediaStore;
         import android.text.Html;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.view.WindowManager;
+        import android.view.animation.Animation;
+        import android.view.animation.AnimationUtils;
         import android.widget.ImageView;
         import android.widget.LinearLayout;
         import android.widget.RelativeLayout;
@@ -17,6 +25,9 @@ package transfer.money.com.xpresssewa.Adapter;
 
 
         import androidx.recyclerview.widget.RecyclerView;
+
+        import com.squareup.picasso.Callback;
+        import com.squareup.picasso.Picasso;
 
         import org.json.JSONObject;
 
@@ -27,7 +38,9 @@ package transfer.money.com.xpresssewa.Adapter;
         import transfer.money.com.xpresssewa.R;
         import transfer.money.com.xpresssewa.View.MainActivity;
         import transfer.money.com.xpresssewa.View.TransactionDetailView;
+        import transfer.money.com.xpresssewa.util.CircleTransform;
         import transfer.money.com.xpresssewa.util.DefaultConstatnts;
+        import transfer.money.com.xpresssewa.util.SimpleDialog;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder> {
     private MainActivity ira1;
@@ -39,10 +52,11 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tt_username,tt_status,tt_from_currency,tt_to_currency,user_short_name,date;
+        TextView tt_username,tt_status,tt_from_currency,tt_to_currency,user_short_name,date,txt_pendingreceipt;
         LinearLayout ll_selectrecipient;
         RelativeLayout rr_round;
         ImageView img_icon;
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -55,6 +69,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
              tt_to_currency=view.findViewById(R.id.tt_to_currency);
             ll_selectrecipient=view.findViewById(R.id.ll_selectrecipient);
             user_short_name=view.findViewById(R.id.user_short_name);
+            txt_pendingreceipt=view.findViewById(R.id.txt_pendingreceipt);
+
             rr_round=view.findViewById(R.id.rr_round);
             img_icon=view.findViewById(R.id.img_icon);
             date=view.findViewById(R.id.date);
@@ -91,8 +107,79 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             holder.tt_from_currency.setText(obj.getString("FromAmount")+obj.getString("FromSymbol"));
             holder.tt_to_currency.setText(obj.getString("ToAmount")+""+obj.getString("ToSymbol"));
 
-            String statusName=obj.getString("statusname");
+            String UploadReceipt =obj.getString("UploadReceipt");
+            if(UploadReceipt.length()>1)
+            {
+                holder.txt_pendingreceipt.setText("See Receipt");
+                holder.txt_pendingreceipt.setTextColor(ira1.getResources().getColor(R.color.greencolor));
 
+
+
+                holder.txt_pendingreceipt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        SimpleDialog simpleDialog = new SimpleDialog();
+                        final Dialog confirmDialog = simpleDialog.simpleDailog(ira1, R.layout.show_receipt_image, new ColorDrawable(ira1.getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+                        ImageView txt_showimage=confirmDialog.findViewById(R.id.txt_showimage);
+                        TextView txt_close=confirmDialog.findViewById(R.id.ltxt_confirm);
+                        showImage(UploadReceipt,txt_showimage);
+                        txt_close.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                confirmDialog.dismiss();
+                            }
+                        });
+                    }
+                });
+
+
+            }
+            else
+            {
+                holder.txt_pendingreceipt.setTextColor(ira1.getResources().getColor(R.color.dark_red_color));
+                holder.txt_pendingreceipt.setTag(obj.getString("TransactionId"));
+                holder.txt_pendingreceipt.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view) {
+
+                        SimpleDialog simpleDialog = new SimpleDialog();
+                        final Dialog confirmDialog = simpleDialog.simpleDailog(ira1, R.layout.uploadphoto_dialog, new ColorDrawable(ira1.getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+                        ImageView txt_showimage=confirmDialog.findViewById(R.id.txt_showimage);
+                        TextView txt_uploadimage=confirmDialog.findViewById(R.id.txt_uploadimage);
+                        TextView ltxt_confirm=confirmDialog.findViewById(R.id.ltxt_confirm);
+                       ImageView txt_close=confirmDialog.findViewById(R.id.txt_close);
+                        txt_close.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                confirmDialog.dismiss();
+                            }
+                        });
+
+                        txt_uploadimage.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ira1.slideUpDown(txt_showimage,txt_uploadimage);
+
+                            }
+                        });
+
+                        ltxt_confirm.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                ira1.uploadImageToServer(view.getTag()+"",confirmDialog);
+                            }
+                        });
+
+
+                    }
+                });
+            }
+
+            String statusName=obj.getString("statusname");
             if(statusName.equalsIgnoreCase("InProgress"))
             {
                 holder.tt_status.setText(statusName);
@@ -185,11 +272,6 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
                 }
             }
 
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,6 +291,29 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     public int getItemViewType(int position) {
         return position;
     }
+
+
+
+    private void showImage(String path, final ImageView profileimage) {
+        Picasso.with(ira1)
+                .load(path).transform(new CircleTransform())
+                //.transform(new CircleTransform())
+                //.transform(new CircleTransform())
+                .into(profileimage, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                    }
+
+                    @Override
+                    public void onError() {
+                        Picasso.with(null)
+                                .load(R.drawable.america_flag).transform(new CircleTransform())
+                                .into(profileimage);
+                    }
+                });
+
+    }
+
 
 
 }

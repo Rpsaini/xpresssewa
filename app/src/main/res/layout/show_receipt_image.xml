@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/drawable_withe"
+        >
+
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/receiptimage"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="15dp"
+            ></TextView>
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_height=".5dp"
+            android:layout_width="match_parent"
+            android:background="@color/textcolor"
+            ></View>
+
+
+
+
+
+
+
+
+
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/txt_showimage"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/no_image_select"></ImageView>
+
+
+        <TextView
+            android:id="@+id/ltxt_confirm"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            style="@style/button_style"
+            android:layout_marginTop="30dp"
+            android:text="Close"
+            android:textSize="15dp"
+            ></TextView>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.anwarshahriar.calligrapher.Calligrapher;
+import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
@@ -35,7 +36,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
 
         String isWatched = imp.reterivePrefrence(this, DefaultConstatnts.IsTutorialDone).toString();
         System.out.println("IS watched===" + isWatched);
-        imp.savePrefrencesData(this, "https://expresssewa.webcomsystems.net.au/Api/", "url");
+        imp.savePrefrencesData(this, BaseActivity.baseurl+"api/", "url");
         if (isWatched.equalsIgnoreCase("0")) {
             Intent signIn = new Intent(SplashActivity.this, SwipeViewPager.class);
             startActivity(signIn);

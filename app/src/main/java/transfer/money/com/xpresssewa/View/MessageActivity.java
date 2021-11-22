@@ -82,8 +82,7 @@ public class MessageActivity extends AppCompatActivity {
         calligrapher.setFont(this, "MontserratRegular.ttf", true);
         UtilClass.getUserData(this);
         init();
-
-    }
+       }
 
     protected void init() {
         final String Title = getIntent().getStringExtra("Title");
@@ -189,6 +188,7 @@ public class MessageActivity extends AppCompatActivity {
         }
     }
 
+
     private boolean isPanelShown() {
         return chooseimagelayoutouter.getVisibility() == View.VISIBLE;
     }
@@ -210,8 +210,10 @@ public class MessageActivity extends AppCompatActivity {
     }
 
 
-    private Bitmap bmap;
 
+
+
+    private Bitmap bmap;
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         System.out.println("inside============" + requestCode + "===" + resultCode);
@@ -223,7 +225,8 @@ public class MessageActivity extends AppCompatActivity {
 //                 if(imageReturnedIntent != null)
                     {
                     try {
-
+                         //you will get 15 cards
+                        //15 jo bhi minimum
                         bmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI);
 
                         Uri uri = getImageUri(this, bmap);

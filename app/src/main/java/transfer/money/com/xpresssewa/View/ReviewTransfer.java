@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.WindowManager;
@@ -57,7 +59,7 @@ public class ReviewTransfer extends AppCompatActivity {
     private String transferamount = "", transFerto = "";
     private TextView tv_cancel, txt_note;
     private String imeiNumber = "", ip = "";
-    private String PaymentId, TransactionId;
+    private String PaymentId, TransactionId,PaymentTypeId="";
 
 
     @Override
@@ -71,7 +73,7 @@ public class ReviewTransfer extends AppCompatActivity {
         ll_reviewKyc = findViewById(R.id.ll_reviewKyc);
         tv_cancel = findViewById(R.id.tv_cancel);
         txt_note = findViewById(R.id.txt_note);
-        getImeNumber();
+        getImeNumber(this);
         getIPAddress();
         System.out.println("Ip----" + ip);
         // headerTitle.setText(getResources().getString(R.string.reviewyourtransfer));
@@ -122,9 +124,13 @@ public class ReviewTransfer extends AppCompatActivity {
 
             JSONObject paymentMethod = calculationObj.getJSONArray("paymentMethod").getJSONObject(0);
 
-
+            PaymentTypeId=paymentMethod.getString("PaymentTypeId");
             m = new LinkedHashMap<>();
             m.put("UserName", username);
+            m.put("OtherReason", getIntent().getStringExtra(UtilClass.transferReason));
+            m.put("OtherReference", getIntent().getStringExtra(UtilClass.transferReference));
+
+
             m.put("PaymentId", PaymentId);
             m.put("TransactionId", TransactionId);
             m.put("CurrencyId", calculationObj.getString("FromCurrencyId"));
@@ -132,7 +138,7 @@ public class ReviewTransfer extends AppCompatActivity {
             m.put("BankId", "0");
             m.put("ToSymbol", calculationObj.getString("ToSymbol"));
             m.put("FromSymbol", calculationObj.getString("FromSymbol"));
-            m.put("PaymentTypeId", paymentMethod.getString("PaymentTypeId"));
+            m.put("PaymentTypeId", PaymentTypeId);
             m.put("Amount", calculationObj.getString("AmountFrom"));
             m.put("BankRefNumber", "");
             m.put("TransferTo", recipientObj.getString("ReciptentName"));
@@ -145,6 +151,7 @@ public class ReviewTransfer extends AppCompatActivity {
             m.put("PaymentStatus", "1");//for poli
             m.put("IpAddress", ip);//for poli
             m.put("MacAddress", imeiNumber + "");//for poli
+
 
             //params
 
@@ -286,41 +293,57 @@ public class ReviewTransfer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                m.put("PaymentId", PaymentId);
-                m.put("TransactionId", TransactionId);
+                if(PaymentTypeId.equalsIgnoreCase("2"))//account transfer
+                {
 
+                    m.put("PaymentId", PaymentId);
+                    m.put("TransactionId", TransactionId);
+                    JSONObject data=new JSONObject(m);
+                    Intent intent=new Intent(ReviewTransfer.this,ChooseBankActivity.class);
+                    intent.putExtra("data",data+"");
+                    startActivityForResult(intent,1002);
 
-                new ServerHandler().sendToServer(ReviewTransfer.this, "AddTransaction", m, 0, 1, new CallBack() {
-                    @Override
-                    public void getRespone(String dta, ArrayList<Object> respons) {
+                }
+                else//poli
+                {
+                    m.put("PaymentId", PaymentId);
+                    m.put("TransactionId", TransactionId);
+                    new ServerHandler().sendToServer(ReviewTransfer.this, "AddTransaction", m, 0, 1, new CallBack() {
+                        @Override
+                        public void getRespone(String dta, ArrayList<Object> respons) {
 
-                        try {
-                            JSONObject obj = new JSONObject(dta);
-                            if (obj.getString("Status").equalsIgnoreCase("Success")) {
-                                Intent intent = new Intent(ReviewTransfer.this, MakePaymentByWeb.class);
-                                intent.putExtra("paymentlink", obj.getString("NavigateUrl"));
-                                intent.putExtra("amount", transferamount);
-                                intent.putExtra("transferto", transFerto);
-                                startActivityForResult(intent, 1002);
-
-
-                            } else {
-                                String msg = obj.getString("Message");
-                                if (msg.length() == 0) {
-                                    new Showtoast().showToast(ReviewTransfer.this, "Error", "Server communication error. .", ll_reviewKyc);
-                                } else {
-                                    new Showtoast().showToast(ReviewTransfer.this, "Error", msg, ll_reviewKyc);
+                            try {
+                                JSONObject obj = new JSONObject(dta);
+                                if(obj.getString("Status").equalsIgnoreCase("Success"))
+                                {
+                                    Intent intent = new Intent(ReviewTransfer.this, MakePaymentByWeb.class);
+                                    intent.putExtra("paymentlink", obj.getString("NavigateUrl"));
+                                    intent.putExtra("amount", transferamount);
+                                    intent.putExtra("transferto", transFerto);
+                                    startActivityForResult(intent, 1002);
                                 }
+                                else
+                                    {
+                                    String msg = obj.getString("Message");
+                                    if (msg.length() == 0) {
+                                        new Showtoast().showToast(ReviewTransfer.this, "Error", "Server communication error. .", ll_reviewKyc);
+                                    } else {
+                                        new Showtoast().showToast(ReviewTransfer.this, "Error", msg, ll_reviewKyc);
+                                    }
+
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
 
                             }
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
-
                         }
+                    });
 
-                    }
-                });
+                }
+
+
             }
         });
 
@@ -372,42 +395,69 @@ public class ReviewTransfer extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println("Return code====" + requestCode);
         if (requestCode == 1002) {
-            Intent intent = new Intent();
-            intent.putExtra("isSendScreenDataLoaded", "isTransaction");
-            intent.putExtra("calculation", "");
-            intent.putExtra("data", "nodata");
-            setResult(RESULT_OK, intent);
-            finish();
+            if(data!=null) {
+                Intent intent = new Intent();
+                intent.putExtra("isSendScreenDataLoaded", "isTransaction");
+                intent.putExtra("calculation", "");
+                intent.putExtra("data", "nodata");
+                setResult(RESULT_OK, intent);
+                finish();
+            }
         }
 
     }
 
-    private int getImeNumber() {
+//    private int getImeNumber() {
+//
+//        if (checkAndRequestPermissions() == 0) {
+//            TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+//            imeiNumber = telephonyManager.getDeviceId();
+//
+//        }
+//
+//        return 0;
+//    }
 
+    public  String getImeNumber(Context context) {
+
+        String deviceId="";
         if (checkAndRequestPermissions() == 0) {
-            TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-            imeiNumber = telephonyManager.getDeviceId();
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            } else {
+                final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (context.checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                        return "";
+                    }
+                }
+                assert mTelephony != null;
+                if (mTelephony.getDeviceId() != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        deviceId = mTelephony.getImei();
+                    } else {
+                        deviceId = mTelephony.getDeviceId();
+                    }
+                } else {
+                    deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+                }
+            }
         }
 
-        return 0;
+        return deviceId;
     }
 
     private int checkAndRequestPermissions() {
-
         int permissionCAMERA = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
-
         List<String> listPermissionsNeeded = new ArrayList<>();
         if (permissionCAMERA != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
         }
-
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this,
                     listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), 1);
             return 1;
         }
-
         return 0;
     }
 
@@ -416,7 +466,6 @@ public class ReviewTransfer extends AppCompatActivity {
     public String getIPAddress() {
         RequestQueue queue = Volley.newRequestQueue(this);
         String urlip = "http://checkip.amazonaws.com/";
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlip, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

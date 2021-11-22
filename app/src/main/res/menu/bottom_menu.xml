@@ -20,13 +20,14 @@
     <item
         android:id="@+id/menu_recipients"
         android:icon="@drawable/recipents_icon"
+        android:iconTint="@color/blue_bt_color"
         android:title="@string/recipients"/>
 
 
     <item
         android:visible="false"
         android:id="@+id/menu_invite"
-android:icon="@drawable/invite_icon"
+        android:icon="@drawable/invite_icon"
         android:title="@string/invite"/>
 
 

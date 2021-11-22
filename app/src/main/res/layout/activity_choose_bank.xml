@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_activitylayout"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rr_Selectbank"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        >
+    <ImageView
+        android:padding="5dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/img_back"
+        android:layout_margin="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/back_button"
+        ></ImageView>
+
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Select Bank"
+        android:textSize="17dp"
+        android:textColor="@color/black_color"
+        ></TextView>
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/rr_Selectbank"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:id="@+id/recycler_banklist"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <TextView
+        android:alpha=".5"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="50dp"
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/margin_10"
+        android:textAllCaps="true"
+        android:text="@string/continue_"
+        android:textColor="@color/white_color"
+        style="@style/button_style"
+        android:textSize="@dimen/font_eighteen" />
+
+</RelativeLayout>

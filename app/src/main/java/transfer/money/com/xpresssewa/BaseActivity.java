@@ -40,6 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected ProgressBar downloadProgressBar;
     protected TextView progressPercentage;
     LinearLayout ll_cancel;
+    public  static String baseurl="https://demoapi.webcomsystems.net.au/";
 
 
     private boolean downloadBound = false;

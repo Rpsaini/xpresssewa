@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+<ImageView
+    android:id="@+id/back_arrow"
+    android:layout_margin="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/back_button"
+    ></ImageView>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+
+        >
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/sendusmoney"
+    android:gravity="center"
+    android:textColor="@color/black_color"
+    android:textSize="16dp"
+    android:textStyle="bold"
+    ></TextView>
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sendusmoney_inst"
+        android:gravity="center"
+        android:textColor="@color/grey_color"
+        android:textSize="14dp"
+
+        ></TextView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Or,pay another way"
+        android:gravity="center"
+        android:textColor="@color/skybluecolorcode"
+        android:textSize="16dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        ></TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:background="@drawable/pink_drawable"
+        >
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IMPORTANT:"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"
+            android:alpha=".8"
+            android:layout_marginTop="20dp"
+            ></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="left"
+            android:paddingLeft="12dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/money_rule"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"></TextView>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:alpha=".9"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bank_transfer_inst"
+        android:gravity="left"
+        android:textStyle="bold"
+        android:textColor="@color/black_color"
+        android:textSize="18dp"
+        ></TextView>
+
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:background="@drawable/border_five"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payee Name"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/txt_payeename"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="14dp"
+            ></TextView>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AccountNumber"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/txt_AccountNumber"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="14dp"
+            ></TextView>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BSB Code"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/txt_BsbCode"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="14dp"
+            ></TextView>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UniqueId"
+            android:gravity="left"
+            android:textColor="@color/black_color"
+            android:textSize="14dp"
+            ></TextView>
+        <TextView
+            android:id="@+id/txt_UniqueId"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/textcolor"
+            android:textSize="14dp"
+            ></TextView>
+
+
+
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wenever"
+            android:textColor="@color/textcolor"
+            android:textSize="14dp"
+            ></TextView>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/youcanuse"
+            android:textColor="@color/textcolor"
+            android:textSize="14dp"
+            ></TextView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:id="@+id/txt_paymentdone"
+                android:text="Bank transfer done"
+                style="@style/button_style"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:textSize="14dp"
+                ></TextView>
+
+            <TextView
+                android:id="@+id/txt_paymentcancel"
+                android:layout_width="0dp"
+                android:text="Bank transfer later"
+                android:background="@drawable/red_all_side_round"
+                android:layout_weight="1"
+                android:textColor="@color/dark_red_color"
+                android:layout_marginRight="10dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="14dp"
+                ></TextView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -35,6 +35,7 @@
 
     <color name="round_drawable_color">#3D3D3D</color>
     <color name="textcolor">#7B7B7B</color>
+    <color name="textcolor_lite">#cad1d4</color>
 
 
 <!--    #9fb7dd-->
@@ -88,6 +89,7 @@
     <color name="border_color">#C5C5C5</color>
 
     <color name="border_color_edittext">#C5C5C5</color>
+    <color name="pink">#FCF2D1</color>
 
 
 
