@@ -338,6 +338,7 @@
     <string name="youcanuse">You can use your online banking or mobile app to make bank transfer to us</string>
     <string name="uploadreceipt">Upload your bank transfer receipt</string>
     <string name="receiptimage">Bank Transaction Receipt</string>
+    <string name="google_key">AIzaSyB74NEUc7mXEMtjfZXJVbH5dEQltiKtnhE</string>
 
     <string name="money_rule">1.Funds must be sent from an account in your name.<br />
 2.You must include 86151E38 in your bank transfer payment description field.<br />

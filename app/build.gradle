@@ -79,6 +79,9 @@ dependencies
 
         implementation(group: 'com.an.biometric', name: 'biometric-auth', version: '0.1.0', ext: 'aar', classifier: '')
 
+
+        implementation 'com.google.android.libraries.places:places:2.2.0'
+
     }
 apply plugin: 'com.google.gms.google-services'
 

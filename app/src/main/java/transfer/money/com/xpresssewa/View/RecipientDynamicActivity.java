@@ -1,5 +1,6 @@
 package transfer.money.com.xpresssewa.View;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -8,12 +9,16 @@ import android.os.Handler;
 
 import android.os.Bundle;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -25,11 +30,13 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
 import com.squareup.picasso.Callback;
@@ -52,6 +59,7 @@ import transfer.money.com.xpresssewa.Adapter.DynamicFormAdapter;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
+import transfer.money.com.xpresssewa.placepicker.LocationPickerActivity;
 import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 import transfer.money.com.xpresssewa.validation.Validation;
@@ -123,6 +131,10 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
     @BindView(R.id.line_dob)
     View line_dob;
+
+    private boolean isType=true;
+
+
 
 
 
@@ -252,7 +264,48 @@ public class RecipientDynamicActivity extends AppCompatActivity {
             }
         });
 
-       tv_currency_from.setText(DestinationSymbol);
+        recipient_address.getEditText().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isType=true;
+                return false;
+            }
+        });
+
+        recipient_address.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+               if(isType) {
+                   if (s.length() > 3) {
+                       Intent intent = new Intent(RecipientDynamicActivity.this, LocationPickerActivity.class);
+                       intent.putExtra("text", s.toString());
+                       startActivityForResult(intent, 1001);
+                       hideKeyboard(RecipientDynamicActivity.this);
+                   }
+               }
+            }
+        });
+
+//        recipient_address.getEditText().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+
+        tv_currency_from.setText(DestinationSymbol);
         showImage(FlagImageDestination,from_currency_image);
     }
 
@@ -561,7 +614,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         String recipient_emailStr = recipient_email.getEditText().getText().toString();
         String recipient_cityStr = recipient_city.getEditText().getText().toString();
         String recipient_zipcodeStr = recipient_zipcode.getEditText().getText().toString();
-        String recipient_addressStr = recipient_address.getEditText().getText().toString();
+        String recipient_addressStr = recipient_address.getEditText().toString();
         String tv_currency_fromStr = tv_currency_from.getText().toString();
 
         recipient_name.setError("");
@@ -569,7 +622,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         recipient_email.setError("");
         recipient_city.setError("");
         recipient_zipcode.setError("");
-        recipient_address.setError("");
+//        recipient_address.setError("");
 
         select_date_error.setVisibility(View.INVISIBLE);
 
@@ -627,8 +680,9 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                 } else if (recipient_zipcodeStr.length() == 0) {
                     recipient_zipcode.setError("Enter Zip Code");
                     return;
-                } else if (recipient_addressStr.length() == 0) {
-                    recipient_address.setError("Enter Address");
+                }
+               else if (recipient_addressStr.length() == 0) {
+               ///     recipient_address.setError("Enter Address");
                     return;
                 }
 
@@ -774,11 +828,30 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
 
 
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data!=null)
+        {
 
+            isType=false;
+            recipient_address.getEditText().setText(data.getStringExtra("sourcename"));
+            hideKeyboard(RecipientDynamicActivity.this);
+        }
 
-
+    }
 }
 
 

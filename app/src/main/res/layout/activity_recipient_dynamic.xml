@@ -253,11 +253,13 @@
 
 
 
+
               <com.google.android.material.textfield.TextInputLayout
                   android:layout_marginTop="15dp"
                   android:id="@+id/recipient_address"
                   android:layout_width="match_parent"
                   android:paddingLeft="5dp"
+
                   android:layout_height="wrap_content">
 
                   <EditText
@@ -269,10 +271,10 @@
                       android:maxLines="1"
                       android:textSize="@dimen/font_sixteen" />
               </com.google.android.material.textfield.TextInputLayout>
-
-
-
           </LinearLayout>
+
+
+
 
 
 <!--          android:id="@+id/selectcurrency"-->

@@ -407,21 +407,10 @@ public class ReviewTransfer extends AppCompatActivity {
 
     }
 
-//    private int getImeNumber() {
-//
-//        if (checkAndRequestPermissions() == 0) {
-//            TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-//            imeiNumber = telephonyManager.getDeviceId();
-//
-//        }
-//
-//        return 0;
-//    }
 
-    public  String getImeNumber(Context context) {
-
+    public String getImeNumber(Context context) {
         String deviceId="";
-        if (checkAndRequestPermissions() == 0) {
+        if(checkAndRequestPermissions() == 0) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
             } else {
