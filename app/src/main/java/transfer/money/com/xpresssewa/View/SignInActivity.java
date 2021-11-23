@@ -29,6 +29,7 @@ import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.validation.Showtoast;
+import transfer.money.com.xpresssewa.validation.Validation;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.tv_sign_up)
@@ -55,7 +56,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.logintoplayout)
     RelativeLayout logintoplayout;
     private Showtoast showtoast;
-
+    Validation vd;
 
 
     @Override
@@ -66,6 +67,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this,  "MontserratRegular.ttf", true);
         ButterKnife.bind(this);
+        vd = new Validation(this);
         init();
     }
 
@@ -106,9 +108,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 email_layout_name.setError("");
                 pwd_layout_name.setError("");
                 if (email_layout_name.getEditText().getText().toString().length() == 0) {
-                    email_layout_name.setError("Enter email address");
-                } else if (pwd_layout_name.getEditText().getText().toString().length() == 0) {
-                    pwd_layout_name.setError("Enter password");
+                    email_layout_name.setError("Please Enter Email address");
+                }
+                else if (!vd.checkEmail(email_layout_name.getEditText().getText().toString())) {
+                    email_layout_name.setError("Please enter valid email address");
+                }
+                else if (pwd_layout_name.getEditText().getText().toString().length() == 0) {
+                    pwd_layout_name.setError("Please Enter password");
                 } else {
                     Long tsLong = System.currentTimeMillis();
                     String ts = tsLong.toString();

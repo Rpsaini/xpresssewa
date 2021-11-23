@@ -6,7 +6,9 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -369,6 +371,30 @@ public abstract class BaseActivity extends AppCompatActivity {
    @description: loading images from server with the help of picasso
    * */
 
+
+    public   boolean containsDigit(String s)
+    {
+        boolean containsDigit = false;
+        if (s != null && !s.isEmpty()) {
+            for (char c : s.toCharArray()) {
+                if (containsDigit = Character.isDigit(c)) {
+                    break;
+                }
+            }
+        }
+
+        return containsDigit;
+    }
+
+    public void openExternalUrls(String url) {
+        try {
+
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
