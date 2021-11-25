@@ -7,14 +7,14 @@
     android:orientation="vertical"
     android:background="@color/white_color"
     android:id="@+id/RRsignuptoplayout"
-    tools:context=".View.SignInActivity">
+    tools:context=".registration.SignInActivity">
 
 
     <ImageView
         android:translationY="100dp"
         android:background="@drawable/currency_design"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         android:layout_alignParentBottom="true"
         ></ImageView>
 
@@ -26,29 +26,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="@dimen/margin_20"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:layout_marginBottom="@dimen/margin_10"
+            android:gravity="center_horizontal">
 
             <TextView
-                android:alpha=".7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black_color"
-                android:textSize="@dimen/font_fifteen"
+                android:alpha=".7"
                 android:text="@string/have_no_account"
-                />
+                android:textColor="@color/black_color"
+                android:textSize="@dimen/font_fifteen" />
+
             <TextView
                 android:id="@+id/tv_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/dark_red_color"
                 android:layout_marginLeft="@dimen/margin_5"
-                android:textSize="@dimen/font_fifteen"
-
                 android:text="Log In"
-                />
+                android:textColor="@color/dark_red_color"
+
+                android:textSize="@dimen/font_fifteen" />
         </LinearLayout>
     </LinearLayout>
 
@@ -166,7 +165,9 @@
                 android:inputType="textEmailAddress"
                 />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="5dp"
                 android:id="@+id/pwd_layout_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -194,14 +195,14 @@
 
 
             <LinearLayout
-                android:visibility="gone"
+
                 android:background="@drawable/bottom_line_drawable"
                 android:id="@+id/ll_selectCountry"
                 android:weightSum="1"
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 >
 
                 <ImageView
@@ -209,41 +210,43 @@
                     android:layout_gravity="center"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:tint="@color/black_color"
+                    android:tint="@color/textcolor"
                     android:src="@drawable/next_arrow"
                     android:rotation="90"
                     ></ImageView>
 
                 <TextView
                     android:id="@+id/txt_selectcountry"
-                    android:layout_weight=".8"
-                    style="@style/black15"
+                    android:layout_weight=".84"
+                    android:textColorHint="@color/grey_color"
                     android:layout_marginStart="5dp"
                     android:layout_gravity="center"
-                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:layout_height="40dp"
                     android:layout_width="wrap_content"
+                    android:textSize="16dp"
                     android:hint="@string/select_country"
                     ></TextView>
 
                 <ImageView
                     android:id="@+id/img_countryflag"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
-                    android:layout_weight=".2"
+                    android:layout_weight=".15"
                     ></ImageView>
             </LinearLayout>
 
 
-            <include layout="@layout/verify_otp_layout"/>
+
 
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="5dp"
                 android:id="@+id/referral_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:layout_marginLeft="5dp"
                     android:id="@+id/et_referral"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -264,6 +267,13 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:id="@+id/checkterm"
+                    ></CheckBox>
+
                 <TextView
                     android:id="@+id/txt_terms"
                     android:layout_width="wrap_content"

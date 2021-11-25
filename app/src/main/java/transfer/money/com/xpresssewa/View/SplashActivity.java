@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.registration.SignInActivity;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.viewpager.SwipeViewPager;

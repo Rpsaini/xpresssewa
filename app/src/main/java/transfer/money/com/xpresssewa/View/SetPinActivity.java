@@ -30,6 +30,7 @@ import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.biomateric.BiometricUtils;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
+import transfer.money.com.xpresssewa.registration.SignInActivity;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.util.UtilClass;
@@ -262,11 +263,27 @@ public class SetPinActivity extends AppCompatActivity implements BiometricCallba
                     if(obj.getBoolean("status"))
                       {
 
-                            new SaveImpPrefrences().savePrefrencesData(SetPinActivity.this,oldPin+"",DefaultConstatnts.Pin);
-                            Intent i=new Intent(SetPinActivity.this,MainActivity.class);
-                            i.putExtra(DefaultConstatnts.IsShowPin,"no");
-                            startActivity(i);
-                            finish();
+//                            new SaveImpPrefrences().savePrefrencesData(SetPinActivity.this,oldPin+"",DefaultConstatnts.Pin);
+//                            Intent i=new Intent(SetPinActivity.this,MainActivity.class);
+//                            i.putExtra(DefaultConstatnts.IsShowPin,"no");
+//                            startActivity(i);
+//                            finish();
+
+                          SaveImpPrefrences saveImpPrefrences=new SaveImpPrefrences();
+                          String memberId=obj.getString("MemberId");
+                          saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
+                          saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj.getString("UserName")+"",DefaultConstatnts.UserName);
+                          saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj+"",DefaultConstatnts.login_detail);
+                          saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj.getString("Pin")+"",DefaultConstatnts.Pin);
+                          saveImpPrefrences.savePrefrencesData(SetPinActivity.this,memberId+"", DefaultConstatnts.MemberId);
+
+                          UtilClass.getUserData(SetPinActivity.this);
+                          Intent signIn=new Intent(SetPinActivity.this, MainActivity.class);
+                          signIn.putExtra(DefaultConstatnts.IsShowPin,"no");
+                          startActivity(signIn);
+                          finishAffinity();
+
+
                         }
                     else
                     {
@@ -299,9 +316,10 @@ public class SetPinActivity extends AppCompatActivity implements BiometricCallba
                     System.out.println("LOgin data==="+obj);
                     if(obj.getBoolean("status"))
                     {
-                            new SaveImpPrefrences().savePrefrencesData(SetPinActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
-                            new SaveImpPrefrences().savePrefrencesData(SetPinActivity.this,obj.getString("UserName")+"",DefaultConstatnts.UserName);
-                            new SaveImpPrefrences().savePrefrencesData(SetPinActivity.this,oldPin+"",DefaultConstatnts.Pin);
+                        SaveImpPrefrences saveImpPrefrences=new SaveImpPrefrences();
+                        saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
+                        saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj.getString("UserName")+"",DefaultConstatnts.UserName);
+                        saveImpPrefrences.savePrefrencesData(SetPinActivity.this,oldPin+"",DefaultConstatnts.Pin);
                             Intent i=new Intent(SetPinActivity.this,MainActivity.class);
                             i.putExtra(DefaultConstatnts.IsShowPin,"no");
                             startActivity(i);

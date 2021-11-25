@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white_color"
     android:id="@+id/logintoplayout"
-    tools:context=".View.SignInActivity">
+    tools:context=".registration.SignInActivity">
 
 
         <RelativeLayout
@@ -17,7 +17,7 @@
             >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:id="@+id/ll_third"
                 android:layout_alignParentBottom="true"
 

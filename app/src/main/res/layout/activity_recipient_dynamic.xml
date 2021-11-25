@@ -63,13 +63,14 @@
                   android:id="@+id/recipient_name"
                   android:layout_width="match_parent"
                   android:paddingLeft="5dp"
+
                   android:layout_height="wrap_content">
                   <EditText
                       android:maxLength="70"
                       style="@style/edittext_style"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="@string/first_name"
+                      android:hint="First name and middle name of the account holder"
                       android:textSize="@dimen/font_sixteen"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                        />
@@ -87,7 +88,7 @@
                       style="@style/edittext_style"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="@string/last_name"
+                      android:hint="Last Name of the account holder"
                       android:textSize="@dimen/font_sixteen"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                       />
@@ -120,7 +121,7 @@
                   android:layout_height="wrap_content"
                   android:layout_marginTop="10dp"
                   android:textSize="12dp"
-                  android:text="@string/select_date"
+                  android:text="Please enter DOB "
                   android:textColor="@color/status_red"
                   android:gravity="center|left"
                   style="@style/edittext_style"
@@ -131,7 +132,7 @@
                   android:id="@+id/select_date"
                   android:layout_width="match_parent"
                   android:layout_height="50dp"
-                  android:hint="@string/select_date"
+                  android:hint="Date oF Birth(Optional)"
                   android:gravity="center|left"
                   style="@style/edittext_style"
                   ></TextView>
@@ -151,21 +152,24 @@
                   android:weightSum="1"
                   android:orientation="horizontal"
                   android:layout_marginTop="15dp"
+
                   android:layout_width="match_parent"
                   android:layout_height="50dp">
 
                   <com.hbb20.CountryCodePicker
+                      android:paddingLeft="3dp"
                       android:id="@+id/ccp"
-                      app:textSize="16dp"
-                      android:gravity="center"
+                      app:textSize="@dimen/margin_15"
+                      android:gravity="left|bottom"
                       android:layout_width="0dp"
                       android:layout_weight=".4"
                       android:layout_height="match_parent" />
 
 
                       <EditText
+                          android:padding="4dp"
                           android:maxLength="10"
-                          android:gravity="center|left"
+                          android:gravity="bottom|left"
                           android:background="@android:color/transparent"
                           android:inputType="number"
                           android:id="@+id/ed_mobilenumber"
@@ -181,7 +185,6 @@
               </LinearLayout>
 
               <View
-                  android:translationY="-5dp"
                   android:layout_marginLeft="5dp"
                   android:layout_marginRight="5dp"
                   android:layout_height="1.2dp"
@@ -246,7 +249,7 @@
                       style="@style/edittext_style"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="@string/zipcode"
+                      android:hint="Post code(Optional)"
                       android:textSize="@dimen/font_sixteen"
                       android:inputType="number" />
               </com.google.android.material.textfield.TextInputLayout>
@@ -263,6 +266,7 @@
                   android:layout_height="wrap_content">
 
                   <EditText
+
                       style="@style/edittext_style"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -271,6 +275,26 @@
                       android:maxLines="1"
                       android:textSize="@dimen/font_sixteen" />
               </com.google.android.material.textfield.TextInputLayout>
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/relation_of_benificary"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+
+                  <EditText
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="Relation to benificary"
+                      android:imeOptions="actionDone"
+                      android:maxLines="1"
+                      android:textSize="@dimen/font_sixteen" />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
           </LinearLayout>
 
 
@@ -304,6 +328,7 @@
                       android:orientation="horizontal"
                       >
                   <ImageView
+                      android:layout_marginLeft="4dp"
                       android:id="@+id/from_currency_image"
                       android:layout_width="20dp"
                       android:layout_height="20dp"
@@ -355,6 +380,7 @@
 
 
           <TextView
+              android:paddingLeft="5dp"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginTop="30dp"

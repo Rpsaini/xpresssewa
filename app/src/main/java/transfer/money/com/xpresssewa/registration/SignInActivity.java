@@ -1,4 +1,4 @@
-package transfer.money.com.xpresssewa.View;
+package transfer.money.com.xpresssewa.registration;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -24,6 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.View.ForgotPassword;
+import transfer.money.com.xpresssewa.View.MainActivity;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
@@ -98,7 +100,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 //                break;
 
             case R.id.tv_forgot_pwd:
-                Intent i=new Intent(SignInActivity.this,ForgotPassword.class);
+                Intent i=new Intent(SignInActivity.this, ForgotPassword.class);
                 i.putExtra("callFrom","Password");
                 startActivity(i);
                 break;
@@ -144,8 +146,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
                                     SaveImpPrefrences saveImpPrefrences=new SaveImpPrefrences();
                                     String memberId=obj.getString("MemberId");
-                                    new SaveImpPrefrences().savePrefrencesData(SignInActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
-                                    new SaveImpPrefrences().savePrefrencesData(SignInActivity.this,obj.getString("UserName")+"",DefaultConstatnts.UserName);
+                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
+                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj.getString("UserName")+"",DefaultConstatnts.UserName);
                                     saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj+"",DefaultConstatnts.login_detail);
                                     saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj.getString("Pin")+"",DefaultConstatnts.Pin);
                                     saveImpPrefrences.savePrefrencesData(SignInActivity.this,memberId+"", DefaultConstatnts.MemberId);
@@ -155,7 +157,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                     startActivity(signIn);
                                     finishAffinity();
 
-                                 }
+
+                                }
                                   else
                                      {
                                         showtoast.showToast(SignInActivity.this,"Response",obj.getString("Message"),logintoplayout);

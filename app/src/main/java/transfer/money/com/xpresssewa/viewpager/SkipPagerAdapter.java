@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import transfer.money.com.xpresssewa.R;
-import transfer.money.com.xpresssewa.View.SignInActivity;
+import transfer.money.com.xpresssewa.registration.SignInActivity;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 

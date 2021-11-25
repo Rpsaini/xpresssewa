@@ -21,7 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import transfer.money.com.xpresssewa.R;
-import transfer.money.com.xpresssewa.View.SignUpActivity;
+import transfer.money.com.xpresssewa.registration.SignUpActivity;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 
 

@@ -1,13 +1,18 @@
 package transfer.money.com.xpresssewa.View;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -35,6 +40,9 @@ import io.reactivex.annotations.Nullable;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
+import transfer.money.com.xpresssewa.placepicker.LocationPickerActivity;
+import transfer.money.com.xpresssewa.registration.MobileNumberActivity;
+import transfer.money.com.xpresssewa.registration.SignUpActivity;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.util.SimpleDialog;
@@ -56,6 +64,8 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private RadioButton rr_female, rr_Male, rr_other;
     private String gender = "1";
     private JSONArray OccupationList;
+    private TextView txt_updateNumber;
+    boolean isType=true;
 
 
     @Override
@@ -83,10 +93,13 @@ public class CreatePersonalProfile extends AppCompatActivity {
         rr_other = findViewById(R.id.rr_other);
         showtoast = new Showtoast();
         cpp = (CountryCodePicker) findViewById(R.id.ccp);
+        txt_updateNumber =  findViewById(R.id.txt_updateNumber);
+
 
         init();
         saveInformation();
         selectDate();
+        selectAddress();
 
     }
 
@@ -98,8 +111,15 @@ public class CreatePersonalProfile extends AppCompatActivity {
             if (!isKycApproved.equalsIgnoreCase("3"))//approved
             {
                 company_continue.setText("CONTINUE");
+
             } else {
                 company_continue.setText("UPDATE");
+                et_user_name.setEnabled(false);
+                et_user_lname.setEnabled(false);
+                rr_Male.setEnabled(false);
+                rr_female.setEnabled(false);
+                rr_other.setEnabled(false);
+                txt_date.setEnabled(false);
             }
 
 
@@ -253,6 +273,16 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 rr_Male.setChecked(false);
                 rr_female.setChecked(false);
                 gender = "3";
+            }
+        });
+
+        txt_updateNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(CreatePersonalProfile.this, MobileNumberActivity.class);
+                intent.putExtra("memberId",UtilClass.member_id);
+                intent.putExtra("callfrom","profile");
+                startActivityForResult(intent,1002);
             }
         });
 
@@ -421,7 +451,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                                 }
 
                             } else {
-                                showtoast.showToast(CreatePersonalProfile.this, "Error", "Details not Saved", ll_main_layout);
+                                showtoast.showToast(CreatePersonalProfile.this, "Error", obj.getString("Message"), ll_main_layout);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -433,6 +463,9 @@ public class CreatePersonalProfile extends AppCompatActivity {
             }
         });
     }
+
+
+
 
 
     private void clearFields() {
@@ -463,29 +496,6 @@ public class CreatePersonalProfile extends AppCompatActivity {
 
 //    DatePickerDialog mDatePicker;
     private void selectDate() {
-//        final Calendar myCalendar = Calendar.getInstance();
-//        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-//
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int monthOfYear,
-//                                  int dayOfMonth) {
-//                view.setMinDate(myCalendar.getTimeInMillis());
-//                myCalendar.set(Calendar.YEAR, year);
-//                myCalendar.set(Calendar.MONTH, monthOfYear);
-//                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-//
-//                String myFormat = "mm/dd/yyyy"; //In which you need put here
-//                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-//
-//                txt_date.setText(sdf.format(myCalendar.getTime()));
-//
-//            }
-//
-//
-//
-//            // show the dialog
-//        };
-
         txt_date.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -513,9 +523,66 @@ public class CreatePersonalProfile extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        System.out.println("Databac----"+requestCode+"==="+resultCode);
+
         if (requestCode == 101) {
             finish();
         }
+        else if(requestCode==1002)//update phone
+        {
+            if(data!=null)
+            {
+                String Phone=data.getStringExtra("Phone");
+                String PhoneExt= data.getStringExtra("PhoneExt");
+                cpp.setCountryForPhoneCode(Integer.parseInt(PhoneExt));
+                et_mobile.getEditText().setText(Phone);
+
+            }
+        }
+        else if(requestCode==1003)//select address
+        {
+            isType=false;
+            et_business_address.getEditText().setText(data.getStringExtra("sourcename"));
+            hideKeyboard(CreatePersonalProfile.this);
+        }
+    }
+
+    private void selectAddress()
+    {
+        et_business_address.getEditText().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                isType=true;
+                return false;
+            }
+        });
+
+        et_business_address.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(isType) {
+                    if (s.length() > 3) {
+                        Intent intent = new Intent(CreatePersonalProfile.this, LocationPickerActivity.class);
+                        intent.putExtra("text", s.toString());
+                        startActivityForResult(intent, 1003);
+
+                    }
+                }
+            }
+        });
     }
 
     JSONArray stateAr;
@@ -608,5 +675,15 @@ public class CreatePersonalProfile extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 }
 

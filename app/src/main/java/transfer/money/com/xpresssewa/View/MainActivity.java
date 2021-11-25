@@ -113,27 +113,9 @@ public class MainActivity extends AppCompatActivity {
         UtilClass.getUserData(this);
         DefaultConstatnts.isKyDockUploaded=false;
 
-        getNotification();
-
         sendBroadcast(new Intent(UtilClass.notificationBroadCast));
         try {
-
             String pin=saveImpPrefrences.reterivePrefrence(MainActivity.this, "Pin") +"";
-            String MemberId=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.MemberId) +"";
-            String login=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.login_detail) +"";
-
-
-            JSONObject jsonObject=new JSONObject(login);
-            UtilClass.getDefaultDestImage=jsonObject.getString("FlagImageDestination");
-            UtilClass.getDefaultSourceImage=jsonObject.getString("FlagImageSource");
-            UtilClass.defaultToSymble=jsonObject.getString("DestinationSymbol");
-            UtilClass.DefaultFromSymble=jsonObject.getString("SourceSymbol");
-
-            UtilClass.DefaultCountryname=jsonObject.getString("CountryName");
-            UtilClass.defaultSourceCountryId=jsonObject.getString("CountryId");
-            UtilClass.defaultSourceCountryId=jsonObject.getString("SDCountryId");
-
-
             if(pin.equalsIgnoreCase("0"))
             {
                 Intent intent = new Intent(MainActivity.this, SetPinActivity.class);
@@ -144,6 +126,20 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(getIntent().getStringExtra(DefaultConstatnts.IsShowPin).equalsIgnoreCase("yes"))
             {
+                getNotification();
+//                String MemberId=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.MemberId) +"";
+                String login=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.login_detail) +"";
+
+                JSONObject jsonObject=new JSONObject(login);
+                UtilClass.getDefaultDestImage=jsonObject.getString("FlagImageDestination");
+                UtilClass.getDefaultSourceImage=jsonObject.getString("FlagImageSource");
+                UtilClass.defaultToSymble=jsonObject.getString("DestinationSymbol");
+                UtilClass.DefaultFromSymble=jsonObject.getString("SourceSymbol");
+
+                UtilClass.DefaultCountryname=jsonObject.getString("CountryName");
+                UtilClass.defaultSourceCountryId=jsonObject.getString("CountryId");
+                UtilClass.defaultSourceCountryId=jsonObject.getString("SDCountryId");
+
                 Intent intent = new Intent(MainActivity.this, SetPinActivity.class);
                 intent.putExtra(DefaultConstatnts.pinKey, DefaultConstatnts.pinVerify);
                 startActivity(intent);
@@ -179,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 //        getNotificationData();
+
 
 
     }

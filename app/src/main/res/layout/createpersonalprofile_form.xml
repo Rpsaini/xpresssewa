@@ -8,21 +8,31 @@
 
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_margin="@dimen/margin_20"
+        android:layout_margin="@dimen/margin_15"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13dp"
             android:text="@string/enter_personal"
-            android:textColor="@color/title_black_color"
+            android:textColor="@color/black_color"
             />
-        <ScrollView
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:text="After verified your account information, you can update only some of the information"
+            android:textColor="@color/textcolor"
+            />
+
+  <ScrollView
             android:scrollbarThumbVertical="@android:color/transparent"
             android:layout_width="match_parent"
+           android:layout_marginTop="@dimen/margin_20"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -36,7 +46,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_user_name"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/margin_40"
+
                     android:layout_height="wrap_content">
 
                     <EditText
@@ -170,30 +180,30 @@
                     android:weightSum="1"
                     android:orientation="horizontal"
                     >
-                <com.hbb20.CountryCodePicker
+                   <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp"
                     android:gravity="bottom"
-                    android:layout_weight=".4"
+                    android:layout_weight=".35"
                     android:layout_width="0dp"
                     app:textSize="14dp"
                     app:contentColor="@color/black_color"
                     android:layout_height="match_parent" />
 
-
-                    <com.google.android.material.textfield.TextInputLayout
+                   <com.google.android.material.textfield.TextInputLayout
                         app:errorEnabled="false"
-                        android:layout_weight=".6"
+                        android:layout_weight=".5"
                         android:id="@+id/et_mobile"
                         android:layout_width="0dp"
-                        android:layout_height="40dp">
+                        android:layout_height="45dp">
 
                                             <EditText
+                                                android:paddingLeft="3dp"
                                                 android:maxLength="10"
                                                 android:inputType="number"
-                                                android:paddingStart="5dp"
+                                                android:paddingStart="1dp"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="40dp"
-                                                android:layout_marginLeft="10dp"
+                                                android:layout_marginLeft="4dp"
                                                 android:background="@android:color/transparent"
                                                 android:gravity="center|left"
                                                 android:hint="@string/mobile"
@@ -202,6 +212,18 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
 
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:id="@+id/txt_updateNumber"
+                        android:layout_width="0dp"
+                        android:layout_weight=".15"
+                        android:layout_height="30dp"
+                        android:textSize="@dimen/margin_15"
+                        android:gravity="center"
+                        android:text="@string/update"
+                        android:layout_gravity="bottom"
+                        android:textColor="@color/blue_bt_color"
+                        />
 
 
                 </LinearLayout>
@@ -216,21 +238,21 @@
                 <View
                     android:layout_marginTop="3dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
+
                     android:layout_height="1dp"
                     android:layout_width="0dp"
-                    android:layout_weight=".4"
+                    android:layout_weight="1"
                     android:background="@color/black_color"
                     ></View>
 
                     <View
-                        android:layout_marginLeft="10dp"
+                         android:visibility="gone"
                         android:layout_marginTop="3dp"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="2dp"
                         android:layout_marginEnd="5dp"
                         android:layout_height="1dp"
                         android:layout_width="0dp"
-                        android:layout_weight=".6"
+                        android:layout_weight=".7"
                         android:background="@color/black_color"
                         ></View>
 

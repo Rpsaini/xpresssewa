@@ -132,17 +132,16 @@ public class RecipientDynamicActivity extends AppCompatActivity {
     @BindView(R.id.line_dob)
     View line_dob;
 
+
+
+    @BindView(R.id.relation_of_benificary)
+    TextInputLayout relation_of_benificary;
+
+
+
+
     private boolean isType=true;
-
-
-
-
-
-
-
-
     private JSONArray recipientBankDetailDynaicAr;
-
     private String rec_type,SourceSymbol,FlagImageDestination,callFrom,DestinationSymbol,rec_typetext;
     private Showtoast showtoast;
     private JSONArray destinationListofSymble;
@@ -626,34 +625,39 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
         select_date_error.setVisibility(View.INVISIBLE);
 
-        if(recipient_nameStr.length() == 0)
-         {
-            if(rec_typetext.equalsIgnoreCase("Buisness"))
-            {
-                recipient_name.setError("Enter name of buisness");
-            }
-            else
-            {
-                recipient_name.setError("Enter name");
-            }
+//        if(recipient_nameStr.length() == 0)
+//         {
+//            if(rec_typetext.equalsIgnoreCase("Buisness"))
+//            {
+//                recipient_name.setError("Enter name of buisness");
+//            }
+//            else
+//            {
+//                recipient_name.setError("Enter name");
+//            }
+//
+//             return;
+//        }
 
-             return;
+        if(recipient_nameStr.length()==0)
+        {
+            recipient_name.setError(" Enter first name and middle name of the account holder");
         }
         else if(recipient_lastnameStr.length()==0)
         {
-            recipient_lastname.setError("Enter Last name");
+            recipient_lastname.setError("Enter last Name of the account holder");
             return;
         }
 
         else if(ed_mobilenumber.getText().toString().length()==0)
         {
-            ed_mobilenumber.setError("Enter Mobile Number");
+            ed_mobilenumber.setError("Please enter mobile number");
             return;
         }
-        else if(ed_mobilenumber.getText().toString().length()<=8)
+        else if(ed_mobilenumber.getText().toString().length()<=9)
         {
-            ed_mobilenumber.setError("Enter Valid mobile number");
-            showtoast.showToast(RecipientDynamicActivity.this, "Response", "Enter valid mobile number.", RRtoplayout_recipient);
+            ed_mobilenumber.setError("Please enter valid mobile number");
+            showtoast.showToast(RecipientDynamicActivity.this, "Response", "Please enter valid mobile number.", RRtoplayout_recipient);
             return;
         }
 
@@ -665,7 +669,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                 select_date_error.setVisibility(View.VISIBLE);
                }
             else if (recipient_emailStr.length() == 0) {
-                    recipient_email.setError("Enter email address");
+                    recipient_email.setError("Please enter email address");
                     return;
                 }
                else if (!new Validation(RecipientDynamicActivity.this).checkEmail(recipient_emailStr))
@@ -675,10 +679,10 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                 }
 
                else if (recipient_cityStr.length() == 0) {
-                    recipient_city.setError("Enter City");
+                    recipient_city.setError("Please Enter City");
                     return;
                 } else if (recipient_zipcodeStr.length() == 0) {
-                    recipient_zipcode.setError("Enter Zip Code");
+                    recipient_zipcode.setError("Please enter Zip Code");
                     return;
                 }
                else if (recipient_addressStr.length() == 0) {
@@ -852,6 +856,8 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
 
 

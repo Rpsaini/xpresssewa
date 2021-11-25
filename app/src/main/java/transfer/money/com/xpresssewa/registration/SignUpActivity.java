@@ -1,13 +1,11 @@
-package transfer.money.com.xpresssewa.View;
+package transfer.money.com.xpresssewa.registration;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 
 import android.os.Bundle;
@@ -19,7 +17,6 @@ import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -29,10 +26,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,13 +56,13 @@ import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.util.AnimationForView;
 import transfer.money.com.xpresssewa.util.IsAnimationEndedCallback;
 import transfer.money.com.xpresssewa.util.SimpleDialog;
+import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 import transfer.money.com.xpresssewa.validation.Validation;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
 
-    private String concateOtp;
-    private ArrayList<EditText> otpArray = new ArrayList<>();
+
 
     @BindView(R.id.tv_sign_in)
     TextView tv_sign_in;
@@ -108,39 +104,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.et_referral)
     EditText et_referral;
 
-    @BindView(R.id.tv_verify)
-    TextView tv_verify;
-
-    @BindView(R.id.ll_verifyotp)
-    LinearLayout ll_verifyotp;
-
-    @BindView(R.id.txt_sendOtp)
-    TextView txt_sendOtp;
-
-    @BindView(R.id.ed_one)
-    EditText ed_one;
-
-
-    @BindView(R.id.ed_two)
-    EditText ed_two;
-
-
-    @BindView(R.id.ed_three)
-    EditText ed_three;
-
-
-    @BindView(R.id.ed_four)
-    EditText ed_four;
-
-    @BindView(R.id.ed_five)
-    EditText ed_five;
-
-    @BindView(R.id.ed_six)
-    EditText ed_six;
-
-
-    @BindView(R.id.ccp)
-    CountryCodePicker countryCodePicker;
 
     @BindView(R.id.txt_privacy)
     TextView txt_privacy;
@@ -150,11 +113,11 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     Validation vd;
 
     private JSONArray countryAr = new JSONArray();
-
     AnimationForView animationForViews = new AnimationForView();
     private String countryName = "", countryID = "";
 
-    private String countryMobilecode = "";
+
+
 
 
     @Override
@@ -168,6 +131,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         showtoast = new Showtoast();
         vd = new Validation(this);
         init();
+        getCountryList();
+
+        Typeface face=Typeface.createFromAsset(getAssets(), "MontserratRegular.ttf");
+        txt_selectcountry.setTypeface(face);
 
     }
 
@@ -259,7 +226,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
 
 
-        otpInputLayout();
+
     }
 
 
@@ -279,7 +246,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
 
     private void register() {
-        countryMobilecode = countryCodePicker.getSelectedCountryCode();
+
         email_layout_name.setError("");
         pwd_layout_name.setError("");
         if (email_layout_name.getEditText().getText().toString().length() == 0) {
@@ -299,14 +266,11 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
 
 
-//        else if (countryName.length() == 0) {
-//            showtoast.showToast(SignUpActivity.this, "Select", "Select Country", RRsignuptoplayout);
-//        }
-
-        else if (!countryMobilecode.equalsIgnoreCase("61"))//for austraila
-        {
-            showtoast.showToast(SignUpActivity.this, "Select", "Sorry!! We provide remit services from Australia only", RRsignuptoplayout);
+        else if (countryName.length() == 0) {
+            showtoast.showToast(SignUpActivity.this, "Select", "Please Select Country", RRsignuptoplayout);
         }
+
+
         else {
             Map<String, String> m = new LinkedHashMap<>();
             m.put("Email", email_layout_name.getEditText().getText().toString());
@@ -323,8 +287,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     try {
 
                         JSONObject obj = new JSONObject(dta);
+                        System.out.println("Signup data==="+obj);
+                        String memberId=obj.getString("MemberId");
                         if (obj.getBoolean("status")) {
-                            soSucessDialog();
+                            soSucessDialog(memberId);
                         } else {
                             showtoast.showToast(SignUpActivity.this, "Registration", obj.getString("Message"), RRsignuptoplayout);
                         }
@@ -342,20 +308,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    //    {
-//        IsPhoneVerified = 1;
-//        MemberId = 10033;
-//        Message = success;
-//        OTP = 170741;
-//        RefCode = ok1ma10033;
-//        ReponseCode = 1;
-//        UserId = ok1ma10033;
-//        Version = 1;
-//        status = 1;
-//    }
+
     private Dialog isPendingAmount;
 
-    private void soSucessDialog() {
+    private void soSucessDialog(String memberId) {
         if (isPendingAmount != null && isPendingAmount.isShowing()) {
             isPendingAmount.dismiss();
         }
@@ -381,29 +337,34 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 isPendingAmount.dismiss();
-                finish();
+
+                Intent intent=new Intent(SignUpActivity.this,MobileNumberActivity.class);
+                intent.putExtra("memberId",memberId);
+                intent.putExtra("callfrom","signup");
+                startActivityForResult(intent,1001);
+
 
             }
         });
     }
 
-//    private void getCountryList()
-//    {
-//        Map<String, String> m = new LinkedHashMap<>();
-//        new ServerHandler().sendToServer(this, "Country", m, 0,0, new CallBack() {
-//            @Override
-//            public void getRespone(String dta, ArrayList<Object> respons) {
-//                try {
-//
-//                    countryAr = new JSONArray(dta);
-//                     } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//
-//            }
-//        });
-//    }
+    private void getCountryList()
+    {
+        Map<String, String> m = new LinkedHashMap<>();
+        new ServerHandler().sendToServer(this, "Country", m, 0,0, new CallBack() {
+            @Override
+            public void getRespone(String dta, ArrayList<Object> respons) {
+                try {
+
+                    countryAr = new JSONArray(dta);
+                     } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+    }
 
     private Dialog dialogConfirm;
     private RelativeLayout rr_countrylist;
@@ -514,6 +475,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             String CountryImage = countryObj.getString("CountryImage");
 
             txt_selectcountry.setText(countryName);
+            txt_selectcountry.setTextColor(getResources().getColor(R.color.black_color));
             showImage(CountryImage, (ImageView) findViewById(R.id.img_countryflag));
 
         } catch (Exception e) {
@@ -539,227 +501,16 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
 
-
-    private void otpInputLayout() {
-        ed_one.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1001)
+        {
+            if(data!=null)
+            {
+                finish();
             }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
-                    ed_two.requestFocus();
-                }
-
-            }
-        });
-
-        ed_two.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
-                    ed_three.requestFocus();
-                }
-            }
-        });
-
-        ed_three.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
-                    ed_four.requestFocus();
-                }
-
-            }
-        });
-
-        ed_four.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
-                    ed_five.requestFocus();
-                }
-
-            }
-        });
-
-        ed_five.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
-                    ed_six.requestFocus();
-                }
-
-            }
-        });
-
-        ed_six.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
-                    ed_six.requestFocus();
-                }
-
-            }
-        });
-
-        tv_verify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                concateOtp = ed_one.getText() + "" + ed_two.getText() + "" + ed_three.getText() + "" + ed_four.getText() + "" + "" + ed_five.getText() + "" + "" + ed_six.getText() + "";
-
-                if (concateOtp.length() > 5) {
-
-                }
-
-            }
-        });
-
-        txt_sendOtp.setTag("0");
-        txt_sendOtp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ll_verifyotp.setVisibility(View.VISIBLE);
-                if (txt_sendOtp.getTag().toString().equalsIgnoreCase("0")) {
-                    handleResendButton();
-                }
-            }
-        });
-
-
-        clearOTP();
-
-    }
-
-    private void clearOTP() {
-        otpArray.clear();
-        otpArray.add(ed_one);
-        otpArray.add(ed_two);
-        otpArray.add(ed_three);
-        otpArray.add(ed_four);
-        otpArray.add(ed_five);
-        otpArray.add(ed_six);
-
-        ed_one.setTag("0");
-        ed_two.setTag("1");
-        ed_three.setTag("2");
-        ed_four.setTag("3");
-        ed_five.setTag("4");
-        ed_six.setTag("5");
-
-
-        for (int x = 0; x < otpArray.size(); x++) {
-            otpArray.get(x).setOnKeyListener(new View.OnKeyListener() {
-                @Override
-                public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (keyCode == KeyEvent.KEYCODE_DEL) {
-                        int index = Integer.parseInt(v.getTag().toString());
-                        if (index > 0) {
-                            otpArray.get(index).setText("");
-                            otpArray.get(index - 1).requestFocus();
-                        }
-                    }
-                    return false;
-                }
-            });
         }
     }
-
-    int counter = 60;
-    Handler handler;
-
-    private void handleResendButton() {
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                counter--;
-                if (counter > 0) {
-                    txt_sendOtp.setTag("1");
-                    txt_sendOtp.setText("Resend OTP in : " + counter + " Seconds");
-                    handler.postDelayed(this, 1000);
-                } else {
-                    counter = 60;
-                    txt_sendOtp.setText("Resend OTP");
-                    txt_sendOtp.setTag("0");
-                    handler.removeCallbacks(this);
-
-                }
-
-            }
-        }, 1000);
-
-
-    }
-
-
-
 }
