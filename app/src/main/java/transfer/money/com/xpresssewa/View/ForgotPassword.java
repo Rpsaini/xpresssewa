@@ -69,11 +69,11 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View v) {
                 hideKeyboard(ForgotPassword.this);
                 if(et_email.getText().toString().length()==0) {
-                    new Showtoast().showToast(ForgotPassword.this, "Response", "Enter email.", findViewById(R.id.rr_forgotmain));
+                    new Showtoast().showToast(ForgotPassword.this, "Response", "Please enter your email address.", findViewById(R.id.rr_forgotmain));
                 }
                 else if(!vd.checkEmail(et_email.getText().toString()))
                 {
-                    new Showtoast().showToast(ForgotPassword.this, "Response", "Enter valid email.", findViewById(R.id.rr_forgotmain));
+                    new Showtoast().showToast(ForgotPassword.this, "Response", "Please enter valid email address.", findViewById(R.id.rr_forgotmain));
                 }
                 else
                 {
@@ -126,7 +126,7 @@ public class ForgotPassword extends AppCompatActivity {
                     {
                         if(callFrom.equalsIgnoreCase("pin"))
                         {
-                            System.out.println("Inside pin");
+
                             Intent intent=new Intent(ForgotPassword.this,ForgotPinJ.class);
                             intent.putExtra("OTP", obj.getString("OTP"));
                             intent.putExtra("email", email);
@@ -135,7 +135,7 @@ public class ForgotPassword extends AppCompatActivity {
                         }
                         else
                         {
-                            System.out.println("Inside password");
+
                             Intent intent = new Intent(ForgotPassword.this, ForgotPasswordWithOtpJ.class);
                             intent.putExtra("email", email);
                             intent.putExtra("OTP", obj.getString("OTP"));

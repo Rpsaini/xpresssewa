@@ -156,16 +156,9 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
 
                         @Override
                         public void run() {
-
-                            // cancel all the previous requests in the queue to optimise your network calls during autocomplete search
                             MyApplication.volleyQueueInstance.cancelRequestInQueue(GETPLACESHIT);
-
-                            //build Get url of Place Autocomplete and hit the url to fetch result.
                             request = new VolleyJSONRequest(Request.Method.GET, getPlaceAutoCompleteUrl(Address.getText().toString()), null, null, LocationPickerActivity.this, LocationPickerActivity.this);
-
-                            //Give a tag to your request so that you can use this tag to cancle request later.
                             request.setTag(GETPLACESHIT);
-
                             MyApplication.volleyQueueInstance.addToRequestQueue(request);
 
                         }
@@ -232,6 +225,7 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
         StringBuilder urlString = new StringBuilder();
         urlString.append("https://maps.googleapis.com/maps/api/place/autocomplete/json");
         urlString.append("?input=");
+
         try {
             urlString.append(URLEncoder.encode(input, "utf8"));
         } catch (UnsupportedEncodingException e) {
@@ -247,7 +241,7 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
         if (getIntent().hasExtra("filterby")) {
             urlString.append("&types=(cities)");
         } else {
-            urlString.append("&components=country:in");
+            urlString.append("&components=country:NP");
         }
 
 

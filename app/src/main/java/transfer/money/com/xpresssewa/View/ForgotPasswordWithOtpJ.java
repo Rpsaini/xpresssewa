@@ -74,22 +74,21 @@ public class ForgotPasswordWithOtpJ extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (input_txt_otp.getEditText().getText().toString().length() == 0) {
-                        input_txt_otp.setError("Enter OTP");
+                        input_txt_otp.setError("Please enter OTP");
+                        return;
                     }
-
-
                     if (input_txt_password.getEditText().getText().toString().length() == 0) {
-                        input_txt_password.setError("Enter password");
+                        input_txt_password.setError("Please enter password");
+                        return;
 
                     } else if (input_txt_confirm_password.getEditText().getText().toString().length() == 0) {
-                        input_txt_confirm_password.setError("Enter Confirmed password") ;
-                        //showtoast.showToast(this,"Required","Enter Confirmed password",rr_mainlayout);
+                        input_txt_confirm_password.setError("Please enter Confirmed password") ;
+                        return;
 
                     } else if (!input_txt_password.getEditText().getText().toString().contentEquals(input_txt_confirm_password.getEditText().getText().toString())) {
                         input_txt_confirm_password.setError("Confirmed password does not matched");
+                        return;
                     } else {
-
-
                         sendToServer(input_txt_otp.getEditText().getText().toString(),input_txt_password.getEditText().getText().toString());
                     }
                 }

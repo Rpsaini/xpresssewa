@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,7 +62,6 @@ import transfer.money.com.xpresssewa.validation.Showtoast;
 import transfer.money.com.xpresssewa.validation.Validation;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
-
 
 
     @BindView(R.id.tv_sign_in)
@@ -108,6 +108,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @BindView(R.id.txt_privacy)
     TextView txt_privacy;
 
+    @BindView(R.id.checkterm)
+    CheckBox checkterm;
 
     private String isBuisness = "1";
     Validation vd;
@@ -115,9 +117,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private JSONArray countryAr = new JSONArray();
     AnimationForView animationForViews = new AnimationForView();
     private String countryName = "", countryID = "";
-
-
-
 
 
     @Override
@@ -133,8 +132,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         init();
         getCountryList();
 
-        Typeface face=Typeface.createFromAsset(getAssets(), "MontserratRegular.ttf");
+        Typeface face = Typeface.createFromAsset(getAssets(), "MontserratRegular.ttf");
         txt_selectcountry.setTypeface(face);
+
 
     }
 
@@ -144,6 +144,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
         Typeface face = Typeface.createFromAsset(getAssets(), "Montserrat-Medium.ttf");
         tv_sign_in.setTypeface(face);
+
 
 //        getCountryList();
 
@@ -198,37 +199,31 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         });
 
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-        {
-            txt_terms.setText(Html.fromHtml("Accept our <font color='#226ED4'> Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            txt_terms.setText(Html.fromHtml("By continue accept our <font color='#226ED4'> Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
             txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font>", Html.FROM_HTML_MODE_COMPACT));
 
-        }
-        else
-        {
-            txt_terms.setText(Html.fromHtml("Accept our <font color='#226ED4'> Terms of use</font> and "));
+        } else {
+            txt_terms.setText(Html.fromHtml("By continue accept our <font color='#226ED4'> Terms of use</font> and "));
             txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font>"));
         }
 
         txt_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrls(BaseActivity.baseurl+"term-conditions");
+                openExternalUrls(BaseActivity.baseurl + "term-conditions");
 
             }
         });
         txt_privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrls(BaseActivity.baseurl+"privacy");
+                openExternalUrls(BaseActivity.baseurl + "privacy");
             }
         });
 
 
-
-
     }
-
 
 
     @Override
@@ -246,7 +241,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
 
     private void register() {
-
+        UtilClass.hideKeyboard(this);
         email_layout_name.setError("");
         pwd_layout_name.setError("");
         if (email_layout_name.getEditText().getText().toString().length() == 0) {
@@ -255,23 +250,15 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             email_layout_name.setError("Please enter valid email address");
         } else if (pwd_layout_name.getEditText().getText().toString().length() == 0) {
             pwd_layout_name.setError("Please enter password");
-        }
-        else if (pwd_layout_name.getEditText().getText().toString().length() > 0&&pwd_layout_name.getEditText().getText().toString().length()<=7) {
+        } else if (pwd_layout_name.getEditText().getText().toString().length() > 0 && pwd_layout_name.getEditText().getText().toString().length() <= 7) {
             pwd_layout_name.setError("Please enter minimum 8 character including 1 number");
-        }
-        else if(!containsDigit(pwd_layout_name.getEditText().getText().toString()))
-        {
+        } else if (!containsDigit(pwd_layout_name.getEditText().getText().toString())) {
             pwd_layout_name.setError("Please enter minimum 8 character including 1 number");
-        }
-
-
-
-        else if (countryName.length() == 0) {
+        } else if (countryName.length() == 0) {
             showtoast.showToast(SignUpActivity.this, "Select", "Please Select Country", RRsignuptoplayout);
-        }
-
-
-        else {
+        } else if (!checkterm.isChecked()) {
+            showtoast.showToast(SignUpActivity.this, "Select", "Please accept our Terms and Privacy policy", RRsignuptoplayout);
+        } else {
             Map<String, String> m = new LinkedHashMap<>();
             m.put("Email", email_layout_name.getEditText().getText().toString());
             m.put("Password", pwd_layout_name.getEditText().getText().toString());
@@ -279,16 +266,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             m.put("RefCode", et_referral.getText().toString());
             m.put("CountryName", countryName);
             m.put("CountryId", countryID);
-
-
             new ServerHandler().sendToServer(this, "register", m, 0, 1, new CallBack() {
                 @Override
                 public void getRespone(String dta, ArrayList<Object> respons) {
                     try {
 
                         JSONObject obj = new JSONObject(dta);
-                        System.out.println("Signup data==="+obj);
-                        String memberId=obj.getString("MemberId");
+                        System.out.println("Signup data===" + obj);
+                        String memberId = obj.getString("MemberId");
                         if (obj.getBoolean("status")) {
                             soSucessDialog(memberId);
                         } else {
@@ -310,7 +295,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
 
     private Dialog isPendingAmount;
-
     private void soSucessDialog(String memberId) {
         if (isPendingAmount != null && isPendingAmount.isShowing()) {
             isPendingAmount.dismiss();
@@ -338,26 +322,26 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             public void onClick(View v) {
                 isPendingAmount.dismiss();
 
-                Intent intent=new Intent(SignUpActivity.this,MobileNumberActivity.class);
-                intent.putExtra("memberId",memberId);
-                intent.putExtra("callfrom","signup");
-                startActivityForResult(intent,1001);
+                Intent intent = new Intent(SignUpActivity.this, MobileNumberActivity.class);
+                intent.putExtra("memberId", memberId);
+                intent.putExtra("callfrom", "signup");
+                startActivityForResult(intent, 1001);
 
 
             }
         });
     }
 
-    private void getCountryList()
-    {
+    private void getCountryList() {
         Map<String, String> m = new LinkedHashMap<>();
-        new ServerHandler().sendToServer(this, "Country", m, 0,0, new CallBack() {
+        new ServerHandler().sendToServer(this, "Country", m, 0, 0, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
                 try {
 
                     countryAr = new JSONArray(dta);
-                     } catch (Exception e) {
+                    setCountryData(countryAr.getJSONObject(0));
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -370,6 +354,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private RelativeLayout rr_countrylist;
 
     private void showCountryList() {
+
         SimpleDialog simpleDialog = new SimpleDialog();
         dialogConfirm = simpleDialog.simpleDailog(this, R.layout.showcountrydialog, new ColorDrawable(android.graphics.Color.TRANSPARENT), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
         RecyclerView recyclerView = dialogConfirm.findViewById(R.id.recycler_view_for_country);
@@ -377,6 +362,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         final RelativeLayout rr_countrylist = dialogConfirm.findViewById(R.id.rr_copuntrylist);
 
         animateUp(screenHeight, rr_countrylist);
+
 
         CountryRecyclerviewAdapter mAdapter = new CountryRecyclerviewAdapter(countryAr, SignUpActivity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -505,10 +491,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1001)
-        {
-            if(data!=null)
-            {
+        if (requestCode == 1001) {
+            if (data != null) {
                 finish();
             }
         }

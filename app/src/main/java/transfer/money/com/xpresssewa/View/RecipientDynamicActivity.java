@@ -97,10 +97,10 @@ public class RecipientDynamicActivity extends AppCompatActivity {
     TextInputLayout recipient_zipcode;
 
     @BindView(R.id.recipient_name)
-    TextInputLayout recipient_name;
+   public TextInputLayout recipient_name;
 
     @BindView(R.id.recipient_lastname)
-    TextInputLayout recipient_lastname;
+    public TextInputLayout recipient_lastname;
 
     @BindView(R.id.recipient_email)
     TextInputLayout recipient_email;
@@ -110,6 +110,13 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
     @BindView(R.id.recipient_address)
     TextInputLayout recipient_address;
+
+    @BindView(R.id.recipient_buisnessname)
+    TextInputLayout recipient_buisnessname;
+
+
+
+
 
     @BindView(R.id.tv_send_money)
     TextView tv_send_money;
@@ -126,11 +133,24 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
     @BindView(R.id.ed_mobilenumber)
     EditText ed_mobilenumber;
+
+
     @BindView(R.id.select_date_error)
     TextView select_date_error;
 
-    @BindView(R.id.line_dob)
-    View line_dob;
+    @BindView(R.id.recipient_name_joint)
+    TextInputLayout recipient_name_joint;
+
+
+    @BindView(R.id.recipient_lastname_joint)
+    TextInputLayout recipient_lastname_joint;
+
+
+
+
+
+//    @BindView(R.id.line_dob)
+//    View line_dob;
 
 
 
@@ -148,7 +168,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
     public ArrayList<Object> dynamicFieldAr=new ArrayList<>();
     private String SDCountryId,CountryId;
     private String recipient_stateStr="",recipient_statecodeStr="",countryMobilecode="",bankCode="";
-
+   private JSONArray dynamicForm;
 
 
 
@@ -188,21 +208,14 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         SDCountryId=getIntent().getStringExtra("SDCountryId");
         CountryId=getIntent().getStringExtra("CountryId");
 
-        countryMobilecode=countryCodePicker.getSelectedCountryCode();
 
 
-        if(rec_typetext.equalsIgnoreCase("Buisness"))
+
+         countryMobilecode=countryCodePicker.getSelectedCountryCode();
+          countryCodePicker.getChildAt(0).setEnabled(false);
+
+        if(rec_typetext.equalsIgnoreCase("Myself"))//1
         {
-         // recipient_name.setHint(getResources().getString(R.string.nameof_buisness));
-            recipient_state.setVisibility(View.GONE);
-            recipient_city.setVisibility(View.GONE);
-            recipient_zipcode.setVisibility(View.GONE);
-            recipient_address.setVisibility(View.GONE);
-
-        }
-        if(rec_type.equalsIgnoreCase("1"))
-        {
-//          recipient_name.setHint("Full name");
             recipient_email.setVisibility(View.GONE);
             recipient_state.setVisibility(View.VISIBLE);
             recipient_city.setVisibility(View.GONE);
@@ -210,16 +223,48 @@ public class RecipientDynamicActivity extends AppCompatActivity {
             recipient_address.setVisibility(View.GONE);
             select_date.setVisibility(View.GONE);
             select_date_error.setVisibility(View.GONE);
-            line_dob.setVisibility(View.GONE);
         }
-//        else if(rec_type.equalsIgnoreCase("2"))
-//        {
-//            recipient_name.setHint("Account holder name");
-//        }
-//        if(rec_type.equalsIgnoreCase("3"))
-//        {
-//            recipient_name.setHint("Business name");
-//        }
+       else if(rec_typetext.equalsIgnoreCase("Someone Else"))//2
+        {
+            relation_of_benificary.setVisibility(View.VISIBLE);
+        }
+
+       else if(rec_typetext.equalsIgnoreCase("Business"))//3
+        {
+            recipient_state.setVisibility(View.GONE);
+            recipient_city.setVisibility(View.VISIBLE);
+            recipient_zipcode.setVisibility(View.GONE);
+            recipient_address.setVisibility(View.GONE);
+            recipient_buisnessname.setVisibility(View.VISIBLE);
+            relation_of_benificary.setVisibility(View.VISIBLE);
+            recipient_address.setVisibility(View.VISIBLE);
+        }
+        else if(rec_typetext.equalsIgnoreCase("Joint"))//5
+        {
+            recipient_buisnessname.setVisibility(View.GONE);
+            recipient_name_joint.setVisibility(View.VISIBLE);
+            recipient_lastname_joint.setVisibility(View.VISIBLE);
+            relation_of_benificary.setVisibility(View.VISIBLE);
+
+        }
+
+        recipient_lastname.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+              setAccountName();
+            }
+        });
 
         Map<String, String> m = new LinkedHashMap<>();
         m.put("SourceSymbol", SourceSymbol);
@@ -310,6 +355,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
     private void init(JSONArray dataAr)
     {
+        dynamicForm=dataAr;
         dynamicFieldAr.clear();
         DynamicFormAdapter mAdapter = new DynamicFormAdapter(dataAr, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -338,7 +384,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
     private Dialog listingDialog;
     private LinearLayout listviewout;
 
-    private void showListingPopup(String currencyTitle, JSONArray currencyAray, ImageView currencyImg, TextView currencySymble) {
+      private void showListingPopup(String currencyTitle, JSONArray currencyAray, ImageView currencyImg, TextView currencySymble) {
         try {
             if (listingDialog != null && listingDialog.isShowing()) {
                 listingDialog.dismiss();
@@ -389,8 +435,8 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
     }
 
-    public void disMissDialog(JSONObject obj)
-     {
+      public void disMissDialog(JSONObject obj)
+       {
         try {
             Animation animation = new TranslateAnimation(0, screenWidth, 00, 0);
             animation.setDuration(300);
@@ -425,7 +471,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         }
     }
 
-    private void MRequestRecipientForm(Map<String,String> m)
+      private void MRequestRecipientForm(Map<String,String> m)
       {
           MrequestBankDropDown(new HashMap<>(),m.get("DestinationSymbol"));
 
@@ -435,14 +481,14 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                 try
                   {
                     JSONObject obj=new JSONObject(dta);
-                    System.out.println("recipient form==="+obj);
                     if(obj.getBoolean("status"))
                     {
                         recipientBankDetailDynaicAr =obj.getJSONArray("RecipientFormList");
                         init(recipientBankDetailDynaicAr);
                         destinationListofSymble=obj.getJSONArray("DestinationList");
-
                         getState(new HashMap<>(),destinationListofSymble.getJSONObject(0).getString("CountryCode"));
+
+
                     }
                     else
                     {
@@ -459,11 +505,8 @@ public class RecipientDynamicActivity extends AppCompatActivity {
            });
       }
 
-
-
-    private void MrequestBankDropDown(Map<String,String> m,String destinationSymbol)
-    {
-        System.out.println("Symbol===="+"BankDropDown?Symbol="+destinationSymbol);
+      private void MrequestBankDropDown(Map<String,String> m,String destinationSymbol)
+      {
         new ServerHandler().sendToServer(this, "BankDropDown?Symbol="+destinationSymbol, m, 0,0, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
@@ -490,9 +533,8 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         });
     }
 
-
-    private void getState(Map<String,String> m,String symbol)
-    {
+      private void getState(Map<String,String> m,String symbol)
+      {
         new ServerHandler().sendToServer(this, "State?CountryCode="+symbol, m, 0,0, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
@@ -550,8 +592,6 @@ public class RecipientDynamicActivity extends AppCompatActivity {
     private void setState(ArrayList<String> stateAr,JSONArray dataAr)
     {
         recipient_state.setVisibility(View.VISIBLE);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,stateAr);
-//        adapter.setDropDownViewResource(R.layout.spinner_layout);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (RecipientDynamicActivity.this, R.layout.spinner_item, stateAr);
 
@@ -621,76 +661,129 @@ public class RecipientDynamicActivity extends AppCompatActivity {
         recipient_email.setError("");
         recipient_city.setError("");
         recipient_zipcode.setError("");
-//        recipient_address.setError("");
-
+        recipient_address.setError("");
+        relation_of_benificary.setError("");
+        recipient_buisnessname.setError("");
+        recipient_lastname_joint.setError("");
+        recipient_name_joint.setError("");
         select_date_error.setVisibility(View.INVISIBLE);
 
-//        if(recipient_nameStr.length() == 0)
-//         {
-//            if(rec_typetext.equalsIgnoreCase("Buisness"))
-//            {
-//                recipient_name.setError("Enter name of buisness");
-//            }
-//            else
-//            {
-//                recipient_name.setError("Enter name");
-//            }
-//
-//             return;
-//        }
+
 
         if(recipient_nameStr.length()==0)
         {
-            recipient_name.setError(" Enter first name and middle name of the account holder");
+            recipient_name.setError("Enter first name and middle name of the account holder");
+            return;
         }
-        else if(recipient_lastnameStr.length()==0)
+         if(recipient_lastnameStr.length()==0)
         {
             recipient_lastname.setError("Enter last Name of the account holder");
             return;
         }
 
-        else if(ed_mobilenumber.getText().toString().length()==0)
+         if(recipient_name_joint.getVisibility()==View.VISIBLE)
+         {
+             if(recipient_name_joint.getEditText().getText().toString().length()==0)
+             {
+                 recipient_name_joint.setError("Enter first name and middle name of the joint account holder");
+                 return;
+             }
+         }
+        if(recipient_lastname_joint.getVisibility()==View.VISIBLE)
         {
-            ed_mobilenumber.setError("Please enter mobile number");
-            return;
+            if(recipient_lastname_joint.getEditText().getText().toString().length()==0)
+            {
+                recipient_lastname_joint.setError("Enter last Name of the joint account holder");
+                return;
+            }
         }
-        else if(ed_mobilenumber.getText().toString().length()<=9)
+
+
+        if(recipient_buisnessname.getVisibility()==View.VISIBLE)
         {
-            ed_mobilenumber.setError("Please enter valid mobile number");
-            showtoast.showToast(RecipientDynamicActivity.this, "Response", "Please enter valid mobile number.", RRtoplayout_recipient);
-            return;
+
+            if(recipient_buisnessname.getEditText().getText().toString().length()==0)
+            {
+                recipient_buisnessname.setError("Enter receipient buisness name");
+                return;
+            }
         }
+
+        if(recipient_email.getVisibility()==View.VISIBLE)
+        {
+            if(recipient_email.getEditText().getText().toString().length()==0)
+            {
+                recipient_email.setError("Enter Email address");
+            return;
+            }
+
+            if (!new Validation(RecipientDynamicActivity.this).checkEmail(recipient_emailStr))
+            {
+                recipient_email.setError("Enter valid email address");
+                return;
+            }
+        }
+
+
+        if(recipient_name_joint.getVisibility()==View.VISIBLE)
+        {
+            if(recipient_name_joint.getEditText().getText().toString().length()==0)
+            {
+                recipient_lastname.setError("Enter first name and middle name of the account holder");
+                return;
+            }
+
+        }
+        if(recipient_lastname_joint.getVisibility()==View.VISIBLE)
+        {
+            if(recipient_lastname_joint.getEditText().getText().toString().length()==0)
+            {
+                recipient_lastname.setError("Enter last Name of the joint account holder");
+                return;
+            }
+        }
+
+
+        if(ed_mobilenumber.getVisibility()==View.VISIBLE) {
+            if (ed_mobilenumber.getText().toString().length() == 0) {
+                ed_mobilenumber.setError("Please enter mobile number");
+                return;
+            }
+           else if(ed_mobilenumber.getText().toString().length()<=9)
+            {
+                ed_mobilenumber.setError("Please enter valid mobile number");
+                showtoast.showToast(RecipientDynamicActivity.this, "Response", "Please enter valid mobile number.", RRtoplayout_recipient);
+                return;
+            }
+        }
+
 
         countryMobilecode=countryCodePicker.getSelectedCountryCode();
-        if(rec_type.equalsIgnoreCase("2")||rec_type.equalsIgnoreCase("3"))
-            {
-            if(select_date.getText().toString().length()==0)
-              {
-                select_date_error.setVisibility(View.VISIBLE);
+             if(recipient_city.getVisibility()==View.VISIBLE) {
+                    if (recipient_cityStr.length() == 0) {
+                        recipient_city.setError("Please Enter City");
+                        return;
+                    }
+                }
+
+                if(recipient_address.getVisibility()==View.VISIBLE) {
+                    if (recipient_address.getEditText().getText().length() == 0) {
+                        recipient_address.setError("Enter your Address");
+                        return;
+                    }
+                }
+
+                if(relation_of_benificary.getVisibility()==View.VISIBLE)
+               {
+                   if(relation_of_benificary.getEditText().getText().toString().length()==0)
+                   {
+                       relation_of_benificary.setError("Enter beneficiary relation");
+                       return;
+                   }
                }
-            else if (recipient_emailStr.length() == 0) {
-                    recipient_email.setError("Please enter email address");
-                    return;
-                }
-               else if (!new Validation(RecipientDynamicActivity.this).checkEmail(recipient_emailStr))
-                {
-                    recipient_email.setError("Enter valid email address");
-                    return;
-                }
 
-               else if (recipient_cityStr.length() == 0) {
-                    recipient_city.setError("Please Enter City");
-                    return;
-                } else if (recipient_zipcodeStr.length() == 0) {
-                    recipient_zipcode.setError("Please enter Zip Code");
-                    return;
-                }
-               else if (recipient_addressStr.length() == 0) {
-               ///     recipient_address.setError("Enter Address");
-                    return;
-                }
 
-            }
+
 
 
         JSONArray uploadBankDataAr = new JSONArray();
@@ -720,6 +813,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                             uploadToServerObj.put("Answer", tip.getEditText().getText().toString());
                             uploadToServerObj.put("RcId", obj.getString("ReciptentFormId"));
                             uploadToServerObj.put("TwType", obj.getString("TwType"));
+                            uploadToServerObj.put("UniqueId", obj.getString("UniqueId"));
                             uploadBankDataAr.put(uploadToServerObj);
                         }
                     } catch (Exception e) {
@@ -729,9 +823,8 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                 }
 
             }
-
             if(isError == 0)
-            {
+                {
                 try
                     {
                         if(tv_currency_fromStr.trim().equalsIgnoreCase(DestinationSymbol))
@@ -745,11 +838,17 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
 
                     mainObj.put("BankCode", bankCode);
+                    mainObj.put("JointAccountName",recipient_name_joint.getEditText().getText().toString());
+                    mainObj.put("JointAccountLastName",recipient_lastname_joint.getEditText().getText().toString());
+                    mainObj.put("JointAccountLastName",recipient_lastname_joint.getEditText().getText().toString());
+                    mainObj.put("Relation",relation_of_benificary.getEditText().getText().toString());
+                    mainObj.put("BusinessName",recipient_buisnessname.getEditText().getText().toString());
+
                     mainObj.put("DestinationSymbol", tv_currency_fromStr.trim());
                     mainObj.put("DOB",select_date.getText().toString());
                     mainObj.put("ContactNumber", countryMobilecode+""+ed_mobilenumber.getText().toString());
                     mainObj.put("Type", rec_type);
-                    mainObj.put("Address", recipient_addressStr.trim());
+                    mainObj.put("Address", recipient_address.getEditText().getText().toString());
                     mainObj.put("State", recipient_stateStr);
                     mainObj.put("StateCode", recipient_statecodeStr);
                     mainObj.put("City", recipient_cityStr);
@@ -765,7 +864,6 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                     mainObj.put("Id", "0");
                     mainObj.put("BankData", uploadBankDataAr.toString());
                     System.out.println("Before to send==="+mainObj);
-
 
 
                     new ServerHandler().sendToServer(this, "AddRecipient", mainObj, 0,1, new CallBack() {
@@ -819,24 +917,20 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
 
     private int screenHeight;
-    private void getScreenHeight() {
+    private void getScreenHeight()
+    {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
         screenHeight = displayMetrics.heightPixels;
         screenWidth = displayMetrics.widthPixels;
-
-
-
     }
 
 
 
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
         View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
         if (view == null) {
             view = new View(activity);
         }
@@ -857,6 +951,31 @@ public class RecipientDynamicActivity extends AppCompatActivity {
 
     }
 
+
+    private void setAccountName()
+    {
+        try {
+            if(dynamicFieldAr.size()>0) {
+
+                String name = recipient_name.getEditText().getText() + " " + recipient_lastname.getEditText().getText().toString();
+                for (int x = 0; x < dynamicForm.length(); x++) {
+
+                    if (dynamicForm.getJSONObject(x).getString("TwType").equalsIgnoreCase("accountName")) {
+                        TextInputLayout textInputLayout = (TextInputLayout) dynamicFieldAr.get(x);
+                        textInputLayout.getEditText().setText("");
+                        textInputLayout.getEditText().setText(name);
+                        textInputLayout.getEditText().setEnabled(false);
+                        break;
+                    }
+                }
+            }
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }
 

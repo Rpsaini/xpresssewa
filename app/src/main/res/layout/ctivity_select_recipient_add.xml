@@ -148,6 +148,46 @@
 
 
 
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_15"
+                android:background="@color/light_grey_color"/>
+
+            <LinearLayout
+                android:id="@+id/ll_joint"
+                android:layout_width="match_parent"
+                android:weightSum="10"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:drawableTint="@color/blue_bt_color"
+                    android:layout_width="0dp"
+                    android:layout_weight="8.5"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_jon"
+                    android:text="Joint Account"
+                    android:textSize="@dimen/font_fourteen"
+                    android:drawablePadding="@dimen/margin_10"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/a_business"
+                    android:textColor="@color/title_black_color"
+                    />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:gravity="right"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/next_arrow"
+                        android:tint="@color/grey_color" />
+                </LinearLayout>
+            </LinearLayout>
 
 
 

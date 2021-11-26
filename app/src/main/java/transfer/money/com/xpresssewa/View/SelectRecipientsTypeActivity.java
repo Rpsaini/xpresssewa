@@ -114,6 +114,30 @@ public class SelectRecipientsTypeActivity extends AppCompatActivity {
                 startActivityForResult(i, 102);
             }
         });
+
+
+
+        findViewById(R.id.ll_joint).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SelectRecipientsTypeActivity.this, RecipientDynamicActivity.class);
+                i.putExtra("rec_type", "Joint");
+                i.putExtra("rec_type_str", "5");
+                i.putExtra("DestinationSymbol", getIntent().getStringExtra("DestinationSymbol"));
+                i.putExtra("SourceSymbol", getIntent().getStringExtra("SourceSymbol"));
+                i.putExtra("FlagImageDestination", getIntent().getStringExtra("FlagImageDestination"));
+                i.putExtra("callFrom", getIntent().getStringExtra("callFrom"));
+                i.putExtra("SDCountryId", getIntent().getStringExtra("SDCountryId"));
+                i.putExtra("CountryId", getIntent().getStringExtra("CountryId"));
+
+                if(getIntent().hasExtra("data"))
+                {
+                    i.putExtra("data", getIntent().getStringExtra("data"));
+                }
+
+                startActivityForResult(i, 102);
+            }
+        });
     }
 
 

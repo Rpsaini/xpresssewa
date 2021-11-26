@@ -97,6 +97,68 @@
 
 
               <com.google.android.material.textfield.TextInputLayout
+                  android:visibility="gone"
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_name_joint"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+
+                  android:layout_height="wrap_content">
+                  <EditText
+                      android:maxLength="70"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="First name and middle name of the joint account holder"
+                      android:textSize="@dimen/font_sixteen"
+                      android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                      />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:visibility="gone"
+                  android:layout_marginTop="18dp"
+                  android:id="@+id/recipient_lastname_joint"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+                  <EditText
+                      android:maxLength="70"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="Last Name of the joint account holder"
+                      android:textSize="@dimen/font_sixteen"
+                      android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                      />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+              <com.google.android.material.textfield.TextInputLayout
+                  android:visibility="gone"
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_buisnessname"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
+
+                  <EditText
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/business_name"
+                      android:inputType="textEmailAddress"
+                      android:maxLength="70"
+                      android:textSize="@dimen/font_sixteen" />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+              <com.google.android.material.textfield.TextInputLayout
                   android:layout_marginTop="15dp"
                   android:id="@+id/recipient_email"
                   android:layout_width="match_parent"
@@ -113,6 +175,11 @@
                       android:textSize="@dimen/font_sixteen" />
               </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
+
+
               <TextView
                   android:visibility="invisible"
                   android:paddingLeft="10dp"
@@ -128,6 +195,7 @@
                   ></TextView>
 
               <TextView
+                  android:background="@drawable/bottom_line_drawable"
                   android:paddingLeft="10dp"
                   android:id="@+id/select_date"
                   android:layout_width="match_parent"
@@ -135,34 +203,39 @@
                   android:hint="Date oF Birth(Optional)"
                   android:gravity="center|left"
                   style="@style/edittext_style"
+                  android:textColorHint="@color/textcolor"
                   ></TextView>
-              <View
-                  android:id="@+id/line_dob"
-                  android:translationY="-5dp"
-                  android:layout_marginLeft="4dp"
-                  android:layout_marginRight="4dp"
-                  android:layout_height="1.2dp"
-                  android:layout_width="match_parent"
-                  android:background="@color/grey_color"
-                  ></View>
+
+
+<!--              <View-->
+<!--                  android:id="@+id/line_dob"-->
+<!--                  android:translationY="-5dp"-->
+<!--                  android:layout_marginLeft="4dp"-->
+<!--                  android:layout_marginRight="4dp"-->
+<!--                  android:layout_height="1.2dp"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:background="@color/grey_color"-->
+<!--                  ></View>-->
 
 
               <LinearLayout
+                  android:background="@drawable/bottom_line_drawable"
                   android:id="@+id/ll_selectCountry"
                   android:weightSum="1"
                   android:orientation="horizontal"
                   android:layout_marginTop="15dp"
-
                   android:layout_width="match_parent"
                   android:layout_height="50dp">
 
                   <com.hbb20.CountryCodePicker
+
                       android:paddingLeft="3dp"
                       android:id="@+id/ccp"
                       app:textSize="@dimen/margin_15"
                       android:gravity="left|bottom"
                       android:layout_width="0dp"
                       android:layout_weight=".4"
+                      app:defaultNameCode="NPL"
                       android:layout_height="match_parent" />
 
 
@@ -174,6 +247,7 @@
                           android:inputType="number"
                           android:id="@+id/ed_mobilenumber"
                           style="@style/edittext_style"
+                          android:textColorHint="@color/textcolor"
                           android:layout_width="0dp"
                           android:layout_weight=".6"
                           android:layout_height="match_parent"
@@ -184,18 +258,13 @@
 
               </LinearLayout>
 
-              <View
-                  android:layout_marginLeft="5dp"
-                  android:layout_marginRight="5dp"
-                  android:layout_height="1.2dp"
-                  android:layout_width="match_parent"
-                  android:background="@color/grey_color"
-                  ></View>
+
 
 
 
 
                    <Spinner
+                       android:background="@drawable/bottom_line_drawable"
                        android:layout_marginLeft="5dp"
                        android:layout_marginRight="5dp"
                        android:id="@+id/recipient_state"
@@ -203,19 +272,12 @@
                           android:maxLength="70"
                           style="@style/edittext_style"
                           android:layout_width="match_parent"
-                          android:layout_height="50dp"
+                          android:layout_height="45dp"
                           android:hint="@string/state"
                           android:textSize="@dimen/font_sixteen"
                           android:inputType="textEmailAddress" />
 
-              <View
-                  android:translationY="-5dp"
-                  android:layout_marginLeft="5dp"
-                  android:layout_marginRight="5dp"
-                  android:layout_height="1.2dp"
-                  android:layout_width="match_parent"
-                  android:background="@color/grey_color"
-                  ></View>
+
 
 
               <com.google.android.material.textfield.TextInputLayout
@@ -278,6 +340,7 @@
 
 
               <com.google.android.material.textfield.TextInputLayout
+                   android:visibility="gone"
                   android:layout_marginTop="15dp"
                   android:id="@+id/relation_of_benificary"
                   android:layout_width="match_parent"
@@ -304,6 +367,7 @@
 <!--          android:id="@+id/selectcurrency"-->
 
           <LinearLayout
+              android:background="@drawable/bottom_line_drawable"
               android:layout_marginLeft="5dp"
               android:layout_marginRight="5dp"
               android:layout_marginTop="35dp"
@@ -319,10 +383,11 @@
                   android:layout_width="0dp"
                   android:layout_height="match_parent"
                   android:layout_weight="3.5"
-                  android:gravity="center|left"
+                  android:gravity="center|left|bottom"
                   >
 
                   <LinearLayout
+                      android:layout_marginBottom="5dp"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
@@ -369,14 +434,7 @@
                   android:textSize="@dimen/font_sixteen" />
           </LinearLayout>
 
-          <View
-              android:layout_marginTop="5dp"
-              android:layout_marginLeft="4dp"
-              android:layout_marginRight="4dp"
-             android:layout_height="1.2dp"
-              android:layout_width="match_parent"
-              android:background="@color/grey_color"
-              ></View>
+
 
 
           <TextView
@@ -398,19 +456,21 @@
         >
           </androidx.recyclerview.widget.RecyclerView>
 
+          <RelativeLayout
+              android:layout_marginBottom="70dp"
+              android:background="@drawable/bottom_line_drawable"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              >
          <Spinner
              android:layout_marginTop="15dp"
              android:layout_width="match_parent"
-             android:layout_height="55dp"
+             android:layout_height="50dp"
              android:id="@+id/spinner_bank_name"
              ></Spinner>
-          <View
-              android:translationY="-8dp"
-              android:layout_marginBottom="50dp"
-              android:layout_height="1.2dp"
-              android:layout_width="match_parent"
-              android:background="@color/grey_color"
-              ></View>
+
+
+          </RelativeLayout>
 
 
 

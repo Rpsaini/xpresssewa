@@ -58,6 +58,14 @@ public class DynamicFormAdapter extends RecyclerView.Adapter<DynamicFormAdapter.
             EditText editText = holder.dynamic_id.getEditText();
             holder.dynamic_id.setHint(dataObj.getString("PlaceHolder"));
 
+
+            String name = ira1.recipient_name.getEditText().getText() + " " + ira1.recipient_lastname.getEditText().getText().toString();
+            if (dataObj.getString("TwType").equalsIgnoreCase("accountName"))
+            {
+
+                editText.setText(name);
+            }
+
             if (type.equalsIgnoreCase("1"))//Text
             {
                 editText.setInputType(InputType.TYPE_CLASS_TEXT);

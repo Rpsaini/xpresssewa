@@ -167,7 +167,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/pwd_layout_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -200,7 +200,7 @@
                 android:id="@+id/ll_selectCountry"
                 android:weightSum="1"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
@@ -241,7 +241,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:id="@+id/referral_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -260,12 +260,11 @@
 
 
             <LinearLayout
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+
                 android:layout_height="wrap_content">
 
                 <CheckBox
@@ -278,7 +277,7 @@
                     android:id="@+id/txt_terms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/font_twelve"
+                    android:textSize="11dp"
                     android:gravity="center"
                     android:textColor="@color/dark_grey_color"
                     />
@@ -289,17 +288,18 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textColor="@color/dark_grey_color"
-                    android:textSize="@dimen/font_twelve" />
+                    android:textSize="11dp" />
 
             </LinearLayout>
 
             <TextView
+
                 android:id="@+id/tv_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/sign_up"
                 android:textAllCaps="true"
-                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_30"
                 style="@style/button_style"
                 />
 

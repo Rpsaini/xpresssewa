@@ -1,10 +1,12 @@
 package transfer.money.com.xpresssewa.registration;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
+import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 import transfer.money.com.xpresssewa.validation.Validation;
 
@@ -107,6 +110,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
 
             case R.id.tv_sign_in:
+                UtilClass.hideKeyboard(this);
                 email_layout_name.setError("");
                 pwd_layout_name.setError("");
                 if (email_layout_name.getEditText().getText().toString().length() == 0) {
@@ -114,6 +118,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 else if (!vd.checkEmail(email_layout_name.getEditText().getText().toString())) {
                     email_layout_name.setError("Please enter valid email address");
+
                 }
                 else if (pwd_layout_name.getEditText().getText().toString().length() == 0) {
                     pwd_layout_name.setError("Please Enter password");
@@ -182,6 +187,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+
 }
 
 

@@ -115,7 +115,7 @@
                     <EditText
                         android:maxLength="70"
                         android:id="@+id/et_email"
-                        style="@style/edittext_style"
+                         style="@style/edittext_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/your_email"
@@ -123,6 +123,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="5dp"
                     android:id="@+id/pwd_layout_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
