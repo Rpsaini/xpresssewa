@@ -105,9 +105,11 @@ public class RecipientListAdapter extends RecyclerView.Adapter<RecipientListAdap
             final JSONObject obj = moviesList.get(position);
             if(obj!=null)
             {
+                String ReciptentLastName=obj.getString("ReciptentLastName");
                 holder.tt_username_short.setText(obj.getString("CountryCode"));
                 holder.tt_bankaccountnumber.setText(obj.getString("ReciptentAccountNumber"));
-                holder.tt_username.setText(obj.getString("ReciptentName"));
+                holder.tt_username.setText(obj.getString("ReciptentName")+" "+ReciptentLastName);
+
 
                 String ReciptentSection=obj.getString("ReciptentSection");
                 if(ReciptentSection.equalsIgnoreCase("2"))
@@ -128,7 +130,8 @@ public class RecipientListAdapter extends RecyclerView.Adapter<RecipientListAdap
                     holder.tt_send.setText(Html.fromHtml("<b>" + obj.getString("Symbol") + "</b>"));
                 }
 
-                String[] splitAr = obj.getString("ReciptentName").split(" ");
+                String[] splitAr = (obj.getString("ReciptentName")+" "+ReciptentLastName).split(" ");
+
 
                 if(splitAr.length==1)
                 {

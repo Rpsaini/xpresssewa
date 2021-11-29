@@ -72,7 +72,7 @@ public class SettingsScreenActivity extends AppCompatActivity {
                     img_isTouchlockenable.setImageResource(R.drawable.button);
                     saveImpPrefrences.savePrefrencesData(SettingsScreenActivity.this, "0", UtilClass.isFingerAuth);
                 }
-                System.out.println("Is finger autrh==after="+isFingerAuth);
+
             }
 
         });

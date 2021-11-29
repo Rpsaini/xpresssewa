@@ -15,13 +15,15 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputLayout;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import org.json.JSONObject;
+
+import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 import java.util.*;
-public class ForgotPasswordWithOtpJ extends AppCompatActivity {
+public class ForgotPasswordWithOtpJ extends BaseActivity {
 
      Showtoast showtoast;
      RelativeLayout rr_mainlayout;
@@ -53,7 +55,7 @@ public class ForgotPasswordWithOtpJ extends AppCompatActivity {
         //  getOtpRequest();
         init();
     }
-        private void init() {
+        protected void init() {
         ImageView img = findViewById(R.id.headerbackbutton);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +74,11 @@ public class ForgotPasswordWithOtpJ extends AppCompatActivity {
 
             tv_submit.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
+                    input_txt_password.setError("");
+                    input_txt_confirm_password.setError("");
+
                     if (input_txt_otp.getEditText().getText().toString().length() == 0) {
                         input_txt_otp.setError("Please enter OTP");
                         return;
@@ -81,16 +87,23 @@ public class ForgotPasswordWithOtpJ extends AppCompatActivity {
                         input_txt_password.setError("Please enter password");
                         return;
 
-                    } else if (input_txt_confirm_password.getEditText().getText().toString().length() == 0) {
+                    } else if(input_txt_confirm_password.getEditText().getText().toString().length() == 0) {
                         input_txt_confirm_password.setError("Please enter Confirmed password") ;
                         return;
 
-                    } else if (!input_txt_password.getEditText().getText().toString().contentEquals(input_txt_confirm_password.getEditText().getText().toString())) {
+                    } else if(!input_txt_password.getEditText().getText().toString().contentEquals(input_txt_confirm_password.getEditText().getText().toString())) {
                         input_txt_confirm_password.setError("Confirmed password does not matched");
                         return;
-                    } else {
-                        sendToServer(input_txt_otp.getEditText().getText().toString(),input_txt_password.getEditText().getText().toString());
                     }
+                    else if(input_txt_password.getEditText().getText().toString().length() > 0 && input_txt_password.getEditText().getText().toString().length() <= 7) {
+                        input_txt_password.setError("Please enter minimum 8 character including 1 number");
+                    } else if(!containsDigit(input_txt_password.getEditText().getText().toString())) {
+                        input_txt_password.setError("Please enter minimum 8 character including 1 number");
+                    }
+                    else
+                        {
+                        sendToServer(input_txt_otp.getEditText().getText().toString(),input_txt_password.getEditText().getText().toString());
+                        }
                 }
             });
 

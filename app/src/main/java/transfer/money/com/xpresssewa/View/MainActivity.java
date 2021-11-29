@@ -66,6 +66,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import transfer.money.com.xpresssewa.Adapter.ActivityAdapter;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
@@ -648,14 +649,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-//        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-//        System.out.println("inside============" + requestCode + "===" + resultCode);
-//
-//
-//            // new ConvertImage().execute();
-//        }
-//    }
 
     static final int REQUEST_TAKE_PHOTO = 0;
     Uri photoURI;
@@ -743,15 +736,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void uploadImageToServer(String transactionId,Dialog uploadReceipt) {
+    public void uploadImageToServer(String transactionId, Dialog uploadReceipt, int index, ArrayList<JSONObject> dataObjAr, ActivityAdapter activityAdapter) {
         BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
-        System.out.println("member id===" + UtilClass.member_id);
         File file = new File(imagePath);
         if (file != null) {
 
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
-
             RequestBody requestBodyProofType = RequestBody.create(MediaType.parse("text/plain"), "UploadReceipt");
             RequestBody requestBodyMemberId = RequestBody.create(MediaType.parse("text/plain"), UtilClass.member_id);
             RequestBody transactionid = RequestBody.create(MediaType.parse("text/plain"), transactionId);
@@ -767,25 +758,34 @@ public class MainActivity extends AppCompatActivity {
             final Disposable disposable = RxAPICallHelper.call(responseObservable, new RxAPICallback<String>() {
                 @Override
                 public void onSuccess(String uploadFileResponse) {
-                    String imageName = uploadFileResponse.substring(uploadFileResponse.lastIndexOf("!") + 1, uploadFileResponse.length());
-                    System.out.println("Inside on sucess=====>" + uploadFileResponse + "===" + imageName);
-                    uploadReceipt.dismiss();
-                    mProgressDialog.dismiss();
+                  //  String imageName = uploadFileResponse.substring(uploadFileResponse.lastIndexOf("!") + 1, uploadFileResponse.length());
+                   try {
 
-
+                       uploadReceipt.dismiss();
+                       mProgressDialog.dismiss();
+                       JSONObject data = dataObjAr.get(index);
+                       data.remove("UploadReceipt");
+                       data.put("UploadReceipt", "uploaded");
+                       dataObjAr.set(index, data);
+                       activityAdapter.notifyDataSetChanged();
+                   }
+                   catch (Exception e)
+                   {
+                       e.printStackTrace();
+                   }
                 }
 
                 @Override
                 public void onFailed(Throwable throwable)
                 {
                     mProgressDialog.dismiss();
-
                 }
             });
 
 
 
         }
+        //change url for image upload
         BaseActivity.baseurl="https://demoapi.webcomsystems.net.au/";
     }
 

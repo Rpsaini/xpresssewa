@@ -45,7 +45,7 @@ public class BankDetailAdapter extends RecyclerView.Adapter<BankDetailAdapter.My
 
 
 
-        System.out.println("size------" + moviesList.length());
+
 
     }
 

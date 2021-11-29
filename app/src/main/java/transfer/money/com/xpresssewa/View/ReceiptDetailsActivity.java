@@ -61,13 +61,13 @@ public class ReceiptDetailsActivity extends AppCompatActivity {
 
                 recipient_type = getIntent().getStringExtra("recipient_type");
             }
-            Log.e(ReceiptDetailsActivity.class.getSimpleName(),"data::"+fullDetailsData);
+
 
 
             if(fullDetailsData.has("ReciptentName")){
                 JSONObject accountHolderNameObj=new JSONObject();
                 accountHolderNameObj.put("Title","Account Holder Name");
-                accountHolderNameObj.put("Answer",fullDetailsData.getString("ReciptentName"));
+                accountHolderNameObj.put("Answer",fullDetailsData.getString("ReciptentName")+" "+fullDetailsData.getString("ReciptentLastName"));
                 fullDetailsList.add(accountHolderNameObj);
             }
 

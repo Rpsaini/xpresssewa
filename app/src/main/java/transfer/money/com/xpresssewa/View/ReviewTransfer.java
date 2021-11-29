@@ -112,13 +112,12 @@ public class ReviewTransfer extends AppCompatActivity {
             //JSONObject recipientData=new JSONObject(selectedObj);
             JSONArray FullDetail = recipientObj.getJSONArray("FullDetail");
 
-
             setBankData(FullDetail);
 
-
             TextView txt_account_holder_detail = findViewById(R.id.txt_account_holder_detail);
-            //String recipientName=recipientObj.getString("Symbol")+" Bank detail for "+recipientObj.getString("ReciptentName");
-            String recipientName = recipientObj.getString("ReciptentName");
+            String ReciptentName = recipientObj.getString("ReciptentName");
+            String ReciptentLastName=recipientObj.getString("ReciptentLastName");
+            String recipientName = ReciptentName+" "+ReciptentLastName;
             txt_account_holder_detail.setText(recipientName);
 
 
@@ -141,7 +140,7 @@ public class ReviewTransfer extends AppCompatActivity {
             m.put("PaymentTypeId", PaymentTypeId);
             m.put("Amount", calculationObj.getString("AmountFrom"));
             m.put("BankRefNumber", "");
-            m.put("TransferTo", recipientObj.getString("ReciptentName"));
+            m.put("TransferTo", recipientName+" "+ReciptentLastName);
             m.put("RecipientId", recipientObj.getString("Id"));
             m.put("TransferPurpose", purposeId);
             m.put("MemberId", UtilClass.member_id);
@@ -177,7 +176,7 @@ public class ReviewTransfer extends AppCompatActivity {
             tv_usergetsAmount.setText(calculationObj.getString("AmountTo"));
             tv_usergetsAmount_symbol.setText(calculationObj.getString("ToSymbol"));
 
-            fee_applied.setText(calculationObj.getString("TotalFee"));
+            fee_applied.setText("-"+calculationObj.getString("TotalFee"));
             fee_applied_symbol.setText(calculationObj.getString("FromSymbol"));
 
             gurantee_rate.setText(calculationObj.getString("GuaranteedRate") + " hrs");
@@ -187,9 +186,9 @@ public class ReviewTransfer extends AppCompatActivity {
             tv_user_gets.setText(recipientObj.getString("ReciptentName") + " will receive");
 
             String Recipientemail = recipientObj.getString("ReciptentEmail");
-            String ReciptentName = recipientObj.getString("ReciptentName");
 
-            txt_note.setText(ReciptentName + "(" + Recipientemail + ") will be informed via email.");
+
+            txt_note.setText(ReciptentName+" "+ReciptentLastName + "(" + Recipientemail + ") will be informed via email.");
             findViewById(R.id.changeBankDetail).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

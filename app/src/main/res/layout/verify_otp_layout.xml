@@ -25,7 +25,7 @@
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight=".4"
-            app:defaultNameCode="NPL"
+            app:defaultNameCode="AUS"
             android:layout_height="match_parent" />
 
 

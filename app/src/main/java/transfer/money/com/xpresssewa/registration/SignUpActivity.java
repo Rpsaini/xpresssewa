@@ -211,14 +211,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         txt_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrls(BaseActivity.baseurl + "term-conditions");
+                openExternalUrls("https://xpressewa.com/term-conditions");
 
             }
         });
         txt_privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrls(BaseActivity.baseurl + "privacy");
+                openExternalUrls("https://xpressewa.com/privacy");
             }
         });
 
@@ -257,7 +257,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         } else if (countryName.length() == 0) {
             showtoast.showToast(SignUpActivity.this, "Select", "Please Select Country", RRsignuptoplayout);
         } else if (!checkterm.isChecked()) {
-            showtoast.showToast(SignUpActivity.this, "Select", "Please accept our Terms and Privacy policy", RRsignuptoplayout);
+            showtoast.showToast(SignUpActivity.this, "Select", "Please accept our Terms of use and Privacy policy", RRsignuptoplayout);
         } else {
             Map<String, String> m = new LinkedHashMap<>();
             m.put("Email", email_layout_name.getEditText().getText().toString());

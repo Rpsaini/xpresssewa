@@ -261,6 +261,7 @@
                 </LinearLayout>
 
                 <View
+
                     android:layout_marginStart="7dp"
                     android:layout_height="10dp"
                     android:layout_width="1dp"

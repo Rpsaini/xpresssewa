@@ -46,8 +46,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     private MainActivity ira1;
     private ArrayList<JSONObject> moviesList;
     Context mContext;
-    Random rn = new Random();
-    private int maximum=5 , minimum=0;
+//    Random rn = new Random();
+//    private int maximum=5 , minimum=0;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -139,42 +139,49 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             else
             {
                 holder.txt_pendingreceipt.setTextColor(ira1.getResources().getColor(R.color.dark_red_color));
-                holder.txt_pendingreceipt.setTag(obj.getString("TransactionId"));
+                holder.txt_pendingreceipt.setTag(position);
                 holder.txt_pendingreceipt.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view)
+                    {
+                        try {
+                            int index = Integer.parseInt(view.getTag().toString());
 
-                        SimpleDialog simpleDialog = new SimpleDialog();
-                        final Dialog confirmDialog = simpleDialog.simpleDailog(ira1, R.layout.uploadphoto_dialog, new ColorDrawable(ira1.getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
-                        ImageView txt_showimage=confirmDialog.findViewById(R.id.txt_showimage);
-                        TextView txt_uploadimage=confirmDialog.findViewById(R.id.txt_uploadimage);
-                        TextView ltxt_confirm=confirmDialog.findViewById(R.id.ltxt_confirm);
-                       ImageView txt_close=confirmDialog.findViewById(R.id.txt_close);
-                        txt_close.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                confirmDialog.dismiss();
-                            }
-                        });
+                            JSONObject dataObj = moviesList.get(index);
+                            String transactionId= dataObj.getString("TransactionId");
+                            SimpleDialog simpleDialog = new SimpleDialog();
+                            final Dialog confirmDialog = simpleDialog.simpleDailog(ira1, R.layout.uploadphoto_dialog, new ColorDrawable(ira1.getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+                            ImageView txt_showimage = confirmDialog.findViewById(R.id.txt_showimage);
+                            TextView txt_uploadimage = confirmDialog.findViewById(R.id.txt_uploadimage);
+                            TextView ltxt_confirm = confirmDialog.findViewById(R.id.ltxt_confirm);
+                            ImageView txt_close = confirmDialog.findViewById(R.id.txt_close);
+                            txt_close.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    confirmDialog.dismiss();
+                                }
+                            });
 
-                        txt_uploadimage.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                ira1.slideUpDown(txt_showimage,txt_uploadimage);
+                            txt_uploadimage.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ira1.slideUpDown(txt_showimage, txt_uploadimage);
 
-                            }
-                        });
+                                }
+                            });
+                            ltxt_confirm.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ira1.uploadImageToServer(transactionId + "", confirmDialog,index,moviesList,ActivityAdapter.this);
+                                }
+                            });
 
-                        ltxt_confirm.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                ira1.uploadImageToServer(view.getTag()+"",confirmDialog);
-                            }
-                        });
-
-
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }

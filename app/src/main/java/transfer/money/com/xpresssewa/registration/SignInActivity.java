@@ -149,18 +149,27 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                 if(obj.getBoolean("status"))
                                 {
 
-                                    SaveImpPrefrences saveImpPrefrences=new SaveImpPrefrences();
-                                    String memberId=obj.getString("MemberId");
-                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
-                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj.getString("UserName")+"",DefaultConstatnts.UserName);
-                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj+"",DefaultConstatnts.login_detail);
-                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,obj.getString("Pin")+"",DefaultConstatnts.Pin);
-                                    saveImpPrefrences.savePrefrencesData(SignInActivity.this,memberId+"", DefaultConstatnts.MemberId);
+                                    if(obj.getBoolean("IsPhoneVerified")) {
+                                        SaveImpPrefrences saveImpPrefrences = new SaveImpPrefrences();
+                                        String memberId = obj.getString("MemberId");
+                                        saveImpPrefrences.savePrefrencesData(SignInActivity.this, obj.getString("IsKycApproved") + "", DefaultConstatnts.IsKycApproved);
+                                        saveImpPrefrences.savePrefrencesData(SignInActivity.this, obj.getString("UserName") + "", DefaultConstatnts.UserName);
+                                        saveImpPrefrences.savePrefrencesData(SignInActivity.this, obj + "", DefaultConstatnts.login_detail);
+                                        saveImpPrefrences.savePrefrencesData(SignInActivity.this, obj.getString("Pin") + "", DefaultConstatnts.Pin);
+                                        saveImpPrefrences.savePrefrencesData(SignInActivity.this, memberId + "", DefaultConstatnts.MemberId);
 
-                                    Intent signIn=new Intent(SignInActivity.this, MainActivity.class);
-                                    signIn.putExtra(DefaultConstatnts.IsShowPin,"yes");
-                                    startActivity(signIn);
-                                    finishAffinity();
+                                        Intent signIn = new Intent(SignInActivity.this, MainActivity.class);
+                                        signIn.putExtra(DefaultConstatnts.IsShowPin, "yes");
+                                        startActivity(signIn);
+                                        finishAffinity();
+                                    }
+                                    else
+                                    {
+                                        Intent intent = new Intent(SignInActivity.this, MobileNumberActivity.class);
+                                        intent.putExtra("memberId", obj.getString("MemberId"));
+                                        intent.putExtra("callfrom", "signup");
+                                        startActivityForResult(intent, 1001);
+                                    }
 
 
                                 }

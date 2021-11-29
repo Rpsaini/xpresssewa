@@ -110,12 +110,14 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/email_layout_name"
                     android:layout_width="match_parent"
+                    app:helperTextTextAppearance="@color/bt_green_color"
+
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:maxLength="70"
                         android:id="@+id/et_email"
-                         style="@style/edittext_style"
+                        style="@style/edittext_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/your_email"
@@ -126,6 +128,7 @@
                     android:layout_marginTop="5dp"
                     android:id="@+id/pwd_layout_name"
                     android:layout_width="match_parent"
+                    app:passwordToggleEnabled="true"
                     android:layout_height="wrap_content">
 
                     <EditText
