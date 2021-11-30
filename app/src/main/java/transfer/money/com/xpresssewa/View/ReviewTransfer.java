@@ -210,8 +210,9 @@ public class ReviewTransfer extends AppCompatActivity {
             findViewById(R.id.txt_changeamount).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //go  to recipient list
-                    try {
+                   //go  to recipient list
+                    try
+                    {
                         Intent intent = new Intent();
                         recipientObj.put("calculation", calculationData + "");
                         intent.putExtra("data", recipientObj + "");
@@ -294,7 +295,6 @@ public class ReviewTransfer extends AppCompatActivity {
 
                 if(PaymentTypeId.equalsIgnoreCase("2"))//account transfer
                 {
-
                     m.put("PaymentId", PaymentId);
                     m.put("TransactionId", TransactionId);
                     JSONObject data=new JSONObject(m);

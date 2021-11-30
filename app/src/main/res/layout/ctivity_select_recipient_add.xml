@@ -51,7 +51,7 @@
                     android:drawablePadding="@dimen/margin_10"
                     android:drawableTint="@color/blue_bt_color"
                     android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/myself"
+                    android:drawableLeft="@drawable/myself_new"
                     android:textColor="@color/title_black_color"
                     />
                 <LinearLayout
@@ -172,7 +172,7 @@
                     android:textSize="@dimen/font_fourteen"
                     android:drawablePadding="@dimen/margin_10"
                     android:gravity="center_vertical"
-                    android:drawableLeft="@drawable/a_business"
+                    android:drawableLeft="@drawable/myself"
                     android:textColor="@color/title_black_color"
                     />
                 <LinearLayout

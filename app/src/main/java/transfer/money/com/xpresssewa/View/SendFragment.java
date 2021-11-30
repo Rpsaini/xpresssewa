@@ -274,12 +274,12 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 
 
         args = getArguments();
-        if (args.containsKey("data")) {
+        if(args.containsKey("data"))
+           {
             try {
-
                 JSONObject ob = new JSONObject(args.getString("data"));
-
-                if (ob.has("getAmountFromReviewActivity")) {
+                if(ob.has("getAmountFromReviewActivity"))
+                 {
                     recipientId = ob.getString("Id");
                     System.out.println("object===" + ob);
                     JSONObject calculationData = new JSONObject(ob.getString("calculation"));
@@ -288,9 +288,6 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 
                     showImage(calculationData.getString("sourceFlag"), from_currency_image);
                     showImage(calculationData.getString("destFlag"), to_currency_image);
-
-
-
 
                     todropdownlinear.setClickable(false);
                     receiveAmt.setEnabled(false);
