@@ -104,8 +104,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
         try {
 
             final JSONObject obj = moviesList.get(position);
-            holder.tt_from_currency.setText(obj.getString("FromAmount")+obj.getString("FromSymbol"));
-            holder.tt_to_currency.setText(obj.getString("ToAmount")+""+obj.getString("ToSymbol"));
+            holder.tt_from_currency.setText(obj.getString("FromAmount")+" "+obj.getString("FromSymbol"));
+            holder.tt_to_currency.setText(obj.getString("ToAmount")+" "+obj.getString("ToSymbol"));
 
             String UploadReceipt =obj.getString("UploadReceipt");
             if(UploadReceipt.length()>1)
@@ -258,7 +258,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
                             Intent intent = new Intent(ira1, TransactionDetailView.class);
                             intent.putExtra("id", v.getTag() + "");
                             intent.putExtra("TransferTo", obj.getString("TransferTo"));
-                            intent.putExtra("ToAmount", obj.getString("ToAmount")+""+obj.getString("ToSymbol"));
+                            intent.putExtra("ToAmount", obj.getString("ToAmount")+" "+obj.getString("ToSymbol"));
                             ira1.startActivity(intent);
                         }
                         catch (Exception e)

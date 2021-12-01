@@ -19,6 +19,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -47,6 +48,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.interfaces.ApiProduction;
 import transfer.money.com.xpresssewa.interfaces.ImageUpload;
@@ -89,9 +91,24 @@ public class MessageActivity extends AppCompatActivity {
         TextView front_id_message = findViewById(R.id.front_id_message);
         TextView backidentitymessage = findViewById(R.id.backidentitymessage);
         TextView addressidentitymessage = findViewById(R.id.addressidentitymessage);
-        front_id_message.setText("Upload the front side of your " + Title);
-        backidentitymessage.setText("Upload the back side of your " + Title);
-        backidentitymessage.setText("Upload Address proof Image");
+        TextView txt_note = findViewById(R.id.txt_note);
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> "+Title+"</font>", Html.FROM_HTML_MODE_COMPACT));
+            backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> "+Title+"</font>", Html.FROM_HTML_MODE_COMPACT));
+            addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>", Html.FROM_HTML_MODE_COMPACT));
+            txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents.", Html.FROM_HTML_MODE_COMPACT));
+
+
+        } else {
+            front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> "+Title+"</font>"));
+            backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> "+Title+"</font>"));
+            addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>"));
+            txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents."));
+        }
+
+
 
         iv_screenshot = findViewById(R.id.iv_screenshot_front);
         iv_screenshot_back = findViewById(R.id.iv_screenshot_back);
@@ -380,26 +397,28 @@ public class MessageActivity extends AppCompatActivity {
         File file3 = new File(imagePathAddress);
         if (file != null)
         {
+            BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);//front
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
             RequestBody requestBody2 = RequestBody.create(MediaType.parse("image/*"), file2);//back image
             MultipartBody.Part body2 = MultipartBody.Part.createFormData("file2", file2.getName(), requestBody2);
 
-
-
             RequestBody requestBody3 = RequestBody.create(MediaType.parse("image/*"), file3);//address proff
             MultipartBody.Part body3 = MultipartBody.Part.createFormData("file3", file3.getName(), requestBody3);
 
             RequestBody requestBodyProofType = RequestBody.create(MediaType.parse("text/plain"), "1");
             RequestBody requestBodyMemberId = RequestBody.create(MediaType.parse("text/plain"), UtilClass.member_id);
+
             RequestBody requestBodyMethod = RequestBody.create(MediaType.parse("text/plain"), "ProofImage");
 
             ImageUpload contestService = ApiProduction.getInstance(this).provideService(ImageUpload.class);
             Observable<String> responseObservable = contestService.uploadImage(requestBodyProofType, requestBodyMemberId, requestBodyMethod, body,body2,body3);
 
 
-            final ProgressDialog mProgressDialog = new ProgressDialog(this);
+             final ProgressDialog mProgressDialog = new ProgressDialog(this);
+             mProgressDialog.setCancelable(false);
+             mProgressDialog.setTitle("Please wait...");
              mProgressDialog.show();
 
             Disposable disposable = RxAPICallHelper.call(responseObservable, new RxAPICallback<String>() {
@@ -454,7 +473,7 @@ public class MessageActivity extends AppCompatActivity {
             });
 
 
-
+            BaseActivity.baseurl="https://demoapi.webcomsystems.net.au/";
         }
 
 

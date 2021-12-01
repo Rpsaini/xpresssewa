@@ -220,7 +220,7 @@ public class AddBalance extends AppCompatActivity {
                         for(int x=0;x<CurrencyList.length();x++)
                         {
                             JSONObject currencyData=CurrencyList.getJSONObject(x);
-                            System.out.println("Total balance===="+currencyData.getString("Symbol")+"=="+DefaultFromSymbol);
+
                             if(currencyData.getString("Symbol").equalsIgnoreCase(DefaultFromSymbol))
                             {
                                 toSymbolImage=currencyData.getString("FlagImage");

@@ -51,6 +51,7 @@
 
 
     <TextView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Or,pay another way"
@@ -83,6 +84,7 @@
             ></TextView>
 
         <TextView
+            android:id="@+id/txt_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -145,7 +147,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AccountNumber"
+            android:text="Account Number"
             android:gravity="left"
             android:textColor="@color/black_color"
             android:textSize="14dp"
@@ -185,7 +187,7 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="UniqueId"
+            android:text="Payment description"
             android:gravity="left"
             android:textColor="@color/black_color"
             android:textSize="14dp"

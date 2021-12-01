@@ -71,7 +71,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="First name and middle name of the account holder"
-                      android:textSize="@dimen/font_sixteen"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                        />
               </com.google.android.material.textfield.TextInputLayout>
@@ -88,8 +87,7 @@
                       style="@style/edittext_style"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:hint="Last Name of the account holder"
-                      android:textSize="@dimen/font_sixteen"
+                      android:hint="Last name of the account holder"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                       />
               </com.google.android.material.textfield.TextInputLayout>
@@ -110,7 +108,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="First name and middle name of the joint account holder"
-                      android:textSize="@dimen/font_sixteen"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                       />
               </com.google.android.material.textfield.TextInputLayout>
@@ -129,7 +126,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="Last Name of the joint account holder"
-                      android:textSize="@dimen/font_sixteen"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                       />
               </com.google.android.material.textfield.TextInputLayout>
@@ -154,7 +150,7 @@
                       android:hint="@string/business_name"
                       android:inputType="textEmailAddress"
                       android:maxLength="70"
-                      android:textSize="@dimen/font_sixteen" />
+                       />
               </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -172,7 +168,7 @@
                       android:hint="@string/your_email"
                       android:inputType="textEmailAddress"
                       android:maxLength="70"
-                      android:textSize="@dimen/font_sixteen" />
+                      />
               </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -236,6 +232,7 @@
                       android:layout_width="0dp"
                       android:layout_weight=".4"
                       app:defaultNameCode="NPL"
+                      style="@style/edittext_style"
                       android:layout_height="match_parent" />
 
 
@@ -252,8 +249,7 @@
                           android:layout_weight=".6"
                           android:layout_height="match_parent"
                           android:hint="@string/mobile"
-                          android:textSize="@dimen/font_sixteen"
-                           />
+                          />
 
 
               </LinearLayout>
@@ -274,7 +270,6 @@
                           android:layout_width="match_parent"
                           android:layout_height="45dp"
                           android:hint="@string/state"
-                          android:textSize="@dimen/font_sixteen"
                           android:inputType="textEmailAddress" />
 
 
@@ -292,7 +287,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="@string/city"
-                      android:textSize="@dimen/font_sixteen"
                       android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                       android:inputType="textEmailAddress" />
               </com.google.android.material.textfield.TextInputLayout>
@@ -312,7 +306,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="Post code(Optional)"
-                      android:textSize="@dimen/font_sixteen"
                       android:inputType="number" />
               </com.google.android.material.textfield.TextInputLayout>
 
@@ -324,18 +317,16 @@
                   android:id="@+id/recipient_address"
                   android:layout_width="match_parent"
                   android:paddingLeft="5dp"
-
                   android:layout_height="wrap_content">
 
                   <EditText
-
                       style="@style/edittext_style"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:hint="@string/address"
                       android:imeOptions="actionDone"
                       android:maxLines="1"
-                      android:textSize="@dimen/font_sixteen" />
+                       />
               </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -354,7 +345,7 @@
                       android:hint="Relation to benificary"
                       android:imeOptions="actionDone"
                       android:maxLines="1"
-                      android:textSize="@dimen/font_sixteen" />
+                       />
               </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -409,7 +400,7 @@
                       android:text="@string/aud"
                       style="@style/edittext_style"
                       android:textColor="@color/textcolor"
-                      android:textSize="@dimen/font_sixteen"/>
+                      />
                   <ImageView
                       android:layout_gravity="center"
                       android:tint="@color/black_color"
@@ -431,7 +422,7 @@
                   android:text=""
                   android:textColor="@color/grey_color"
                   android:gravity="center|left"
-                  android:textSize="@dimen/font_sixteen" />
+                  style="@style/edittext_style" />
           </LinearLayout>
 
 

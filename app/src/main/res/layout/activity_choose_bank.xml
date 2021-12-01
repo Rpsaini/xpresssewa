@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:id="@+id/ll_activitylayout"
+    android:background="@color/white_20"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Select Bank"
+        android:text="Select method of payment"
         android:textSize="17dp"
         android:textColor="@color/black_color"
         ></TextView>
@@ -35,6 +36,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+       android:background="@color/white"
         android:layout_below="@+id/rr_Selectbank"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

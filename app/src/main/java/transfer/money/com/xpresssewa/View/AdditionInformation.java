@@ -95,64 +95,64 @@ public Dialog reasonDialog;
                     new Showtoast().showToast(AdditionInformation.this, "Required", "Select a reason", findViewById(R.id.ll_linearlayoutadditional));
                      return;
                 }
-               else  if(selected_reference.length()==0)
-                {
-                    new Showtoast().showToast(AdditionInformation.this, "Required", "Select reference", findViewById(R.id.ll_linearlayoutadditional));
-                    return;
-                }
+//               else  if(selected_reference.length()==0)
+//                {
+//                    new Showtoast().showToast(AdditionInformation.this, "Required", "Select reference", findViewById(R.id.ll_linearlayoutadditional));
+//                    return;
+//                }
                 else if(ll_if_other_transfer.getVisibility()==View.VISIBLE)
                 {
                     if(txt_other_rason_of_transfer.getText().length()<=0)
                     {
                         new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reason", findViewById(R.id.ll_linearlayoutadditional));
                     }
-                    else if(ll_if_other.getVisibility()==View.VISIBLE)
-                    {
-                        if(txt_enter_other.getText().length()==0)
-                        {
-                            new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
-                        }
-                    }
+//                    else if(ll_if_other.getVisibility()==View.VISIBLE)
+//                    {
+//                        if(txt_enter_other.getText().length()==0)
+//                        {
+//                            new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
+//                        }
+//                    }
                     else
                     {
                         Intent intent=new Intent(AdditionInformation.this,ChoosePaymentOptions.class);
                         intent.putExtra("calculationData",getIntent().getStringExtra("calculationData"));
                         intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
                         intent.putExtra("purposeID",selected_reason_Id);
-                        intent.putExtra("refrenceId",selected_reference);
+                        intent.putExtra("refrenceId","2");//selected_reference);
                         intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
-                        intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
+                        intent.putExtra(UtilClass.transferReference,"property");//txt_enter_other.getText().toString());
                         startActivityForResult(intent,1001);
                     }
 
                 }
-                else if(ll_if_other.getVisibility()==View.VISIBLE)
-                {
-                    if(txt_enter_other.getText().length()==0)
-                    {
-                        new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
-                    }
-                    else
-                    {
-                        Intent intent=new Intent(AdditionInformation.this,ChoosePaymentOptions.class);
-                        intent.putExtra("calculationData",getIntent().getStringExtra("calculationData"));
-                        intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
-                        intent.putExtra("purposeID",selected_reason_Id);
-                        intent.putExtra("refrenceId",selected_reference);
-                        intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
-                        intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
-                        startActivityForResult(intent,1001);
-                    }
-                }
+//                else if(ll_if_other.getVisibility()==View.VISIBLE)
+//                {
+//                    if(txt_enter_other.getText().length()==0)
+//                    {
+//                        new Showtoast().showToast(AdditionInformation.this, "Required", "Please give us other reference", findViewById(R.id.ll_linearlayoutadditional));
+//                    }
+//                    else
+//                    {
+//                        Intent intent=new Intent(AdditionInformation.this,ChoosePaymentOptions.class);
+//                        intent.putExtra("calculationData",getIntent().getStringExtra("calculationData"));
+//                        intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
+//                        intent.putExtra("purposeID",selected_reason_Id);
+//                        intent.putExtra("refrenceId",selected_reference);
+//                        intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
+//                        intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
+//                        startActivityForResult(intent,1001);
+//                    }
+//                }
                 else
                 {
                     Intent intent=new Intent(AdditionInformation.this,ChoosePaymentOptions.class);
                     intent.putExtra("calculationData",getIntent().getStringExtra("calculationData"));
                     intent.putExtra("selectedRecipientData",getIntent().getStringExtra("selectedRecipientData"));
                     intent.putExtra("purposeID",selected_reason_Id);
-                    intent.putExtra("refrenceId",selected_reference);
+                    intent.putExtra("refrenceId","2");//selected_reference);
                     intent.putExtra(UtilClass.transferReason,txt_other_rason_of_transfer.getText().toString());
-                    intent.putExtra(UtilClass.transferReference,txt_enter_other.getText().toString());
+                    intent.putExtra(UtilClass.transferReference,"property");//txt_enter_other.getText().toString());
                     startActivityForResult(intent,1001);
                 }
             }

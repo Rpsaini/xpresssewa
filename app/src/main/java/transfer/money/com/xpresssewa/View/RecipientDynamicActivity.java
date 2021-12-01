@@ -335,6 +335,7 @@ public class RecipientDynamicActivity extends AppCompatActivity {
                    if (s.length() > 3) {
                        Intent intent = new Intent(RecipientDynamicActivity.this, LocationPickerActivity.class);
                        intent.putExtra("text", s.toString());
+                       intent.putExtra("code", "NP");
                        startActivityForResult(intent, 1001);
                        hideKeyboard(RecipientDynamicActivity.this);
                    }

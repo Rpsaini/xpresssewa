@@ -67,7 +67,6 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-
                         style="@style/edittext_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -186,7 +185,7 @@
                     android:layout_weight=".35"
                     android:layout_width="0dp"
                     app:textSize="14dp"
-                    app:contentColor="@color/black_color"
+                       app:contentColor="@color/black_color"
                     android:layout_height="match_parent" />
 
                    <com.google.android.material.textfield.TextInputLayout
@@ -202,7 +201,7 @@
                                                 android:inputType="number"
                                                 android:paddingStart="1dp"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="40dp"
+                                                android:layout_height="match_parent"
                                                 android:layout_marginLeft="4dp"
                                                 android:background="@android:color/transparent"
                                                 android:gravity="center|left"
@@ -435,16 +434,14 @@
                     android:visibility="gone"
                     android:id="@+id/et_other_occupation"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/margin_40"
+                    android:layout_marginTop="@dimen/margin_20"
                     android:layout_height="wrap_content">
 
                     <EditText
-
                         style="@style/edittext_style"
                         android:layout_width="match_parent"
-
                         android:layout_height="wrap_content"
-                        android:hint="@string/first_name"
+                        android:hint="Enter your occupation name "
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 

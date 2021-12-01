@@ -1,10 +1,10 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="50dp"
     android:paddingTop="10dp"
     android:paddingLeft="3dp"
-    android:textSize="16dp"
     android:gravity="bottom"
     android:paddingBottom="7dp"
+    style="@style/edittext_style"
     android:textColor="@color/black_color" />

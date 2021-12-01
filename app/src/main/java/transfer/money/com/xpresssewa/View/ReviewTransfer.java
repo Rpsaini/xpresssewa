@@ -155,7 +155,7 @@ public class ReviewTransfer extends AppCompatActivity {
             //params
 
 
-            transferamount = calculationObj.getString("AmountFrom") + calculationObj.getString("FromSymbol");
+            transferamount = calculationObj.getString("AmountFrom") +" "+ calculationObj.getString("FromSymbol");
             transFerto = recipientObj.getString("ReciptentName");
             calculationObj.getString("AmountTo");
 
@@ -188,7 +188,7 @@ public class ReviewTransfer extends AppCompatActivity {
             String Recipientemail = recipientObj.getString("ReciptentEmail");
 
 
-            txt_note.setText(ReciptentName+" "+ReciptentLastName + "(" + Recipientemail + ") will be informed via email.");
+           // txt_note.setText(ReciptentName+" "+ReciptentLastName + "(" + Recipientemail + ") will be informed via email.");
             findViewById(R.id.changeBankDetail).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

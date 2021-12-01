@@ -2,6 +2,8 @@ package transfer.money.com.xpresssewa.Adapter;
 
 import android.content.Context;
 
+import android.os.Build;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,8 +96,27 @@ public class ChoosePaymentOptionAdapter extends RecyclerView.Adapter<ChoosePayme
            String exactfees= obj.getString("exactfees");
 
            holder.txt_paymentidname.setText(pay_Method);
-           holder.txt_feededuction.setText(exactfees+calculationObj.getString("FromSymbol")+" is total fee,so recipient will gets "+amounttosybmol+". Should arrive there by "+ProcessingDays+".");
-           holder.tv_exactfee.setText("Fees: "+obj.getString("totalfee")+""+calculationObj.getString("FromSymbol"));
+           holder.txt_feededuction.setText(obj.getString("totalfee")+" "+calculationObj.getString("FromSymbol")+" is total fee, so recipient will get "+amounttosybmol+". Should arrive there by "+ProcessingDays+".");
+           holder.tv_exactfee.setText("Fees: "+obj.getString("totalfee")+" "+calculationObj.getString("FromSymbol"));
+
+
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                holder.txt_feededuction.setText(Html.fromHtml("<b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+"  "+calculationObj.getString("FromSymbol")+"</font><b> is total fee, so recipient will get <font color='#3F70BC'>"+amounttosybmol+".</font> Should arrive there by <font color='#3F70BC'>"+ProcessingDays+".</font>",Html.FROM_HTML_MODE_COMPACT));
+                holder.tv_exactfee.setText(Html.fromHtml("Fees: <b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+" "+calculationObj.getString("FromSymbol")+"</font>",Html.FROM_HTML_MODE_COMPACT));
+
+
+
+            } else {
+
+                holder.txt_feededuction.setText(Html.fromHtml("<b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+"  "+calculationObj.getString("FromSymbol")+"</font><b> is total fee, so recipient will get <font color='#3F70BC'>"+amounttosybmol+".</font> Should arrive there by <font color='#3F70BC'>"+ProcessingDays+".</font>"));
+                holder.tv_exactfee.setText(Html.fromHtml("Fees: <b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+" "+calculationObj.getString("FromSymbol")+"</font>"));
+
+            }
+
+
+
+
 
            holder.ll_selectbank.setOnClickListener(new View.OnClickListener() {
                @Override

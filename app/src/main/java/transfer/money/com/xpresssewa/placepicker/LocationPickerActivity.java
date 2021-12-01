@@ -241,7 +241,7 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
         if (getIntent().hasExtra("filterby")) {
             urlString.append("&types=(cities)");
         } else {
-            urlString.append("&components=country:NP");
+            urlString.append("&components=country:"+getIntent().getStringExtra("code"));
         }
 
 
@@ -430,11 +430,14 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
                             if (objData.has("result")) {
                                 JSONObject resultObj = objData.getJSONObject("result");
 
-                                if (resultObj.has("geometry")) {
+                                System.out.println("Result===="+resultObj);
+                                if(resultObj.has("geometry"))
+                                  {
                                     JSONObject geometryData = resultObj.getJSONObject("geometry");
                                     JSONObject locationData = geometryData.getJSONObject("location");
                                     String lat = locationData.getString("lat");
                                     String lng = locationData.getString("lng");
+
 
 
                                     Intent intent = new Intent();

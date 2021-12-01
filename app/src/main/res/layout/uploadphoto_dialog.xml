@@ -90,8 +90,9 @@
         <ImageView
             android:id="@+id/txt_showimage"
             android:layout_marginLeft="10dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
             android:src="@drawable/no_image_select"></ImageView>
 
 

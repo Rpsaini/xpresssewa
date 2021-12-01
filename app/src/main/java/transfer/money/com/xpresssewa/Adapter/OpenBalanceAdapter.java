@@ -90,8 +90,8 @@ public class OpenBalanceAdapter extends RecyclerView.Adapter<OpenBalanceAdapter.
                 holder.tt_username.setText(Html.fromHtml("To <b>" + obj.getString("TransferTo") + "</b>"));
             }
 
-            holder.tt_from_currency.setText(obj.getString("FromAmount") + obj.getString("FromSymbol"));
-            holder.tt_to_currency.setText(obj.getString("ToAmount") + "" + obj.getString("ToSymbol"));
+            holder.tt_from_currency.setText(obj.getString("FromAmount") +" "+ obj.getString("FromSymbol"));
+            holder.tt_to_currency.setText(obj.getString("ToAmount") + " " + obj.getString("ToSymbol"));
 
             if (obj.getString("Type").equalsIgnoreCase("1")) {
                 holder.tt_status.setText("InProgress");

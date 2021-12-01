@@ -416,6 +416,7 @@
                 </LinearLayout>
 
                   <LinearLayout
+                      android:weightSum="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -429,16 +430,30 @@
 
 
                 <TextView
+                    android:layout_weight=".3"
                     android:paddingStart="5dp"
                     android:id="@+id/totalfee"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textColor="@color/grey_color"
+                    android:textColor="@color/blue_bt_color"
+                    android:textStyle="bold"
                     android:textSize="@dimen/font_twelve"
 
                     />
 
+
+                      <TextView
+
+                          android:layout_weight=".65"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:text="Total Fee"
+                          android:textStyle="bold"
+                          android:textColor="@color/blue_bt_color"
+                          android:textSize="@dimen/font_twelve"
+
+                          />
                   </LinearLayout>
                 <View
                     android:layout_marginStart="7dp"
@@ -450,6 +465,7 @@
 
 
                 <LinearLayout
+                    android:weightSum="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -461,13 +477,25 @@
                         android:background="@drawable/ring_drawable"
                         ></ImageView>
                     <TextView
+                        android:layout_weight=".3"
                         android:paddingStart="5dp"
                         android:id="@+id/amountconverted"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:text="0"
                         android:textColor="@color/textcolor"
+                        android:textSize="@dimen/font_twelve"
+
+                        />
+
+
+                    <TextView
+                        android:layout_weight=".65"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Amount will convert"
+                        android:textColor="@color/grey_color"
                         android:textSize="@dimen/font_twelve"
 
                         />
@@ -485,6 +513,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:weightSum="1"
                     >
                     <ImageView
                         android:layout_gravity="center"
@@ -495,13 +524,23 @@
                 <TextView
                     android:paddingStart="5dp"
                     android:id="@+id/tv_guaranteed_rate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight=".3"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textSize="@dimen/font_twelve"
                     android:textColor="@color/grey_color"
                     />
+                    <TextView
+                        android:layout_weight=".65"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Conversion rate (24 hrs)"
+                        android:textColor="@color/skybluecolorcode"
+                        android:textSize="@dimen/font_twelve"
 
+
+                        />
 
 </LinearLayout>
 

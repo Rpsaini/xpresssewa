@@ -64,6 +64,12 @@ public class ForgotPasswordWithOtpJ extends BaseActivity {
             }
         });
 
+        findViewById(R.id.tv_sign_in).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
             TextInputLayout input_txt_otp = findViewById(R.id.input_txt_otp);
             TextInputLayout input_txt_password = findViewById(R.id.input_txt_password);

@@ -94,6 +94,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
         showtoast = new Showtoast();
         cpp = (CountryCodePicker) findViewById(R.id.ccp);
         txt_updateNumber =  findViewById(R.id.txt_updateNumber);
+        et_other_occupation =  findViewById(R.id.et_other_occupation);
 
 
         init();
@@ -149,6 +150,10 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 if(dataObj.has("Gender"))
                 {
                     gender = dataObj.getString("Gender");
+                    if(gender.equalsIgnoreCase("0"))
+                    {
+                        gender="1";
+                    }
                 }
                 recipient_statecodeStr=dataObj.getString("StateCode");
                 CreateBuisnessProfile.profileData = new LinkedHashMap<>();
@@ -183,6 +188,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
 
 
 
+
                 getState(new HashMap<>());
                 setOccupation(dataObj.getString("OcuupationId"),dataObj.getJSONArray("OccupationList"));
 
@@ -205,6 +211,19 @@ public class CreatePersonalProfile extends AppCompatActivity {
 
                             JSONObject occupationObj = OccupationList.getJSONObject(position-1);
                             CreateBuisnessProfile.profileData.put("OcuupationId", occupationObj.getString("Id"));
+                            if(occupationObj.getString("Id").equalsIgnoreCase("7"))
+                            {
+                                et_other_occupation.setVisibility(View.VISIBLE);
+                                et_other_occupation.getEditText().setText(dataObj.getString("OtherOcuupation"));
+                            }
+                            else
+                            {
+                                et_other_occupation.setVisibility(View.GONE);
+
+                                et_other_occupation.getEditText().setText("");
+                            }
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -316,7 +335,8 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     return;
                 }
 
-                if (!rr_Male.isChecked() && !rr_female.isChecked() && !rr_other.isChecked()) {
+                if (!rr_Male.isChecked() && !rr_female.isChecked() && !rr_other.isChecked())
+                {
                     showtoast.showToast(CreatePersonalProfile.this, "Required", "Select your Gender", ll_main_layout);
                     return;
                 }
@@ -353,15 +373,29 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     return;
                 }
 
-//                if (et_mobile.getEditText().getText().toString().length() == 0) {
-//                    et_mobile.setError("Enter Mobile Number");
-//                    return;
-//                }
+
 
 
                 if (occupation_spinner.getSelectedItemPosition() == 0) {
                     showtoast.showToast(CreatePersonalProfile.this, "Error", "Select Occupation", ll_main_layout);
+                return;
                 }
+
+                if(et_other_occupation.getVisibility()==View.VISIBLE)
+                {
+                    if(et_other_occupation.getEditText().getText().toString().length()==0)
+                    {
+                        et_other_occupation.setError("Enter your occupation name");
+                        return;
+                    }
+                    else {
+                        CreateBuisnessProfile.profileData.put("OtherOcuupation", et_other_occupation.getEditText().getText().toString());
+                    }
+
+
+
+                }
+
 
 
                 CreateBuisnessProfile.profileData.put("FirstName", et_user_name.getEditText().getText() + "");
@@ -375,6 +409,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getText().toString());
                 CreateBuisnessProfile.profileData.put("StateCode", recipient_statecodeStr);
                 CreateBuisnessProfile.profileData.put("State", recipient_stateStr);
+
 
 
 
@@ -577,6 +612,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     if (s.length() > 3) {
                         Intent intent = new Intent(CreatePersonalProfile.this, LocationPickerActivity.class);
                         intent.putExtra("text", s.toString());
+                        intent.putExtra("code", "AUS");
                         startActivityForResult(intent, 1003);
 
                     }

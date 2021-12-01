@@ -185,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_20"
-            android:text="Send OTP"
+            android:text="Resend OTP"
             android:textStyle="bold"
             android:textSize="@dimen/font_fifteen"
             android:textColor="@color/blue_bt_color"

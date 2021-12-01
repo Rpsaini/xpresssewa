@@ -996,42 +996,48 @@ public class SendFragment extends Fragment implements View.OnClickListener {
             isent.setText(FromAmount);
 
 
+               totalfee.setText(TotalFee +" "+ tv_currency_from.getText().toString());
+               rate.setText(Fees +" "+ tv_currency_from.getText().toString());
+               amountconverted.setText(ConvertAmount +" "+ tv_currency_from.getText().toString());
+               tv_guaranteed_rate.setText( ConversionRate+"");
+               ourfee.setText( OurFees +" "+ tv_currency_from.getText().toString());
 
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-               {
-                totalfee.setText(Html.fromHtml("<b>" + TotalFee +" "+ tv_currency_from.getText().toString()+"</b> "  +" Total Fees", Html.FROM_HTML_MODE_COMPACT));
-                rate.setText(Html.fromHtml("<b>" + Fees +" "+ tv_currency_from.getText().toString()+"</b> " , Html.FROM_HTML_MODE_COMPACT));
-                amountconverted.setText(Html.fromHtml("<b>" + ConvertAmount +" "+ tv_currency_from.getText().toString()+"</b> " +" Amount Will converted ", Html.FROM_HTML_MODE_COMPACT));
-                tv_guaranteed_rate.setText(Html.fromHtml("<b>" + ConversionRate +   "</b> <font color=\"#226ED4\">Conversion Rate ("+GuaranteedRate+" hrs) </font>", Html.FROM_HTML_MODE_COMPACT));
-                ourfee.setText(Html.fromHtml("<b>" + OurFees +" "+ tv_currency_from.getText().toString()+"</b> " +" Our Fee", Html.FROM_HTML_MODE_COMPACT));
-                txt_extimation.setText(Html.fromHtml("Should arrive by <font color=\"#226ED4\"> <b>" + ProcessingDays + "</b></font> ", Html.FROM_HTML_MODE_COMPACT));
-                if(TwFee.length() > 0)
-                {
-                    if (Double.parseDouble(TwFee) > 0)
-                    {
-                        ll_transfer_wise_fee.setVisibility(View.VISIBLE);
-                        transferwiseline.setVisibility(View.VISIBLE);
-                        transfer_wise_fee.setText(Html.fromHtml("  <b>" + TwFee + tv_currency_from.getText().toString()+"</b> "+" Transfer Wise fee", Html.FROM_HTML_MODE_COMPACT));
-                    }
-                }
-            }
-            else
-                {
-                totalfee.setText(Html.fromHtml("<b>" + TotalFee +" "+ tv_currency_from.getText().toString()+"</b> " +" Total Fees"));
-                rate.setText(Html.fromHtml("<b>" + Fees +" "+ tv_currency_from.getText().toString()+"</b> " ));
-                amountconverted.setText(Html.fromHtml(" <b>" + ConvertAmount +" "+ tv_currency_from.getText().toString()+"</b> " +" Amount Will converted"));
-                tv_guaranteed_rate.setText(Html.fromHtml("  <b>" + ConversionRate  + "</b><font color=\"#226ED4\"> Conversion rate ("+GuaranteedRate+" hrs)</font>"));
-                ourfee.setText(Html.fromHtml(" <b>" + OurFees +" "+ tv_currency_from.getText().toString()+"</b>"  +" Our Fee"));
-                txt_extimation.setText(Html.fromHtml("Should arrive by <font color=\"#226ED4\"> <b>" + ProcessingDays + "</b> </font>"));
-                if (TwFee.length() > 0) {
-                    if (Double.parseDouble(TwFee) > 0) {
-                        ll_transfer_wise_fee.setVisibility(View.VISIBLE);
-                        transferwiseline.setVisibility(View.VISIBLE);
-                        transfer_wise_fee.setText(Html.fromHtml(" <b>" + TwFee + "</b> Transfer Wise fee"));
-                    }
-                }
 
-            }
+//            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+//               {
+//                totalfee.setText(Html.fromHtml("<b>" + TotalFee +" "+ tv_currency_from.getText().toString()+"</b> "  +" Total Fees", Html.FROM_HTML_MODE_COMPACT));
+//                rate.setText(Html.fromHtml("<b>" + Fees +" "+ tv_currency_from.getText().toString()+"</b> " , Html.FROM_HTML_MODE_COMPACT));
+//                amountconverted.setText(Html.fromHtml("<b>" + ConvertAmount +" "+ tv_currency_from.getText().toString()+"</b> " +" Amount Will converted ", Html.FROM_HTML_MODE_COMPACT));
+//                tv_guaranteed_rate.setText(Html.fromHtml("<b>" + ConversionRate +   "</b> <font color=\"#226ED4\">Conversion Rate ("+GuaranteedRate+" hrs) </font>", Html.FROM_HTML_MODE_COMPACT));
+//                ourfee.setText(Html.fromHtml("<b>" + OurFees +" "+ tv_currency_from.getText().toString()+"</b> " +" Our Fee", Html.FROM_HTML_MODE_COMPACT));
+//                txt_extimation.setText(Html.fromHtml("Should arrive by <font color=\"#226ED4\"> <b>" + ProcessingDays + "</b></font> ", Html.FROM_HTML_MODE_COMPACT));
+//                if(TwFee.length() > 0)
+//                {
+//                    if (Double.parseDouble(TwFee) > 0)
+//                    {
+//                        ll_transfer_wise_fee.setVisibility(View.VISIBLE);
+//                        transferwiseline.setVisibility(View.VISIBLE);
+//                        transfer_wise_fee.setText(Html.fromHtml("  <b>" + TwFee + tv_currency_from.getText().toString()+"</b> "+" Transfer Wise fee", Html.FROM_HTML_MODE_COMPACT));
+//                    }
+//                }
+//            }
+//            else
+//                {
+//                totalfee.setText(Html.fromHtml("<b>" + TotalFee +" "+ tv_currency_from.getText().toString()+"</b> " +" Total Fees"));
+//                rate.setText(Html.fromHtml("<b>" + Fees +" "+ tv_currency_from.getText().toString()+"</b> " ));
+//                amountconverted.setText(Html.fromHtml(" <b>" + ConvertAmount +" "+ tv_currency_from.getText().toString()+"</b> " +" Amount Will converted"));
+//                tv_guaranteed_rate.setText(Html.fromHtml("  <b>" + ConversionRate  + "</b><font color=\"#226ED4\"> Conversion rate ("+GuaranteedRate+" hrs)</font>"));
+//                ourfee.setText(Html.fromHtml(" <b>" + OurFees +" "+ tv_currency_from.getText().toString()+"</b>"  +" Our Fee"));
+//                txt_extimation.setText(Html.fromHtml("Should arrive by <font color=\"#226ED4\"> <b>" + ProcessingDays + "</b> </font>"));
+//                if (TwFee.length() > 0) {
+//                    if (Double.parseDouble(TwFee) > 0) {
+//                        ll_transfer_wise_fee.setVisibility(View.VISIBLE);
+//                        transferwiseline.setVisibility(View.VISIBLE);
+//                        transfer_wise_fee.setText(Html.fromHtml(" <b>" + TwFee + "</b> Transfer Wise fee"));
+//                    }
+//                }
+//
+//            }
 
 
             String ShowDropDown = obj.getString("ShowDropDown");
