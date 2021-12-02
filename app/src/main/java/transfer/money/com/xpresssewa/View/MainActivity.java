@@ -82,8 +82,9 @@ import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.util.IsAnimationEndedCallback;
 import transfer.money.com.xpresssewa.util.UtilClass;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
+    public int tabCount=0;
 
     @BindView(R.id.navigationView)
     BottomNavigationView navigationView;
@@ -151,24 +152,6 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception e) {
 
         }
-
-
-        String isKycApproved=new SaveImpPrefrences().reterivePrefrence(this, DefaultConstatnts.IsKycApproved).toString();
-        if(isKycApproved.equalsIgnoreCase("3"))//approved
-        {
-             // done
-        }
-        else if(isKycApproved.equalsIgnoreCase("2"))
-        {
-            //Myprofile
-        }
-        else if(isKycApproved.equalsIgnoreCase("1"))
-        {
-            //inprocess  at invoice
-        }
-
-
-
         init();
     }
 
@@ -185,10 +168,9 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                // if(menuItem)
                 bottomMenu(menuItem);
                 return false;
-                //My Contests
+
             }
         });
 
@@ -218,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void replaceMainFragment(Fragment upcoming, String tag) {
 
+
         ft_main = getSupportFragmentManager().beginTransaction();
         ft_main.replace(R.id.fl_top, upcoming);
         //ft_main.addToBackStack(tag);
@@ -226,24 +209,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void bottomMenu(MenuItem menuItem)
     {
-
         menuItem.setChecked(true);
-        switch (menuItem.getItemId())
-        {
+        switch (menuItem.getItemId()) {
 
             case R.id.menu_activity:
                 ActivityFragment activityFragment = new ActivityFragment();
-                replaceMainFragment(activityFragment,"activity");
+                replaceMainFragment(activityFragment, "activity");
                 break;
             case R.id.menu_account:
                 AccountFragment accountFragment = new AccountFragment();
-                replaceMainFragment(accountFragment,"account");
+                replaceMainFragment(accountFragment, "account");
                 break;
             case R.id.menu_send:
                 SendFragment sendFragment = new SendFragment();
                 Bundle args = new Bundle();
                 sendFragment.setArguments(args);
-                replaceMainFragment(sendFragment,"send");
+                replaceMainFragment(sendFragment, "send");
                 break;
 
             case R.id.menu_recipients:
@@ -251,30 +232,35 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bd = new Bundle();
                 bd.putString("symbol", "");
                 recipientFragment.setArguments(bd);
-                replaceMainFragment(recipientFragment,"recipient");
+                replaceMainFragment(recipientFragment, "recipient");
 
                 break;
             case R.id.menu_invite:
                 InviteFragment inviteFragment = new InviteFragment();
-                replaceMainFragment(inviteFragment,"invite");
+                replaceMainFragment(inviteFragment, "invite");
 
                 break;
 
-
         }
-    }
+        }
+
+
 
     public void sendFromSelectedList(JSONObject dataObj) {
-
+        tabCount++;
         MenuItem menu=navigationView.getMenu().getItem(2);
         menu.setChecked(true);
         SendFragment sendFragment = new SendFragment();
         Bundle args = new Bundle();
-        args.putString("data", dataObj + "");
+        if(dataObj!=null) {
+            args.putString("data", dataObj + "");
+        }
         sendFragment.setArguments(args);
         replaceMainFragment(sendFragment,"send");
 
     }
+
+
 
     public void callToRecipientWithSymbol(String DestinationSymbol, String SourceSymbol, String
             FlagImageDestination, String callFrom, String SDCountryId, String CountryId, JSONObject obj) {
@@ -612,8 +598,6 @@ public class MainActivity extends AppCompatActivity {
                             imagePath = getRealPathFromURI(uri);
 
                             imageView.setImageBitmap(bmap);
-
-
 
 
                         } catch (Exception e) {

@@ -52,19 +52,21 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Intent signIn = new Intent(SplashActivity.this, SignInActivity.class);
                 startActivity(signIn);
                 finish();
-                //   tv_get_started.setVisibility(View.VISIBLE);
+
             } else {
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-                Intent signIn = new Intent(SplashActivity.this, MainActivity.class);
-                signIn.putExtra(DefaultConstatnts.IsShowPin, "yes");
+
+                // Intent signIn = new Intent(SplashActivity.this, MainActivity.class);
+                // todo signIn.putExtra(DefaultConstatnts.IsShowPin, "yes");
+
+
+                Intent signIn = new Intent(SplashActivity.this, SetPinActivity.class);
+                signIn.putExtra(DefaultConstatnts.pinKey, DefaultConstatnts.pinVerify);
                 startActivity(signIn);
                 finish();
             }
-//                }, 000);
+
         }
-//        }
+
     }
 
     @Override

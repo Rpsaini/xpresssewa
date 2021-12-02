@@ -18,7 +18,7 @@
             android:textSize="@dimen/margin_25"
             android:layout_marginTop="@dimen/margin_20"
             android:text="@string/add_a_recipient"
-            android:textColor="@color/title_black_color"
+            android:textColor="@color/black_color"
             />
         <TextView
             android:layout_width="wrap_content"

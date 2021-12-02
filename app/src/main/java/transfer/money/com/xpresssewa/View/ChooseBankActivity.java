@@ -100,8 +100,6 @@ public class ChooseBankActivity extends BaseActivity {
                     {
                         init(obj.getJSONArray("BankData"));
 
-
-
                     } else {
                         new Showtoast().showToast(ChooseBankActivity.this, "Response", obj.getString("Message"), findViewById(R.id.ll_activitylayout));
                     }

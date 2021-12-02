@@ -23,10 +23,13 @@
         android:textColor="@color/title_black_color"
         android:textSize="22sp"
         android:text="Confirm Your Identity"
-        /><ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+        />
+
+        <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+
+     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -45,7 +48,16 @@
         android:text="Note: Please contact our KYC Support Department on support@xpresssewa.com in case you have any query documents."
         />
 
-        <RelativeLayout
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingLeft="@dimen/margin_20"
+             android:paddingTop="@dimen/margin_10"
+             android:paddingBottom="@dimen/margin_10"
+             android:text="@string/image_size"
+             />
+
+         <RelativeLayout
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
@@ -75,10 +87,11 @@
                 android:textSize="@dimen/font_fourteen"
                 android:text="Passport front side"
                 />
+
+
       </RelativeLayout>
 
-
-        <RelativeLayout
+         <RelativeLayout
 
             android:layout_margin="15dp"
             android:layout_width="match_parent"
@@ -109,8 +122,7 @@
                 />
         </RelativeLayout>
 
-
-        <RelativeLayout
+         <RelativeLayout
 
             android:layout_margin="15dp"
             android:layout_width="match_parent"
@@ -141,84 +153,7 @@
                 />
         </RelativeLayout>
 
-<!--    <RelativeLayout-->
-<!--        vi-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        >-->
-<!--    <EditText-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:gravity="top|left"-->
-<!--        android:padding="10dp"-->
-<!--        android:id="@+id/tv_message"-->
-<!--        android:textSize="@dimen/font_sixteen"-->
-<!--        android:textColor="@color/title_black_color"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_marginLeft="@dimen/margin_20"-->
-<!--        android:layout_marginRight="@dimen/margin_20"-->
-<!--        android:inputType="textMultiLine"-->
-<!--        android:background="@drawable/round_drawable_border"-->
-<!--        />-->
-<!--        <ImageView-->
-<!--            android:visibility="gone"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/roundwhitedrawable"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:src="@drawable/checked"-->
-<!--            ></ImageView>-->
-<!--    </RelativeLayout>-->
 
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/dimen_05"-->
-<!--        android:background="@color/light_grey_color"/>-->
-
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/have_you_read"-->
-<!--        android:gravity="center"-->
-<!--        android:textColor="@color/colorPrimaryDark"-->
-<!--        android:textSize="@dimen/font_fourteen"-->
-<!--        android:padding="@dimen/margin_12"-->
-<!--        />-->
-
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/light_grey_color"-->
-<!--        android:textColor="@color/dark_grey_color"-->
-<!--        android:paddingLeft="@dimen/margin_20"-->
-<!--        android:paddingTop="@dimen/margin_10"-->
-<!--        android:paddingBottom="@dimen/margin_10"-->
-<!--        android:text="@string/add_screenshot"-->
-<!--        />-->
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:gravity="bottom"-->
-<!--        android:layout_height="match_parent"-->
-<!--        >-->
-<!--      &lt;!&ndash;  <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/round_grey_with_border"-->
-<!--            >-->
-
-<!--        </LinearLayout>&ndash;&gt;-->
-<!--            <ImageView-->
-<!--                android:id="@+id/iv_screenshot"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_margin="@dimen/margin_20"-->
-<!--                android:src="@drawable/add_screenshot"-->
-<!--                />-->
 
     <TextView
         android:id="@+id/tv_send"

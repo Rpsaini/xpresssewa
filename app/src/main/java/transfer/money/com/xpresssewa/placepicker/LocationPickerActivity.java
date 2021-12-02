@@ -2,6 +2,8 @@ package transfer.money.com.xpresssewa.placepicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 //public class LocationPickerActivity extends AppCompatActivity {
@@ -47,16 +49,26 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import com.google.android.gms.location.LocationServices;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.AddressComponent;
+import com.google.android.libraries.places.api.model.AddressComponents;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -198,13 +210,16 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
                 hidekeyboard();
                 postion = position;
                 final String placeId = String.valueOf(predictions.getPlaces().get(position).getPlace_id());
-                getData("https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + getResources().getString(R.string.google_key));
+                getData("https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + getResources().getString(R.string.google_key),placeId);
 
-                System.out.println("inside on item clicked====>" + placeId);
+
+
+
             }
         });
 
-        if (getIntent().hasExtra("type")) {
+        if(getIntent().hasExtra("type"))
+        {
             if (getIntent().getStringExtra("type").equalsIgnoreCase("saveloc") || getIntent().getStringExtra("type").equalsIgnoreCase("home") || getIntent().getStringExtra("type").equalsIgnoreCase("work")) {
                 findViewById(R.id.linearSave).setVisibility(View.GONE);
             }
@@ -416,7 +431,7 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
     }
 
 
-    private void getData(final String url) {
+    private void getData(final String url,String placeid) {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
@@ -439,22 +454,18 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
                                     String lng = locationData.getString("lng");
 
 
-
                                     Intent intent = new Intent();
                                     intent.putExtra("sourcename", predictions.getPlaces().get(postion).getPlaceDesc());
-                                    intent.putExtra("lat", lat + "");
-                                    intent.putExtra("lng", lng + "");
-
-//                                    if (getIntent().hasExtra("current_location"))
-//                                    {
-//                                        intent.putExtra("current_location", getIntent()
-//                                                .getStringExtra("current_location"));
-//
-//                                        intent.putExtra("pickup_location", getIntent().getStringExtra("pickup_location"));
-//                                    }
-
+                                    intent.putExtra("lat", lat+"");
+                                    intent.putExtra("lng", lng+"");
                                     setResult(CUSTOM_AUTOCOMPLETE_REQUEST_CODE, intent);
                                     finish();
+
+
+
+
+
+
                                 }
                             }
                         } catch (Exception e) {
@@ -483,4 +494,39 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
 
 
     }
+
+//    private void getPlaces(String id)
+//    {
+//        final String placeId = id;
+//        Places.initialize(getApplicationContext(), getResources().getString(R.string.google_key), Locale.US);
+//         PlacesClient placesClient=Places.createClient(this);;
+//// Specify the fields to return.
+//        final List<Place.Field> placeFields = Arrays.asList(Place.Field.ID, Place.Field.NAME);
+//
+//// Construct a request object, passing the place ID and fields array.
+//        final FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeId, placeFields);
+//
+//        placesClient.fetchPlace(request).addOnSuccessListener((response) -> {
+//            Place place = response.getPlace();
+//
+//            System.out.println("Data===="+place.getAddress());
+//
+//            System.out.println("Place details==="+place.getName()+"==="+place.getAddressComponents());
+//
+//
+//        }).addOnFailureListener((exception) -> {
+//            if (exception instanceof ApiException) {
+//                final ApiException apiException = (ApiException) exception;
+//
+//                final int statusCode = apiException.getStatusCode();
+//                // TODO: Handle error with given status code.
+//            }
+//        });
+//    }
+
+
+
+
+
+
 }

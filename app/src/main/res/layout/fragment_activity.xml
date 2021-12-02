@@ -81,11 +81,12 @@
     </LinearLayout>
 
     <ImageView
+        android:layout_marginTop="20dp"
         android:visibility="gone"
         android:id="@+id/img_show_warring"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:src="@drawable/ic_warning"
+        android:layout_height="250dp"
+        android:layout_width="300dp"
+        android:src="@drawable/kyc_image"
         android:layout_centerInParent="true"
         ></ImageView>
 </RelativeLayout>

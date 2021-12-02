@@ -263,12 +263,6 @@ public class SetPinActivity extends AppCompatActivity implements BiometricCallba
                     if(obj.getBoolean("status"))
                       {
 
-//                            new SaveImpPrefrences().savePrefrencesData(SetPinActivity.this,oldPin+"",DefaultConstatnts.Pin);
-//                            Intent i=new Intent(SetPinActivity.this,MainActivity.class);
-//                            i.putExtra(DefaultConstatnts.IsShowPin,"no");
-//                            startActivity(i);
-//                            finish();
-
                           SaveImpPrefrences saveImpPrefrences=new SaveImpPrefrences();
                           String memberId=obj.getString("MemberId");
                           saveImpPrefrences.savePrefrencesData(SetPinActivity.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
@@ -365,50 +359,6 @@ public class SetPinActivity extends AppCompatActivity implements BiometricCallba
 
 
 
-    //    private void authFinger()
-//    {
-//        authenticationCallback = new FingerprintManager.AuthenticationCallback() {
-//            @Override
-//            public void onAuthenticationError(int errorCode, CharSequence errString) {
-//                System.out.println("Auth error");
-//                super.onAuthenticationError(errorCode, errString);
-//            }
-//
-//
-//
-//            @Override
-//            public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
-//                System.out.println("Auth error==help");
-//                super.onAuthenticationHelp(helpCode, helpString);
-//            }
-//
-//            @Override
-//            public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result)
-//            {
-//                oldPin =new SaveImpPrefrences().reterivePrefrence(SetPinActivity.this,DefaultConstatnts.Pin).toString();
-//                veriFyPin();
-//                System.out.println("Auth error==+success");
-//                super.onAuthenticationSucceeded(result);
-//            }
-//            @Override
-//            public void onAuthenticationFailed() {
-//                //textView.setText(“FAILED”);
-//                System.out.println("Auth error==failed");
-//                //imageView.setImageResource(R.drawable.image2);
-//                super.onAuthenticationFailed();
-//            }
-//        };
-//
-//        scanButton();
-//    }
-    public void scanButton(){
-
-
-        if(isSensorAvialable())
-          {
-            fingerprintManager.authenticate(null, null, 0, authenticationCallback, null);
-          }
-    }
 
     private boolean isSensorAvialable()
     {

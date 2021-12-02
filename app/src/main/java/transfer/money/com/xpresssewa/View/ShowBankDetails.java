@@ -127,8 +127,9 @@ public class ShowBankDetails extends BaseActivity {
         String data =  getIntent().getStringExtra("data");
         LinkedHashMap<String, String> mapData = new Gson().fromJson(data, LinkedHashMap.class);
         mapData.put("BankId",getIntent().getStringExtra("bank_id"));
+        mapData.put("BankRefNumber",txt_UniqueId.getText().toString());
 
-        System.out.println("bank data==="+mapData);
+
         new ServerHandler().sendToServer(ShowBankDetails.this, "AddTransaction", mapData, 0, 1, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {

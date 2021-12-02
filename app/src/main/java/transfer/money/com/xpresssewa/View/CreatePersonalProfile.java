@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.CompoundButtonCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
@@ -34,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import io.reactivex.annotations.Nullable;
@@ -260,12 +266,18 @@ public class CreatePersonalProfile extends AppCompatActivity {
 
         if (gender.equalsIgnoreCase("1")) {
             rr_Male.setChecked(true);
+            CompoundButtonCompat.setButtonTintList(rr_Male, ColorStateList.valueOf(getResources().getColor(R.color.blue_bt_color)));
+
+
         } else if (gender.equalsIgnoreCase("2")) {
             rr_female.setChecked(true);
+            CompoundButtonCompat.setButtonTintList(rr_female, ColorStateList.valueOf(getResources().getColor(R.color.blue_bt_color)));
         } else if (gender.equalsIgnoreCase("3")) {
             rr_other.setChecked(true);
+            CompoundButtonCompat.setButtonTintList(rr_other, ColorStateList.valueOf(getResources().getColor(R.color.blue_bt_color)));
         } else {
             rr_Male.setChecked(true);
+            CompoundButtonCompat.setButtonTintList(rr_Male, ColorStateList.valueOf(getResources().getColor(R.color.blue_bt_color)));
         }
 
         rr_Male.setOnClickListener(new View.OnClickListener() {
@@ -580,6 +592,10 @@ public class CreatePersonalProfile extends AppCompatActivity {
             isType=false;
             et_business_address.getEditText().setText(data.getStringExtra("sourcename"));
             hideKeyboard(CreatePersonalProfile.this);
+
+            String locName= getLocationNAme(Double.parseDouble(data.getStringExtra("lat")),Double.parseDouble(data.getStringExtra("lng")));
+            System.out.println("Location name---"+locName);
+
         }
     }
 
@@ -719,6 +735,26 @@ public class CreatePersonalProfile extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private String getLocationNAme(double lat,double lng)
+    {
+        try {
+            Geocoder mGeocoder = new Geocoder(this, Locale.getDefault());
+            List<Address> addresses = mGeocoder.getFromLocation(lat, lng, 1);
+            if(addresses != null && addresses.size() > 0)
+            {
+                et_city.getEditText().setText(addresses.get(0).getLocality());
+                et_postcode.getEditText().setText(addresses.get(0).getPostalCode());
+
+                }
+            return null;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return "";
     }
 
 }

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/ll_reviewKyc"
+    android:background="@color/white"
     tools:context=".View.ReviewTransfer">
 
     <include layout="@layout/toolbar_with_back"/>

@@ -118,14 +118,13 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             activityView.setVisibility(View.VISIBLE);
             verification_subtext.setText("We are verifying your account");
             verification_text.setText("Verification in progress");
+            img_show_warring.setVisibility(View.GONE);
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((MainActivity)getActivity()).callMyProfileFragment("personal");
                 }
             });
-
-
         }
         else  if(isKycApproved.equalsIgnoreCase("4"))
         {
@@ -133,6 +132,8 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             txt_label.setVisibility(View.VISIBLE);
             rr_upper_layout.setVisibility(View.GONE);
             activityView.setVisibility(View.VISIBLE);
+            img_show_warring.setVisibility(View.GONE);
+
             verification_subtext.setText("Verify your account");
             verification_text.setText("Verification Pending");
             activityView.setOnClickListener(new View.OnClickListener() {
@@ -149,12 +150,15 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             });
 
 
+
+
         }
         else if(isKycApproved.equalsIgnoreCase("2"))
         {
             txt_activity_label.setVisibility(View.VISIBLE);
             rr_upper_layout.setVisibility(View.GONE);
             activityView.setVisibility(View.VISIBLE);
+            img_show_warring.setVisibility(View.VISIBLE);
 
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -171,7 +175,7 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             txt_label.setVisibility(View.GONE);
             rr_upper_layout.setVisibility(View.GONE);
             activityView.setVisibility(View.GONE);
-            img_nodatafound.setVisibility(View.VISIBLE);
+            img_show_warring.setVisibility(View.GONE);
             rr_activity_and_wallet.setVisibility(View.VISIBLE);
         }
 
@@ -183,14 +187,6 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
 
 
     }
-
-//    public enum Types
-//    {
-//        InProgress = 1,
-//        Cancelled = 2,
-//        Completed = 3,
-//        Rejected = 4
-//    }
 
     private void getActivityData() {
 
@@ -221,11 +217,13 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
                          }
 
                          initRecyler(datAr);
+                      }
+                    else {
 
-
-                    } else {
-                       // new Showtoast().showToast(getActivity(),"Response",obj.getString("Message"),ll_activitylayout);
-
+                        MainActivity mainActivity= (MainActivity) getActivity();
+                        if(mainActivity.tabCount==0) {
+                            mainActivity.sendFromSelectedList(null);
+                        }
                     }
 
                 } catch (Exception e)
@@ -240,6 +238,7 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
 
     private void initRecyler(ArrayList<JSONObject> data)
     {
+
         if(data.size()>0)
         {
             img_nodatafound.setVisibility(View.GONE);
@@ -295,7 +294,7 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
     {
         if(data.size()>0)
         {
-            img_show_warring.setVisibility(View.GONE);
+         //   img_show_warring.setVisibility(View.GONE);
         }
 
         wallet_recycler.setNestedScrollingEnabled(false);

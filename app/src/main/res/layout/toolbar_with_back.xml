@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:background="@color/toolbar_background"
     android:id="@+id/toolbarlayout"
-
     android:weightSum="5"
     >
     <LinearLayout

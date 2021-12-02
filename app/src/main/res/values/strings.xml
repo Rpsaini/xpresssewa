@@ -350,6 +350,7 @@
     <string name="title_activity_enter_mobile_number">EnterMobileNumber</string>
     <string name="enterphonenumber">Enter Phone Number</string>
     <string name="Veriyotp">Verify OTP</string>
+    <string name="image_size">Image size should be less than 2 MB</string>
 
 
 

@@ -24,6 +24,7 @@ public class DefaultConstatnts {
     public static boolean isKyDockUploaded=false;
     public static String getNotificationData="notificationdata";
     public static String notification_count="notification_count";
+    public static String transationList="transationList";
 
 
 

@@ -242,29 +242,26 @@ public class MessageActivity extends AppCompatActivity {
 //                 if(imageReturnedIntent != null)
                     {
                     try {
-                         //you will get 15 cards
-                        //15 jo bhi minimum
+
                         bmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI);
 
                         Uri uri = getImageUri(this, bmap);
                         String s = getRealPathFromURI(uri);
-                        System.out.println("Selected camera image====" + s);
-                        if(imgSelectionType == 0) {
-                            imagePathfront = s;
-                            iv_screenshot.setImageBitmap(bmap);
-                        }
-                        else if(imgSelectionType==1)
-                        {
-                            iv_screenshot_back.setImageBitmap(bmap);
-                            imagePathBack = s;
-                        }
-                        else
+                        if(fileSize(s))
                         {
 
-                            iv_screenshot_proof.setImageBitmap(bmap);
-                            imagePathAddress = s;
-                        }
+                            if (imgSelectionType == 0) {
+                                imagePathfront = s;
+                                iv_screenshot.setImageBitmap(bmap);
+                            } else if (imgSelectionType == 1) {
+                                iv_screenshot_back.setImageBitmap(bmap);
+                                imagePathBack = s;
+                            } else {
 
+                                iv_screenshot_proof.setImageBitmap(bmap);
+                                imagePathAddress = s;
+                            }
+                        }
 
                         slideUpDown();
 
@@ -279,25 +276,23 @@ public class MessageActivity extends AppCompatActivity {
                             try {
                                 selectedImage = imageReturnedIntent.getData();
                                 String s = getRealPathFromURI(selectedImage);
-                                //  uploadImageToServer(s,"file");
-                                InputStream image_stream = getContentResolver().openInputStream(selectedImage);
-                                bmap = BitmapFactory.decodeStream(image_stream);
-                                if(imgSelectionType == 0) {
-                                    imagePathfront = s;
-                                    iv_screenshot.setImageBitmap(bmap);
-                                }
-                                else if(imgSelectionType==1)
-                                {
-                                    iv_screenshot_back.setImageBitmap(bmap);
-                                    imagePathBack = s;
-                                }
-                                else
-                                {
 
-                                    iv_screenshot_proof.setImageBitmap(bmap);
-                                    imagePathAddress = s;
-                                }
+                                if(fileSize(s))
+                                 {
+                                    InputStream image_stream = getContentResolver().openInputStream(selectedImage);
+                                    bmap = BitmapFactory.decodeStream(image_stream);
+                                    if (imgSelectionType == 0) {
+                                        imagePathfront = s;
+                                        iv_screenshot.setImageBitmap(bmap);
+                                    } else if (imgSelectionType == 1) {
+                                        iv_screenshot_back.setImageBitmap(bmap);
+                                        imagePathBack = s;
+                                    } else {
 
+                                        iv_screenshot_proof.setImageBitmap(bmap);
+                                        imagePathAddress = s;
+                                    }
+                                }
                                 slideUpDown();
 
                             } catch (Exception e) {
@@ -487,7 +482,38 @@ public class MessageActivity extends AppCompatActivity {
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
+    private boolean fileSize(String  path)
+    {
 
+        try {
+            File file = new File(path);
+            long length = file.length();
+            length = length/1024;
+
+
+            if(length<=2000)
+            {
+                return  true;
+            }
+            else
+            {
+                new Showtoast().showToast(this,"Response",getResources().getString(R.string.image_size),null);
+                return  false;
+
+            }
+
+
+        }
+        catch (Exception e)
+        {
+
+            e.printStackTrace();
+        }
+        return false;
+
+
+
+    }
 
 
 
