@@ -211,14 +211,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         txt_terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrls("https://xpressewa.com/term-conditions");
+                openExternalUrls(UtilClass.termsur);
 
             }
         });
         txt_privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openExternalUrls("https://xpressewa.com/privacy");
+                openExternalUrls(UtilClass.privacyurl);
             }
         });
 

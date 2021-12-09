@@ -187,17 +187,33 @@
     </LinearLayout>
 
 
-    <TextView
-        android:textColor="@color/blue_bt_color"
-        android:layout_marginRight="5dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="right"
+        android:id="@+id/ll_uploadreceipt"
+        >
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(Pending upload receipt)"
         android:gravity="right"
         android:id="@+id/txt_pendingreceipt"
+        android:textColor="@color/textheadercolor"
         ></TextView>
+
+        <ImageView
+            android:paddingLeft="3dp"
+            android:id="@+id/img_upoadrecipt_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:src="@drawable/upload_image"></ImageView>
+
+    </LinearLayout>
 
         <View
             android:layout_marginLeft="15dp"

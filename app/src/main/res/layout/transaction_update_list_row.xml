@@ -12,8 +12,10 @@
         android:orientation="horizontal"
         >
         <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:id="@+id/transactiondate"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="22 Dec"
             android:gravity="center"

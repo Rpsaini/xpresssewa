@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".View.SettingsScreenActivity">
+    tools:context=".settings.SettingsScreenActivity">
 
 
     <include layout="@layout/toolbar_with_back"/>
@@ -48,7 +48,6 @@
         <RelativeLayout
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
@@ -101,6 +100,7 @@
 
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="0dp"
@@ -143,6 +143,7 @@
 
         </RelativeLayout>
         <View
+            android:visibility="gone"
             android:alpha=".5"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
@@ -208,12 +209,67 @@
             ></View>
 
 
+        <RelativeLayout
+            android:id="@+id/rr_changepassword"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+
+            >
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_change_email"
+                ></ImageView>
+
+
+            <TextView
+
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40dp"
+                android:gravity="center|left"
+                android:paddingStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/round_drawable_color"
+                android:text="@string/changepassword"
+                >
+            </TextView>
+
+
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/next_arrow"
+                app:tint="@color/blue_bt_color"
+                ></ImageView>
+
+        </RelativeLayout>
+        <View
+            android:visibility="gone"
+            android:alpha=".5"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_height=".5dp"
+            android:layout_width="match_parent"
+            android:background="@color/textcolor"
+            ></View>
+
+
         <TextView
             android:textAllCaps="true"
             android:paddingStart="15dp"
             android:gravity="center|left"
             android:text="@string/General"
-            android:layout_marginTop="20dp"
+
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="14dp"
@@ -223,6 +279,7 @@
 
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rr_notificationprefrences"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
@@ -265,6 +322,7 @@
 
         </RelativeLayout>
         <View
+            android:visibility="gone"
             android:alpha=".5"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
@@ -300,7 +358,7 @@
                 android:paddingStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="@string/send_feedback"
+                android:text="Rate the app"
                 android:textColor="@color/round_drawable_color"
                 >
             </TextView>
@@ -318,74 +376,19 @@
         </RelativeLayout>
         <View
             android:alpha=".5"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_height=".5dp"
             android:layout_width="match_parent"
             android:background="@color/textcolor"
             ></View>
-
-
-        <RelativeLayout
-            android:id="@+id/rr_reportabug"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-
-            >
-
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:src="@drawable/ic_report_a_bug"
-                ></ImageView>
-
-
-            <TextView
-                android:layout_centerVertical="true"
-                android:layout_marginStart="40dp"
-                android:gravity="center|left"
-                android:paddingStart="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="@string/report_a_bug"
-                android:textColor="@color/round_drawable_color"
-                >
-            </TextView>
-
-
-            <ImageView
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:src="@drawable/next_arrow"
-                app:tint="@color/blue_bt_color"
-                ></ImageView>
-
-        </RelativeLayout>
-        <View
-            android:alpha=".5"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_height=".5dp"
-            android:layout_width="match_parent"
-            android:background="@color/textcolor"
-            ></View>
-
 
 
         <RelativeLayout
             android:id="@+id/rr_viewticket"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="0dp"
+
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
@@ -406,7 +409,7 @@
                 android:paddingStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="View Tickets"
+                android:text="My tickets"
                 android:textColor="@color/round_drawable_color"
                 >
             </TextView>
@@ -422,16 +425,16 @@
                 ></ImageView>
 
         </RelativeLayout>
+
+
         <View
             android:alpha=".5"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_height=".5dp"
             android:layout_width="match_parent"
             android:background="@color/textcolor"
             ></View>
-
 
         <RelativeLayout
             android:id="@+id/rr_about"
@@ -445,10 +448,11 @@
             >
 
             <ImageView
+                android:tint="@color/skybluecolorcode"
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:src="@drawable/ic_about_us_icon"
+                android:src="@drawable/about_us_icon"
                 ></ImageView>
 
 
@@ -459,7 +463,7 @@
                 android:paddingStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="@string/about"
+                android:text="About"
                 android:textColor="@color/round_drawable_color"
                 >
             </TextView>
@@ -476,12 +480,15 @@
 
         </RelativeLayout>
 
+
+
+
         <TextView
             android:textAllCaps="true"
             android:paddingStart="15dp"
             android:gravity="center|left"
             android:text="@string/privacy"
-            android:layout_marginTop="20dp"
+
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="14dp"
@@ -491,17 +498,14 @@
 
 
         <RelativeLayout
+            android:id="@+id/rr_privacy"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
-
             >
 
-
-<!--            //this icon-->
             <ImageView
                 android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
@@ -543,54 +547,14 @@
             android:background="@color/textcolor"
             ></View>
 
-        <RelativeLayout
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
 
-            >
-
-            <ImageView
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:src="@drawable/ic_contacts"
-                ></ImageView>
-
-
-            <TextView
-                android:layout_centerVertical="true"
-                android:layout_marginStart="40dp"
-                android:gravity="center|left"
-                android:paddingStart="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="@string/contact"
-                android:textColor="@color/round_drawable_color"
-                >
-            </TextView>
-
-
-            <ImageView
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:src="@drawable/next_arrow"
-                app:tint="@color/blue_bt_color"
-                ></ImageView>
-
-        </RelativeLayout>
 
         <TextView
             android:textAllCaps="true"
             android:paddingStart="15dp"
             android:gravity="center|left"
             android:text="@string/account"
-            android:layout_marginTop="20dp"
+
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="14dp"
@@ -602,6 +566,7 @@
 
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="20dp"
@@ -663,7 +628,7 @@
         </RelativeLayout>
 
         <View
-
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
@@ -674,9 +639,9 @@
             ></View>
 
         <RelativeLayout
+            android:id="@+id/rr_deactivate"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"

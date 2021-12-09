@@ -34,6 +34,7 @@ import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.dialogs.AccountDialog;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
+import transfer.money.com.xpresssewa.settings.SettingsScreenActivity;
 import transfer.money.com.xpresssewa.ticket.AddTicket;
 import transfer.money.com.xpresssewa.util.AlertDialogs;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;

@@ -89,7 +89,7 @@ public class TransactionUpdateAdapter extends RecyclerView.Adapter<TransactionUp
 
 
             String [] dateSplitted=dataObj.getString("UpdatedDate").split("T");
-            String dateStr=dateSplitted[0];
+            String dateStr=dateSplitted[0]+" "+dateSplitted[1];
 //          SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MMM-dd");
             holder.transactiondate.setText(dateStr);
 

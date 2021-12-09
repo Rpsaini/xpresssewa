@@ -102,9 +102,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:hint="Select Gender"
+                    android:hint="Select Gender*"
                     style="@style/edittext_style"
                     android:textSize="12dp"
+                    android:textColorHint="@color/quantum_black_hint_text"
                     android:gravity="left|bottom"
                     >
                 </TextView>
@@ -346,31 +347,19 @@
                     ></View>
 
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ed_statename"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:layout_height="wrap_content">
 
-<!--                <Spinner-->
-
-<!--                    android:id="@+id/spinner_state"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:maxLength="70"-->
-<!--                    style="@style/edittext_style"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:hint="@string/state"-->
-<!--                    android:inputType="textEmailAddress" />-->
-
-<!--                <View-->
-<!--                    android:translationY="-5dp"-->
-<!--                    android:layout_marginLeft="4dp"-->
-<!--                    android:layout_marginRight="4dp"-->
-<!--                    android:layout_height="1.2dp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:background="@color/grey_color"-->
-<!--                    ></View>-->
-
-
-
-
-
+                    <EditText
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/state"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <LinearLayout
@@ -415,11 +404,14 @@
                 </LinearLayout>
 
 
+
+
+
                 <Spinner
                     android:id="@+id/occupation_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="17dp"
                     android:popupBackground="@color/white_color"></Spinner>
 
                 <View

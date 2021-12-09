@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -396,6 +399,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+
+    public void copyCode(String code,String codeName)
+    {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("qrcode", code);
+        clipboard.setPrimaryClip(clip);
+
+        Toast.makeText(this, codeName+" copied", Toast.LENGTH_LONG).show();
+
+
+    }
 
 
 }

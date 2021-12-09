@@ -3,10 +3,12 @@ package transfer.money.com.xpresssewa.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ public class ShowBankDetails extends BaseActivity {
     TextView txt_payeename,txt_AccountNumber,txt_BsbCode,txt_UniqueId;
     LinearLayout ll_bakdetail;
     TextView txt_note;
+    private ImageView img_payeename_copy,img_AccountNumber_copy,img_BsbCode_copy,img_UniqueId_copy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,21 +52,25 @@ public class ShowBankDetails extends BaseActivity {
         ll_bakdetail=findViewById(R.id.ll_bakdetail);
         txt_note=findViewById(R.id.txt_note);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        {
             txt_note.setText(Html.fromHtml("<html>1.Funds must be sent from an account in your name.<br/>\n" +
                     "        2.You must include <font color='#3F70BC'> 86151E38 </font>in your bank transfer payment description field.<br/>\n" +
                     "        3.RTGS payments are not accepted. If you must send by RTGS, please contact customer support\n" +
                     "        We never takes money automatically from your account.<br/><br/>\n" +
                     "\n" +
                     "        You can use your online banking or mobile app to make your bank transfer to us.</html>", Html.FROM_HTML_MODE_COMPACT));
-        } else {
+        }
+        else {
             txt_note.setText(Html.fromHtml("<html>1.Funds must be sent from an account in your name.<br/>\n" +
                     "        2.You must include <font color='#3F70BC'> 86151E38 </font>in your bank transfer payment description field.<br/>\n" +
                     "        3.RTGS payments are not accepted. If you must send by RTGS, please contact customer support\n" +
                     "        We never takes money automatically from your account.<br/><br/>\n" +
                     "\n" +
                     "        You can use your online banking or mobile app to make your bank transfer to us.</html>"));
-        }
+            }
 
 
         findViewById(R.id.txt_paymentdone).setOnClickListener(new View.OnClickListener() {
@@ -86,6 +93,43 @@ public class ShowBankDetails extends BaseActivity {
                 finish();
             }
         });
+
+
+        img_payeename_copy=findViewById(R.id.img_payeename_copy);
+        img_AccountNumber_copy=findViewById(R.id.img_AccountNumber_copy);
+        img_BsbCode_copy=findViewById(R.id.img_BsbCode_copy);
+        img_UniqueId_copy=findViewById(R.id.img_UniqueId_copy);
+
+
+        img_payeename_copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyCode(txt_payeename.getText().toString(),"Payee Name");
+            }
+        });
+
+        img_AccountNumber_copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyCode(txt_AccountNumber.getText().toString(),"Account Number");
+            }
+        });
+
+        img_BsbCode_copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyCode(txt_BsbCode.getText().toString(),"BSB code");
+            }
+        });
+        img_UniqueId_copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyCode(txt_UniqueId.getText().toString(),"UniqueId");
+            }
+        });
+
+
+
 
     }
 

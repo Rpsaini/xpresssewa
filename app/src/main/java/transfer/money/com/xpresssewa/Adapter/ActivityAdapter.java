@@ -55,7 +55,9 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
         TextView tt_username,tt_status,tt_from_currency,tt_to_currency,user_short_name,date,txt_pendingreceipt;
         LinearLayout ll_selectrecipient;
         RelativeLayout rr_round;
-        ImageView img_icon;
+        ImageView img_icon,img_upoadrecipt_icon;
+        LinearLayout ll_uploadreceipt;
+
 
 
         public MyViewHolder(View view) {
@@ -70,6 +72,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             ll_selectrecipient=view.findViewById(R.id.ll_selectrecipient);
             user_short_name=view.findViewById(R.id.user_short_name);
             txt_pendingreceipt=view.findViewById(R.id.txt_pendingreceipt);
+            ll_uploadreceipt=view.findViewById(R.id.ll_uploadreceipt);
+            img_upoadrecipt_icon=view.findViewById(R.id.img_upoadrecipt_icon);
 
             rr_round=view.findViewById(R.id.rr_round);
             img_icon=view.findViewById(R.id.img_icon);
@@ -108,22 +112,21 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             holder.tt_to_currency.setText(obj.getString("ToAmount")+" "+obj.getString("ToSymbol"));
 
             String UploadReceipt =obj.getString("UploadReceipt");
+
             if(UploadReceipt.length()>1)
             {
+                showImage(UploadReceipt,holder.img_upoadrecipt_icon);
                 holder.txt_pendingreceipt.setText("See Receipt");
-                holder.txt_pendingreceipt.setTextColor(ira1.getResources().getColor(R.color.greencolor));
-
-
-
-                holder.txt_pendingreceipt.setOnClickListener(new View.OnClickListener() {
+                holder.ll_uploadreceipt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v)
                     {
                         SimpleDialog simpleDialog = new SimpleDialog();
                         final Dialog confirmDialog = simpleDialog.simpleDailog(ira1, R.layout.show_receipt_image, new ColorDrawable(ira1.getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
                         ImageView txt_showimage=confirmDialog.findViewById(R.id.txt_showimage);
-                        TextView txt_close=confirmDialog.findViewById(R.id.ltxt_confirm);
+                        ImageView txt_close=confirmDialog.findViewById(R.id.txt_close);
                         showImage(UploadReceipt,txt_showimage);
+
                         txt_close.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v)
@@ -138,9 +141,9 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             }
             else
             {
-                holder.txt_pendingreceipt.setTextColor(ira1.getResources().getColor(R.color.dark_red_color));
-                holder.txt_pendingreceipt.setTag(position);
-                holder.txt_pendingreceipt.setOnClickListener(new View.OnClickListener()
+
+                holder.ll_uploadreceipt.setTag(position);
+                holder.ll_uploadreceipt.setOnClickListener(new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View view)

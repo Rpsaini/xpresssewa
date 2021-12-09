@@ -57,7 +57,7 @@ import transfer.money.com.xpresssewa.validation.Showtoast;
 
 public class CreatePersonalProfile extends AppCompatActivity {
     //et_business_name,et_company_role,et_registration_number,et_website
-    private TextInputLayout et_user_name, et_user_lname, et_business_address, et_city, et_postcode, et_other_occupation, et_mobile;
+    private TextInputLayout et_user_name, et_user_lname, et_business_address, et_city, et_postcode, et_other_occupation, et_mobile,ed_statename;
     private TextView company_continue;
     //et_dob
     private Spinner spinner_state, occupation_spinner;
@@ -66,7 +66,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private ArrayList<String> OccupationListAr = new ArrayList<>();
     private TextView txt_date;
     private CountryCodePicker cpp;
-    private String countryCode = "+91";
+    private String countryCode = "+61";
     private RadioButton rr_female, rr_Male, rr_other;
     private String gender = "1";
     private JSONArray OccupationList;
@@ -81,8 +81,6 @@ public class CreatePersonalProfile extends AppCompatActivity {
 
 
         UtilClass.getUserData(this);
-
-
         et_user_name = findViewById(R.id.et_user_name);
         et_user_lname = findViewById(R.id.et_user_lname);
         et_business_address = findViewById(R.id.et_business_address);
@@ -97,11 +95,12 @@ public class CreatePersonalProfile extends AppCompatActivity {
         rr_Male = findViewById(R.id.rr_Male);
         rr_female = findViewById(R.id.rr_female);
         rr_other = findViewById(R.id.rr_other);
+        ed_statename = findViewById(R.id.ed_statename);
         showtoast = new Showtoast();
         cpp = (CountryCodePicker) findViewById(R.id.ccp);
         txt_updateNumber =  findViewById(R.id.txt_updateNumber);
         et_other_occupation =  findViewById(R.id.et_other_occupation);
-
+        cpp.getChildAt(0).setEnabled(false);
 
         init();
         saveInformation();
@@ -333,6 +332,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 et_city.setError("");
                 et_postcode.setError("");
                 et_mobile.setError("");
+                ed_statename.setError("");
 
 
                 if (et_user_name.getEditText().getText().toString().length() == 0) {
@@ -378,9 +378,18 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     return;
                 }
 
+                if (ed_statename.getEditText().getText().toString().length() == 0) {
+                    ed_statename.setError("Please Enter state name");
+                    return;
+                }
+                else
+                {
+                    CreateBuisnessProfile.profileData.put("StateCode", ed_statename.getEditText().getText().toString());
+                }
+
 
                 if (et_city.getEditText().getText().toString().length() == 0) {
-                    et_city.setError("Enter City name");
+                    et_city.setError("Please Enter City name");
 
                     return;
                 }
@@ -746,6 +755,8 @@ public class CreatePersonalProfile extends AppCompatActivity {
             {
                 et_city.getEditText().setText(addresses.get(0).getLocality());
                 et_postcode.getEditText().setText(addresses.get(0).getPostalCode());
+                ed_statename.getEditText().setText(addresses.get(0).getAdminArea());
+                ed_statename.setError("");
 
                 }
             return null;

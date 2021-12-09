@@ -140,7 +140,7 @@ public class ReviewTransfer extends AppCompatActivity {
             m.put("PaymentTypeId", PaymentTypeId);
             m.put("Amount", calculationObj.getString("AmountFrom"));
             m.put("BankRefNumber", "");
-            m.put("TransferTo", recipientName+" "+ReciptentLastName);
+            m.put("TransferTo", recipientName);
             m.put("RecipientId", recipientObj.getString("Id"));
             m.put("TransferPurpose", purposeId);
             m.put("MemberId", UtilClass.member_id);

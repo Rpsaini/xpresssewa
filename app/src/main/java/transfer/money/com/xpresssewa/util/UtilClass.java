@@ -32,6 +32,8 @@ public class UtilClass
 
     public static String transferReason="transferReason";
     public static String transferReference="transferReference";
+    public static String termsur="https://xpressewa.com/term-conditions";
+    public static String privacyurl="https://xpressewa.com/privacy";
 
 
 
@@ -40,8 +42,6 @@ public class UtilClass
         try {
 
             String login_detail = new SaveImpPrefrences().reterivePrefrence(ct, "login_detail").toString();
-
-            System.out.println("Login==="+login_detail);
             if(login_detail!=null)
             {
                 if(login_detail.length()>0) {

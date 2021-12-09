@@ -46,9 +46,8 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
     RelativeLayout rr_activity_and_wallet,rr_upper_layout;
     ImageView img_show_warring;
     TextView  txt_activity_label;
-
     private TextView txt_label;
-
+    private String isKycApproved="";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,19 +92,14 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
     {
         switch(view.getId()) {
             case R.id.ll_verification_pending:
-
-                  chekIsUserKycisIsDone();
+                 chekIsUserKycisIsDone();
                 break;
         }
     }
 
     private void chekIsUserKycisIsDone()
     {
-
-
-       String isKycApproved=new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
-        System.out.println("is kyc approved==="+isKycApproved);
-
+         isKycApproved=new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
         TextView verification_text=view.findViewById(R.id.verification_text);
         TextView verification_subtext=view.findViewById(R.id.verification_subtext);
 
@@ -206,6 +200,7 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
                     JSONObject obj = new JSONObject(dta);
 
                     System.out.println("response obj==" + obj);
+
                     if (obj.getBoolean("status"))
                       {
 
@@ -223,6 +218,10 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
                         MainActivity mainActivity= (MainActivity) getActivity();
                         if(mainActivity.tabCount==0) {
                             mainActivity.sendFromSelectedList(null);
+                        }
+                        if(isKycApproved.equalsIgnoreCase("3")) {
+                            img_show_warring.setVisibility(View.VISIBLE);
+                            img_show_warring.setImageResource(R.drawable.noactivityfound);
                         }
                     }
 

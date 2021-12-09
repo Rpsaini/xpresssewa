@@ -11,6 +11,7 @@
     <string name="forgot_pwd_">Forgot Password</string>
     <string name="password">Enter Your Password</string>
     <string name="password_char">Enter Your Password(Min 8 character Required)</string>
+    <string name="password_char_new">Enter new Password(Min 8 character Required)</string>
     <string name="password_confirm">Confirm Password</string>
     <string name="forgotpin">Forgot PIN</string>
     <string name="otp">Enter OTP</string>
@@ -298,7 +299,7 @@
     <string name="privacy">Privacy Policy</string>
     <string name="contact">Contacts on Intremit</string>
     <string name="peronaldetail">Personal Details</string>
-    <string name="deleteaccount">Delete Account</string>
+    <string name="deleteaccount">Deactive Account</string>
     <string name="view_edit">View or edits your personal details</string>
     <string name="personal_account">Personal account</string>
     <string name="account_type_msg">Which account would you like?</string>
@@ -341,17 +342,16 @@
     <string name="receiptimage">Bank Transaction Receipt</string>
     <string name="google_key">AIzaSyB74NEUc7mXEMtjfZXJVbH5dEQltiKtnhE</string>
 
-    <string name="money_rule"><html>1.Funds must be sent from an account in your name.<br/>
-        2.You must include <font color='#3F70BC'> 86151E38 </font>in your bank transfer payment description field.<br/>
+    <string name="money_rule"><html>1.Funds must be sent from an account in your name.<br />
+        2.You must include <font color='#3F70BC'> 86151E38 </font>in your bank transfer payment description field.<br />
         3.RTGS payments are not accepted.If you must send by RTGS, please contact customer support
-        We never takes money automatically from your account.<br/><br/>
+        We never takes money automatically from your account.<br /><br />
 
         You can use your online banking or mobile app to make your bank transfer to us.</html></string>
     <string name="title_activity_enter_mobile_number">EnterMobileNumber</string>
     <string name="enterphonenumber">Enter Phone Number</string>
     <string name="Veriyotp">Verify OTP</string>
     <string name="image_size">Image size should be less than 2 MB</string>
-
 
 
 </resources>
