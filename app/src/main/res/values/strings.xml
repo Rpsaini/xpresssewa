@@ -6,7 +6,7 @@
     <string name="aud">AUD</string>
 
     <string name="your_email">Enter Your Email</string>
-
+    <string name="national_id_card_doc_">National ID card document number</string>
     <string name="sign_in">LOG IN</string>
     <string name="forgot_pwd_">Forgot Password</string>
     <string name="password">Enter Your Password</string>
@@ -378,4 +378,41 @@
     ]]>
     </string>
 
+
+
+    <string name="address_instruction_html">
+    <![CDATA[
+    <p><b>Instructions:</b></p>
+    <p>Below are some of the Address proof documents that we accept:</p>
+     <p>1.Utility Bill</p>
+     <ul>
+        <li>This can be gas, electricity, water or insurance bills.</li>
+        <li>We cannot accept mobile phone bills</li>
+        <li>This must be no older than 3 months.</li>
+        </ul>
+   <p>2.Driving Licence</p>
+        <ul>
+        <li>This must show your address</li>
+        <li>This must be in date- we cannot accept expired documents</li>
+        </ul>
+    <p>3.Bank/Credit card statement</p>
+        <ul>
+        <li>This must be no older than 3 months<br/>If your document is not accepted, possibly there may be plenty of reasons behind it. some of the reasons include:</li>
+        <li>The date<br/>We cannot accept the document that is older than 3 months</li>
+        <li>The details on your document<br/>The details that include your name and address on the document provided must match your Xpress Sewa account<br/>
+        The details must be done on the name of your home residence in Australia, not your home address of Nepal.</li>
+        <li>The document type<br/>The type of document might not be accepted such as a mobile phone bill.</li>
+        </ul>
+    <br />
+     <p>The full name and date of birth must match the details on Xpress Sewa account.</p>
+    ]]>
+    </string>
+
+
+
+<string name="note_"><![CDATA[
+    <p><b>Note:</b></p>
+    <p>Please contact our KYC Support Department on support@xpresssewa.com in case you have any query documents in KYC documents.</p>
+    ]]>
+</string>
 </resources>

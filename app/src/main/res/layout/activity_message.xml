@@ -16,14 +16,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-    <TextView
-        android:layout_margin="@dimen/margin_20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/title_black_color"
-        android:textSize="22sp"
-        android:text="Confirm Your Identity"
-        />
 
         <ScrollView
          android:layout_width="match_parent"
@@ -34,26 +26,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+         <TextView
+             android:layout_marginLeft="@dimen/margin_20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textColor="@color/title_black_color"
+             android:textSize="22sp"
+             android:text="Confirm Your Identity"
+             />
 
-
-    <TextView
-        android:id="@+id/txt_note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/light_grey_color"
-        android:textColor="@color/dark_grey_color"
-        android:paddingLeft="@dimen/margin_20"
-        android:paddingTop="@dimen/margin_10"
-        android:paddingBottom="@dimen/margin_10"
-        android:text="Note: Please contact our KYC Support Department on support@xpresssewa.com in case you have any query documents."
-        />
-
+         <TextView
+             android:layout_marginLeft="@dimen/margin_20"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textColor="@color/title_black_color"
+             android:textSize="16dp"
+             android:layout_marginTop="@dimen/margin_10"
+             android:text="Upload a photo of your national ID card."
+             />
          <TextView
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:paddingLeft="@dimen/margin_20"
-             android:paddingTop="@dimen/margin_10"
+             android:paddingTop="5dp"
              android:paddingBottom="@dimen/margin_10"
+             android:textSize="14dp"
              android:text="@string/image_size"
              />
 
@@ -61,7 +58,7 @@
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/border_five"
+            android:background="@drawable/round_dot_bg"
             >
             <ImageView
                 android:layout_centerInParent="true"
@@ -96,7 +93,7 @@
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/border_five"
+            android:background="@drawable/round_dot_bg"
             >
             <ImageView
                 android:layout_centerInParent="true"
@@ -123,11 +120,11 @@
         </RelativeLayout>
 
          <RelativeLayout
-
+          android:visibility="gone"
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/border_five"
+            android:background="@drawable/round_dot_bg"
             >
             <ImageView
                 android:layout_centerInParent="true"
@@ -153,8 +150,42 @@
                 />
         </RelativeLayout>
 
+         <RelativeLayout
+             android:layout_margin="15dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@drawable/ic_rectangle_2">
 
-
+             <EditText
+                 android:id="@+id/et_email"
+                 style="@style/edittext_style"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:background="@android:color/transparent"
+                 android:hint="@string/national_id_card_doc_"
+                 android:inputType="text"
+                 android:paddingStart="@dimen/margin_10"
+                 android:paddingEnd="@dimen/margin_10"
+                 android:textColorHint="@color/hint_text_color" />
+         </RelativeLayout>
+         <RelativeLayout
+             android:layout_margin="15dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@drawable/ic_rectangle_11">
+             <TextView
+                 android:id="@+id/txt_note"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:background="@color/light_grey_color"
+                 android:textColor="@color/dark_grey_color"
+                 android:paddingLeft="@dimen/margin_10"
+                 android:paddingTop="@dimen/margin_10"
+                 android:paddingBottom="@dimen/margin_10"
+                 android:text="@string/note_"
+                 />
+         </RelativeLayout>
     <TextView
         android:id="@+id/tv_send"
         android:layout_width="match_parent"

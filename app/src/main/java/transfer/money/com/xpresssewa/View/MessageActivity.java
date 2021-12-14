@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -151,16 +152,17 @@ public class MessageActivity extends AppCompatActivity {
         tv_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (imagePathfront.length() == 0) {
+                showAddressDialog();
+              /*  if (imagePathfront.length() == 0) {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload front of " + Title, chooseimagelayoutouter);
                 } else if (imagePathBack.length() == 0) {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload back of " + Title, chooseimagelayoutouter);
-                } else if (imagePathAddress.length() == 0) {
-                    new Showtoast().showToast(MessageActivity.this, "Required", "Upload address proof image.", chooseimagelayoutouter);
-                } else {
-                    uploadImageToServer();
                 }
+               *//* else if (imagePathAddress.length() == 0) {
+                    new Showtoast().showToast(MessageActivity.this, "Required", "Upload address proof image.", chooseimagelayoutouter);
+                }*//* else {
+                    uploadImageToServer();
+                }*/
             }
         });
         chooseimagelayoutouter.setOnClickListener(new View.OnClickListener() {
@@ -227,7 +229,27 @@ public class MessageActivity extends AppCompatActivity {
     }
 
 
+   private void showAddressDialog(){
+       SimpleDialog simpleDialog = new SimpleDialog();
+       final Dialog confirmDialog = simpleDialog.simpleDailog(MessageActivity.this, R.layout.address_dailog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+       ImageView backDialog=confirmDialog.findViewById(R.id.headerbackbutton);
+       String address_instruction_html = getString(R.string.address_instruction_html);
+       WebView webView = confirmDialog.findViewById(R.id.webView);
+       webView.loadDataWithBaseURL(null, address_instruction_html, "text/html", "utf-8", null);
 
+
+
+
+
+       backDialog.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               confirmDialog.dismiss();
+           }
+       });
+
+
+   }
 
 
     private Bitmap bmap;

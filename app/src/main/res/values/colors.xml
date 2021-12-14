@@ -46,6 +46,7 @@
     <color name="loginwith">#9B9B9B</color>
     <color name="dark_grey_color">#7B7B7B</color>
     <color name="placeholdercolor">#efefef</color>
+    <color name="hint_text_color">#A7A7A7</color>
 
     <color name="dark_red_color">#C20000</color>
     <color name="white">#fff</color>
