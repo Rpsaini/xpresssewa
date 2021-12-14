@@ -352,7 +352,30 @@
     <string name="enterphonenumber">Enter Phone Number</string>
     <string name="Veriyotp">Verify OTP</string>
     <string name="image_size">Image size should be less than 2 MB</string>
- 
 
+    <string name="instruction_html">
+    <![CDATA[
+    <p><b>Instructions:</b></p>
+    <p>The documents that we can accept for KYC, include:</p>
+     <ul>
+      <li>Passport</li>
+      <li>Australian photo ID</li>
+      <li>Australian driver’s licence</li>
+      </ul>
+      <p>The documents such as student cards cannot be accepted.</p>
+    <br />
+       <p>Please ascertain that it is a supreme-quality photograph or a scan of a valid government-issued ID that depicts:</p>
+    <ul>
+      <li>Document number</li>
+      <li>Your photo</li>
+      <li>You full name</li>
+      <li>Your date of birth</li>
+      <li>Your signature</li>
+      <li>Expiry date of ID</li>
+      </ul>
+     <br />
+     <p>The full name & date of birth must fall similar to the details on Xpress Sewa account</p>
+    ]]>
+    </string>
 
 </resources>

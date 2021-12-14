@@ -3,7 +3,10 @@ package transfer.money.com.xpresssewa.View;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +27,10 @@ public class SelectIdentityType extends AppCompatActivity {
     }
     private void init()
     {
+        String htmlAsString = getString(R.string.instruction_html);
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.loadDataWithBaseURL(null, htmlAsString, "text/html", "utf-8", null);
+
         findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
