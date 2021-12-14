@@ -67,99 +67,96 @@
 
                 android:background="@color/light_grey_color"/>
             <LinearLayout
-
+                android:background="@drawable/round_filled_blue"
                 android:padding="5dp"
                 android:id="@+id/ll_nationalidcard"
                 android:layout_width="match_parent"
                 android:weightSum="10"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp">
                 <TextView
 
                     android:id="@+id/tv_myself"
                     android:layout_width="0dp"
                     android:layout_weight="8.5"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="National Identity Card"
                     android:textSize="15dp"
                     android:drawablePadding="@dimen/margin_10"
-                    android:drawableTint="@color/black_color"
+                    android:drawableTint="@color/white"
                     android:gravity="center_vertical"
-                    android:textColor="@color/black_color"
+                    android:textColor="@color/white"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1.5"
-
+                    android:layout_gravity="center"
                     android:gravity="right"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:tint="@color/grey_color"
+
+                        android:tint="@color/white"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:src="@drawable/next_arrow"/>
                 </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:layout_marginTop="@dimen/margin_15"
-                android:background="@color/light_grey_color"/>
+
             <LinearLayout
+                android:background="@drawable/round_filled_blue"
+                android:layout_marginTop="25dp"
                 android:padding="5dp"
                 android:id="@+id/ll_passportimg"
                 android:layout_width="match_parent"
                 android:weightSum="10"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp">
                 <TextView
                     android:drawableTint="@color/black_color"
                     android:layout_width="0dp"
                     android:layout_weight="8.5"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/tv_someoneelse"
                     android:text="Passport"
                     android:textSize="15dp"
                     android:drawablePadding="@dimen/margin_10"
                     android:gravity="center_vertical"
-                    android:textColor="@color/black_color"
+                    android:textColor="@color/white"
                     />
                 <LinearLayout
+                    android:layout_gravity="center"
                     android:layout_width="0dp"
                     android:layout_weight="1.5"
                     android:gravity="right"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:tint="@color/grey_color"
+                        android:tint="@color/white"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:src="@drawable/next_arrow"/>
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginBottom="@dimen/margin_15"
-                android:layout_marginTop="@dimen/margin_15"
-                android:background="@color/light_grey_color"/>
+
 
             <LinearLayout
+                android:layout_marginTop="25dp"
+                android:background="@drawable/round_filled_blue"
                 android:padding="5dp"
                 android:id="@+id/ll_driverlicence"
                 android:layout_width="match_parent"
                 android:weightSum="10"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp">
                 <TextView
+
                     android:drawableTint="@color/black_color"
                     android:layout_width="0dp"
                     android:layout_weight="8.5"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/tv_all"
                     android:text="Driver`s Licence"
                     android:textSize="15dp"
                     android:drawablePadding="@dimen/margin_10"
                     android:gravity="center_vertical"
-                    android:textColor="@color/black_color"
+                    android:textColor="@color/white"
                     />
                 <LinearLayout
                     android:layout_width="0dp"
@@ -168,10 +165,11 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:src="@drawable/next_arrow"
-                        android:tint="@color/grey_color" />
+                        android:tint="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 

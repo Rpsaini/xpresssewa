@@ -77,4 +77,7 @@ public class SelectIdentityType extends AppCompatActivity {
             finish();
         }
     }
+
+
+
 }
