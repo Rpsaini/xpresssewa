@@ -11,7 +11,8 @@
     <include layout="@layout/toolbar_with_back"/>
 
     <include layout="@layout/toolbar_with_back"/>
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginBottom="70dp"
         android:layout_below="@+id/toolbarlayout"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -302,19 +303,20 @@
 
      </LinearLayout>
        <androidx.recyclerview.widget.RecyclerView
+
              android:layout_marginStart="10dp"
              android:layout_marginEnd="10dp"
              android:layout_marginTop="20dp"
              android:layout_below="@+id/ll_detail"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:layout_marginBottom="70dp"
-             android:id="@+id/reply_recycler_view"
+
+           android:id="@+id/reply_recycler_view"
              >
 
          </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
        <RelativeLayout
            android:background="@drawable/send_message_border_drawable"
            android:layout_margin="6dp"

@@ -515,6 +515,7 @@
 
 
             <TextView
+
                 android:layout_centerVertical="true"
                 android:layout_marginStart="40dp"
                 android:gravity="center|left"

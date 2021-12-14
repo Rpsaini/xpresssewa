@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -38,16 +39,17 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
     public View view;
     Context mContext;
 
-    RecyclerView recycler_view_of_activity,wallet_recycler;
+    RecyclerView recycler_view_of_activity, wallet_recycler;
     ImageView img_nodatafound;
 
     RelativeLayout ll_activitylayout;
 
-    RelativeLayout rr_activity_and_wallet,rr_upper_layout;
+    RelativeLayout rr_activity_and_wallet, rr_upper_layout;
     ImageView img_show_warring;
-    TextView  txt_activity_label;
+    TextView txt_activity_label;
     private TextView txt_label;
-    private String isKycApproved="";
+    private String isKycApproved = "";
+    private int skipCount = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,29 +60,29 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_activity, container, false);
+        view = inflater.inflate(R.layout.fragment_activity, container, false);
         Calligrapher calligrapher = new Calligrapher(getActivity());
         calligrapher.setFont(view, "MontserratRegular.ttf");
-        ButterKnife.bind(this,view);
-        mContext=getActivity();
+        ButterKnife.bind(this, view);
+        mContext = getActivity();
 
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         init();
         return view;
     }
-    private void init()
-    {
 
-        recycler_view_of_activity =view.findViewById(R.id.recycler_view_of_activity);
-        wallet_recycler =view.findViewById(R.id.wallet_recycler);
-        img_nodatafound =view.findViewById(R.id.img_nodatafound);
-        ll_activitylayout =view.findViewById(R.id.ll_activitylayout);
-        img_show_warring =view.findViewById(R.id.img_show_warring);
-        rr_upper_layout =view.findViewById(R.id.rr_upper_layout);
-        txt_label =view.findViewById(R.id.txt_label);
-        txt_activity_label =view.findViewById(R.id.txt_activity_label);
+    private void init() {
 
-        rr_activity_and_wallet =view.findViewById(R.id.rr_activity_and_wallet);
+        recycler_view_of_activity = view.findViewById(R.id.recycler_view_of_activity);
+        wallet_recycler = view.findViewById(R.id.wallet_recycler);
+        img_nodatafound = view.findViewById(R.id.img_nodatafound);
+        ll_activitylayout = view.findViewById(R.id.ll_activitylayout);
+        img_show_warring = view.findViewById(R.id.img_show_warring);
+        rr_upper_layout = view.findViewById(R.id.rr_upper_layout);
+        txt_label = view.findViewById(R.id.txt_label);
+        txt_activity_label = view.findViewById(R.id.txt_activity_label);
+
+        rr_activity_and_wallet = view.findViewById(R.id.rr_activity_and_wallet);
         chekIsUserKycisIsDone();
 
 
@@ -88,24 +90,21 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
 
 
     @Override
-    public void onClick(View view)
-    {
-        switch(view.getId()) {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.ll_verification_pending:
-                 chekIsUserKycisIsDone();
+                chekIsUserKycisIsDone();
                 break;
         }
     }
 
-    private void chekIsUserKycisIsDone()
-    {
-         isKycApproved=new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
-        TextView verification_text=view.findViewById(R.id.verification_text);
-        TextView verification_subtext=view.findViewById(R.id.verification_subtext);
+    private void chekIsUserKycisIsDone() {
+        isKycApproved = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
+        TextView verification_text = view.findViewById(R.id.verification_text);
+        TextView verification_subtext = view.findViewById(R.id.verification_subtext);
 
-        View activityView=view.findViewById(R.id.ll_verification_pending);
-        if(isKycApproved.equalsIgnoreCase("1"))
-        {
+        View activityView = view.findViewById(R.id.ll_verification_pending);
+        if (isKycApproved.equalsIgnoreCase("1")) {
             txt_activity_label.setVisibility(View.VISIBLE);
             txt_label.setVisibility(View.GONE);
             rr_upper_layout.setVisibility(View.GONE);
@@ -116,12 +115,10 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((MainActivity)getActivity()).callMyProfileFragment("personal");
+                    ((MainActivity) getActivity()).callMyProfileFragment("personal");
                 }
             });
-        }
-        else  if(isKycApproved.equalsIgnoreCase("4"))
-        {
+        } else if (isKycApproved.equalsIgnoreCase("4")) {
             txt_activity_label.setVisibility(View.VISIBLE);
             txt_label.setVisibility(View.VISIBLE);
             rr_upper_layout.setVisibility(View.GONE);
@@ -139,16 +136,12 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((MainActivity)getActivity()).callMyProfileFragment("personal");
+                    ((MainActivity) getActivity()).callMyProfileFragment("personal");
                 }
             });
 
 
-
-
-        }
-        else if(isKycApproved.equalsIgnoreCase("2"))
-        {
+        } else if (isKycApproved.equalsIgnoreCase("2")) {
             txt_activity_label.setVisibility(View.VISIBLE);
             rr_upper_layout.setVisibility(View.GONE);
             activityView.setVisibility(View.VISIBLE);
@@ -157,13 +150,11 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((MainActivity)getActivity()).callMyProfileFragment("personal");
+                    ((MainActivity) getActivity()).callMyProfileFragment("personal");
                 }
             });
 
-        }
-        else
-        {
+        } else {
             txt_activity_label.setVisibility(View.GONE);
             txt_label.setText("");
             txt_label.setVisibility(View.GONE);
@@ -174,81 +165,98 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
         }
 
 
-
-
-            getActivityData();
-            getwalletData();
+        getActivityData();
+        getwalletData();
 
 
     }
 
+
+    ArrayList<JSONObject> datAr = new ArrayList<>();
+
     private void getActivityData() {
-
-        Map<String,String> m=new LinkedHashMap<>();
-        m.put("MemberId",UtilClass.member_id);
-        m.put("StartDate","");
-        m.put("EndDate","");
-        m.put("Take","0");
-        m.put("Skip","0");
-        m.put("Type","2");
-
+        Map<String, String> m = new LinkedHashMap<>();
+        m.put("MemberId", UtilClass.member_id);
+        m.put("StartDate", "");
+        m.put("EndDate", "");
+        m.put("Take", "8");
+        m.put("Skip", skipCount + "");
+        m.put("Type", "2");
 
         new ServerHandler().sendToServer(getActivity(), "Transactions", m, 0, 1, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
                 try {
                     JSONObject obj = new JSONObject(dta);
+                    if (obj.getBoolean("status")) {
 
-                    System.out.println("response obj==" + obj);
+                        JSONArray TransactionList = obj.getJSONArray("TransactionList");
+                        for (int x = 0; x < TransactionList.length(); x++) {
+                            datAr.add(TransactionList.getJSONObject(x));
+                        }
 
-                    if (obj.getBoolean("status"))
-                      {
+                        if (skipCount == 0) {
+                            initRecyler(datAr);
+                        } else {
+                            mAdapter.notifyDataSetChanged();
+                        }
 
-                         JSONArray TransactionList =obj.getJSONArray("TransactionList");
-                         ArrayList<JSONObject> datAr=new ArrayList<>();
-                         for(int x=0;x<TransactionList.length();x++)
-                         {
-                             datAr.add(TransactionList.getJSONObject(x));
-                         }
+                    } else {
 
-                         initRecyler(datAr);
-                      }
-                    else {
-
-                        MainActivity mainActivity= (MainActivity) getActivity();
-                        if(mainActivity.tabCount==0) {
+                        MainActivity mainActivity = (MainActivity) getActivity();
+                        if (mainActivity.tabCount == 0) {
                             mainActivity.sendFromSelectedList(null);
                         }
-                        if(isKycApproved.equalsIgnoreCase("3")) {
-                            img_show_warring.setVisibility(View.VISIBLE);
-                            img_show_warring.setImageResource(R.drawable.noactivityfound);
+                        if(datAr.size()==0) {
+                            if (isKycApproved.equalsIgnoreCase("3")) {
+                                img_show_warring.setVisibility(View.VISIBLE);
+                                img_show_warring.setImageResource(R.drawable.noactivityfound);
+                            }
                         }
                     }
 
-                } catch (Exception e)
-                  {
-                       e.printStackTrace();
-                  }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
         });
     }
 
+    ActivityAdapter mAdapter;
 
-    private void initRecyler(ArrayList<JSONObject> data)
-    {
+    private void initRecyler(ArrayList<JSONObject> data) {
 
-        if(data.size()>0)
-        {
+        if (data.size() > 0) {
             img_nodatafound.setVisibility(View.GONE);
         }
 
-        ActivityAdapter mAdapter = new ActivityAdapter(data, (MainActivity) getActivity());
+        mAdapter = new ActivityAdapter(data, (MainActivity) getActivity(), this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recycler_view_of_activity.setLayoutManager(mLayoutManager);
         recycler_view_of_activity.setItemAnimator(new DefaultItemAnimator());
         recycler_view_of_activity.setAdapter(mAdapter);
+        recycler_view_of_activity.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (!recyclerView.canScrollVertically(1) && dy > 0)
+                {
+                    loadNextData();
+                    //scrolled to BOTTOM
+                }else if (!recyclerView.canScrollVertically(-1) && dy < 0)
+                {
+                    //scrolled to TOP
+                    System.out.println("Scrool at top===");
+                }
+            }
+        });
+
+
     }
+
+
+
+
 
 
     public void getwalletData() {
@@ -304,5 +312,12 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
         wallet_recycler.setItemAnimator(new DefaultItemAnimator());
         WalletListAdapter mAdapter = new WalletListAdapter(data, (MainActivity) getActivity(),this);
         wallet_recycler.setAdapter(mAdapter);
+    }
+
+    public void loadNextData()
+    {
+        skipCount++;
+        getActivityData();
+
     }
 }

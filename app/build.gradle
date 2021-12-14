@@ -90,11 +90,6 @@ apply plugin: 'com.google.gms.google-services'
 
 
 
-
-//
 //ffmpeg -i C:\Users\Webcom\Desktop\bekhayli.webm -c:v libx264 -crf 24 -b:v 1M -c:a aac C:\Users\Webcom\Desktop\bekhaylinew3.webm
-//
 //ffmpeg -i C:\Users\Webcom\Desktop\bekhayli.webm -s 640x480 -b:v 512k -vcodec mpeg1video -acodec copy C:\Users\Webcom\Desktop\bekhaylinew3.webm
-
-
 //ffmpeg -i C:\Users\Webcom\Desktop\bekhayli.webm -b 800k C:\Users\Webcom\Desktop\bekhaylinew2.webm

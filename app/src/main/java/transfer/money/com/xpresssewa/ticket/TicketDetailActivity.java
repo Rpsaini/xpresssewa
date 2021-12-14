@@ -51,6 +51,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import transfer.money.com.xpresssewa.Adapter.ShowAllticketsImagesAdapter;
 import transfer.money.com.xpresssewa.Adapter.TicketReplyListingAdapter;
+import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.ApiProduction;
@@ -169,9 +170,16 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     private void actions()
     {
-        System.out.println("I am her");
-        TextView ticketDetail = findViewById(R.id.headertexttitle);
-        ticketDetail.setText("Ticket Details");
+
+//        TextView ticketDetail = findViewById(R.id.headertexttitle);
+//        ticketDetail.setText("Ticket Details");
+
+        TextView headertexttitle=findViewById(R.id.headertexttitle);
+        headertexttitle.setText("Ticket ID : "+ticketId);
+        headertexttitle.setVisibility(View.VISIBLE);
+
+        System.out.println("Hereeeeee=====>");
+
 
         findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +187,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-        System.out.println("I am herew");
+
     }
 
 
@@ -207,7 +215,6 @@ public class TicketDetailActivity extends AppCompatActivity {
                             if(x==0)
                             {
                                 showImages(jsonObjectsAr.getJSONObject(0).getString("AttachFile"),(RecyclerView)findViewById(R.id.recycler_view_for_all),"main_ticket");
-
 
                             }
                             else {
@@ -251,14 +258,14 @@ public class TicketDetailActivity extends AppCompatActivity {
                     new Showtoast().showToast(TicketDetailActivity.this, "Required", "Enter Ticket reply ", ll_ticketreply);
                     hideKeyboard(TicketDetailActivity.this);
                 } else {
-                    submitTicket(ed_reply.getText().toString(),"");
+                    submitTicket(ed_reply.getText().toString(),"",ed_reply);
                 }
             }
         });
 
     }
 
-    private void submitTicket(String msg,String imagename)
+    private void submitTicket(String msg,String imagename,EditText ed_reply)
     {
         UtilClass.getUserData(TicketDetailActivity.this);
 
@@ -276,6 +283,7 @@ public class TicketDetailActivity extends AppCompatActivity {
             public void getRespone(String dta, ArrayList<Object> respons) {
 
                 try {
+
                     dataAr.clear();
                     JSONObject obj = new JSONObject(dta);
                     System.out.println("is saved ==" + obj);
@@ -283,6 +291,12 @@ public class TicketDetailActivity extends AppCompatActivity {
                         getTicketMessages(ticketId);
                     } else {
                         new Showtoast().showToast(TicketDetailActivity.this, "Response", obj.getString("Message"), findViewById(R.id.ll_linearlayoutadditional));
+                    }
+
+
+                    if(ed_reply!=null)
+                    {
+                        ed_reply.setText("");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -322,7 +336,7 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        System.out.println("inside============" + requestCode + "===" + resultCode);
+
 
         bmap = null;
 
@@ -330,7 +344,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         if (resultCode != RESULT_CANCELED) {
             switch (requestCode) {
                 case 0:
-//                 if(imageReturnedIntent != null)
+
                 {
                     try {
 
@@ -340,13 +354,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                         strImagePath = getRealPathFromURI(uri);
                         uploadImageToServer(strImagePath, "file");
 
-//                        uploadImageToServer(s, "file");
-//                        imageView.setImageBitmap(bmap);
-//                        slideUpDown(null, 0);
-//                        if (imageArray.size() < 5) {
-//                            imageArray.add("");
-//                            defaultTransferAdapter.notifyDataSetChanged();
-//                        }
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -361,17 +369,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                                 strImagePath = getRealPathFromURI(selectedImage);
                                 uploadImageToServer(strImagePath, "file");
 
-                                //      uploadImageToServer(s, "file");
-//                                InputStream image_stream = getContentResolver().openInputStream(selectedImage);
-//                                bmap = BitmapFactory.decodeStream(image_stream);
-                                //    imageView.setImageBitmap(bmap);
 
-
-//                                if (imageArray.size() < 5) {
-//                                    imageArray.add("");
-//                                    defaultTransferAdapter.notifyDataSetChanged();
-//                                }
-//                                slideUpDown(null, 0);
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -472,6 +470,7 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     private void uploadImageToServer(String imagePath, String tag) {
         UtilClass.getUserData(TicketDetailActivity.this);
+        BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
         System.out.println("member id===" + UtilClass.member_id);
         File file = new File(imagePath);
         if (file != null) {
@@ -497,7 +496,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                     String convertedToString = String.valueOf(uploadFileResponse);
                     System.out.println("Insie success=dd===" + convertedToString);
                     String imageName = uploadFileResponse.substring(uploadFileResponse.lastIndexOf("!") + 1, uploadFileResponse.length());
-                    submitTicket("",imageName);
+                    submitTicket("",imageName,null);
                     mProgressDialog.dismiss();
 
 
@@ -512,6 +511,8 @@ public class TicketDetailActivity extends AppCompatActivity {
 
 
         }
+
+        BaseActivity.baseurl="https://demoapi.webcomsystems.net.au/";
     }
 
     private void showImages(String AttachFile, RecyclerView recycler_view,String type)

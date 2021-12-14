@@ -92,12 +92,13 @@ public class ReviewTransfer extends AppCompatActivity {
             String selectedObj = getIntent().getStringExtra("obj");
             final String selectedRecipientData = getIntent().getStringExtra("selectedRecipientData");
 
+
             String purposeId = getIntent().getStringExtra("purposeID");
             String referenceId = getIntent().getStringExtra("refrenceId");
             String username = new SaveImpPrefrences().reterivePrefrence(ReviewTransfer.this, DefaultConstatnts.UserName).toString();
 
-            System.out.println("review transfer===" + calculationData + "===" + selectedObj + "===" + selectedRecipientData);
-            System.out.println("referenceiud===" + purposeId + "===" + referenceId + "===" + username);
+           // System.out.println("review transfer===" + calculationData + "===" + selectedObj + "===" + selectedRecipientData);
+            //System.out.println("referenceiud===" + purposeId + "===" + referenceId + "===" + username);
 
 
             JSONObject calculationObj = new JSONObject(calculationData);

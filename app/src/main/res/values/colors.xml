@@ -80,7 +80,8 @@
     <color name="light_text_background">#F9F9F9</color>
     <color name="skybluecolorcode">#2264ed</color>
     <color name="greencolor">#30B94C</color>
-    <color name="toolbar_background">#EFEFEF</color>
+<!--    <color name="toolbar_background">#EFEFEF</color>-->
+    <color name="toolbar_background">#f5f5f5</color>
     <color name="pending_color_code">#FC9A38</color>
     <color name="button_green">#30B84B</color>
     <color name="lite_green">#A9E8B6</color>

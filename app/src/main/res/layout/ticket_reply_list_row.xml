@@ -30,7 +30,7 @@
              ></androidx.recyclerview.widget.RecyclerView>
 
         <TextView
-            android:gravity="right"
+            android:gravity="left"
             android:padding="5dp"
             android:id="@+id/txt_my_text"
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:textColor="@color/black_color"
             ></TextView>
             <TextView
-                android:padding="4dp"
+                android:padding="5dp"
                 android:textSize="11dp"
                 android:id="@+id/txt_mytime"
                 android:gravity="end"

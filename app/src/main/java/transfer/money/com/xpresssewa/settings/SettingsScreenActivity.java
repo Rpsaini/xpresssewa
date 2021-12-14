@@ -4,6 +4,7 @@ package transfer.money.com.xpresssewa.settings;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -143,6 +144,14 @@ public class SettingsScreenActivity extends BaseActivity {
             }
         });
 
+
+        findViewById(R.id.rr_sendfeedback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+getPackageName())));
+            }
+        });
+
         findViewById(R.id.rr_deactivate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,9 +237,6 @@ public class SettingsScreenActivity extends BaseActivity {
         Intent intent = new Intent(SettingsScreenActivity.this, SplashActivity.class);
         startActivity(intent);
         finishAffinity();
-
-
-
     }
 
 }

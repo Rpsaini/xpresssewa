@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ticket.MyTicketsActivity">
 
 
@@ -22,9 +23,8 @@
       android:gravity="center|left"
       ></TextView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/view_all_tickets_recycler"
-        ></androidx.recyclerview.widget.RecyclerView>
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/view_all_tickets_recycler"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity {
             {
                 getNotification();
 //                String MemberId=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.MemberId) +"";
-                String login=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.login_detail) +"";
+                String login=saveImpPrefrences.reterivePrefrence(MainActivity.this, DefaultConstatnts.login_detail)+"";
 
                 JSONObject jsonObject=new JSONObject(login);
                 UtilClass.getDefaultDestImage=jsonObject.getString("FlagImageDestination");

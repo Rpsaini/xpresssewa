@@ -25,6 +25,7 @@ import transfer.money.com.xpresssewa.validation.Showtoast;
 
 public class MyTicketsActivity extends AppCompatActivity {
    RecyclerView view_all_tickets_recycler;
+   private int skipCount=0;
    private ArrayList<JSONObject> datAr=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +44,37 @@ public class MyTicketsActivity extends AppCompatActivity {
         });
         TextView headertexttitle =findViewById(R.id.headertexttitle1);
         headertexttitle.setText("My Tickets");
+
+
     }
 
+    ViewTicketAdapter transferPurposeAdater;
     private void init()
     {
         view_all_tickets_recycler=findViewById(R.id.view_all_tickets_recycler);
-        ViewTicketAdapter transferPurposeAdater = new ViewTicketAdapter(datAr, MyTicketsActivity.this);
+         transferPurposeAdater = new ViewTicketAdapter(datAr, MyTicketsActivity.this);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         view_all_tickets_recycler.setLayoutManager(horizontalLayoutManagaer);
         view_all_tickets_recycler.setItemAnimator(new DefaultItemAnimator());
         view_all_tickets_recycler.setAdapter(transferPurposeAdater);
+
+        view_all_tickets_recycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (!recyclerView.canScrollVertically(1) && dy > 0)
+                {
+                    getAllTickets();
+                    //scrolled to BOTTOM
+                }else if (!recyclerView.canScrollVertically(-1) && dy < 0)
+                {
+                    //scrolled to TOP
+
+                }
+            }
+        });
+
+
     }
 
     private void getAllTickets() {
@@ -66,31 +87,35 @@ public class MyTicketsActivity extends AppCompatActivity {
         m.put("CategoryId", "0");
         m.put("MemberId", UtilClass.member_id);
         m.put("Take", "10");
-        m.put("Skip", "0");
+        m.put("Skip", skipCount+"");
 
         new ServerHandler().sendToServer(this, "GetTickets", m, 0, 1, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
 
                 try {
-                    datAr.clear();
-
                     JSONObject obj = new JSONObject(dta);
                     System.out.println("TicketData back==" + obj);
                     if (obj.getBoolean("status")) {
 
-
-
-
                         JSONArray jsonObjectsAr = obj.getJSONArray("TicketList");
-
                         for (int x = 0; x < jsonObjectsAr.length(); x++) {
                             datAr.add(jsonObjectsAr.getJSONObject(x));
                         }
+                        if(skipCount==0)
+                        {
+                            init();
+                        }
+                        else
+                        {
+                            transferPurposeAdater.notifyDataSetChanged();
+                        }
 
-                        init();
+
                     } else {
-                        new Showtoast().showToast(MyTicketsActivity.this, "Response", obj.getString("Message"), findViewById(R.id.ll_linearlayoutadditional));
+                        if(skipCount==0) {
+                            new Showtoast().showToast(MyTicketsActivity.this, "Response", obj.getString("Message"), findViewById(R.id.ll_linearlayoutadditional));
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

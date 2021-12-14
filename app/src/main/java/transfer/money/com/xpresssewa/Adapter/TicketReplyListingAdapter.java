@@ -4,6 +4,7 @@ package transfer.money.com.xpresssewa.Adapter;
 
 import android.content.Context;
 
+import android.location.Geocoder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,12 +76,18 @@ public class TicketReplyListingAdapter extends RecyclerView.Adapter<TicketReplyL
 
         try {
             final JSONObject pos = (JSONObject) moviesList.get(position);
-
-
-
+            String msg=pos.getString("Message");
             if(pos.getString("Type").equalsIgnoreCase("1"))
             {
-                holder.txt_my_text.setText(pos.getString("Message"));
+                if(msg.length()==0)
+                {
+                    holder.txt_my_text.setVisibility(View.GONE);
+                }
+                else
+                {
+                    holder.txt_my_text.setVisibility(View.VISIBLE);
+                }
+                holder.txt_my_text.setText(msg);
                 holder.txt_mytime.setText(pos.getString("LastUpdated"));
                 holder.ll_myview.setVisibility(View.VISIBLE);
                 holder.ll_you.setVisibility(View.GONE);
@@ -95,7 +102,15 @@ public class TicketReplyListingAdapter extends RecyclerView.Adapter<TicketReplyL
             }
             else
             {
-                holder.txt_you.setText(pos.getString("Message"));
+                if(msg.length()==0)
+                {
+                    holder.txt_you.setVisibility(View.GONE);
+                }
+                else
+                {
+                    holder.txt_you.setVisibility(View.VISIBLE);
+                }
+                holder.txt_you.setText(msg);
                 holder.txt_you_time.setText(pos.getString("LastUpdated"));
                 holder.ll_myview.setVisibility(View.GONE);
 

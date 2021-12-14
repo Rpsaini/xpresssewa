@@ -36,6 +36,7 @@ package transfer.money.com.xpresssewa.Adapter;
 
         import me.anwarshahriar.calligrapher.Calligrapher;
         import transfer.money.com.xpresssewa.R;
+        import transfer.money.com.xpresssewa.View.ActivityFragment;
         import transfer.money.com.xpresssewa.View.MainActivity;
         import transfer.money.com.xpresssewa.View.TransactionDetailView;
         import transfer.money.com.xpresssewa.util.CircleTransform;
@@ -46,6 +47,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     private MainActivity ira1;
     private ArrayList<JSONObject> moviesList;
     Context mContext;
+    private ActivityFragment activityFragment;
 //    Random rn = new Random();
 //    private int maximum=5 , minimum=0;
 
@@ -89,9 +91,10 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
 
 
 
-    public ActivityAdapter(ArrayList<JSONObject> moviesList, MainActivity ira) {
+    public ActivityAdapter(ArrayList<JSONObject> moviesList, MainActivity ira, ActivityFragment activityFragment) {
         this.moviesList = moviesList;
         ira1 = ira;
+        this.activityFragment=activityFragment;
 
     }
 
@@ -187,6 +190,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
                         }
                     }
                 });
+
+
             }
 
             String statusName=obj.getString("statusname");
