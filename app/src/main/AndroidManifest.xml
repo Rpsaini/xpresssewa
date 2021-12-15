@@ -99,9 +99,9 @@
         <activity
             android:name=".View.TransactionDetailView"
             android:screenOrientation="portrait" />
-    <!--    <activity
+        <activity
             android:name=".View.SelectIdentityType"
-            android:screenOrientation="portrait" />-->
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.ChoosePaymentOptions"
             android:screenOrientation="portrait" />
@@ -147,7 +147,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".View.SelectIdentityType"
+            android:name=".View.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
