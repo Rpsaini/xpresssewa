@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.Adapter.AddImageAdapter;
 import transfer.money.com.xpresssewa.Adapter.ChooseBankAdapter;
 import transfer.money.com.xpresssewa.BaseActivity;
@@ -39,6 +40,8 @@ public class ChooseBankActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_bank);
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "MontserratRegular.ttf", true);
         data =  getIntent().getStringExtra("data");
         init();
         LinkedHashMap<String, String> mapData = new Gson().fromJson(data, LinkedHashMap.class);

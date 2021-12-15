@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
@@ -37,6 +38,8 @@ public class ShowBankDetails extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_bank_details);
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "MontserratRegular.ttf", true);
         init();
         getBankDetail();
 
@@ -61,7 +64,9 @@ public class ShowBankDetails extends BaseActivity {
                     "        3.RTGS payments are not accepted. If you must send by RTGS, please contact customer support\n" +
                     "        We never takes money automatically from your account.<br/><br/>\n" +
                     "\n" +
-                    "        You can use your online banking or mobile app to make your bank transfer to us.</html>", Html.FROM_HTML_MODE_COMPACT));
+                    "        You can use your online banking or mobile app to make your bank transfer to us.<br/><br/>" +
+                    "" +
+                    "Before completing the transaction click the \"Bank Transfer Done\" then make the deposit payment via bank.</html>", Html.FROM_HTML_MODE_COMPACT));
         }
         else {
             txt_note.setText(Html.fromHtml("<html>1.Funds must be sent from an account in your name.<br/>\n" +
@@ -69,7 +74,9 @@ public class ShowBankDetails extends BaseActivity {
                     "        3.RTGS payments are not accepted. If you must send by RTGS, please contact customer support\n" +
                     "        We never takes money automatically from your account.<br/><br/>\n" +
                     "\n" +
-                    "        You can use your online banking or mobile app to make your bank transfer to us.</html>"));
+                    "        You can use your online banking or mobile app to make your bank transfer to us.<br/><br/>" +
+                    "" +
+                    "Before completing the transaction click the \"Bank Transfer Done\" then make the deposit payment via bank.</html>"));
             }
 
 

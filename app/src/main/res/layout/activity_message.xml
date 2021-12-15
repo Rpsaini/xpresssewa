@@ -151,6 +151,7 @@
         </RelativeLayout>
 
          <RelativeLayout
+             android:visibility="gone"
              android:layout_margin="15dp"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
@@ -169,6 +170,7 @@
                  android:paddingEnd="@dimen/margin_10"
                  android:textColorHint="@color/hint_text_color" />
          </RelativeLayout>
+
          <RelativeLayout
              android:layout_margin="15dp"
              android:layout_width="match_parent"
@@ -186,6 +188,8 @@
                  android:text="@string/note_"
                  />
          </RelativeLayout>
+
+
     <TextView
         android:id="@+id/tv_send"
         android:layout_width="match_parent"

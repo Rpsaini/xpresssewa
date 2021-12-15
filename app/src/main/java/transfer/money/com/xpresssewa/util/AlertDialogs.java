@@ -20,6 +20,7 @@ public class AlertDialogs {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         callBacks.getDialogEvent(positiveButton);
+
                     }
                 });
 
@@ -29,6 +30,7 @@ public class AlertDialogs {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         callBacks.getDialogEvent(negativeButton);
+
                     }
                 });
 

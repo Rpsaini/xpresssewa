@@ -27,6 +27,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -71,9 +72,9 @@ public class RecipientFragment extends Fragment {
 
     @BindView(R.id.AreadyAddedRecipientRecycer)
     RecyclerView AreadyAddedRecipientRecycer;
-    private int take = 10, skip = 0, type = 1;
+    private int take = 5, skip = 0, type = 1;
     //type  1 for bank 2 for recipient
-    private int othr_take = 10, othr_skip = 0, othr_type = 2;
+    private int othr_take = 5, othr_skip = 0, othr_type = 2;
     private String member_id = "";
     private Showtoast showtoast;
 
@@ -173,7 +174,6 @@ public class RecipientFragment extends Fragment {
         });
 
 
-
         ed_search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -189,14 +189,11 @@ public class RecipientFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
                 try {
-                    if (s.length() > 0)
-                    {
+                    if (s.length() > 0) {
                         ArrayList<JSONObject> dataAr = new ArrayList<>();
-                        for (int x = 0; x < searchArOther.size(); x++)
-                        {
-                           String recipientName = searchArOther.get(x);
-                           if (recipientName.contains(s.toString().toLowerCase()))
-                            {
+                        for (int x = 0; x < searchArOther.size(); x++) {
+                            String recipientName = searchArOther.get(x);
+                            if (recipientName.contains(s.toString().toLowerCase())) {
                                 dataAr.add(otherRecipientAr.get(x));
                             }
                         }
@@ -204,11 +201,9 @@ public class RecipientFragment extends Fragment {
 
 
                         ArrayList<JSONObject> dataArmyself = new ArrayList<>();
-                        for (int x = 0; x < searchArMySelf.size(); x++)
-                        {
+                        for (int x = 0; x < searchArMySelf.size(); x++) {
                             String recipientName = searchArMySelf.get(x);
-                            if (recipientName.contains(s.toString().toLowerCase()))
-                            {
+                            if (recipientName.contains(s.toString().toLowerCase())) {
                                 dataArmyself.add(mySelfAr.get(x));
                             }
                         }
@@ -238,7 +233,7 @@ public class RecipientFragment extends Fragment {
             m.put("Take", take + "");
             m.put("Skip", skip + "");
             m.put("Type", type + "");
-            System.out.println("Get recipient===="+m);
+            System.out.println("Get recipient====" + m);
             getOtherReciient();
             new ServerHandler().sendToServer(getActivity(), "RecipientList", m, 1, 1, new CallBack() {
                 @Override
@@ -248,16 +243,14 @@ public class RecipientFragment extends Fragment {
 
                         if (obj.getString("status").equalsIgnoreCase("true")) {
                             JSONArray recipientList = obj.getJSONArray("RecipientList");
-                            for (int x = 0; x < recipientList.length(); x++)
-                            {
+                            for (int x = 0; x < recipientList.length(); x++) {
                                 mySelfAr.add(recipientList.getJSONObject(x));
                                 searchArMySelf.add(recipientList.getJSONObject(x).getString("ReciptentName").toLowerCase());
                             }
                             if (mySelfAr.size() == 0) {
                                 showtoast.showToast(getActivity(), "Response", obj.getString("Message"), view.findViewById(R.id.ll_recipientlayoutmain));
                             }
-                            if(skip == 0)
-                            {
+                            if (skip == 0) {
                                 showDataSelfRecipient(mySelfAr);
                             } else {
                                 myselfDetailsAdapter.notifyDataSetChanged();
@@ -286,12 +279,12 @@ public class RecipientFragment extends Fragment {
         view.findViewById(R.id.ll_linerlayout_recycler).setVisibility(View.VISIBLE);
 
 
-        if (mySelfAr.size() > 9) {
+        if (mySelfAr.size() > 4) {
             mySelfAr.add(null);
         }
 
         RecyclerView recipient_detail_recycler = view.findViewById(R.id.AreadyAddedRecipientRecycer);
-        myselfDetailsAdapter = new RecipientListAdapter(dataObj, (MainActivity) getActivity(), symbol, this,getString(R.string.myaccount));
+        myselfDetailsAdapter = new RecipientListAdapter(dataObj, (MainActivity) getActivity(), symbol, this, getString(R.string.myaccount));
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recipient_detail_recycler.setLayoutManager(horizontalLayoutManagaer);
@@ -301,36 +294,37 @@ public class RecipientFragment extends Fragment {
 
     }
 
+    public void loadMoreRecipient()
+    {
+        othr_skip = othr_skip + 1;
+        getOtherReciient();
+    }
 
     ArrayList<JSONObject> otherRecipientAr = new ArrayList<>();
 
     private void getOtherReciient() {
         try {
-            otherRecipientAr.clear();
-
             Map<String, String> m = new LinkedHashMap<>();
             m.put("Symbol", symbol);
             m.put("MemberId", member_id);
             m.put("Take", othr_take + "");
             m.put("Skip", othr_skip + "");
             m.put("Type", othr_type + "");
-
-System.out.println("Before to senddddd====="+m);
+            System.out.println("Before to send---" + m);
 
             new ServerHandler().sendToServer(getActivity(), "RecipientList", m, 0, 1, new CallBack() {
                 @Override
                 public void getRespone(String dta, ArrayList<Object> respons) {
                     try {
 
-                        Log.e(RecipientFragment.class.getSimpleName(),"recipient data2==" + dta);
+                        Log.e(RecipientFragment.class.getSimpleName(), "recipient data2==" + dta);
 
                         JSONObject obj = new JSONObject(dta);
 
                         if (obj.getString("status").equalsIgnoreCase("true")) {
 
                             JSONArray othrrecipientList = obj.getJSONArray("RecipientList");
-                            for (int x = 0; x < othrrecipientList.length(); x++)
-                            {
+                            for (int x = 0; x < othrrecipientList.length(); x++) {
 
 
                                 otherRecipientAr.add(othrrecipientList.getJSONObject(x));
@@ -379,24 +373,21 @@ System.out.println("Before to senddddd====="+m);
     }
 
 
-    private void showOtherRecipient(final ArrayList<JSONObject> dataObjAr)
-    {
+    RecyclerView AreadyAddedRecipientRecycerOther;
+
+    private void showOtherRecipient(final ArrayList<JSONObject> dataObjAr) {
         view.findViewById(R.id.img_default).setVisibility(View.GONE);
         view.findViewById(R.id.ll_recipientlayout).setVisibility(View.GONE);
         view.findViewById(R.id.ll_linerlayout_recycler).setVisibility(View.VISIBLE);
 
 
-        if (otherRecipientAr.size() > 9) {
-//            otherRecipientAr.add(null);
-        }
 
-        RecyclerView AreadyAddedRecipientRecycerOther = view.findViewById(R.id.AreadyAddedRecipientRecycerOther);
-        otherDetailsAdapterother = new RecipientListAdapter(dataObjAr, (MainActivity) getActivity(), symbol, this,getString(R.string.otheraccount));
-        LinearLayoutManager horizontalLayoutManagaerother = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        AreadyAddedRecipientRecycerOther.setLayoutManager(horizontalLayoutManagaerother);
-        AreadyAddedRecipientRecycerOther.setItemAnimator(new DefaultItemAnimator());
-        AreadyAddedRecipientRecycerOther.setAdapter(otherDetailsAdapterother);
-
+            AreadyAddedRecipientRecycerOther = view.findViewById(R.id.AreadyAddedRecipientRecycerOther);
+            otherDetailsAdapterother = new RecipientListAdapter(dataObjAr, (MainActivity) getActivity(), symbol, this, getString(R.string.otheraccount));
+            LinearLayoutManager horizontalLayoutManagaerother = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            AreadyAddedRecipientRecycerOther.setLayoutManager(horizontalLayoutManagaerother);
+            AreadyAddedRecipientRecycerOther.setItemAnimator(new DefaultItemAnimator());
+            AreadyAddedRecipientRecycerOther.setAdapter(otherDetailsAdapterother);
 
         ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN | ItemTouchHelper.UP) {
 
@@ -435,7 +426,7 @@ System.out.println("Before to senddddd====="+m);
                         @Override
                         public void onClick(View v) {
 
-                            deleteResipient(id, position,dataObjAr,confirmDialog);
+                            deleteResipient(id, position, dataObjAr, confirmDialog);
 
 
                         }
@@ -492,9 +483,7 @@ System.out.println("Before to senddddd====="+m);
 
                 System.out.println("Default cuntry===" + UtilClass.defaultDestinationSDCountryId + "===" + UtilClass.defaultDestinationCountryId);
                 startActivityForResult(i, 101);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -538,8 +527,7 @@ System.out.println("Before to senddddd====="+m);
                     System.out.println("delete resp" + dta);
                     JSONObject obj = new JSONObject(dta);
 
-                    if (obj.getString("status").equalsIgnoreCase("true"))
-                    {
+                    if (obj.getString("status").equalsIgnoreCase("true")) {
                         dataAr.remove(pos);
                         confirmDia.dismiss();
                         otherDetailsAdapterother.notifyDataSetChanged();
@@ -557,8 +545,6 @@ System.out.println("Before to senddddd====="+m);
 
 
     }
-
-
 
 
 }

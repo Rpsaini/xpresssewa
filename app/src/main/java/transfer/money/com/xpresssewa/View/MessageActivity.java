@@ -3,6 +3,7 @@ package transfer.money.com.xpresssewa.View;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -56,7 +57,9 @@ import transfer.money.com.xpresssewa.interfaces.ImageUpload;
 import transfer.money.com.xpresssewa.interfaces.RxAPICallHelper;
 import transfer.money.com.xpresssewa.interfaces.RxAPICallback;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
+import transfer.money.com.xpresssewa.util.AlertDialogs;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
+import transfer.money.com.xpresssewa.util.DialogCallBack;
 import transfer.money.com.xpresssewa.util.SimpleDialog;
 import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
@@ -65,6 +68,7 @@ public class MessageActivity extends AppCompatActivity {
     private ImageView iv_screenshot, iv_screenshot_back,iv_screenshot_proof;
     private RelativeLayout chooseimagelayoutouter;
     private TextView gallery, camera;
+    private  String Title="";
 
     //private String imageFrontImageCamera = "", imageFrontImageGallery = "", imageBackImageCamera = "", imageBackImageHgallery = "",imageProofpath="";
     private int imgSelectionType = 0;
@@ -88,7 +92,7 @@ public class MessageActivity extends AppCompatActivity {
        }
 
     protected void init() {
-        final String Title = getIntent().getStringExtra("Title");
+         Title = getIntent().getStringExtra("Title");
         TextView front_id_message = findViewById(R.id.front_id_message);
         TextView backidentitymessage = findViewById(R.id.backidentitymessage);
         TextView addressidentitymessage = findViewById(R.id.addressidentitymessage);
@@ -113,7 +117,7 @@ public class MessageActivity extends AppCompatActivity {
 
         iv_screenshot = findViewById(R.id.iv_screenshot_front);
         iv_screenshot_back = findViewById(R.id.iv_screenshot_back);
-        iv_screenshot_proof = findViewById(R.id.iv_screenshot_proof);
+//        iv_screenshot_proof = findViewById(R.id.iv_screenshot_proof);
         tv_send = findViewById(R.id.tv_send);
         chooseimagelayoutouter = findViewById(R.id.chooseimagelayoutouter);
         gallery = findViewById(R.id.gallery);
@@ -135,13 +139,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        iv_screenshot_proof.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imgSelectionType = 2;
-                slideUpDown();
-            }
-        });
+
         findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,18 +149,17 @@ public class MessageActivity extends AppCompatActivity {
 
         tv_send.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                showAddressDialog();
-              /*  if (imagePathfront.length() == 0) {
+            public void onClick(View v)
+            {
+                if(imagePathfront.length() == 0) {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload front of " + Title, chooseimagelayoutouter);
-                } else if (imagePathBack.length() == 0) {
+                }
+                else if (imagePathBack.length() == 0) {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload back of " + Title, chooseimagelayoutouter);
                 }
-               *//* else if (imagePathAddress.length() == 0) {
-                    new Showtoast().showToast(MessageActivity.this, "Required", "Upload address proof image.", chooseimagelayoutouter);
-                }*//* else {
-                    uploadImageToServer();
-                }*/
+                else {
+                    showAddressDialog();
+                }
             }
         });
         chooseimagelayoutouter.setOnClickListener(new View.OnClickListener() {
@@ -172,45 +169,63 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage(1);
-            }
-        });
-
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage(0);
-            }
-        });
+//        gallery.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                selectImage(1);
+//            }
+//        });
+//
+//        camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                selectImage(0);
+//            }
+//        });
 
 
     }
 
     public void slideUpDown() {
 
-        if (!isPanelShown()) {
-            // Show the panel
-            Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
+        System.out.println("Clickedd===");
 
-            chooseimagelayoutouter.startAnimation(bottomUp);
-            chooseimagelayoutouter.setVisibility(View.VISIBLE);
+        AlertDialogs alertDialogs = new AlertDialogs();
+        alertDialogs.alertDialog(MessageActivity.this, getResources().getString(R.string.app_name), "Choose image from", "Camera", "Gallery", new DialogCallBack() {
+            @Override
+            public void getDialogEvent(String buttonPressed) {
 
-        } else {
-
-            Animation bottomDown = AnimationUtils.loadAnimation(this,
-                    R.anim.bottom_down);
-            chooseimagelayoutouter.startAnimation(bottomDown);
-            chooseimagelayoutouter.setVisibility(View.GONE);
-        }
+                if(buttonPressed.equalsIgnoreCase("Camera"))
+                {
+                    selectImage(0);
+                  }
+                else
+                {
+                    selectImage(1);
+                }
+            }
+        });
+//
+//        if (!isPanelShown()) {
+//            // Show the panel
+//            Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
+//
+//            chooseimagelayoutouter.startAnimation(bottomUp);
+//            chooseimagelayoutouter.setVisibility(View.VISIBLE);
+//
+//        } else {
+//
+//            Animation bottomDown = AnimationUtils.loadAnimation(this,
+//                    R.anim.bottom_down);
+//            chooseimagelayoutouter.startAnimation(bottomDown);
+//            chooseimagelayoutouter.setVisibility(View.GONE);
+//        }
     }
 
 
-    private boolean isPanelShown() {
-        return chooseimagelayoutouter.getVisibility() == View.VISIBLE;
-    }
+//    private boolean isPanelShown() {
+//        return chooseimagelayoutouter.getVisibility() == View.VISIBLE;
+//    }
 
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -228,25 +243,48 @@ public class MessageActivity extends AppCompatActivity {
         }
     }
 
-
+     Dialog addressDialog;
    private void showAddressDialog(){
        SimpleDialog simpleDialog = new SimpleDialog();
-       final Dialog confirmDialog = simpleDialog.simpleDailog(MessageActivity.this, R.layout.address_dailog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
-       ImageView backDialog=confirmDialog.findViewById(R.id.headerbackbutton);
+        addressDialog = simpleDialog.simpleDailog(MessageActivity.this, R.layout.address_dailog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+       ImageView backDialog=addressDialog.findViewById(R.id.headerbackbutton);
        String address_instruction_html = getString(R.string.address_instruction_html);
-       WebView webView = confirmDialog.findViewById(R.id.webView);
+       WebView webView = addressDialog.findViewById(R.id.webView);
        webView.loadDataWithBaseURL(null, address_instruction_html, "text/html", "utf-8", null);
-
-
-
-
 
        backDialog.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               confirmDialog.dismiss();
+               addressDialog.dismiss();
            }
        });
+
+
+       addressDialog.findViewById(R.id.tv_submit).setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v)
+             {
+
+
+                 if (imagePathAddress.length() == 0) {
+                    new Showtoast().showToast(MessageActivity.this, "Required", "Upload address proof image.", chooseimagelayoutouter);
+                }
+                else {
+                    uploadImageToServer();
+                }
+             }
+       });
+
+       iv_screenshot_proof=addressDialog.findViewById(R.id.iv_screenshot_proof);
+
+       iv_screenshot_proof.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               imgSelectionType = 2;
+               slideUpDown();
+           }
+       });
+
 
 
    }
@@ -285,7 +323,7 @@ public class MessageActivity extends AppCompatActivity {
                             }
                         }
 
-                        slideUpDown();
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -315,7 +353,7 @@ public class MessageActivity extends AppCompatActivity {
                                         imagePathAddress = s;
                                     }
                                 }
-                                slideUpDown();
+
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -413,7 +451,7 @@ public class MessageActivity extends AppCompatActivity {
         File file2 = new File(imagePathBack);
         File file3 = new File(imagePathAddress);
         if (file != null)
-        {
+           {
             BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);//front
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
@@ -440,12 +478,11 @@ public class MessageActivity extends AppCompatActivity {
 
             Disposable disposable = RxAPICallHelper.call(responseObservable, new RxAPICallback<String>() {
                 @Override
-                public void onSuccess(String uploadFileResponse) {
-
+                public void onSuccess(String uploadFileResponse)
+                {
                     System.out.println("Inside on sucess=====>" + uploadFileResponse);
                     mProgressDialog.dismiss();
                     try {
-
                         imageCount++;
                         mProgressDialog.dismiss();
 
@@ -463,6 +500,8 @@ public class MessageActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v)
                                 {
+                                    addressDialog.dismiss();
+                                    dialogConfirm.dismiss();
 
                                     Intent intent = new Intent();
                                     setResult(Activity.RESULT_OK, intent);

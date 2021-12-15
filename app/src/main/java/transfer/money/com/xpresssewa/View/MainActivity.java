@@ -115,6 +115,7 @@ public class MainActivity extends BaseActivity {
         UtilClass.getUserData(this);
         DefaultConstatnts.isKyDockUploaded=false;
 
+
         sendBroadcast(new Intent(UtilClass.notificationBroadCast));
         try {
             String pin=saveImpPrefrences.reterivePrefrence(MainActivity.this, "Pin") +"";

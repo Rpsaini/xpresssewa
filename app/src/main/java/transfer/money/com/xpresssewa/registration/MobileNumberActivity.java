@@ -22,6 +22,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
@@ -61,6 +62,8 @@ public class MobileNumberActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_number);
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "MontserratRegular.ttf", true);
         ButterKnife.bind(this);
         showtoast = new Showtoast();
         init();

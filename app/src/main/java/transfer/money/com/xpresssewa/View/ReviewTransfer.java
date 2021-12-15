@@ -97,8 +97,8 @@ public class ReviewTransfer extends AppCompatActivity {
             String referenceId = getIntent().getStringExtra("refrenceId");
             String username = new SaveImpPrefrences().reterivePrefrence(ReviewTransfer.this, DefaultConstatnts.UserName).toString();
 
-           // System.out.println("review transfer===" + calculationData + "===" + selectedObj + "===" + selectedRecipientData);
-            //System.out.println("referenceiud===" + purposeId + "===" + referenceId + "===" + username);
+           System.out.println("review transfer===" + calculationData + "===" + selectedObj + "===" + selectedRecipientData);
+            System.out.println("referenceiud===" + purposeId + "===" + referenceId + "===" + username);
 
 
             JSONObject calculationObj = new JSONObject(calculationData);
@@ -166,6 +166,9 @@ public class ReviewTransfer extends AppCompatActivity {
             TextView tv_usergetsAmount_symbol = findViewById(R.id.tv_usergetsAmount_symbol);
             TextView fee_applied = findViewById(R.id.fee_applied);
             TextView fee_applied_symbol = findViewById(R.id.fee_applied_symbol);
+            TextView txtQmountWillConvert = findViewById(R.id.txtQmountWillConvert);
+            TextView tv_amountwillconvert = findViewById(R.id.tv_amountwillconvert);
+
 
 
             TextView gurantee_rate = findViewById(R.id.gurantee_rate);
@@ -180,15 +183,18 @@ public class ReviewTransfer extends AppCompatActivity {
             fee_applied.setText("-"+calculationObj.getString("TotalFee"));
             fee_applied_symbol.setText(calculationObj.getString("FromSymbol"));
 
-            gurantee_rate.setText(calculationObj.getString("GuaranteedRate") + " hrs");
+            gurantee_rate.setText(calculationObj.getString("GuaranteedRate"));
             gurantee_rate_symbol.setText(calculationObj.getString("ConversionRate"));
 
             TextView tv_user_gets = findViewById(R.id.tv_user_gets);
             tv_user_gets.setText(recipientObj.getString("ReciptentName") + " will receive");
+            txtQmountWillConvert.setText(calculationObj.getString("ConvertAmount"));
+            tv_amountwillconvert.setText(calculationObj.getString("FromSymbol"));
 
             String Recipientemail = recipientObj.getString("ReciptentEmail");
+//            txtQmountWillConvert.setText();
 
-
+//            txtConversionRate
            // txt_note.setText(ReciptentName+" "+ReciptentLastName + "(" + Recipientemail + ") will be informed via email.");
             findViewById(R.id.changeBankDetail).setOnClickListener(new View.OnClickListener() {
                 @Override

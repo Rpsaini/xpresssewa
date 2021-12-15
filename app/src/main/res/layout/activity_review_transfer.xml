@@ -245,6 +245,59 @@
             android:background="@color/dark_grey_color"
             ></View>
 
+
+        <TextView
+            android:alpha=".8"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/title_black_color"
+            android:textSize="@dimen/font_fourteen"
+            android:text="Amount will convert"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+
+            <TextView
+                android:paddingBottom="3dp"
+
+                android:id="@+id/txtQmountWillConvert"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_black_color"
+                android:textSize="15dp"
+                android:text="0"
+                />
+
+            <TextView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/tv_amountwillconvert"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_black_color"
+                android:textSize="15dp"
+                android:text="0"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:alpha=".5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_grey_color"
+            ></View>
+
+
+
+
+
         <TextView
             android:alpha=".8"
             android:layout_marginTop="20dp"
@@ -252,7 +305,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/title_black_color"
             android:textSize="@dimen/font_twelve"
-            android:text="@string/rateguranteed"
+            android:text="Conversion RAte"
             />
 
         <RelativeLayout
@@ -348,7 +401,7 @@
 
         <LinearLayout
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="bottom"
             android:layout_height="45dp"
             android:layout_width="match_parent"

@@ -127,7 +127,7 @@
 
 
     <LinearLayout
-        android:padding="10dp"
+        android:padding="12dp"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
@@ -302,28 +302,29 @@
             >
 
             <TextView
+                android:singleLine="true"
                 android:id="@+id/txt_paymentdone"
-                android:text="Bank transfer done"
+                android:text="Initiate Transaction"
                 style="@style/button_style"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_width="0dp"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 ></TextView>
 
             <TextView
                 android:id="@+id/txt_paymentcancel"
                 android:layout_width="0dp"
-                android:text="Bank transfer later"
+                android:text="I'll do later"
                 android:background="@drawable/red_all_side_round"
                 android:layout_weight="1"
                 android:textColor="@color/dark_red_color"
                 android:layout_marginRight="10dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="14dp"
+                android:textSize="13dp"
                 ></TextView>
 
 

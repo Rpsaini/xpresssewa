@@ -71,12 +71,12 @@ public class ReceiptDetailsActivity extends AppCompatActivity {
                 fullDetailsList.add(accountHolderNameObj);
             }
 
-            if(fullDetailsData.has("ReciptentEmail")){
-                JSONObject emailObj=new JSONObject();
-                emailObj.put("Title","Recipient's Email");
-                emailObj.put("Answer",fullDetailsData.getString("ReciptentEmail"));
-                fullDetailsList.add(emailObj);
-            }
+//            if(fullDetailsData.has("ReciptentEmail")){
+//                JSONObject emailObj=new JSONObject();
+//                emailObj.put("Title","Recipient's Email");
+//                emailObj.put("Answer",fullDetailsData.getString("ReciptentEmail"));
+//                fullDetailsList.add(emailObj);
+//            }
 
 
 

@@ -98,20 +98,25 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void chekIsUserKycisIsDone() {
+    private void chekIsUserKycisIsDone()
+    {
+
         isKycApproved = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
         TextView verification_text = view.findViewById(R.id.verification_text);
         TextView verification_subtext = view.findViewById(R.id.verification_subtext);
 
+        System.out.println("kyc status==="+isKycApproved);
         View activityView = view.findViewById(R.id.ll_verification_pending);
-        if (isKycApproved.equalsIgnoreCase("1")) {
+        if (isKycApproved.equalsIgnoreCase("1"))
+        {
             txt_activity_label.setVisibility(View.VISIBLE);
             txt_label.setVisibility(View.GONE);
             rr_upper_layout.setVisibility(View.GONE);
             activityView.setVisibility(View.VISIBLE);
             verification_subtext.setText("We are verifying your account");
             verification_text.setText("Verification in progress");
-            img_show_warring.setVisibility(View.GONE);
+            img_show_warring.setVisibility(View.VISIBLE);
+
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

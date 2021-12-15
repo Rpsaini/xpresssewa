@@ -43,6 +43,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import io.reactivex.annotations.Nullable;
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
@@ -79,7 +80,8 @@ public class CreatePersonalProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_personal_profile);
 
-
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "MontserratRegular.ttf", true);
         UtilClass.getUserData(this);
         et_user_name = findViewById(R.id.et_user_name);
         et_user_lname = findViewById(R.id.et_user_lname);
@@ -145,6 +147,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 String phnExt = dataObj.getString("PhoneExt");
 
 
+
                 if (!phnExt.isEmpty()) {
                     int code = Integer.parseInt(phnExt.replace("+", ""));
                     cpp.setCountryForPhoneCode(code);
@@ -161,6 +164,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     }
                 }
                 recipient_statecodeStr=dataObj.getString("StateCode");
+                ed_statename.getEditText().setText(recipient_statecodeStr);
                 CreateBuisnessProfile.profileData = new LinkedHashMap<>();
                 CreateBuisnessProfile.profileData.put("MemberId", dataObj.getString("MemberId"));
                 CreateBuisnessProfile.profileData.put("FirstName", dataObj.getString("FirstName"));

@@ -347,7 +347,9 @@
         3.RTGS payments are not accepted.If you must send by RTGS, please contact customer support
         We never takes money automatically from your account.<br /><br />
 
-        You can use your online banking or mobile app to make your bank transfer to us.</html></string>
+        You can use your online banking or mobile app to make your bank transfer to us.<br /><br />
+        Before completing the transaction click the "Bank Transfer Done" then make the deposit payment via bank.
+    </html></string>
     <string name="title_activity_enter_mobile_number">EnterMobileNumber</string>
     <string name="enterphonenumber">Enter Phone Number</string>
     <string name="Veriyotp">Verify OTP</string>

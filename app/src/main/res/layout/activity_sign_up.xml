@@ -242,6 +242,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:visibility="gone"
                 android:layout_marginTop="15dp"
                 android:id="@+id/referral_layout"
                 android:layout_width="match_parent"

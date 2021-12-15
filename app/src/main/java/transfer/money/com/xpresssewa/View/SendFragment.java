@@ -273,12 +273,12 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 //        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'> Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
-            txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> of "+getResources().getString(R.string.app_name), Html.FROM_HTML_MODE_COMPACT));
+            txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'>Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
+            txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> ", Html.FROM_HTML_MODE_COMPACT));
 
         } else {
-            txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'> Terms of use</font> and "));
-            txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> of "+getResources().getString(R.string.app_name)));
+            txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'> Terms of use</font> and"));
+            txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> "));
         }
 
         txt_terms.setOnClickListener(new View.OnClickListener() {

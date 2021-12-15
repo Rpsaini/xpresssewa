@@ -20,7 +20,7 @@ public class SimpleDialog
     private Dialog simpledialog;
     public Dialog simpleDailog(AppCompatActivity appCompatActivity, int view, ColorDrawable colorDrawable, int dialogWidth, int dialogHeight, boolean setCancelable)
     {
-        if (simpledialog != null && simpledialog.isShowing()) {
+        if(simpledialog != null && simpledialog.isShowing()) {
             simpledialog.dismiss();
         }
         simpledialog = new Dialog(appCompatActivity);
@@ -35,7 +35,6 @@ public class SimpleDialog
         window.setAttributes(lp);
         simpledialog.getWindow().setBackgroundDrawable(colorDrawable);
         simpledialog.show();
-
         return simpledialog;
     }
 }

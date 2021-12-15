@@ -136,6 +136,14 @@ public class SettingsScreenActivity extends BaseActivity {
             }
         });
 
+        findViewById(R.id.rr_about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openExternalUrls("https://demo.webcomsystems.net.au/about");
+
+            }
+        });
+
         findViewById(R.id.rr_changepassword).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

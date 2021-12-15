@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "911612259719",
-    "project_id": "xpresssewa",
-    "storage_bucket": "xpresssewa.appspot.com"
+    "project_number": "1062681300251",
+    "project_id": "xpressewa",
+    "storage_bucket": "xpressewa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:911612259719:android:7e54d67d9ce693bba03722",
+        "mobilesdk_app_id": "1:1062681300251:android:74a5edeb1adc1d45a897be",
         "android_client_info": {
           "package_name": "transfer.money.com.xpresssewa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "911612259719-01d49jjkh486gk27dielu5154nl9trd3.apps.googleusercontent.com",
+          "client_id": "1062681300251-flbl1viicj54m9n9me269rp2vt2en68k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "transfer.money.com.xpresssewa",
@@ -22,29 +22,21 @@
           }
         },
         {
-          "client_id": "911612259719-8i57foojn8toeu6umcjkalc75aqushqp.apps.googleusercontent.com",
+          "client_id": "1062681300251-0dliqfoarp5p1gd4uu52shbh9tocf8hv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBAetyeRi2RfHyCjMujf6DpDhxUXppDKP8"
+          "current_key": "AIzaSyAbQdff22y10MA47KnrsgV4o6YdmeFV6X0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "911612259719-8i57foojn8toeu6umcjkalc75aqushqp.apps.googleusercontent.com",
+              "client_id": "1062681300251-0dliqfoarp5p1gd4uu52shbh9tocf8hv.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "911612259719-cgtutv840u82vobccs9n4bomn1mcd5bn.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.webcom.samremmitance",
-                "app_store_id": "1234567890"
-              }
             }
           ]
         }

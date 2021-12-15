@@ -120,6 +120,10 @@ public class RecipientListAdapter extends RecyclerView.Adapter<RecipientListAdap
                 {
                     holder.tt_someoneelse.setText("(Business)");
                 }
+                else if(ReciptentSection.equalsIgnoreCase("5"))
+                {
+                    holder.tt_someoneelse.setText("(Joint)");
+                }
 
                 showImage(obj.getString("Image"), holder.img_userflag);
 
@@ -179,13 +183,23 @@ public class RecipientListAdapter extends RecyclerView.Adapter<RecipientListAdap
             }
            else
                {
-               holder.ll_listrow.setVisibility(View.GONE);
-//                holder.txt_loadmore.setVisibility(View.VISIBLE);
+                holder.ll_listrow.setVisibility(View.GONE);
+                holder.txt_loadmore.setVisibility(View.GONE);
 //                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 //                    holder.txt_loadmore.setText(Html.fromHtml("<u>Load More</u>", Html.FROM_HTML_MODE_COMPACT));
-//                } else {
+//                }
+//                else {
 //                    holder.txt_loadmore.setText(Html.fromHtml("<u>Load More</u>"));
 //                }
+//
+//                holder.txt_loadmore.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v)
+//                    {
+//
+//                        recipientFragment.loadMoreRecipient();
+//                    }
+//                });
                }
 
 
