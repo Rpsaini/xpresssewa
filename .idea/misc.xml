@@ -24,6 +24,7 @@
         <entry key="..\:/git_project/samremitance2021/app/src/main/res/layout/send_place_holder_item.xml" value="0.12228260869565218" />
         <entry key="..\:/git_project/samremitance2021/app/src/main/res/layout/show_ticket_images_list_row.xml" value="0.12228260869565218" />
         <entry key="..\:/git_project/samremitance2021/app/src/main/res/layout/spinner_item.xml" value="0.12228260869565218" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/bottom_line_drawable.xml" value="0.1828125" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_rectangle_1.xml" value="0.2203125" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_splashthree.xml" value="0.137109375" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_splashtwo.xml" value="0.137109375" />
@@ -38,9 +39,10 @@
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_swipe_view_pager.xml" value="0.1634963768115942" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/address_dailog.xml" value="0.21" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/chooseimage_layout.xml" value="0.16802536231884058" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/fragment_send.xml" value="0.33" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_first.xml" value="0.2" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_second.xml" value="0.22" />
-        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_three.xml" value="0.16" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_three.xml" value="0.2" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/toolbar_with_back.xml" value="0.16802536231884058" />
       </map>
     </option>

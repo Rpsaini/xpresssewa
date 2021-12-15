@@ -211,10 +211,9 @@
                     android:layout_gravity="center"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
-                    android:tint="@color/textcolor"
                     android:src="@drawable/next_arrow"
                     android:rotation="90"
-                    ></ImageView>
+                    app:tint="@color/textcolor"></ImageView>
 
                 <TextView
                     android:id="@+id/txt_selectcountry"
@@ -263,7 +262,7 @@
 
             <LinearLayout
                 android:layout_marginTop="30dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
 
@@ -279,18 +278,18 @@
                     android:id="@+id/txt_terms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:gravity="center"
+                    android:textSize="@dimen/font_fourteen"
+                    android:gravity="center|start"
                     android:textColor="@color/dark_grey_color"
                     />
 
                 <TextView
                     android:id="@+id/txt_privacy"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|start"
                     android:textColor="@color/dark_grey_color"
-                    android:textSize="11dp" />
+                    android:textSize="10dp" />
 
             </LinearLayout>
 

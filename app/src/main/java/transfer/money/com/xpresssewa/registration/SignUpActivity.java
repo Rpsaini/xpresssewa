@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
@@ -199,7 +200,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         });
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        String checkBoxText = "By continue accept our  <a href='https://xpressewa.com/term-conditions'>Terms of use </a>"
+                +" and <a href='https://xpressewa.com/privacy'>Privacy Policy</a>";
+
+        txt_terms.setText(Html.fromHtml(checkBoxText));
+        txt_terms.setMovementMethod(LinkMovementMethod.getInstance());
+      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             txt_terms.setText(Html.fromHtml("By continue accept our <font color='#226ED4'> Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
             txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font>", Html.FROM_HTML_MODE_COMPACT));
 
@@ -221,7 +227,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                 openExternalUrls(UtilClass.privacyurl);
             }
         });
-
+*/
 
     }
 

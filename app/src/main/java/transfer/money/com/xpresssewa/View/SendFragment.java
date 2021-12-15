@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -271,8 +272,12 @@ public class SendFragment extends Fragment implements View.OnClickListener {
 //        } else {
 //            txt_send_text.setText(Html.fromHtml("Click here for <font color='#226ED4'>Privacy Policy</font> <font color='#7B7B7B'>and</font> <font color='#226ED4'>Terms & Conditions </font>for Sam Remittance Service."));
 //        }
+        String checkBoxText = "By continue accept our  <a href='https://xpressewa.com/term-conditions'>Terms of use </a>"
+                +" and <a href='https://xpressewa.com/privacy'>Privacy Policy</a>";
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        txt_terms.setText(Html.fromHtml(checkBoxText));
+        txt_terms.setMovementMethod(LinkMovementMethod.getInstance());
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'>Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
             txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> ", Html.FROM_HTML_MODE_COMPACT));
 
@@ -293,7 +298,7 @@ public class SendFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 ((MainActivity)getActivity()).openExternalUrls("https://xpressewa.com/privacy");
             }
-        });
+        });*/
 
         ButterKnife.bind(this, view);
         init();
