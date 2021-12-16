@@ -77,18 +77,18 @@
 
 
 
-                <TextView
+                <EditText
                     android:paddingStart="5dp"
                     android:id="@+id/txt_date"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:hint="DOB"
+                    android:hint="mm/dd/yyyy"
                     style="@style/edittext_style"
                     android:paddingBottom="3dp"
                     android:gravity="left|bottom"
                     >
-                </TextView>
+                </EditText>
 <View
     android:alpha=".5"
     android:layout_width="match_parent"

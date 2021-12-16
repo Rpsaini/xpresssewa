@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.registration.SignUpActivity;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
@@ -46,6 +47,8 @@ public class CountryRecyclerviewAdapter extends RecyclerView.Adapter<CountryRecy
             countrrllistingouter=view.findViewById(R.id.countrrllistingouter);
             DefaultConstatnts.setFont(ira1,countryname);
 
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
         }
     }
 

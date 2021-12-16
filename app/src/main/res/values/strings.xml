@@ -103,6 +103,7 @@
     <string name="edit_profile">Edit Your Account</string>
     <string name="add_a_business">Add a business</string>
     <string name="help">Help</string>
+    <string name="support">Support</string>
     <string name="setting">Settings</string>
     <string name="logout">Logout</string>
     <string name="complete_your_profile">Complete your profile</string>
@@ -381,7 +382,6 @@
     </string>
 
 
-
     <string name="address_instruction_html">
     <![CDATA[
     <p><b>Instructions:</b></p>
@@ -411,8 +411,7 @@
     </string>
 
 
-
-<string name="note_"><![CDATA[
+    <string name="note_"><![CDATA[
     <p><b>Note:</b></p>
     <p>Please contact our KYC Support Department on support@xpresssewa.com in case you have any query documents in KYC documents.</p>
     ]]>

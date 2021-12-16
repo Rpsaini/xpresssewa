@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.RecipientDynamicActivity;
 
@@ -28,7 +29,8 @@ public class DynamicFormAdapter extends RecyclerView.Adapter<DynamicFormAdapter.
             super(view);
             dynamic_id = view.findViewById(R.id.dynamic_id);
             ira1.dynamicFieldAr.add(dynamic_id);
-
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
 
         }
     }

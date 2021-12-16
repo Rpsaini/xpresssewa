@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.ticket.TicketDetailActivity;
 
@@ -29,6 +30,8 @@ public class ShowAllticketsImagesAdapter extends RecyclerView.Adapter<ShowAlltic
         public MyViewHolder(View view)
         {
             super(view);
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
             ticketImage=view.findViewById(R.id.ticketsimag);
         }
     }

@@ -33,10 +33,6 @@ public class MessagingService extends FirebaseMessagingService {
 
     @Override
     public void onNewToken(String token) {
-
-
-        System.out.println("Registration token=sam=" + token);
-
         savePreferences.savePrefrencesData(getApplicationContext(), token, "device_token");
 
     }

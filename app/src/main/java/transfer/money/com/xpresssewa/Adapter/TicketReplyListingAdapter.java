@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.ticket.TicketDetailActivity;
 
@@ -41,6 +42,8 @@ public class TicketReplyListingAdapter extends RecyclerView.Adapter<TicketReplyL
 
         public MyViewHolder(View view) {
             super(view);
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
             ll_myview = view.findViewById(R.id.ll_myview);
             txt_my_text = view.findViewById(R.id.txt_my_text);
             txt_mytime = view.findViewById(R.id.txt_mytime);

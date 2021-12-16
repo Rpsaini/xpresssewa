@@ -50,6 +50,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.MyView
             currencyDollar=view.findViewById(R.id.currencyDollar);
             countrrllistingouter=view.findViewById(R.id.countrrllistingouter);
 
+
         }
     }
 

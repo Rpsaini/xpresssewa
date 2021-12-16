@@ -50,9 +50,9 @@ public class RecipientFragment extends Fragment {
     Context mContext;
     private MainActivity rootAct;
     private RecipientListAdapter otherDetailsAdapterother, myselfDetailsAdapter;
+
     @BindView(R.id.otherRecipietTV)
     TextView otherRecipietTV;
-
 
     @BindView(R.id.myAccountTV)
     TextView myAccountTV;
@@ -72,6 +72,7 @@ public class RecipientFragment extends Fragment {
 
     @BindView(R.id.AreadyAddedRecipientRecycer)
     RecyclerView AreadyAddedRecipientRecycer;
+
     private int take = 5, skip = 0, type = 1;
     //type  1 for bank 2 for recipient
     private int othr_take = 5, othr_skip = 0, othr_type = 2;
@@ -108,7 +109,6 @@ public class RecipientFragment extends Fragment {
             member_id = loginDetail.getString("MemberId");
             ButterKnife.bind(this, view);
 
-
             args = getArguments();
             symbol = args.getString("symbol");
 
@@ -136,7 +136,7 @@ public class RecipientFragment extends Fragment {
             UtilClass.DefaultCountryname = jsonObject.getString("CountryName");
             UtilClass.defaultSourceCountryId = jsonObject.getString("CountryId");
             UtilClass.defaultSourceCountryId = jsonObject.getString("SDCountryId");
-        } catch (Exception e) {
+           } catch (Exception e) {
             e.printStackTrace();
         }
 

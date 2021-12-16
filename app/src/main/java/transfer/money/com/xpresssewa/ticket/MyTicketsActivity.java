@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.Adapter.ViewTicketAdapter;
 
 import transfer.money.com.xpresssewa.R;
@@ -31,6 +33,9 @@ public class MyTicketsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_tickets);
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this,  "MontserratRegular.ttf", true);
+
         actions();
         getAllTickets();
     }
@@ -52,9 +57,8 @@ public class MyTicketsActivity extends AppCompatActivity {
     private void init()
     {
         view_all_tickets_recycler=findViewById(R.id.view_all_tickets_recycler);
-         transferPurposeAdater = new ViewTicketAdapter(datAr, MyTicketsActivity.this);
-        LinearLayoutManager horizontalLayoutManagaer
-                = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        transferPurposeAdater = new ViewTicketAdapter(datAr, MyTicketsActivity.this);
+        LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         view_all_tickets_recycler.setLayoutManager(horizontalLayoutManagaer);
         view_all_tickets_recycler.setItemAnimator(new DefaultItemAnimator());
         view_all_tickets_recycler.setAdapter(transferPurposeAdater);

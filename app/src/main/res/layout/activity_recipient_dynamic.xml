@@ -176,31 +176,27 @@
 
 
 
-              <TextView
-                  android:visibility="invisible"
-                  android:paddingLeft="10dp"
-                  android:id="@+id/select_date_error"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="10dp"
-                  android:textSize="12dp"
-                  android:text="Please enter DOB "
-                  android:textColor="@color/status_red"
-                  android:gravity="center|left"
-                  style="@style/edittext_style"
-                  ></TextView>
-
-              <TextView
-                  android:background="@drawable/bottom_line_drawable"
-                  android:paddingLeft="10dp"
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
                   android:id="@+id/select_date"
                   android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:hint="Date oF Birth(Optional)"
-                  android:gravity="center|left"
-                  style="@style/edittext_style"
-                  android:textColorHint="@color/textcolor"
-                  ></TextView>
+                  android:paddingLeft="5dp"
+                  android:background="@drawable/bottom_line_drawable"
+                  android:layout_height="wrap_content">
+
+                  <EditText
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="Date oF Birth(DD/MM/YYYY Optional)"
+                      android:maxLength="30"
+                      />
+              </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
 
 
 <!--              <View-->
@@ -273,7 +269,23 @@
                           android:inputType="textEmailAddress" />
 
 
+              <com.google.android.material.textfield.TextInputLayout
+                  android:layout_marginTop="15dp"
+                  android:id="@+id/recipient_address"
+                  android:layout_width="match_parent"
+                  android:paddingLeft="5dp"
+                  android:layout_height="wrap_content">
 
+                  <EditText
+                      android:inputType="textNoSuggestions"
+                      style="@style/edittext_style"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:hint="@string/address"
+                      android:imeOptions="actionDone"
+                      android:maxLines="1"
+                      />
+              </com.google.android.material.textfield.TextInputLayout>
 
               <com.google.android.material.textfield.TextInputLayout
                   android:layout_marginTop="15dp"
@@ -312,22 +324,7 @@
 
 
 
-              <com.google.android.material.textfield.TextInputLayout
-                  android:layout_marginTop="15dp"
-                  android:id="@+id/recipient_address"
-                  android:layout_width="match_parent"
-                  android:paddingLeft="5dp"
-                  android:layout_height="wrap_content">
 
-                  <EditText
-                      style="@style/edittext_style"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:hint="@string/address"
-                      android:imeOptions="actionDone"
-                      android:maxLines="1"
-                       />
-              </com.google.android.material.textfield.TextInputLayout>
 
 
               <com.google.android.material.textfield.TextInputLayout

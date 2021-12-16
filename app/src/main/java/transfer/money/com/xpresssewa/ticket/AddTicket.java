@@ -60,13 +60,16 @@ import okhttp3.RequestBody;
 import transfer.money.com.xpresssewa.Adapter.AddImageAdapter;
 import transfer.money.com.xpresssewa.Adapter.TicketCategoryAdapter;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.View.MessageActivity;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.ApiProduction;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.interfaces.RxAPICallHelper;
 import transfer.money.com.xpresssewa.interfaces.RxAPICallback;
 import transfer.money.com.xpresssewa.interfaces.UploadticketImage;
+import transfer.money.com.xpresssewa.util.AlertDialogs;
 import transfer.money.com.xpresssewa.util.AnimationForView;
+import transfer.money.com.xpresssewa.util.DialogCallBack;
 import transfer.money.com.xpresssewa.util.IsAnimationEndedCallback;
 import transfer.money.com.xpresssewa.util.SimpleDialog;
 import transfer.money.com.xpresssewa.util.UtilClass;
@@ -173,24 +176,58 @@ public class AddTicket extends AppCompatActivity {
             this.imageView = imageView;
             this.postion = postion;
         }
-        if (!isPanelShown()) {
-            // Show the panel
-            Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
-            chooseimagelayoutouter.startAnimation(bottomUp);
-            chooseimagelayoutouter.setVisibility(View.VISIBLE);
+//        if (!isPanelShown()) {
+//            // Show the panel
+//            Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
+//            chooseimagelayoutouter.startAnimation(bottomUp);
+//            chooseimagelayoutouter.setVisibility(View.VISIBLE);
+//
+//        } else {
+//
+//            Animation bottomDown = AnimationUtils.loadAnimation(this,
+//                    R.anim.bottom_down);
+//            chooseimagelayoutouter.startAnimation(bottomDown);
+//            chooseimagelayoutouter.setVisibility(View.GONE);
+//        }
 
-        } else {
 
-            Animation bottomDown = AnimationUtils.loadAnimation(this,
-                    R.anim.bottom_down);
-            chooseimagelayoutouter.startAnimation(bottomDown);
-            chooseimagelayoutouter.setVisibility(View.GONE);
-        }
+        AlertDialogs alertDialogs = new AlertDialogs();
+        alertDialogs.alertDialog(this, getResources().getString(R.string.app_name), "Choose image from", "Camera", "Gallery", new DialogCallBack() {
+            @Override
+            public void getDialogEvent(String buttonPressed) {
+
+                if(buttonPressed.equalsIgnoreCase("Camera"))
+                {
+                    selectImage(0);
+                }
+                else
+                {
+                    selectImage(1);
+                }
+            }
+        });
+//        if (imageView != null) {
+//            this.imageView = imageView;
+//            this.postion = postion;
+//        }
+//        if (!isPanelShown()) {
+//            // Show the panel
+//            Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
+//            chooseimagelayoutouter.startAnimation(bottomUp);
+//            chooseimagelayoutouter.setVisibility(View.VISIBLE);
+//
+//        } else {
+//
+//            Animation bottomDown = AnimationUtils.loadAnimation(this,
+//                    R.anim.bottom_down);
+//            chooseimagelayoutouter.startAnimation(bottomDown);
+//            chooseimagelayoutouter.setVisibility(View.GONE);
+//        }
     }
 
-    private boolean isPanelShown() {
-        return chooseimagelayoutouter.getVisibility() == View.VISIBLE;
-    }
+//    private boolean isPanelShown() {
+//        return chooseimagelayoutouter.getVisibility() == View.VISIBLE;
+//    }
 
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -208,7 +245,6 @@ public class AddTicket extends AppCompatActivity {
 
 
     private Bitmap bmap;
-
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         System.out.println("inside============" + requestCode + "===" + resultCode);
@@ -228,9 +264,7 @@ public class AddTicket extends AppCompatActivity {
                         uploadImageToServer(s, "file");
 
                         imageView.setImageBitmap(bmap);
-
-
-                        slideUpDown(null, 0);
+                     //   slideUpDown(null, 0);
 
                         if (imageArray.size() < 5) {
                             imageArray.add("");
@@ -258,7 +292,7 @@ public class AddTicket extends AppCompatActivity {
                                     imageArray.add("");
                                     defaultTransferAdapter.notifyDataSetChanged();
                                 }
-                                slideUpDown(null, 0);
+                              //  slideUpDown(null, 0);
 
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -544,15 +578,16 @@ public class AddTicket extends AppCompatActivity {
                                 JSONObject obj = new JSONObject(dta);
 
                                 if (obj.getBoolean("status")) {
-                                    System.out.println("");
-                                    new Showtoast().showToast(AddTicket.this, getResources().getString(R.string.app_name), "Your ticket has been submitted successfully.", findViewById(R.id.ll_linearlayoutadditional));
-
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            finish();
-                                        }
-                                    },3000);
+                                    finish();
+//                                    System.out.println("");
+//                                    new Showtoast().showToast(AddTicket.this, getResources().getString(R.string.app_name), "Your ticket has been submitted successfully.", findViewById(R.id.ll_linearlayoutadditional));
+//
+//                                    new Handler().postDelayed(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            finish();
+//                                        }
+//                                    },3000);
 
 
                                 } else {

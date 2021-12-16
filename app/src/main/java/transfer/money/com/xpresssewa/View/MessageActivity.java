@@ -188,7 +188,6 @@ public class MessageActivity extends AppCompatActivity {
 
     public void slideUpDown() {
 
-        System.out.println("Clickedd===");
 
         AlertDialogs alertDialogs = new AlertDialogs();
         alertDialogs.alertDialog(MessageActivity.this, getResources().getString(R.string.app_name), "Choose image from", "Camera", "Gallery", new DialogCallBack() {

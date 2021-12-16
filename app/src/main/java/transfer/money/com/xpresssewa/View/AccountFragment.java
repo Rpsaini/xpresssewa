@@ -71,7 +71,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private JSONObject dataObj = new JSONObject();
     private String type = "0";
     private int screenheight, screenWidth;
-    private AppCompatActivity mainActivity;
+    private MainActivity mainActivity;
 
     public boolean isUserPersonalProfileDOne = false;
     public String usernameStr = "";
@@ -127,8 +127,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                     public boolean onMenuItemClick(MenuItem item) {
 
                         if (item.getItemId() == R.id.menu_help) {
-                            Intent intent = new Intent(getActivity(), AddTicket.class);
-                            getActivity().startActivity(intent);
+
+                            mainActivity.callHelpFragment();
 
                         } else if (item.getItemId() == R.id.menu_logout) {
                             AlertDialogs alertDialogs = new AlertDialogs();

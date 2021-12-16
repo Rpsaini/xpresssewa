@@ -213,7 +213,8 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
                             mainActivity.sendFromSelectedList(null);
                         }
                         if(datAr.size()==0) {
-                            if (isKycApproved.equalsIgnoreCase("3")) {
+                            if (isKycApproved.equalsIgnoreCase("3"))
+                            {
                                 img_show_warring.setVisibility(View.VISIBLE);
                                 img_show_warring.setImageResource(R.drawable.noactivityfound);
                             }

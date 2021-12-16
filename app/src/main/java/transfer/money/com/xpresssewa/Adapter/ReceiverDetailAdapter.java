@@ -33,6 +33,7 @@ public class ReceiverDetailAdapter extends RecyclerView.Adapter<ReceiverDetailAd
         public MyViewHolder(View view)
         {
             super(view);
+
             title =view.findViewById(R.id.title);
             title_detail=view.findViewById(R.id.title_detail);
 

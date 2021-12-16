@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -44,6 +45,7 @@ import java.util.Map;
 
 import io.reactivex.annotations.Nullable;
 import me.anwarshahriar.calligrapher.Calligrapher;
+import transfer.money.com.xpresssewa.Model.DateInputMask;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
@@ -65,7 +67,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private Showtoast showtoast;
     private LinearLayout ll_main_layout;
     private ArrayList<String> OccupationListAr = new ArrayList<>();
-    private TextView txt_date;
+    private EditText txt_date;
     private CountryCodePicker cpp;
     private String countryCode = "+61";
     private RadioButton rr_female, rr_Male, rr_other;
@@ -416,11 +418,21 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     else {
                         CreateBuisnessProfile.profileData.put("OtherOcuupation", et_other_occupation.getEditText().getText().toString());
                     }
-
-
-
                 }
-
+                 //its work when date is not editable
+                if(txt_date.getText().length()>0)
+                {
+                    String [] ar=txt_date.getText().toString().split("/");
+                    String day=ar[0];
+                    String month=ar[1];
+                    String year=ar[2];
+                    CreateBuisnessProfile.profileData.put("DateOfBirth", month+"/"+day+"/"+year);
+                    System.out.println("Selected date==="+month+"/"+day+"/"+year);
+                }
+                else
+                {
+                    CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getText().toString());
+                }
 
 
                 CreateBuisnessProfile.profileData.put("FirstName", et_user_name.getEditText().getText() + "");
@@ -431,7 +443,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 CreateBuisnessProfile.profileData.put("PostalCode", et_postcode.getEditText().getText() + "");
                 CreateBuisnessProfile.profileData.put("PhoneExt", countryCode);
                 CreateBuisnessProfile.profileData.put("Phone", et_mobile.getEditText().getText() + "");
-                CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getText().toString());
+//                CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getText().toString());
                 CreateBuisnessProfile.profileData.put("StateCode", recipient_statecodeStr);
                 CreateBuisnessProfile.profileData.put("State", recipient_stateStr);
 
@@ -555,61 +567,74 @@ public class CreatePersonalProfile extends AppCompatActivity {
     }
 
 //    DatePickerDialog mDatePicker;
-    private void selectDate() {
-        txt_date.setOnClickListener(new View.OnClickListener() {
+    private void selectDate()
+    {
 
-            @Override
-            public void onClick(View v) {
+        new DateInputMask(txt_date);
 
-                DatePickerDialog mDatePicker;
-                Calendar  mCurrentDate = Calendar.getInstance();
-                int mYear = mCurrentDate.get(Calendar.YEAR);
-                int mMonth = mCurrentDate.get(Calendar.MONTH);
-                int mDay = mCurrentDate.get(Calendar.DAY_OF_MONTH);
-
-                mDatePicker = new DatePickerDialog(CreatePersonalProfile.this, new DatePickerDialog.OnDateSetListener() {
-                    public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
-                        txt_date.setText((selectedMonth + 1)+ "/" +selectedDay + "/" +selectedYear);
-                    }
-                }, mYear, mMonth, mDay);
-                mDatePicker.getDatePicker().setMaxDate(mCurrentDate.getTimeInMillis());
-                mDatePicker.show();
-
-
-            }
-        });
+//        txt_date.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                DatePickerDialog mDatePicker;
+//                Calendar  mCurrentDate = Calendar.getInstance();
+//                int mYear = mCurrentDate.get(Calendar.YEAR);
+//                int mMonth = mCurrentDate.get(Calendar.MONTH);
+//                int mDay = mCurrentDate.get(Calendar.DAY_OF_MONTH);
+//
+//                mDatePicker = new DatePickerDialog(CreatePersonalProfile.this, new DatePickerDialog.OnDateSetListener() {
+//                    public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
+//                        txt_date.setText((selectedMonth + 1)+ "/" +selectedDay + "/" +selectedYear);
+//                    }
+//                }, mYear, mMonth, mDay);
+//                mDatePicker.getDatePicker().setMaxDate(mCurrentDate.getTimeInMillis());
+//                mDatePicker.show();
+//
+//
+//            }
+//        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        System.out.println("Databac----"+requestCode+"==="+resultCode);
+        try {
+            System.out.println("Databac----"+requestCode+"==="+resultCode);
 
-        if (requestCode == 101) {
-            finish();
-        }
-        else if(requestCode==1002)//update phone
-        {
-            if(data!=null)
+            if(requestCode == 101)
             {
-                String Phone=data.getStringExtra("Phone");
-                String PhoneExt= data.getStringExtra("PhoneExt");
-                cpp.setCountryForPhoneCode(Integer.parseInt(PhoneExt));
-                et_mobile.getEditText().setText(Phone);
+                finish();
+            }
+            else if(requestCode==1002)//update phone
+            {
+                if(data!=null)
+                {
+                    String Phone=data.getStringExtra("Phone");
+                    String PhoneExt= data.getStringExtra("PhoneExt");
+                    cpp.setCountryForPhoneCode(Integer.parseInt(PhoneExt));
+                    et_mobile.getEditText().setText(Phone);
+
+                }
+            }
+            else if(requestCode==1003)//select address
+            {
+                isType=false;
+                et_business_address.getEditText().setText(data.getStringExtra("sourcename"));
+                hideKeyboard(CreatePersonalProfile.this);
+                if(Double.parseDouble(data.getStringExtra("lat"))>0)
+                {
+                    getLocationNAme(Double.parseDouble(data.getStringExtra("lat")), Double.parseDouble(data.getStringExtra("lng")));
+                }
 
             }
         }
-        else if(requestCode==1003)//select address
+        catch (Exception e)
         {
-            isType=false;
-            et_business_address.getEditText().setText(data.getStringExtra("sourcename"));
-            hideKeyboard(CreatePersonalProfile.this);
-
-            String locName= getLocationNAme(Double.parseDouble(data.getStringExtra("lat")),Double.parseDouble(data.getStringExtra("lng")));
-            System.out.println("Location name---"+locName);
-
+            e.printStackTrace();
         }
+
     }
 
     private void selectAddress()
@@ -638,12 +663,13 @@ public class CreatePersonalProfile extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(isType) {
-                    if (s.length() > 3) {
+                    if (s.length() > 3)
+                     {
                         Intent intent = new Intent(CreatePersonalProfile.this, LocationPickerActivity.class);
                         intent.putExtra("text", s.toString());
                         intent.putExtra("code", "AUS");
                         startActivityForResult(intent, 1003);
-
+                         isType=false;
                     }
                 }
             }

@@ -155,21 +155,20 @@
 
     </LinearLayout>
 
-    <GridView
+        <GridView
 
-        android:verticalSpacing="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:horizontalSpacing="10dp"
-        android:nestedScrollingEnabled="true"
-        android:layout_marginTop="10dp"
-        android:scrollbarThumbVertical="@android:color/transparent"
-        android:id="@+id/grid_restaurantimages"
-        android:numColumns="4"
-        android:gravity="center"
-        android:stretchMode="columnWidth"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-    </GridView>
+            android:id="@+id/grid_restaurantimages"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:nestedScrollingEnabled="true"
+            android:numColumns="3"
+            android:scrollbarThumbVertical="@android:color/transparent"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"></GridView>
     </LinearLayout>
 </RelativeLayout>

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.ReviewTransfer;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
@@ -35,6 +36,9 @@ public class BankDetailAdapter extends RecyclerView.Adapter<BankDetailAdapter.My
             ll_banklist = view.findViewById(R.id.ll_banklist);
             DefaultConstatnts.setFont(ira1,txt_account_title);
             DefaultConstatnts.setFont(ira1,txt_recipient_acountnumber);
+
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
         }
     }
 
