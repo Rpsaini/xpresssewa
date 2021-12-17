@@ -40,8 +40,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.tv_sign_up)
     TextView tv_sign_up;
 
-//    @BindView(R.id.iv_back)
-//    LinearLayout iv_back;
 
     @BindView(R.id.tv_sign_in)
     TextView tv_sign_in;

@@ -113,9 +113,6 @@ public class ForgotPassword extends AppCompatActivity {
         Map<String,String> map = new LinkedHashMap<String, String>();
         map.put("Email", email);
 
-
-
-
         new ServerHandler().sendToServer(this, "Forget", map, 0,1, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
