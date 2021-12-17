@@ -85,14 +85,14 @@ public class MessagingService extends FirebaseMessagingService {
             mChannel.setSound(defaultSoundUri, attributes); // This is IMPORTANT
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-            Notification notification = mBuilder.setSmallIcon(R.drawable.notification_icon).setTicker(this.getResources().getString(R.string.app_name)).setWhen(0)
+            Notification notification = mBuilder.setSmallIcon(R.drawable.notification_ic).setTicker(this.getResources().getString(R.string.app_name)).setWhen(0)
                     .setAutoCancel(true)
                     .setContentTitle(title)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                     .setContentIntent(pendingIntent)
                     .setChannelId(CHANNEL_ID)
                     .setSound(defaultSoundUri)
-                    .setSmallIcon(R.drawable.notification_icon)
+                    .setSmallIcon(R.drawable.notification_ic)
 
                     .setContentText(message).build();
 
@@ -101,12 +101,12 @@ public class MessagingService extends FirebaseMessagingService {
         } else {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                     this);
-            Notification notification = mBuilder.setSmallIcon(R.drawable.notification_icon).setTicker(getResources().getString(R.string.app_name)).setWhen(0)
+            Notification notification = mBuilder.setSmallIcon(R.drawable.notification_ic).setTicker(getResources().getString(R.string.app_name)).setWhen(0)
                     .setAutoCancel(true)
                     .setContentTitle(title)
                     .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                     .setContentIntent(pendingIntent)
-                    .setSmallIcon(R.drawable.notification_icon)
+                    .setSmallIcon(R.drawable.notification_ic)
                     .setSound(defaultSoundUri)
                     .setContentText(message).build();
 

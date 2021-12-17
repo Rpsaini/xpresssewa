@@ -105,15 +105,12 @@ public class MessageActivity extends AppCompatActivity {
             addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>", Html.FROM_HTML_MODE_COMPACT));
             txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents.", Html.FROM_HTML_MODE_COMPACT));
 
-
         } else {
             front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> "+Title+"</font>"));
             backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> "+Title+"</font>"));
             addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>"));
             txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents."));
         }
-
-
 
         iv_screenshot = findViewById(R.id.iv_screenshot_front);
         iv_screenshot_back = findViewById(R.id.iv_screenshot_back);
@@ -243,7 +240,7 @@ public class MessageActivity extends AppCompatActivity {
         }
     }
 
-     Dialog addressDialog;
+   Dialog addressDialog;
    private void showAddressDialog(){
        SimpleDialog simpleDialog = new SimpleDialog();
         addressDialog = simpleDialog.simpleDailog(MessageActivity.this, R.layout.address_dailog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
