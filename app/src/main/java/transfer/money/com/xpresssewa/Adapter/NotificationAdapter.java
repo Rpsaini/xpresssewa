@@ -1,6 +1,7 @@
 package transfer.money.com.xpresssewa.Adapter;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,18 +33,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         TextView tt_noti_title, tt_notideatil, tt_noti_date;
 
 
-        public MyViewHolder(View view) {
+        public MyViewHolder(View view)
+           {
             super(view);
-
             Calligrapher calligrapher = new Calligrapher(ira1);
             calligrapher.setFont(view, "MontserratRegular.ttf");
             tt_noti_title = view.findViewById(R.id.tt_noti_title);
             img_notification_icon = view.findViewById(R.id.img_notification_icon);
             tt_notideatil = view.findViewById(R.id.tt_notideatil);
             tt_noti_date = view.findViewById(R.id.tt_noti_date);
-
-
-        }
+           }
     }
 
     public NotificationAdapter(JSONArray moviesList, NotificationActivity ira) {
@@ -93,16 +92,20 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 holder.img_notification_icon.setImageResource(R.drawable.ic_money_transfer_img);
             }
 
-            if (IsRead.equalsIgnoreCase("true")) {
-                holder.img_notification_icon.setColorFilter(ContextCompat.getColor(ira1, R.color.blue_bt_color), android.graphics.PorterDuff.Mode.SRC_IN);
-                ;
-            } else {
-                holder.img_notification_icon.setColorFilter(ContextCompat.getColor(ira1, R.color.grey_color), android.graphics.PorterDuff.Mode.SRC_IN);
+            if (IsRead.equalsIgnoreCase("true"))
+            {
+               // holder.img_notification_icon.setColorFilter(ContextCompat.getColor(ira1, R.color.blue_bt_color), PorterDuff.Mode.SRC);
+                holder.tt_noti_title.setTextColor(ira1.getResources().getColor(R.color.blue_bt_color));
             }
-
-        } catch (Exception e) {
+            else {
+                holder.tt_noti_title.setTextColor(ira1.getResources().getColor(R.color.grey_color));
+//                holder.img_notification_icon.setColorFilter(ContextCompat.getColor(ira1, R.color.grey_color), PorterDuff.Mode.SRC);
+                }
+            }
+        catch(Exception e)
+          {
             e.printStackTrace();
-        }
+          }
     }
 
     @Override
@@ -131,13 +134,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError()
+                    {
                         Picasso.with(null)
                                 .load(R.drawable.america_flag)
                                 .into(profileimage);
                     }
                 });
 
-    }
+         }
 
 }

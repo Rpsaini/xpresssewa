@@ -36,9 +36,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".settings.ChangePassword"
-            android:screenOrientation="portrait"
-            ></activity>
+        <activity android:name=".View.AccountWebview"></activity>
+        <activity
+            android:name=".settings.ChangePassword"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".settings.ChangeEmailValidate"
             android:screenOrientation="portrait" />
@@ -101,9 +102,9 @@
         <activity
             android:name=".View.TransactionDetailView"
             android:screenOrientation="portrait" />
-     <activity
+        <activity
             android:name=".View.SelectIdentityType"
-            android:screenOrientation="portrait" />-->
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.ChoosePaymentOptions"
             android:screenOrientation="portrait" />

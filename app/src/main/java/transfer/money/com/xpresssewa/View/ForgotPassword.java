@@ -120,7 +120,7 @@ public class ForgotPassword extends AppCompatActivity {
 
                     JSONObject obj = new JSONObject(dta);
                     if (obj.getBoolean("status"))
-                    {
+                     {
                         if(callFrom.equalsIgnoreCase("pin"))
                         {
 
@@ -139,17 +139,15 @@ public class ForgotPassword extends AppCompatActivity {
                             intent.putExtra("MemberId", obj.getString("MemberId"));
                             startActivityForResult(intent, 111);
                         }
-
-                    }
-                    else {
+                     }
+                    else
+                        {
                         new Showtoast().showToast(ForgotPassword.this,"Registration", obj.getString("Message"),findViewById(R.id.rr_forgotmain));
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
 

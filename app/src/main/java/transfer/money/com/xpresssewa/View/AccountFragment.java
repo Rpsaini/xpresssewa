@@ -274,9 +274,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                                         getArguments().remove("Callfrom");
                                         if(kycStatus.equalsIgnoreCase("2"))
                                         {
-                                            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
-                                            i.putExtra("userdata", dataObj + "");
-                                            startActivityForResult(i, 102);
+//                                            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
+//                                            i.putExtra("userdata", dataObj + "");
+//                                            startActivityForResult(i, 102);
+
+                                            createPersonalProfile();
                                         }
                                     }
 
@@ -298,9 +300,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void editProfile(int profileType) {
 
         if (profileType == 0) {
-            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
-            i.putExtra("userdata", dataObj + "");
-            startActivityForResult(i, 102);
+           createPersonalProfile();
 
 
         } else if (profileType == 1) {
@@ -312,6 +312,17 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         }
 
 
+    }
+    private void createPersonalProfile()
+    {
+//        Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
+//        i.putExtra("userdata", dataObj + "");
+//        startActivityForResult(i, 102);
+
+
+        Intent i = new Intent(getActivity(), AccountWebview.class);
+        i.putExtra("userdata", dataObj + "");
+        startActivityForResult(i, 102);
     }
 
 
