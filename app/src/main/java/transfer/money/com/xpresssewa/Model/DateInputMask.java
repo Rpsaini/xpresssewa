@@ -18,7 +18,7 @@ public class DateInputMask implements TextWatcher {
     public DateInputMask(EditText input) {
         this.input = input;
         this.input.addTextChangedListener(this);
-        input.setBackground(null);
+//        input.setBackground(null);
     }
 
     @Override

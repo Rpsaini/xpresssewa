@@ -67,7 +67,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private Showtoast showtoast;
     private LinearLayout ll_main_layout;
     private ArrayList<String> OccupationListAr = new ArrayList<>();
-    private EditText txt_date;
+    private TextInputLayout txt_date;
     private CountryCodePicker cpp;
     private String countryCode = "+61";
     private RadioButton rr_female, rr_Male, rr_other;
@@ -75,10 +75,15 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private JSONArray OccupationList;
     private TextView txt_updateNumber;
     boolean isType=true;
+    private String  isKycApproved="";
+    private LinearLayout ll_mobilelayout,ll_statecity;
+    private TextView lable_address;
+    private View view_line,viewLinedob;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+       {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_personal_profile);
 
@@ -104,6 +109,11 @@ public class CreatePersonalProfile extends AppCompatActivity {
         cpp = (CountryCodePicker) findViewById(R.id.ccp);
         txt_updateNumber =  findViewById(R.id.txt_updateNumber);
         et_other_occupation =  findViewById(R.id.et_other_occupation);
+        ll_mobilelayout =  findViewById(R.id.ll_mobilelayout);
+        lable_address =  findViewById(R.id.lable_address);
+        ll_statecity =  findViewById(R.id.ll_statecity);
+        view_line =  findViewById(R.id.view_line);
+        viewLinedob =  findViewById(R.id.viewLinedob);
         cpp.getChildAt(0).setEnabled(false);
 
         init();
@@ -115,14 +125,30 @@ public class CreatePersonalProfile extends AppCompatActivity {
 
     private void init() {
         try {
-            String isKycApproved = new SaveImpPrefrences().reterivePrefrence(this, DefaultConstatnts.IsKycApproved).toString();
-            System.out.println("is kyc approved===" + isKycApproved);
+           isKycApproved = new SaveImpPrefrences().reterivePrefrence(this, DefaultConstatnts.IsKycApproved).toString();
+             System.out.println("is kyc approved===" + isKycApproved);
 
-            if (!isKycApproved.equalsIgnoreCase("3"))//approved
+           if(isKycApproved.equalsIgnoreCase("6"))
+            {
+
+                et_user_name.setVisibility(View.GONE);
+                et_user_lname.setVisibility(View.GONE);
+                txt_date.setVisibility(View.GONE);
+                ll_mobilelayout.setVisibility(View.GONE);
+                lable_address.setVisibility(View.GONE);
+                et_business_address.setVisibility(View.GONE);
+                spinner_state.setVisibility(View.GONE);
+                view_line.setVisibility(View.GONE);
+                ed_statename.setVisibility(View.GONE);
+                ll_statecity.setVisibility(View.GONE);
+                viewLinedob.setVisibility(View.GONE);
+
+            }
+            else if (!isKycApproved.equalsIgnoreCase("3"))//approved
             {
                 company_continue.setText("CONTINUE");
-
-            } else {
+            }
+            else {
                 company_continue.setText("UPDATE");
                 et_user_name.setEnabled(false);
                 et_user_lname.setEnabled(false);
@@ -145,7 +171,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 et_postcode.getEditText().setText(dataObj.getString("PostalCode"));
              // et_mobile.setText(dataObj.getString("PhoneExt"));
                 et_mobile.getEditText().setText(dataObj.getString("Phone"));
-                txt_date.setText(dataObj.getString("DateOfBirth"));
+                txt_date.getEditText().setText(dataObj.getString("DateOfBirth"));
                 String phnExt = dataObj.getString("PhoneExt");
 
 
@@ -220,20 +246,18 @@ public class CreatePersonalProfile extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         try {
 
-                            JSONObject occupationObj = OccupationList.getJSONObject(position-1);
-                            CreateBuisnessProfile.profileData.put("OcuupationId", occupationObj.getString("Id"));
-                            if(occupationObj.getString("Id").equalsIgnoreCase("7"))
-                            {
-                                et_other_occupation.setVisibility(View.VISIBLE);
-                                et_other_occupation.getEditText().setText(dataObj.getString("OtherOcuupation"));
-                            }
-                            else
-                            {
-                                et_other_occupation.setVisibility(View.GONE);
+                            if(position>0) {
+                                JSONObject occupationObj = OccupationList.getJSONObject(position - 1);
+                                CreateBuisnessProfile.profileData.put("OcuupationId", occupationObj.getString("Id"));
+                                if (occupationObj.getString("Id").equalsIgnoreCase("7")) {
+                                    et_other_occupation.setVisibility(View.VISIBLE);
+                                    et_other_occupation.getEditText().setText(dataObj.getString("OtherOcuupation"));
+                                } else {
+                                    et_other_occupation.setVisibility(View.GONE);
 
-                                et_other_occupation.getEditText().setText("");
+                                    et_other_occupation.getEditText().setText("");
+                                }
                             }
-
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -341,99 +365,120 @@ public class CreatePersonalProfile extends AppCompatActivity {
                 ed_statename.setError("");
 
 
-                if (et_user_name.getEditText().getText().toString().length() == 0) {
-                    et_user_name.setError("Enter First name ");
 
-                    return;
-                }
-
-                if (et_user_lname.getEditText().getText().toString().length() == 0) {
-                    et_user_lname.setError("Enter Lastname");
-
-                    return;
-                }
-
-                if (!rr_Male.isChecked() && !rr_female.isChecked() && !rr_other.isChecked())
+                if(isKycApproved.equalsIgnoreCase("6"))
                 {
-                    showtoast.showToast(CreatePersonalProfile.this, "Required", "Select your Gender", ll_main_layout);
-                    return;
-                }
+                    if (txt_date.getEditText().getText().length() > 0) {
+                        String[] ar = txt_date.getEditText().getText().toString().split("/");
+                        String day = ar[0];
+                        String month = ar[1];
+                        String year = ar[2];
+                        CreateBuisnessProfile.profileData.put("DateOfBirth", month + "/" + day + "/" + year);
 
-                if (txt_date.getText().toString().length() == 0) {
-                    showtoast.showToast(CreatePersonalProfile.this, "Required", "Enter DOB", ll_main_layout);
-                }
-                if (et_postcode.getEditText().getText().toString().length() == 0) {
-                    et_postcode.setError("Enter Postal code");
-                    return;
-                }
-                if (et_mobile.getEditText().getText().toString().length() == 0)
-                {
-                    et_mobile.setError("Enter Phone Number");
-                    return;
-                }
-
-                if (et_mobile.getEditText().getText().toString().length()<8)
-                {
-                    et_mobile.setError("Enter valid phone number");
-                    new Showtoast().showToast(CreatePersonalProfile.this,getResources().getString(R.string.app_name),"Enter valid phone number",ll_main_layout);
-                    return;
-                }
-
-                if (et_business_address.getEditText().getText().toString().length() == 0) {
-                    et_business_address.setError("Enter buisness address");
-                    return;
-                }
-
-                if (ed_statename.getEditText().getText().toString().length() == 0) {
-                    ed_statename.setError("Please Enter state name");
-                    return;
-                }
-                else
-                {
-                    CreateBuisnessProfile.profileData.put("StateCode", ed_statename.getEditText().getText().toString());
-                }
+                    } else {
+                        CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getEditText().getText().toString());
+                    }
 
 
-                if (et_city.getEditText().getText().toString().length() == 0) {
-                    et_city.setError("Please Enter City name");
-
-                    return;
-                }
-
-
-
-
-                if (occupation_spinner.getSelectedItemPosition() == 0) {
-                    showtoast.showToast(CreatePersonalProfile.this, "Error", "Select Occupation", ll_main_layout);
-                return;
-                }
-
-                if(et_other_occupation.getVisibility()==View.VISIBLE)
-                {
-                    if(et_other_occupation.getEditText().getText().toString().length()==0)
-                    {
-                        et_other_occupation.setError("Enter your occupation name");
+                    if (occupation_spinner.getSelectedItemPosition() == 0) {
+                        showtoast.showToast(CreatePersonalProfile.this, "Error", "Select Occupation", ll_main_layout);
                         return;
                     }
-                    else {
-                        CreateBuisnessProfile.profileData.put("OtherOcuupation", et_other_occupation.getEditText().getText().toString());
+
+                    if (et_other_occupation.getVisibility() == View.VISIBLE) {
+                        if (et_other_occupation.getEditText().getText().toString().length() == 0) {
+                            et_other_occupation.setError("Enter your occupation name");
+                            return;
+                        } else {
+                            CreateBuisnessProfile.profileData.put("OtherOcuupation", et_other_occupation.getEditText().getText().toString());
+                        }
                     }
-                }
-                 //its work when date is not editable
-                if(txt_date.getText().length()>0)
-                {
-                    String [] ar=txt_date.getText().toString().split("/");
-                    String day=ar[0];
-                    String month=ar[1];
-                    String year=ar[2];
-                    CreateBuisnessProfile.profileData.put("DateOfBirth", month+"/"+day+"/"+year);
-                    System.out.println("Selected date==="+month+"/"+day+"/"+year);
+
+
                 }
                 else
                 {
-                    CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getText().toString());
-                }
 
+                    if (et_user_name.getEditText().getText().toString().length() == 0) {
+                        et_user_name.setError("Enter First name ");
+
+                        return;
+                    }
+
+                    if (et_user_lname.getEditText().getText().toString().length() == 0) {
+                        et_user_lname.setError("Enter Lastname");
+
+                        return;
+                    }
+
+                    if (!rr_Male.isChecked() && !rr_female.isChecked() && !rr_other.isChecked()) {
+                        showtoast.showToast(CreatePersonalProfile.this, "Required", "Select your Gender", ll_main_layout);
+                        return;
+                    }
+
+                    if (txt_date.getEditText().getText().toString().length() == 0) {
+                        showtoast.showToast(CreatePersonalProfile.this, "Required", "Enter DOB", ll_main_layout);
+                    }
+                    if (et_postcode.getEditText().getText().toString().length() == 0) {
+                        et_postcode.setError("Enter Postal code");
+                        return;
+                    }
+                    if (et_mobile.getEditText().getText().toString().length() == 0) {
+                        et_mobile.setError("Enter Phone Number");
+                        return;
+                    }
+
+                    if (et_mobile.getEditText().getText().toString().length() < 8) {
+                        et_mobile.setError("Enter valid phone number");
+                        new Showtoast().showToast(CreatePersonalProfile.this, getResources().getString(R.string.app_name), "Enter valid phone number", ll_main_layout);
+                        return;
+                    }
+
+                    if (et_business_address.getEditText().getText().toString().length() == 0) {
+                        et_business_address.setError("Enter buisness address");
+                        return;
+                    }
+
+                    if (ed_statename.getEditText().getText().toString().length() == 0) {
+                        ed_statename.setError("Please Enter state name");
+                        return;
+                    } else {
+                        CreateBuisnessProfile.profileData.put("StateCode", ed_statename.getEditText().getText().toString());
+                    }
+
+
+                    if (et_city.getEditText().getText().toString().length() == 0) {
+                        et_city.setError("Please Enter City name");
+
+                        return;
+                    }
+
+
+                    if (occupation_spinner.getSelectedItemPosition() == 0) {
+                        showtoast.showToast(CreatePersonalProfile.this, "Error", "Select Occupation", ll_main_layout);
+                        return;
+                    }
+
+                    if (et_other_occupation.getVisibility() == View.VISIBLE) {
+                        if (et_other_occupation.getEditText().getText().toString().length() == 0) {
+                            et_other_occupation.setError("Enter your occupation name");
+                            return;
+                        } else {
+                            CreateBuisnessProfile.profileData.put("OtherOcuupation", et_other_occupation.getEditText().getText().toString());
+                        }
+                    }
+                    //its work when date is not editable
+                    if (txt_date.getEditText().getText().length() > 0) {
+                        String[] ar = txt_date.getEditText().getText().toString().split("/");
+                        String day = ar[0];
+                        String month = ar[1];
+                        String year = ar[2];
+                        CreateBuisnessProfile.profileData.put("DateOfBirth", month + "/" + day + "/" + year);
+
+                    } else {
+                        CreateBuisnessProfile.profileData.put("DateOfBirth", txt_date.getEditText().getText().toString());
+                    }
+                }
 
                 CreateBuisnessProfile.profileData.put("FirstName", et_user_name.getEditText().getText() + "");
                 CreateBuisnessProfile.profileData.put("LastName", et_user_lname.getEditText().getText() + "");
@@ -459,8 +504,8 @@ public class CreatePersonalProfile extends AppCompatActivity {
                             JSONObject obj = new JSONObject(dta);
                             if (obj.getBoolean("status")) {
 
+                                System.out.println("Update profile===>"+obj);
                                 String isKycApproved = new SaveImpPrefrences().reterivePrefrence(CreatePersonalProfile.this, DefaultConstatnts.IsKycApproved).toString();
-                                System.out.println("Kyc status===" + isKycApproved);
 
                                 SimpleDialog simpleDialog = new SimpleDialog();
                                 final Dialog confirmDialog = simpleDialog.simpleDailog(CreatePersonalProfile.this, R.layout.confirmation_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
@@ -472,6 +517,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
                                 TextView txt_msg = confirmDialog.findViewById(R.id.txt_msg);
                                 selected_Curreny.setImageResource(R.drawable.checked);
 
+                               String ProofType=obj.getString("ProofType");
 
                                 if (isKycApproved.trim().equalsIgnoreCase("3") || isKycApproved.trim().equalsIgnoreCase("1")) {
                                     txt_currency_name.setText("Profile Updated");
@@ -515,8 +561,31 @@ public class CreatePersonalProfile extends AppCompatActivity {
                                         @Override
                                         public void onClick(View v) {
                                             confirmDialog.dismiss();
-                                            Intent intent = new Intent(CreatePersonalProfile.this, SelectIdentityType.class);
-                                            startActivityForResult(intent, 101);
+//                                todo      Intent intent = new Intent(CreatePersonalProfile.this, SelectIdentityType.class);
+//                                          startActivityForResult(intent, 101);
+                                            if(ProofType.equalsIgnoreCase("1"))
+                                            {
+                                                Intent ineIntent=new Intent(CreatePersonalProfile.this,MessageActivity.class);
+                                                ineIntent.putExtra("Title","Passport");
+                                                ineIntent.putExtra(UtilClass.proofType,ProofType);
+                                                startActivityForResult(ineIntent,101);
+                                            }
+                                            else if(ProofType.equalsIgnoreCase("2"))
+                                            {
+                                                Intent ineIntent=new Intent(CreatePersonalProfile.this,MessageActivity.class);
+                                                ineIntent.putExtra("Title","Driver`s Licence");
+                                                ineIntent.putExtra(UtilClass.proofType,ProofType);
+                                                startActivityForResult(ineIntent,101);
+                                            }
+                                            else
+                                            {
+                                                Intent ineIntent=new Intent(CreatePersonalProfile.this,MessageActivity.class);
+                                                ineIntent.putExtra("Title","National Id Card");
+                                                ineIntent.putExtra(UtilClass.proofType,ProofType);
+                                                startActivityForResult(ineIntent,101);
+                                            }
+
+
                                         }
                                     });
 
@@ -543,7 +612,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private void clearFields() {
 
         et_business_address.getEditText().setText("");
-        txt_date.setText("");
+        txt_date.getEditText().setText("");
         et_city.getEditText().setText("");
         et_postcode.getEditText().setText("");
         et_mobile.getEditText().setText("");
@@ -570,7 +639,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private void selectDate()
     {
 
-        new DateInputMask(txt_date);
+        new DateInputMask(txt_date.getEditText());
 
 //        txt_date.setOnClickListener(new View.OnClickListener() {
 //

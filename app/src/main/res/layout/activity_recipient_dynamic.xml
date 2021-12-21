@@ -181,7 +181,6 @@
                   android:id="@+id/select_date"
                   android:layout_width="match_parent"
                   android:paddingLeft="5dp"
-                  android:background="@drawable/bottom_line_drawable"
                   android:layout_height="wrap_content">
 
                   <EditText

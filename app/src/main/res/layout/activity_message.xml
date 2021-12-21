@@ -89,11 +89,11 @@
       </RelativeLayout>
 
          <RelativeLayout
-
-            android:layout_margin="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@drawable/round_dot_bg"
+             android:id="@+id/rr_BackSideProof"
+             android:layout_margin="15dp"
+             android:layout_width="match_parent"
+             android:layout_height="180dp"
+             android:background="@drawable/round_dot_bg"
             >
             <ImageView
                 android:layout_centerInParent="true"

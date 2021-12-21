@@ -77,6 +77,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public String usernameStr = "";
     public String businessprofileName = "";
 
+    private String  kycStatus="";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,7 +115,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
         final ImageView iv_toolbar = view.findViewById(R.id.iv_toolbar);
         iv_toolbar.setImageResource(R.drawable.icondots);
-
         iv_toolbar.setColorFilter(ContextCompat.getColor(getActivity(), R.color.blue_bt_color), android.graphics.PorterDuff.Mode.SRC_IN);
 
 
@@ -260,12 +261,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                         CreateBuisnessProfile.profileData.put("State", dataObj.getString("State"));
                         CreateBuisnessProfile.profileData.put("Type", dataObj.getString("Type"));
 
-                        System.out.println("Kyc==="+obj.getString("IsKycApproved"));
 
-                        String kycStatus=obj.getString("IsKycApproved");
+
+                         kycStatus=obj.getString("IsKycApproved");
                         new SaveImpPrefrences().savePrefrencesData(getActivity(),kycStatus,DefaultConstatnts.IsKycApproved);
-
-                            if(getArguments() != null)
+                        if(getArguments() != null)
                             {
                                 if (getArguments().containsKey("Callfrom"))
                                 {
@@ -315,14 +315,23 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     }
     private void createPersonalProfile()
     {
-//        Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
-//        i.putExtra("userdata", dataObj + "");
-//        startActivityForResult(i, 102);
+        System.out.println("Kyc statius===="+kycStatus);
+       if(kycStatus.equalsIgnoreCase("2"))// need to update some data
+       {
+           Intent i = new Intent(getActivity(), AccountWebview.class);
+           i.putExtra("userdata", dataObj + "");
+           startActivityForResult(i, 102);
+       }
+       else
+       {
+
+           Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
+           i.putExtra("userdata", dataObj + "");
+           startActivityForResult(i, 102);
+
+       }
 
 
-        Intent i = new Intent(getActivity(), AccountWebview.class);
-        i.putExtra("userdata", dataObj + "");
-        startActivityForResult(i, 102);
     }
 
 
