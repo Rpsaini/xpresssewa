@@ -157,15 +157,17 @@ public class MessageActivity extends AppCompatActivity {
         tv_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (imagePathfront.length() == 0) {
+                if(imagePathfront.length() == 0)
+                 {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload front of " + Title, chooseimagelayoutouter);
                     return;
-                }
-                if(rr_BackSideProof.getVisibility() == View.VISIBLE) {
+                 }
+                if(rr_BackSideProof.getVisibility() == View.VISIBLE)
+                 {
                     if (imagePathBack.length() == 0) {
                         new Showtoast().showToast(MessageActivity.this, "Required", "Upload back of " + Title, chooseimagelayoutouter);
                     }
-                }
+                 }
                 else
                   {
                     showAddressDialog();
@@ -178,13 +180,9 @@ public class MessageActivity extends AppCompatActivity {
                 slideUpDown();
             }
         });
-
-
-    }
+      }
 
     public void slideUpDown() {
-
-
         AlertDialogs alertDialogs = new AlertDialogs();
         alertDialogs.alertDialog(MessageActivity.this, getResources().getString(R.string.app_name), "Choose image from", "Camera", "Gallery", new DialogCallBack() {
             @Override

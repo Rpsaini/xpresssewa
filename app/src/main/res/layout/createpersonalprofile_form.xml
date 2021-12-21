@@ -191,7 +191,7 @@
 
                    <com.google.android.material.textfield.TextInputLayout
                         app:errorEnabled="false"
-                        android:layout_weight=".5"
+                        android:layout_weight=".48"
                         android:id="@+id/et_mobile"
                         android:layout_width="0dp"
                         android:layout_height="45dp">
@@ -216,9 +216,9 @@
                         android:layout_marginLeft="4dp"
                         android:id="@+id/txt_updateNumber"
                         android:layout_width="0dp"
-                        android:layout_weight=".15"
+                        android:layout_weight=".17"
                         android:layout_height="30dp"
-                        android:textSize="@dimen/margin_15"
+                        android:textSize="13dp"
                         android:gravity="center"
                         android:text="@string/update"
                         android:layout_gravity="bottom"

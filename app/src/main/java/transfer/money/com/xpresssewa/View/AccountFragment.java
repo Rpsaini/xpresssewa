@@ -316,22 +316,33 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private void createPersonalProfile()
     {
         System.out.println("Kyc statius===="+kycStatus);
+        //4 Rejected
+        // 5 proof rejected
+        //2 no details added just signup
+        //1 pending and 3 is approved
        if(kycStatus.equalsIgnoreCase("2"))// need to update some data
        {
            Intent i = new Intent(getActivity(), AccountWebview.class);
            i.putExtra("userdata", dataObj + "");
            startActivityForResult(i, 102);
        }
+       else if(kycStatus.equalsIgnoreCase("4"))
+       {
+           Intent i = new Intent(getActivity(), AccountWebview.class);
+           i.putExtra("userdata", dataObj + "");
+           startActivityForResult(i, 102);
+       }
+      else  if(kycStatus.equalsIgnoreCase("5"))
+       {
+           //proff rejected
+
+       }
        else
        {
-
            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
            i.putExtra("userdata", dataObj + "");
            startActivityForResult(i, 102);
-
        }
-
-
     }
 
 

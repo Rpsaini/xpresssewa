@@ -36,6 +36,8 @@ public class UtilClass
     public static String privacyurl="https://xpressewa.com/privacy";
     public static String frankieKycUrl="https://demo.webcomsystems.net.au/frankiewidget/";
     public static String proofType="proofType";
+    public static String callfrom="callfrom";
+    public static String frankieUpdateGenderUrl="index";//passactual url here
 
 
 

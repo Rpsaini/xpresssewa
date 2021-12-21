@@ -173,7 +173,21 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                 }
                                   else
                                      {
-                                        showtoast.showToast(SignInActivity.this,"Response",obj.getString("Message"),logintoplayout);
+
+                                      if(obj.getString("Message").equalsIgnoreCase("otp"))
+                                      {
+                                          Intent intent=new Intent(SignInActivity.this,LoginWithOtp.class);
+                                          intent.putExtra("Email", email_layout_name.getEditText().getText().toString());
+                                          intent.putExtra("Password", pwd_layout_name.getEditText().getText().toString());
+                                          startActivity(intent);
+
+                                      }
+                                      else
+                                      {
+                                          showtoast.showToast(SignInActivity.this,"Response",obj.getString("Message"),logintoplayout);
+                                      }
+
+
                                      }
 
                             }

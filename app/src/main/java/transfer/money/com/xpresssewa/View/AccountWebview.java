@@ -36,6 +36,8 @@ import butterknife.ButterKnife;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
+import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 
@@ -175,6 +177,16 @@ public class AccountWebview extends AppCompatActivity {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             hideProgressDialog();
+
+            System.out.println("Url===="+url);
+
+            if(url.contains(UtilClass.frankieUpdateGenderUrl))
+            {
+                new SaveImpPrefrences().savePrefrencesData(AccountWebview.this,"6", DefaultConstatnts.IsKycApproved);
+                Intent i = new Intent(AccountWebview.this, CreatePersonalProfile.class);
+                i.putExtra("userdata", getIntent().getStringExtra("userdata"));
+                startActivityForResult(i, 102);
+            }
         }
 
         @Override
@@ -258,7 +270,19 @@ public class AccountWebview extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
        super.onActivityResult(requestCode,resultCode,intent);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+       if(requestCode==1002)//retrun from createpersonal profile
+       {
+           if(intent!=null)
+           {
+               Intent resultIntent = new Intent();
+               resultIntent.putExtra("result", "");
+               setResult(RESULT_OK, resultIntent);
+               finish();
+           }
+       }
+       else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
             if (requestCode == REQUEST_SELECT_FILE) {
                 if (uploadMessage == null)
                     return;
@@ -300,5 +324,6 @@ public class AccountWebview extends AppCompatActivity {
             progressdlg.dismiss();
         }
     }
+
 
 }
