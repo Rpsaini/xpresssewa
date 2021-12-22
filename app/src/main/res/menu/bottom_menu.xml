@@ -25,10 +25,10 @@
 
 
     <item
-        android:visible="false"
-        android:id="@+id/menu_invite"
-        android:icon="@drawable/invite_icon"
-        android:title="@string/invite"/>
+
+        android:id="@+id/menu_support"
+        android:icon="@drawable/help_icon"
+        android:title="@string/support"/>
 
 
 

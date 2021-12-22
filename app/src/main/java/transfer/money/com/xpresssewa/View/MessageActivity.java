@@ -13,6 +13,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -65,21 +66,22 @@ import transfer.money.com.xpresssewa.util.UtilClass;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 
 public class MessageActivity extends AppCompatActivity {
-    private ImageView iv_screenshot, iv_screenshot_back,iv_screenshot_proof;
+    private ImageView iv_screenshot, iv_screenshot_back, iv_screenshot_proof;
     private RelativeLayout chooseimagelayoutouter;
     private TextView gallery, camera;
-    private  String Title="";
+    private String Title = "";
 
     //private String imageFrontImageCamera = "", imageFrontImageGallery = "", imageBackImageCamera = "", imageBackImageHgallery = "",imageProofpath="";
     private int imgSelectionType = 0;
     private TextView tv_send;
     int imageCount = 0;
+    String ProofType = "";       //Passport = 1,  Driving_Licence = 2,National_Id = 3
 
     SimpleDialog simpleDialog = new SimpleDialog();
-    Dialog dialogConfirm;
+    private Dialog dialogConfirm;
 
-    private String  imagePathfront="" ,imagePathBack="" ,imagePathAddress="";
-
+    private String imagePathfront = "", imagePathBack = "", imagePathAddress = "";
+    private RelativeLayout rr_BackSideProof;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,37 +90,45 @@ public class MessageActivity extends AppCompatActivity {
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "MontserratRegular.ttf", true);
         UtilClass.getUserData(this);
+        ProofType = getIntent().getStringExtra(UtilClass.proofType);
         init();
-       }
+    }
 
-    protected void init() {
-         Title = getIntent().getStringExtra("Title");
+    protected void init()
+    {
+        Title = getIntent().getStringExtra("Title");
         TextView front_id_message = findViewById(R.id.front_id_message);
         TextView backidentitymessage = findViewById(R.id.backidentitymessage);
         TextView addressidentitymessage = findViewById(R.id.addressidentitymessage);
+        rr_BackSideProof = findViewById(R.id.rr_BackSideProof);
         TextView txt_note = findViewById(R.id.txt_note);
 
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> "+Title+"</font>", Html.FROM_HTML_MODE_COMPACT));
-            backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> "+Title+"</font>", Html.FROM_HTML_MODE_COMPACT));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> " + Title + "</font>", Html.FROM_HTML_MODE_COMPACT));
+            backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> " + Title + "</font>", Html.FROM_HTML_MODE_COMPACT));
             addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>", Html.FROM_HTML_MODE_COMPACT));
             txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents.", Html.FROM_HTML_MODE_COMPACT));
 
         } else {
-            front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> "+Title+"</font>"));
-            backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> "+Title+"</font>"));
+            front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> " + Title + "</font>"));
+            backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> " + Title + "</font>"));
             addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>"));
             txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents."));
         }
 
         iv_screenshot = findViewById(R.id.iv_screenshot_front);
         iv_screenshot_back = findViewById(R.id.iv_screenshot_back);
-//        iv_screenshot_proof = findViewById(R.id.iv_screenshot_proof);
+//      iv_screenshot_proof = findViewById(R.id.iv_screenshot_proof);
         tv_send = findViewById(R.id.tv_send);
         chooseimagelayoutouter = findViewById(R.id.chooseimagelayoutouter);
         gallery = findViewById(R.id.gallery);
         camera = findViewById(R.id.camera);
+
+
+        if (ProofType.equalsIgnoreCase("1")) {
+            rr_BackSideProof.setVisibility(View.GONE);
+        }
 
         iv_screenshot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,17 +156,22 @@ public class MessageActivity extends AppCompatActivity {
 
         tv_send.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if(imagePathfront.length() == 0) {
+            public void onClick(View v) {
+                if(imagePathfront.length() == 0)
+                 {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload front of " + Title, chooseimagelayoutouter);
-                }
-                else if (imagePathBack.length() == 0) {
-                    new Showtoast().showToast(MessageActivity.this, "Required", "Upload back of " + Title, chooseimagelayoutouter);
-                }
-                else {
+                    return;
+                 }
+                if(rr_BackSideProof.getVisibility() == View.VISIBLE)
+                 {
+                    if (imagePathBack.length() == 0) {
+                        new Showtoast().showToast(MessageActivity.this, "Required", "Upload back of " + Title, chooseimagelayoutouter);
+                    }
+                 }
+                else
+                  {
                     showAddressDialog();
-                }
+                  }
             }
         });
         chooseimagelayoutouter.setOnClickListener(new View.OnClickListener() {
@@ -165,72 +180,29 @@ public class MessageActivity extends AppCompatActivity {
                 slideUpDown();
             }
         });
-
-//        gallery.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                selectImage(1);
-//            }
-//        });
-//
-//        camera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                selectImage(0);
-//            }
-//        });
-
-
-    }
+      }
 
     public void slideUpDown() {
-
-        System.out.println("Clickedd===");
-
         AlertDialogs alertDialogs = new AlertDialogs();
         alertDialogs.alertDialog(MessageActivity.this, getResources().getString(R.string.app_name), "Choose image from", "Camera", "Gallery", new DialogCallBack() {
             @Override
             public void getDialogEvent(String buttonPressed) {
 
-                if(buttonPressed.equalsIgnoreCase("Camera"))
-                {
+                if (buttonPressed.equalsIgnoreCase("Camera")) {
                     selectImage(0);
-                  }
-                else
-                {
+                } else {
                     selectImage(1);
                 }
             }
         });
-//
-//        if (!isPanelShown()) {
-//            // Show the panel
-//            Animation bottomUp = AnimationUtils.loadAnimation(this, R.anim.bottom_up);
-//
-//            chooseimagelayoutouter.startAnimation(bottomUp);
-//            chooseimagelayoutouter.setVisibility(View.VISIBLE);
-//
-//        } else {
-//
-//            Animation bottomDown = AnimationUtils.loadAnimation(this,
-//                    R.anim.bottom_down);
-//            chooseimagelayoutouter.startAnimation(bottomDown);
-//            chooseimagelayoutouter.setVisibility(View.GONE);
-//        }
+
     }
 
 
-//    private boolean isPanelShown() {
-//        return chooseimagelayoutouter.getVisibility() == View.VISIBLE;
-//    }
-
-
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void selectImage(int actionCode)
-    {
-        if (checkAndRequestPermissions() == 0)
-        {
-            if(actionCode == 0) {
+    private void selectImage(int actionCode) {
+        if (checkAndRequestPermissions() == 0) {
+            if (actionCode == 0) {
                 dispatchTakePictureIntent();
             } else if (actionCode == 1) {
                 Intent pickPhoto = new Intent(Intent.ACTION_PICK,
@@ -240,54 +212,53 @@ public class MessageActivity extends AppCompatActivity {
         }
     }
 
-   Dialog addressDialog;
-   private void showAddressDialog(){
-       SimpleDialog simpleDialog = new SimpleDialog();
+    Dialog addressDialog;
+
+    private void showAddressDialog() {
+        SimpleDialog simpleDialog = new SimpleDialog();
         addressDialog = simpleDialog.simpleDailog(MessageActivity.this, R.layout.address_dailog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
-       ImageView backDialog=addressDialog.findViewById(R.id.headerbackbutton);
-       String address_instruction_html = getString(R.string.address_instruction_html);
-       WebView webView = addressDialog.findViewById(R.id.webView);
-       webView.loadDataWithBaseURL(null, address_instruction_html, "text/html", "utf-8", null);
+        ImageView backDialog = addressDialog.findViewById(R.id.headerbackbutton);
+        String address_instruction_html = getString(R.string.address_instruction_html);
+        WebView webView = addressDialog.findViewById(R.id.webView);
+        webView.loadDataWithBaseURL(null, address_instruction_html, "text/html", "utf-8", null);
 
-       backDialog.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               addressDialog.dismiss();
-           }
-       });
-
-
-       addressDialog.findViewById(R.id.tv_submit).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v)
-             {
+        backDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addressDialog.dismiss();
+            }
+        });
 
 
-                 if (imagePathAddress.length() == 0) {
+        addressDialog.findViewById(R.id.tv_submit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (imagePathAddress.length() == 0) {
                     new Showtoast().showToast(MessageActivity.this, "Required", "Upload address proof image.", chooseimagelayoutouter);
-                }
-                else {
+                } else {
                     uploadImageToServer();
                 }
-             }
-       });
+            }
+        });
 
-       iv_screenshot_proof=addressDialog.findViewById(R.id.iv_screenshot_proof);
+        iv_screenshot_proof = addressDialog.findViewById(R.id.iv_screenshot_proof);
 
-       iv_screenshot_proof.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               imgSelectionType = 2;
-               slideUpDown();
-           }
-       });
+        iv_screenshot_proof.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgSelectionType = 2;
+                slideUpDown();
+            }
+        });
 
 
-
-   }
+    }
 
 
     private Bitmap bmap;
+
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         System.out.println("inside============" + requestCode + "===" + resultCode);
@@ -297,15 +268,14 @@ public class MessageActivity extends AppCompatActivity {
             switch (requestCode) {
                 case 0:
 //                 if(imageReturnedIntent != null)
-                    {
+                {
                     try {
 
                         bmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI);
 
                         Uri uri = getImageUri(this, bmap);
                         String s = getRealPathFromURI(uri);
-                        if(fileSize(s))
-                        {
+                        if (fileSize(s)) {
 
                             if (imgSelectionType == 0) {
                                 imagePathfront = s;
@@ -321,7 +291,6 @@ public class MessageActivity extends AppCompatActivity {
                         }
 
 
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -334,8 +303,7 @@ public class MessageActivity extends AppCompatActivity {
                                 selectedImage = imageReturnedIntent.getData();
                                 String s = getRealPathFromURI(selectedImage);
 
-                                if(fileSize(s))
-                                 {
+                                if (fileSize(s)) {
                                     InputStream image_stream = getContentResolver().openInputStream(selectedImage);
                                     bmap = BitmapFactory.decodeStream(image_stream);
                                     if (imgSelectionType == 0) {
@@ -447,36 +415,41 @@ public class MessageActivity extends AppCompatActivity {
         File file = new File(imagePathfront);
         File file2 = new File(imagePathBack);
         File file3 = new File(imagePathAddress);
-        if (file != null)
-           {
-            BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
+        if (file != null) {
+            BaseActivity.baseurl = "https://demo.webcomsystems.net.au/";
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);//front
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
-
-            RequestBody requestBody2 = RequestBody.create(MediaType.parse("image/*"), file2);//back image
-            MultipartBody.Part body2 = MultipartBody.Part.createFormData("file2", file2.getName(), requestBody2);
 
             RequestBody requestBody3 = RequestBody.create(MediaType.parse("image/*"), file3);//address proff
             MultipartBody.Part body3 = MultipartBody.Part.createFormData("file3", file3.getName(), requestBody3);
 
-            RequestBody requestBodyProofType = RequestBody.create(MediaType.parse("text/plain"), "1");
+            RequestBody requestBodyProofType = RequestBody.create(MediaType.parse("text/plain"), getIntent().getStringExtra(UtilClass.proofType));
             RequestBody requestBodyMemberId = RequestBody.create(MediaType.parse("text/plain"), UtilClass.member_id);
 
             RequestBody requestBodyMethod = RequestBody.create(MediaType.parse("text/plain"), "ProofImage");
+            Observable<String> responseObservable;
+            if (rr_BackSideProof.getVisibility() == View.VISIBLE)
+            {
+                RequestBody requestBody2 = RequestBody.create(MediaType.parse("image/*"), file2);//back image
+                MultipartBody.Part body2 = MultipartBody.Part.createFormData("file2", file2.getName(), requestBody2);
+                ImageUpload contestService = ApiProduction.getInstance(this).provideService(ImageUpload.class);
+                responseObservable = contestService.uploadImage(requestBodyProofType, requestBodyMemberId, requestBodyMethod, body, body2, body3);
 
-            ImageUpload contestService = ApiProduction.getInstance(this).provideService(ImageUpload.class);
-            Observable<String> responseObservable = contestService.uploadImage(requestBodyProofType, requestBodyMemberId, requestBodyMethod, body,body2,body3);
+            } else {
+                ImageUpload contestService = ApiProduction.getInstance(this).provideService(ImageUpload.class);
+                responseObservable = contestService.uploadImagePassport(requestBodyProofType, requestBodyMemberId, requestBodyMethod, body, body3);
+
+            }
 
 
-             final ProgressDialog mProgressDialog = new ProgressDialog(this);
-             mProgressDialog.setCancelable(false);
-             mProgressDialog.setTitle("Please wait...");
-             mProgressDialog.show();
+            final ProgressDialog mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.setTitle("Please wait...");
+            mProgressDialog.show();
 
             Disposable disposable = RxAPICallHelper.call(responseObservable, new RxAPICallback<String>() {
                 @Override
-                public void onSuccess(String uploadFileResponse)
-                {
+                public void onSuccess(String uploadFileResponse) {
                     System.out.println("Inside on sucess=====>" + uploadFileResponse);
                     mProgressDialog.dismiss();
                     try {
@@ -484,35 +457,39 @@ public class MessageActivity extends AppCompatActivity {
                         mProgressDialog.dismiss();
 
                         //if(imageCount == 2)
-                        {
-                            DefaultConstatnts.isKyDockUploaded = true;
-                            new SaveImpPrefrences().savePrefrencesData(MessageActivity.this,"1",DefaultConstatnts.IsKycApproved);
+                        DefaultConstatnts.isKyDockUploaded = true;
+                        new SaveImpPrefrences().savePrefrencesData(MessageActivity.this, "1", DefaultConstatnts.IsKycApproved);
 
-                            if (dialogConfirm != null && dialogConfirm.isShowing()) {
-                                dialogConfirm.dismiss();
-                            }
-                            simpleDialog = new SimpleDialog();
-                            dialogConfirm = simpleDialog.simpleDailog(MessageActivity.this, R.layout.successdialog, new ColorDrawable(android.graphics.Color.TRANSPARENT), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
-                            dialogConfirm.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v)
-                                {
-                                    addressDialog.dismiss();
-                                    dialogConfirm.dismiss();
-
-                                    Intent intent = new Intent();
-                                    setResult(Activity.RESULT_OK, intent);
-                                    finish();
-                                }
-                            });
-                            dialogConfirm.findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    finish();
-                                }
-                            });
-
+                        if (dialogConfirm != null && dialogConfirm.isShowing()) {
+                            dialogConfirm.dismiss();
                         }
+                        simpleDialog = new SimpleDialog();
+                        dialogConfirm = simpleDialog.simpleDailog(MessageActivity.this, R.layout.successdialog, new ColorDrawable(android.graphics.Color.TRANSPARENT), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+                        Typeface face = Typeface.createFromAsset(getAssets(), "MontserratRegular.ttf");
+                        TextView uploadtext = dialogConfirm.findViewById(R.id.uploadtext);
+                        TextView lbl_maintitle = dialogConfirm.findViewById(R.id.lbl_maintitle);
+
+                        uploadtext.setTypeface(face);
+                        lbl_maintitle.setTypeface(face);
+
+                        dialogConfirm.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                addressDialog.dismiss();
+                                dialogConfirm.dismiss();
+
+                                Intent intent = new Intent();
+                                setResult(Activity.RESULT_OK, intent);
+                                finish();
+                            }
+                        });
+                        dialogConfirm.findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                            }
+                        });
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -526,13 +503,9 @@ public class MessageActivity extends AppCompatActivity {
             });
 
 
-            BaseActivity.baseurl="https://demoapi.webcomsystems.net.au/";
+            BaseActivity.baseurl = "https://demoapi.webcomsystems.net.au/";
         }
-
-
-
     }
-
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -540,39 +513,26 @@ public class MessageActivity extends AppCompatActivity {
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
-    private boolean fileSize(String  path)
-    {
 
+    private boolean fileSize(String path) {
         try {
             File file = new File(path);
             long length = file.length();
-            length = length/1024;
+            length = length / 1024;
 
 
-            if(length<=2000)
-            {
-                return  true;
-            }
-            else
-            {
-                new Showtoast().showToast(this,"Response",getResources().getString(R.string.image_size),null);
-                return  false;
+            if (length <= 2000) {
+                return true;
+            } else {
+                new Showtoast().showToast(this, "Response", getResources().getString(R.string.image_size), null);
+                return false;
 
             }
-
-
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
         return false;
-
-
-
     }
-
-
-
+    //R30313       18-19
 }

@@ -71,11 +71,13 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     private JSONObject dataObj = new JSONObject();
     private String type = "0";
     private int screenheight, screenWidth;
-    private AppCompatActivity mainActivity;
+    private MainActivity mainActivity;
 
     public boolean isUserPersonalProfileDOne = false;
     public String usernameStr = "";
     public String businessprofileName = "";
+
+    private String  kycStatus="";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,7 +115,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
         final ImageView iv_toolbar = view.findViewById(R.id.iv_toolbar);
         iv_toolbar.setImageResource(R.drawable.icondots);
-
         iv_toolbar.setColorFilter(ContextCompat.getColor(getActivity(), R.color.blue_bt_color), android.graphics.PorterDuff.Mode.SRC_IN);
 
 
@@ -127,8 +128,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                     public boolean onMenuItemClick(MenuItem item) {
 
                         if (item.getItemId() == R.id.menu_help) {
-                            Intent intent = new Intent(getActivity(), AddTicket.class);
-                            getActivity().startActivity(intent);
+
+                            mainActivity.callHelpFragment();
 
                         } else if (item.getItemId() == R.id.menu_logout) {
                             AlertDialogs alertDialogs = new AlertDialogs();
@@ -260,12 +261,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                         CreateBuisnessProfile.profileData.put("State", dataObj.getString("State"));
                         CreateBuisnessProfile.profileData.put("Type", dataObj.getString("Type"));
 
-                        System.out.println("Kyc==="+obj.getString("IsKycApproved"));
 
-                        String kycStatus=obj.getString("IsKycApproved");
+
+                         kycStatus=obj.getString("IsKycApproved");
                         new SaveImpPrefrences().savePrefrencesData(getActivity(),kycStatus,DefaultConstatnts.IsKycApproved);
-
-                            if(getArguments() != null)
+                        if(getArguments() != null)
                             {
                                 if (getArguments().containsKey("Callfrom"))
                                 {
@@ -274,9 +274,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                                         getArguments().remove("Callfrom");
                                         if(kycStatus.equalsIgnoreCase("2"))
                                         {
-                                            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
-                                            i.putExtra("userdata", dataObj + "");
-                                            startActivityForResult(i, 102);
+//                                            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
+//                                            i.putExtra("userdata", dataObj + "");
+//                                            startActivityForResult(i, 102);
+
+                                            createPersonalProfile();
                                         }
                                     }
 
@@ -298,9 +300,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     public void editProfile(int profileType) {
 
         if (profileType == 0) {
-            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
-            i.putExtra("userdata", dataObj + "");
-            startActivityForResult(i, 102);
+           createPersonalProfile();
 
 
         } else if (profileType == 1) {
@@ -312,6 +312,37 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         }
 
 
+    }
+    private void createPersonalProfile()
+    {
+        System.out.println("Kyc statius===="+kycStatus);
+        //4 Rejected
+        // 5 proof rejected
+        //2 no details added just signup
+        //1 pending and 3 is approved
+       if(kycStatus.equalsIgnoreCase("2"))// need to update some data
+       {
+           Intent i = new Intent(getActivity(), AccountWebview.class);
+           i.putExtra("userdata", dataObj + "");
+           startActivityForResult(i, 102);
+       }
+       else if(kycStatus.equalsIgnoreCase("4"))
+       {
+           Intent i = new Intent(getActivity(), AccountWebview.class);
+           i.putExtra("userdata", dataObj + "");
+           startActivityForResult(i, 102);
+       }
+      else  if(kycStatus.equalsIgnoreCase("5"))
+       {
+           //proff rejected
+
+       }
+       else
+       {
+           Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
+           i.putExtra("userdata", dataObj + "");
+           startActivityForResult(i, 102);
+       }
     }
 
 

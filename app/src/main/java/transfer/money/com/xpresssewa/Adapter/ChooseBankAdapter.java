@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.AddBalance;
 import transfer.money.com.xpresssewa.View.ChooseBankActivity;
@@ -46,7 +47,8 @@ public class ChooseBankAdapter extends RecyclerView.Adapter<ChooseBankAdapter.My
             txt_currencyname=view.findViewById(R.id.txt_currencyname);
             ll_bank_list=view.findViewById(R.id.ll_bank_list);
 
-
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
         }
     }
 

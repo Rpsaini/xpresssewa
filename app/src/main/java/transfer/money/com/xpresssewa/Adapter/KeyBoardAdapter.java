@@ -2,6 +2,7 @@ package transfer.money.com.xpresssewa.Adapter;
 
 import android.content.Context;
 
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class KeyBoardAdapter extends BaseAdapter {
         if(position==10)
         {
             back_button.setImageResource(Integer.parseInt(gridValues.get(position).toString()));
+           // back_button.setColorFilter(back_button.getContext().getResources().getColor(R.color.dark_red_color), PorterDuff.Mode.SRC_IN);
             back_button.setVisibility(View.VISIBLE);
 //            txt_gridtext.setTextColor(context.getResources().getColor(R.color.dark_red_color));
         }

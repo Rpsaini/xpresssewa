@@ -34,6 +34,10 @@ public class UtilClass
     public static String transferReference="transferReference";
     public static String termsur="https://xpressewa.com/term-conditions";
     public static String privacyurl="https://xpressewa.com/privacy";
+    public static String frankieKycUrl="https://demo.webcomsystems.net.au/frankiewidget/";
+    public static String proofType="proofType";
+    public static String callfrom="callfrom";
+    public static String frankieUpdateGenderUrl="index";//passactual url here
 
 
 
@@ -90,4 +94,8 @@ public class UtilClass
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+
+
+
 }

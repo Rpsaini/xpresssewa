@@ -46,6 +46,7 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = infalInflater.inflate(R.layout.child_items, null);
+
         }
 
         TextView sequence = (TextView) view.findViewById(R.id.sequence);

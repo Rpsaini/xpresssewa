@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.ForgotPassword;
@@ -33,6 +34,8 @@ public class ChangePassword extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this,  "MontserratRegular.ttf", true);
         init();
 
     }

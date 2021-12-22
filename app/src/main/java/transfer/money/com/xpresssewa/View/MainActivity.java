@@ -70,6 +70,7 @@ import transfer.money.com.xpresssewa.Adapter.ActivityAdapter;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
+import transfer.money.com.xpresssewa.fragments.HelpFragment;
 import transfer.money.com.xpresssewa.interfaces.ApiProduction;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.interfaces.RxAPICallHelper;
@@ -236,13 +237,20 @@ public class MainActivity extends BaseActivity {
                 replaceMainFragment(recipientFragment, "recipient");
 
                 break;
-            case R.id.menu_invite:
-                InviteFragment inviteFragment = new InviteFragment();
-                replaceMainFragment(inviteFragment, "invite");
+            case R.id.menu_support:
+                callHelpFragment();
 
                 break;
 
+             }
         }
+
+        public void callHelpFragment()
+        {
+            MenuItem menu=navigationView.getMenu().getItem(4);
+            menu.setChecked(true);
+            HelpFragment helpFragment = new HelpFragment();
+            replaceMainFragment(helpFragment, "help");
         }
 
 

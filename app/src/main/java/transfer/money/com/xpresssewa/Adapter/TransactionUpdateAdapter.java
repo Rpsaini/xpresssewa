@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.TransactionDetailView;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
@@ -37,6 +38,8 @@ public class TransactionUpdateAdapter extends RecyclerView.Adapter<TransactionUp
 
         public MyViewHolder(View view) {
             super(view);
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
             transactiondate = view.findViewById(R.id.transactiondate);
             transaction_process = view.findViewById(R.id.transaction_process);
             ll_transationupdatelist = view.findViewById(R.id.ll_transationupdatelist);

@@ -20,4 +20,14 @@ public interface ImageUpload {
                                            @Part MultipartBody.Part image2
                                           );
 
+
+    @Multipart
+    @POST("UploadImage.ashx")
+    Observable<String> uploadImagePassport(
+            @Part("ProofType") RequestBody ProofType,
+            @Part("MemberId") RequestBody MemberId,
+            @Part("Method") RequestBody Method,
+            @Part MultipartBody.Part image,
+            @Part MultipartBody.Part image2
+    );
 }

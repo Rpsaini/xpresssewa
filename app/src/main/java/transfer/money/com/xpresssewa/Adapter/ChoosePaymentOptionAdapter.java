@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.ChoosePaymentOptions;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
@@ -52,6 +53,9 @@ public class ChoosePaymentOptionAdapter extends RecyclerView.Adapter<ChoosePayme
             DefaultConstatnts.setFont(ira1,txt_feededuction);
             DefaultConstatnts.setFont(ira1,txt_paymentidname);
             DefaultConstatnts.setFont(ira1,tv_exactfee);
+
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
 
 
         }

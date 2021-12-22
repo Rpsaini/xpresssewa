@@ -134,6 +134,7 @@
                 ></TextView>
 
             <EditText
+                android:singleLine="true"
                 android:imeOptions="actionDone"
                 android:id="@+id/ed_subject"
                 android:background="@drawable/border_five"

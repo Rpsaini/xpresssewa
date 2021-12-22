@@ -230,6 +230,12 @@ public class LocationPickerActivity extends AppCompatActivity implements Respons
             @Override
             public void onClick(View v)
             {
+                Intent intent = new Intent();
+                intent.putExtra("sourcename", "");
+                intent.putExtra("lat", "0");
+                intent.putExtra("lng", "0");
+
+                setResult(CUSTOM_AUTOCOMPLETE_REQUEST_CODE, intent);
                 finish();
             }
         });

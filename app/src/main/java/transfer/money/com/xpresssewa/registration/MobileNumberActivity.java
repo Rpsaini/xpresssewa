@@ -87,7 +87,7 @@ public class MobileNumberActivity extends BaseActivity {
                     showtoast.showToast(MobileNumberActivity.this, "Select", "Please enter Mobile number", ll_forgotmain);
                     return;
                 }
-                else if(ed_mobilenumber.getText().toString().length()!=10)
+                else if(ed_mobilenumber.getText().toString().length()<=8)
                 {
                     showtoast.showToast(MobileNumberActivity.this, "Select", "Please enter valid Mobile number", ll_forgotmain);
                     return;

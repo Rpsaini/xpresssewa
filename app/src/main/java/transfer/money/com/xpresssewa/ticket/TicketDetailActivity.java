@@ -46,6 +46,7 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
+import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -75,6 +76,8 @@ public class TicketDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "MontserratRegular.ttf", true);
         actions();
         init();
         replyMsg();

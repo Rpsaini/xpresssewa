@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.HelpFragment">
+    <include layout="@layout/toolbar_with_notification"/>
+
+
+    <LinearLayout
+        android:id="@+id/nodataFound"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    <ImageView
+
+        android:layout_marginTop="50dp"
+        android:layout_height="250dp"
+        android:layout_width="250dp"
+        android:layout_gravity="center"
+        android:src="@drawable/noticketfound"
+        >
+    </ImageView>
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_50"
+            android:visibility="visible"
+            android:id="@+id/btnraiseticekt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/font_fifteen"
+            android:layout_marginLeft="@dimen/margin_30"
+            android:layout_marginRight="@dimen/margin_30"
+            android:background="@drawable/green_bt_rounded_corner"
+            android:padding="@dimen/margin_15"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"
+            android:text="Raise a ticket"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_all_tickets_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>

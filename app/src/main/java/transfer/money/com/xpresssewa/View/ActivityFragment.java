@@ -1,10 +1,16 @@
 package transfer.money.com.xpresssewa.View;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +36,7 @@ import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
+import transfer.money.com.xpresssewa.util.SimpleDialog;
 import transfer.money.com.xpresssewa.util.UtilClass;
 
 public class ActivityFragment extends Fragment implements View.OnClickListener {
@@ -118,7 +125,8 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((MainActivity) getActivity()).callMyProfileFragment("personal");
+                  //Todo show dialog   ((MainActivity) getActivity()).callMyProfileFragment("personal");
+                    successDialog();
                 }
             });
         } else if (isKycApproved.equalsIgnoreCase("4")) {
@@ -211,7 +219,8 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
                             mainActivity.sendFromSelectedList(null);
                         }
                         if(datAr.size()==0) {
-                            if (isKycApproved.equalsIgnoreCase("3")) {
+                            if (isKycApproved.equalsIgnoreCase("3"))
+                            {
                                 img_show_warring.setVisibility(View.VISIBLE);
                                 img_show_warring.setImageResource(R.drawable.noactivityfound);
                             }
@@ -322,5 +331,33 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
         skipCount++;
         getActivityData();
 
+    }
+
+
+    private void successDialog()
+    {
+       SimpleDialog simpleDialog = new SimpleDialog();
+
+       Dialog dialogConfirm = simpleDialog.simpleDailog((MainActivity)getActivity(), R.layout.successdialog, new ColorDrawable(android.graphics.Color.TRANSPARENT), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+       Typeface face= Typeface.createFromAsset(getActivity().getAssets(), "MontserratRegular.ttf");
+
+        TextView uploadtext=dialogConfirm.findViewById(R.id.uploadtext);
+        TextView lbl_maintitle=dialogConfirm.findViewById(R.id.lbl_maintitle);
+        uploadtext.setTypeface(face);
+        lbl_maintitle.setTypeface(face);
+
+        dialogConfirm.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                dialogConfirm.dismiss();
+            }
+        });
+        dialogConfirm.findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogConfirm.dismiss();
+            }
+        });
     }
 }

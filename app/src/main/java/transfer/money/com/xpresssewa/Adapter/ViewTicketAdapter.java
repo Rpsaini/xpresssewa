@@ -10,19 +10,22 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.View.MainActivity;
 import transfer.money.com.xpresssewa.ticket.MyTicketsActivity;
 import transfer.money.com.xpresssewa.ticket.TicketDetailActivity;
 
 
 public class ViewTicketAdapter extends RecyclerView.Adapter<ViewTicketAdapter.MyViewHolder> {
-    private MyTicketsActivity ira1;
+    private AppCompatActivity ira1;
     private ArrayList<JSONObject> moviesList;
     Context mContext;
     private int type=0;
@@ -36,9 +39,9 @@ public class ViewTicketAdapter extends RecyclerView.Adapter<ViewTicketAdapter.My
 
         public MyViewHolder(View view) {
             super(view);
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
 
-            Typeface face=Typeface.createFromAsset(ira1.getAssets(), "MontserratRegular.ttf");
-//          txt_reason.setTypeface(face);
             txt_id=view.findViewById(R.id.txt_id);
             txt_department=view.findViewById(R.id.txt_department);
             txt_subject=view.findViewById(R.id.txt_subject);
@@ -51,7 +54,7 @@ public class ViewTicketAdapter extends RecyclerView.Adapter<ViewTicketAdapter.My
     }
 
 
-    public ViewTicketAdapter(ArrayList<JSONObject> moviesList, MyTicketsActivity ct) {
+    public ViewTicketAdapter(ArrayList<JSONObject> moviesList, AppCompatActivity ct) {
         this.moviesList = moviesList;
         this.ira1 = ct;
 
