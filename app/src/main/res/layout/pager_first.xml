@@ -5,10 +5,11 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:src="@drawable/splashone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/splashone"></ImageView>
+        android:scaleType="centerCrop"
+        ></ImageView>
     <TextView
         android:textStyle="bold"
         android:id="@+id/tv_title"

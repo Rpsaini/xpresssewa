@@ -24,7 +24,20 @@
         <entry key="..\:/git_project/samremitance2021/app/src/main/res/layout/send_place_holder_item.xml" value="0.12228260869565218" />
         <entry key="..\:/git_project/samremitance2021/app/src/main/res/layout/show_ticket_images_list_row.xml" value="0.12228260869565218" />
         <entry key="..\:/git_project/samremitance2021/app/src/main/res/layout/spinner_item.xml" value="0.12228260869565218" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/background_image.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/blue_drawable.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/boder_small_radius.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/border_five.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/border_layout_blue.xml" value="0.16614583333333333" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/bottom_line_drawable.xml" value="0.1828125" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/dialogdrawable.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/drawable_withe.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/green_bt_rounded_corner.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/green_button.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/green_drawable.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/green_ring_drawable.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/greyrounddrawable.xml" value="0.16614583333333333" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_no_activity.xml" value="0.16458333333333333" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_rectangle_1.xml" value="0.2203125" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_splashthree.xml" value="0.137109375" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/drawable/ic_splashtwo.xml" value="0.137109375" />
@@ -34,6 +47,7 @@
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_add_balance.xml" value="0.13949275362318841" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_add_money_in_wallet.xml" value="0.13949275362318841" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_add_ticket.xml" value="0.13949275362318841" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_and_wallet.xml" value="0.12228260869565218" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_base.xml" value="0.1546875" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/activity_forgot_password_with_otp.xml" value="0.25" />
@@ -59,9 +73,10 @@
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/fragment_transaction_detail_frg.xml" value="0.13405797101449277" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/fragment_transaction_update_frg.xml" value="0.13405797101449277" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/internetdialog.xml" value="0.33" />
-        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_first.xml" value="0.2" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_first.xml" value="0.18" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_second.xml" value="0.22" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/pager_three.xml" value="0.2" />
+        <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/payment_message_dialog.xml" value="0.17346014492753623" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/showprogressdialog.xml" value="0.1546875" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/toastdialog.xml" value="0.1546875" />
         <entry key="..\:/git_vsmarts_project/xpresssewa/app/src/main/res/layout/toolbar_with_back.xml" value="0.16802536231884058" />
@@ -71,7 +86,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
