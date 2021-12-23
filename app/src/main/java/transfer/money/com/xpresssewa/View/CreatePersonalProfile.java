@@ -126,7 +126,7 @@ public class CreatePersonalProfile extends AppCompatActivity {
     private void init() {
         try {
            isKycApproved = new SaveImpPrefrences().reterivePrefrence(this, DefaultConstatnts.IsKycApproved).toString();
-             System.out.println("is kyc approved===" + isKycApproved);
+           System.out.println("is kyc approved===" + isKycApproved);
 
            if(isKycApproved.equalsIgnoreCase("6"))
             {
@@ -535,8 +535,8 @@ public class CreatePersonalProfile extends AppCompatActivity {
                                         }
                                     });
                                 } else if (DefaultConstatnts.isKyDockUploaded) {
-                                    txt_currency_name.setText("Profile Updated");
-                                    txt_msg.setText("Your profile has been successfully updated.");
+                                    txt_currency_name.setText("");
+                                    txt_msg.setText("You are just one step away. We need a few more details to complete your KYC.");
                                     txt_yes.setText("OK");
 
                                     txt_yes.setOnClickListener(new View.OnClickListener() {

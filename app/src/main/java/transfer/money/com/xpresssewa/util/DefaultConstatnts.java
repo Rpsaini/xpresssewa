@@ -17,6 +17,7 @@ public class DefaultConstatnts {
     public static String MemberId="MemberId";
 
     public static String IsShowPin="IsShowPin";
+    public static String isSignup="isSignup";
     public static String login_detail="login_detail";
     public static String IsTutorialDone="IsTutorialDone";
     public static String IsKycApproved="IsKycApproved";

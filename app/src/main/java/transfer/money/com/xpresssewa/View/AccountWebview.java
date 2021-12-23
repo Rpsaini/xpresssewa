@@ -29,13 +29,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.anwarshahriar.calligrapher.Calligrapher;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
+import transfer.money.com.xpresssewa.communication.ServerHandler;
+import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.util.UtilClass;
@@ -107,6 +113,10 @@ public class AccountWebview extends AppCompatActivity {
                 webSettings.setBuiltInZoomControls(true);
                 webSettings.setSupportZoom(true);
                 webSettings.setDisplayZoomControls(false);
+                webview.clearHistory();
+                webview.clearFormData();
+                webview.clearCache(true);
+
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
                 {
                     webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
@@ -182,10 +192,8 @@ public class AccountWebview extends AppCompatActivity {
 
             if(url.contains(UtilClass.frankieUpdateGenderUrl))
             {
-                new SaveImpPrefrences().savePrefrencesData(AccountWebview.this,"6", DefaultConstatnts.IsKycApproved);
-                Intent i = new Intent(AccountWebview.this, CreatePersonalProfile.class);
-                i.putExtra("userdata", getIntent().getStringExtra("userdata"));
-                startActivityForResult(i, 102);
+                getProfileData();
+
             }
         }
 
@@ -324,6 +332,37 @@ public class AccountWebview extends AppCompatActivity {
             progressdlg.dismiss();
         }
     }
+
+
+    private void getProfileData() {
+        Map<String, String> m = new LinkedHashMap<>();
+        m.put("MemberId", UtilClass.member_id);
+        new ServerHandler().sendToServer(this, "User", m, 0, 1, new CallBack() {
+            @Override
+            public void getRespone(String dta, ArrayList<Object> respons) {
+                try {
+                    JSONObject obj = new JSONObject(dta);
+                    if (obj.getBoolean("status"))
+                    {
+
+                        new SaveImpPrefrences().savePrefrencesData(AccountWebview.this,obj.getString("IsKycApproved"), DefaultConstatnts.IsKycApproved);
+                        Intent i = new Intent(AccountWebview.this, CreatePersonalProfile.class);
+                        i.putExtra("userdata", obj+"");
+                        startActivityForResult(i, 102);
+                        finish();
+
+                    }
+
+
+                  } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+        });
+    }
+
 
 
 }

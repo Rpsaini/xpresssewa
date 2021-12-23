@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/ll_main_layout"
+    tools:context=".registration.VerifyOTP">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+        <ImageView
+            android:id="@+id/headerbackbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:padding="10dp"
+            android:src="@drawable/back_button" />
+
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center|left"
+            style="@style/bluetext25_black"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Enter Transaction OTP"
+            ></TextView>
+
+
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+
+            android:id="@+id/ll_verifyotp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter OTP"
+                android:textSize="@dimen/font_fifteen"
+                android:textColor="@color/black_color"
+                />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                >
+                <EditText
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/ed_one"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:hint="-"
+                    android:height="@dimen/margin_15"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_line_drawable"
+                    ></EditText>
+
+                <EditText
+                    android:inputType="number"
+                    android:hint="-"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/ed_two"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:height="@dimen/margin_15"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_line_drawable"
+                    ></EditText>
+
+
+                <EditText
+                    android:inputType="number"
+                    android:hint="-"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/ed_three"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:height="@dimen/margin_15"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_line_drawable"
+                    ></EditText>
+
+
+                <EditText
+                    android:inputType="number"
+                    android:hint="-"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/ed_four"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:height="@dimen/margin_15"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_line_drawable"
+                    ></EditText>
+
+
+                <EditText
+                    android:inputType="number"
+                    android:hint="-"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/ed_five"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:height="@dimen/margin_15"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_line_drawable"
+                    ></EditText>
+                <EditText
+                    android:inputType="number"
+                    android:hint="-"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/ed_six"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:height="@dimen/margin_15"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bottom_line_drawable"
+                    ></EditText>
+
+
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txt_sendOtp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="Resend OTP"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_fifteen"
+                android:textColor="@color/blue_bt_color"
+                />
+
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/tv_verify"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Verify OTP"
+                android:textAllCaps="true"
+                android:layout_marginTop="@dimen/margin_30"
+                style="@style/button_style"
+                />
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:translationY="100dp"
+        android:background="@drawable/currency_design"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        ></ImageView>
+
+</RelativeLayout>

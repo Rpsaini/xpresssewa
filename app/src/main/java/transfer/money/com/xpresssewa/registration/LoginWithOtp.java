@@ -77,15 +77,11 @@ public class LoginWithOtp extends BaseActivity {
     @BindView(R.id.ll_main_layout)
     RelativeLayout ll_main_layout;
 
-
-
-
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_o_t_p);
+        setContentView(R.layout.activity_login_with_otp);
         ButterKnife.bind(this);
         showtoast = new Showtoast();
         init();

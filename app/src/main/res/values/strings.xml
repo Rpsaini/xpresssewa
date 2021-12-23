@@ -270,7 +270,7 @@
     <string name="transferpurpose">Reason of your transfer</string>
     <string name="referenceby">Reference by</string>
     <string name="choosepaymentoption">Choose payment method</string>
-    <string name="forgotpasswordtext">Please enter your email address associated with your account and we will send you a password reset link on it.</string>
+    <string name="forgotpasswordtext">Please enter your email address associated with your account and we will send you an OTP.</string>
 
 
     <string-array name="array_name">
@@ -355,6 +355,7 @@
     <string name="enterphonenumber">Enter Phone Number</string>
     <string name="Veriyotp">Verify OTP</string>
     <string name="image_size">Image size should be less than 2 MB</string>
+    <string name="kycMsg">We have received your submitted documents and other information for KYC. We will review your information very soon and update you with the status via email.</string>
 
     <string name="instruction_html">
     <![CDATA[

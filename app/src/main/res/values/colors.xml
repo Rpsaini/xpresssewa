@@ -32,6 +32,7 @@
 
     <color name="blue_bt_color_50">#803F70BC</color>
     <color name="blue_bt_color_40">#8ba9d6</color>
+    <color name="blue_bt_color_20">#dce5f2</color>
 
     <color name="round_drawable_color">#3D3D3D</color>
     <color name="textcolor">#7B7B7B</color>
@@ -67,6 +68,7 @@
 
     <color name="textheadercolor">#404040</color>
     <color name="textcolorbootom">#818181</color>
+    <color name="textcolorlite">#7B7B7B</color>
 
     <color name="internetdialogheadercolor">#FC3850</color>
     <color name="litelemmon">#FFD7C7</color>

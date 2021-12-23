@@ -99,13 +99,8 @@ public class MobileNumberActivity extends BaseActivity {
                     return;
                 }
 
-                Intent intent =new Intent(MobileNumberActivity.this,VerifyOTP.class);
-                intent.putExtra("memberId",getIntent().getStringExtra("memberId"));
-                intent.putExtra("Phone",ed_mobilenumber.getText().toString());
-                intent.putExtra("PhoneExt",countryMobilecode);
-                intent.putExtra("callfrom",getIntent().getStringExtra("callfrom"));
+                sendOtp();
 
-                startActivityForResult(intent,1001);
 
 
 
@@ -142,6 +137,44 @@ public class MobileNumberActivity extends BaseActivity {
             }
         }
     }
+
+
+    private void sendOtp()
+    {
+        Map<String, String> m = new LinkedHashMap<>();
+        m.put("MemberId", getIntent().getStringExtra("memberId"));
+        m.put("Phone",  ed_mobilenumber.getText().toString());
+        m.put("PhoneExt",  countryMobilecode);
+
+        System.out.println("SendOtp==="+m);
+        new ServerHandler().sendToServer(MobileNumberActivity.this, "SendOtp", m, 0, 1, new CallBack() {
+            @Override
+            public void getRespone(String dta, ArrayList<Object> respons) {
+                try {
+                    System.out.println("Send otp==="+dta);
+                    JSONObject obj = new JSONObject(dta);
+                    if(obj.getBoolean("status"))
+                    {
+                        Intent intent =new Intent(MobileNumberActivity.this,VerifyOTP.class);
+                        intent.putExtra("memberId",getIntent().getStringExtra("memberId"));
+                        intent.putExtra("Phone",ed_mobilenumber.getText().toString());
+                        intent.putExtra("PhoneExt",countryMobilecode);
+                        intent.putExtra("callfrom",getIntent().getStringExtra("callfrom"));
+
+                        startActivityForResult(intent,1001);
+
+                    } else {
+                        showtoast.showToast(MobileNumberActivity.this, "Registration", obj.getString("Message"), ll_forgotmain);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
 
 
 }

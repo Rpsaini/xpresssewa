@@ -1,6 +1,5 @@
 package transfer.money.com.xpresssewa.registration;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -18,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -26,16 +27,17 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
 import transfer.money.com.xpresssewa.View.MainActivity;
+import transfer.money.com.xpresssewa.View.ShowBankDetails;
 import transfer.money.com.xpresssewa.communication.ServerHandler;
 import transfer.money.com.xpresssewa.interfaces.CallBack;
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
 import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.validation.Showtoast;
 
-public class VerifyOTP extends BaseActivity {
+public class VeriFyTransactionOTP extends AppCompatActivity {
+
     private String concateOtp;
     private Showtoast showtoast;
 
@@ -77,23 +79,18 @@ public class VerifyOTP extends BaseActivity {
     @BindView(R.id.ll_main_layout)
     RelativeLayout ll_main_layout;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_o_t_p);
+        setContentView(R.layout.activity_veri_fy_transaction_o_t_p);
         ButterKnife.bind(this);
-        showtoast = new Showtoast();
+        handleResendButton();
         init();
-       // sendOtp(1,false);
     }
     protected void init()
     {
-        headerbackbutton.setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -107,11 +104,12 @@ public class VerifyOTP extends BaseActivity {
                 concateOtp = ed_one.getText() + "" + ed_two.getText() + "" + ed_three.getText() + "" + ed_four.getText() + "" + "" + ed_five.getText() + "" + "" + ed_six.getText() + "";
                 if(concateOtp.length()==6)
                 {
-                    verifyOtp();
+                    addTransaction();
+                    //verifyOtp();
                 }
                 else
                 {
-                    showtoast.showToast(VerifyOTP.this, "Registration", "Please enter OTP.", ll_main_layout);
+                    showtoast.showToast(VeriFyTransactionOTP.this, "Registration", "Please enter OTP.", ll_main_layout);
                 }
 
             }
@@ -259,10 +257,10 @@ public class VerifyOTP extends BaseActivity {
 
                 ll_verifyotp.setVisibility(View.VISIBLE);
                 if (txt_sendOtp.getTag().toString().equalsIgnoreCase("0"))
-                 {
-                     sendOtp(0,true);
+                {
+                  //  sendOtp(0,true);
 
-                 }
+                }
             }
         });
 
@@ -313,7 +311,7 @@ public class VerifyOTP extends BaseActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run()
-              {
+            {
                 counter--;
                 if (counter > 0) {
                     txt_sendOtp.setTag("1");
@@ -331,112 +329,149 @@ public class VerifyOTP extends BaseActivity {
         }, 1000);
     }
 
-    private void verifyOtp()
-    {
-        Map<String, String> m = new LinkedHashMap<>();
-        m.put("MemberId", getIntent().getStringExtra("memberId"));
-        m.put("Phone",  getIntent().getStringExtra("Phone"));
-        m.put("PhoneExt",  getIntent().getStringExtra("PhoneExt"));
-        m.put("Otp",  concateOtp);
 
-        System.out.println("Concated code==="+m);
-        new ServerHandler().sendToServer(VerifyOTP.this, "VerifyOtp",m, 0, 1, new CallBack() {
+
+
+    private void addTransaction()
+    {
+        String data =  getIntent().getStringExtra("data");
+        LinkedHashMap<String, String> mapData = new Gson().fromJson(data, LinkedHashMap.class);
+
+        mapData.put("BankId",getIntent().getStringExtra("BankId"));
+        mapData.put("OTP",concateOtp);
+        mapData.put("BankRefNumber",getIntent().getStringExtra("BankRefNumber"));
+
+        System.out.println("Dataa===="+mapData);
+
+
+
+
+        new ServerHandler().sendToServer(VeriFyTransactionOTP.this, "AddTransaction", mapData, 0, 1, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
+
                 try {
-
-                    System.out.println("Concated code= response=="+dta);
                     JSONObject obj = new JSONObject(dta);
-                    if(obj.getBoolean("status"))
+                    if (obj.getString("Status").equalsIgnoreCase("Success"))
                     {
-
-                        if(getIntent().getStringExtra("callfrom").equalsIgnoreCase("profile"))
-                        {
-
-                                Intent intent=new Intent();
-                                setResult(RESULT_OK,intent);
-                                intent.putExtra("Phone",  getIntent().getStringExtra("Phone"));
-                                intent.putExtra("PhoneExt",  getIntent().getStringExtra("PhoneExt"));
-                                intent.putExtra("callfrom",  "profile");
-                                finish();
-
-                        }
-                        else//signup
-                            {
-                            if (obj.getBoolean("IsEmailVerified"))
-                            {
-                                SaveImpPrefrences saveImpPrefrences = new SaveImpPrefrences();
-                                saveImpPrefrences.savePrefrencesData(VerifyOTP.this, "2", DefaultConstatnts.IsKycApproved);
-                                saveImpPrefrences.savePrefrencesData(VerifyOTP.this, "0", DefaultConstatnts.UserName);
-                                saveImpPrefrences.savePrefrencesData(VerifyOTP.this, "", DefaultConstatnts.login_detail);
-                                saveImpPrefrences.savePrefrencesData(VerifyOTP.this, "0", DefaultConstatnts.Pin);
-                                saveImpPrefrences.savePrefrencesData(VerifyOTP.this, getIntent().getStringExtra("memberId") + "", DefaultConstatnts.MemberId);
-
-                                Intent signIn = new Intent(VerifyOTP.this, MainActivity.class);
-                                signIn.putExtra(DefaultConstatnts.IsShowPin, "yes");
-                                startActivity(signIn);
-                                finishAffinity();
-                            }
-                            else
-                            {
-                                Intent intent=new Intent();
-                                setResult(RESULT_OK,intent);
-                                intent.putExtra("callfrom",  "signup");
-                                finish();
-                            }
-                        }
-
-                      }
+                        Intent intent = new Intent();
+                        intent.putExtra("isSendScreenDataLoaded", "showTransaction");
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
                     else {
-                        showtoast.showToast(VerifyOTP.this, "Registration", obj.getString("Message"), ll_main_layout);
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        });
-
-    }
-
-
-
-    private void sendOtp(int shoLoader,boolean isStartTimer)
-    {
-        Map<String, String> m = new LinkedHashMap<>();
-        m.put("MemberId", getIntent().getStringExtra("memberId"));
-        m.put("Phone",  getIntent().getStringExtra("Phone"));
-        m.put("PhoneExt",  getIntent().getStringExtra("PhoneExt"));
-
-        System.out.println("SendOtp==="+m);
-        new ServerHandler().sendToServer(VerifyOTP.this, "SendOtp", m, shoLoader, 1, new CallBack() {
-            @Override
-            public void getRespone(String dta, ArrayList<Object> respons) {
-                try {
-                     System.out.println("Send otp==="+dta);
-                    JSONObject obj = new JSONObject(dta);
-                    if(obj.getBoolean("status"))
-                    {
-                        if(isStartTimer)
-                        {
-                            handleResendButton();
+                        String msg = obj.getString("Message");
+                        if (msg.length() == 0) {
+                            new Showtoast().showToast(VeriFyTransactionOTP.this, "Error", "Server communication error. .", ll_main_layout);
+                        } else {
+                            new Showtoast().showToast(VeriFyTransactionOTP.this, "Error", msg, ll_main_layout);
                         }
-                       //{"Message":"Success","ReponseCode":1,"OTP":"159090","UserId":"test110134","RefCode":"","Version":"1","Pin":0,"IsPhoneVerified":false,"IsEmailVerified":false,"MemberId":10134,"status":true}
-                    } else {
-                        showtoast.showToast(VerifyOTP.this, "Registration", obj.getString("Message"), ll_main_layout);
+
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
 
+                }
 
             }
         });
-
     }
+
+
+
+
+//    private void verifyOtp()
+//       {
+//        Map<String, String> m = new LinkedHashMap<>();
+//        m.put("MemberId", getIntent().getStringExtra("memberId"));
+//        m.put("Phone",  getIntent().getStringExtra("Phone"));
+//        m.put("PhoneExt",  getIntent().getStringExtra("PhoneExt"));
+//        m.put("Otp",  concateOtp);
+//
+//        System.out.println("Concated code==="+m);
+//        new ServerHandler().sendToServer(VeriFyTransactionOTP.this, "VerifyOtp",m, 0, 1, new CallBack() {
+//            @Override
+//            public void getRespone(String dta, ArrayList<Object> respons) {
+//                try {
+//
+//                    System.out.println("Concated code= response=="+dta);
+//                    JSONObject obj = new JSONObject(dta);
+//                    if(obj.getBoolean("status"))
+//                    {
+//
+//                        if(getIntent().getStringExtra("callfrom").equalsIgnoreCase("profile"))
+//                        {
+//
+//
+//
+//                        }
+//                        else//signup
+//                        {
+//                            if (obj.getBoolean("IsEmailVerified"))
+//                            {
+//
+//                            }
+//                            else
+//                            {
+//                                Intent intent=new Intent();
+//                                setResult(RESULT_OK,intent);
+//                                intent.putExtra("callfrom",  "signup");
+//                                finish();
+//                            }
+//                        }
+//
+//                    }
+//                    else {
+//                        showtoast.showToast(VeriFyTransactionOTP.this, "Transaction", obj.getString("Message"), ll_main_layout);
+//                    }
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//        });
+//
+//    }
+//
+//
+//
+//    private void sendOtp(int shoLoader,boolean isStartTimer)
+//    {
+//        Map<String, String> m = new LinkedHashMap<>();
+//        m.put("MemberId", getIntent().getStringExtra("memberId"));
+//        m.put("Phone",  getIntent().getStringExtra("Phone"));
+//        m.put("PhoneExt",  getIntent().getStringExtra("PhoneExt"));
+//
+//        System.out.println("SendOtp==="+m);
+//        new ServerHandler().sendToServer(VeriFyTransactionOTP.this, "SendOtp", m, shoLoader, 1, new CallBack() {
+//            @Override
+//            public void getRespone(String dta, ArrayList<Object> respons) {
+//                try {
+//                    System.out.println("Send otp==="+dta);
+//                    JSONObject obj = new JSONObject(dta);
+//                    if(obj.getBoolean("status"))
+//                    {
+//                        if(isStartTimer)
+//                        {
+//                            handleResendButton();
+//                        }
+//                        //{"Message":"Success","ReponseCode":1,"OTP":"159090","UserId":"test110134","RefCode":"","Version":"1","Pin":0,"IsPhoneVerified":false,"IsEmailVerified":false,"MemberId":10134,"status":true}
+//                    } else {
+//                        showtoast.showToast(VeriFyTransactionOTP.this, "Transaction", obj.getString("Message"), ll_main_layout);
+//                    }
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//        });
+//
+//    }
 
 
 }

@@ -274,6 +274,7 @@ public class SetPinActivity extends AppCompatActivity implements BiometricCallba
                           UtilClass.getUserData(SetPinActivity.this);
                           Intent signIn=new Intent(SetPinActivity.this, MainActivity.class);
                           signIn.putExtra(DefaultConstatnts.IsShowPin,"no");
+                          signIn.putExtra(DefaultConstatnts.isSignup,"yes");
                           startActivity(signIn);
                           finishAffinity();
 

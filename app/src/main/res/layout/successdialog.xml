@@ -19,9 +19,10 @@
             android:layout_margin="@dimen/margin_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/title_black_color"
+            android:textColor="@color/blue_bt_color"
             android:textSize="22sp"
-            android:text="Your Documents has been uploaded"
+            android:textStyle="bold"
+            android:text="Thank you for completing your KYC!"
             />
 
         <ImageView
@@ -31,7 +32,7 @@
             android:id="@+id/imageTick"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:src="@drawable/doc"
+            android:src="@drawable/kycdone"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             ></ImageView>
@@ -39,32 +40,32 @@
         <TextView
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:translationY="-80dp"
+            android:translationY="-60dp"
             android:id="@+id/uploadtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageTick"
             android:layout_marginTop="5dp"
-            android:text="Someone from our team will check them over and if they are good to go."
+            android:text="@string/kycMsg"
             android:gravity="center"
             android:textSize="14dp"
-            android:textColor="@color/textheadercolor"
+            android:textColor="@color/textcolorlite"
             >
         </TextView>
         <TextView
 
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/uploadtext"
-            android:layout_marginTop="30dp"
+
+            android:layout_alignParentBottom="true"
             android:id="@+id/tv_ok"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_10"
+
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/green_bt_rounded_corner"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/margin_10"
+            android:gravity="center"
+
             android:text="DONE"
             android:textColor="@color/white_color"
             android:textSize="@dimen/font_eighteen" />

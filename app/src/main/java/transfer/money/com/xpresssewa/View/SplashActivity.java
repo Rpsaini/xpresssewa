@@ -27,6 +27,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        getContactNumberSplit();
 
 
         Calligrapher calligrapher = new Calligrapher(this);
@@ -82,6 +83,22 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
+   private void getContactNumberSplit()
+    {
+        String contactNumber="9088787678";
+        String email="abc@gmail.com";
+        String contactnumberMask=contactNumber.substring(contactNumber.length()-3,contactNumber.length());
+
+        System.out.println("contact number ==="+contactnumberMask);
+
+        String[] emailAr=email.split("@");
+        String maskEmail=emailAr[0].substring(emailAr[0].length()-1,emailAr[0].length())+"@"+emailAr[1];
+        System.out.println("masked email==="+maskEmail);
+
+
+
+
+    }
 
 
 

@@ -112,7 +112,7 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
 
         System.out.println("kyc status==="+isKycApproved);
         View activityView = view.findViewById(R.id.ll_verification_pending);
-        if (isKycApproved.equalsIgnoreCase("1"))
+        if(isKycApproved.equalsIgnoreCase("1"))
         {
             txt_activity_label.setVisibility(View.VISIBLE);
             txt_label.setVisibility(View.GONE);
@@ -146,7 +146,8 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             });
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     ((MainActivity) getActivity()).callMyProfileFragment("personal");
                 }
             });

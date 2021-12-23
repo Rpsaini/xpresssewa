@@ -7,29 +7,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import transfer.money.com.xpresssewa.validation.Showtoast;
-
-
 public class CheckInternetConnectivity extends BroadcastReceiver {
     Context ct;
-
-
-
     @Override
     public void onReceive(Context context, Intent intent) {
-
-
-        System.out.println("on broadcast receiver has been called=="+ct);
-
-
         if (checkWifiConnect(context)) {
-
-
-                new Showtoast().showToast(ct, "Internet","Internet Connected",null);
-
+            new Showtoast().showToast(ct, "Internet","Internet Connected",null);
         } else {
                 new Showtoast().showToast(ct, "Internet","Internet connectivity issue",null);
-
-
         }
     }
 

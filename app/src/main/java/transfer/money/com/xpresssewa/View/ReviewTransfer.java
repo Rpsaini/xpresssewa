@@ -128,6 +128,7 @@ public class ReviewTransfer extends AppCompatActivity {
             m = new LinkedHashMap<>();
             m.put("UserName", username);
             m.put("OtherReason", getIntent().getStringExtra(UtilClass.transferReason));
+            m.put("OTP", "");
             m.put("OtherReference", getIntent().getStringExtra(UtilClass.transferReference));
 
 

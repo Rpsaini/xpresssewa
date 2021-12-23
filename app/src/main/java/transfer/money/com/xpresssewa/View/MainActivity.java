@@ -66,6 +66,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.internal.Util;
 import transfer.money.com.xpresssewa.Adapter.ActivityAdapter;
 import transfer.money.com.xpresssewa.BaseActivity;
 import transfer.money.com.xpresssewa.R;
@@ -169,7 +170,8 @@ public class MainActivity extends BaseActivity {
     protected void init() {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem)
+            {
                 bottomMenu(menuItem);
                 return false;
 
@@ -191,11 +193,23 @@ public class MainActivity extends BaseActivity {
         }
         else
         {
-            MenuItem menu=navigationView.getMenu().getItem(0);
-            menu.setChecked(true);
 
-            ActivityFragment activityFragment = new ActivityFragment();
-            replaceMainFragment(activityFragment,"activity");
+            System.out.println("Is called default===>");
+            if(getIntent().hasExtra(DefaultConstatnts.isSignup))
+            {
+                MenuItem menu=navigationView.getMenu().getItem(1);
+                menu.setChecked(true);
+                AccountFragment accountFragment = new AccountFragment();
+                replaceMainFragment(accountFragment,"account");
+            }
+            else
+            {
+                MenuItem menu=navigationView.getMenu().getItem(0);
+                menu.setChecked(true);
+                ActivityFragment activityFragment = new ActivityFragment();
+                replaceMainFragment(activityFragment,"activity");
+            }
+
         }
 
     }
