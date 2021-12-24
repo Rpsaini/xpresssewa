@@ -21,7 +21,9 @@ import android.os.Environment;
 import android.provider.MediaStore;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -92,6 +94,8 @@ public class MessageActivity extends AppCompatActivity {
         UtilClass.getUserData(this);
         ProofType = getIntent().getStringExtra(UtilClass.proofType);
         init();
+
+
     }
 
     protected void init()
@@ -104,17 +108,19 @@ public class MessageActivity extends AppCompatActivity {
         TextView txt_note = findViewById(R.id.txt_note);
 
 
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> " + Title + "</font>", Html.FROM_HTML_MODE_COMPACT));
             backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> " + Title + "</font>", Html.FROM_HTML_MODE_COMPACT));
             addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>", Html.FROM_HTML_MODE_COMPACT));
-            txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents.", Html.FROM_HTML_MODE_COMPACT));
+            txt_note.setText(Html.fromHtml(getResources().getString(R.string.note_), Html.FROM_HTML_MODE_COMPACT));
 
         } else {
             front_id_message.setText(Html.fromHtml("Upload the front side of your <b><font color='#3F70BC'> " + Title + "</font>"));
             backidentitymessage.setText(Html.fromHtml("Upload the back side of your <b><font color='#3F70BC'> " + Title + "</font>"));
             addressidentitymessage.setText(Html.fromHtml("Proof of address <b><font color='#3F70BC'> (Bank statement,Utility bill)</font>"));
-            txt_note.setText(Html.fromHtml("Note: Please contact our KYC Support Department on <font color='#3F70BC'>support@xpresssewa.com</font> in case you have any query documents in KYC documents."));
+            txt_note.setText(Html.fromHtml(getResources().getString(R.string.note_)));
         }
 
         iv_screenshot = findViewById(R.id.iv_screenshot_front);
@@ -124,6 +130,7 @@ public class MessageActivity extends AppCompatActivity {
         chooseimagelayoutouter = findViewById(R.id.chooseimagelayoutouter);
         gallery = findViewById(R.id.gallery);
         camera = findViewById(R.id.camera);
+
 
 
         if (ProofType.equalsIgnoreCase("1")) {
@@ -150,6 +157,15 @@ public class MessageActivity extends AppCompatActivity {
         findViewById(R.id.headerbackbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
+            }
+        });
+
+        findViewById(R.id.skip_fornow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                setResult(Activity.RESULT_OK, intent);
                 finish();
             }
         });

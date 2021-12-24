@@ -195,16 +195,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="@dimen/margin_30"
         android:layout_marginLeft="@dimen/margin_30"
         android:layout_marginRight="@dimen/margin_30"
         style="@style/button_style"
         android:gravity="center_horizontal"
         android:padding="@dimen/margin_15"
-        android:text="COntinue"
+        android:text="Continue"
         android:textAllCaps="true"
         android:textColor="@color/white_color"
         android:textSize="@dimen/font_eighteen" />
+
+
+         <TextView
+             android:layout_marginTop="20dp"
+             android:id="@+id/skip_fornow"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="bottom"
+             android:layout_marginBottom="@dimen/margin_30"
+             android:layout_marginLeft="@dimen/margin_30"
+             android:layout_marginRight="@dimen/margin_30"
+             style="@style/button_style"
+             android:gravity="center_horizontal"
+             android:padding="@dimen/margin_15"
+             android:text="Skip For Now"
+             android:textAllCaps="true"
+             android:textColor="@color/white_color"
+             android:textSize="@dimen/font_eighteen" />
     </LinearLayout>
 
     </ScrollView>

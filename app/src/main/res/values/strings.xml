@@ -409,12 +409,29 @@
     <br />
      <p>The full name and date of birth must match the details on Xpress Sewa account.</p>
     ]]>
+
+
     </string>
 
 
     <string name="note_"><![CDATA[
-    <p><b>Note:</b></p>
-    <p>Please contact our KYC Support Department on support@xpresssewa.com in case you have any query documents in KYC documents.</p>
+    <p><b>Instructions:</b></p><br/>
+    <p>Please ascertain that document you upload is of supreme-quality.</p><br/>
+    <p>The full name & date of birth must fall similar to the details on Xpress Sewa account.
+
+Please upload files with valid extension(.jpeg, .png, .jpg).</p><br/>
+
+<p>
+Image size should be less than 2MB.
+
+Once you have submitted all your documents they will be verified against information in the account details section and the section will be updated. It may take up to 2 workings days.</p>
+<p>Please contact our KYC Support Department on support@xpresssewa.com in case you have any query regarding identity documents or KYC.</p><br/>
+
+<p>Please upload files with valid extension(.jpeg, .png, .jpg).</p>
+
+<p><font color="#2b3990">Image size should be less than 2MB.</font>
+
+<br/>Once you have submitted all your documents they will be verified against information in the account details section and the section will be updated. It may take up to 2 workings days.</p>
     ]]>
 </string>
 </resources>

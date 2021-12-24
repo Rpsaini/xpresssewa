@@ -96,8 +96,12 @@
     <color name="pink">#FCF2D1</color>
 
 
-
-
+    <color name="red">#de0107</color>
+    <color name="red_bg">#ffe5e6</color>
+    <color name="blue">#2f7aeb</color>
+    <color name="blue_bg">#cee7ff</color>
+    <color name="green">#409f6a</color>
+    <color name="green_bg">#c8fde0</color>
 
 
 

@@ -74,6 +74,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.txt_kyc_label)
     TextView txt_kyc_label;
 
+    private String ProofType="";
 
 
 
@@ -112,7 +113,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         ButterKnife.bind(this, view);
         init();
 
-        // getProfileData();
 
         return view;
     }
@@ -296,6 +296,8 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                                 }
                             }
 
+                        ProofType=dataObj.getString("ProofType");
+                        System.out.println("Proff type===="+ProofType);
                         changeKyCText();
 
 
@@ -312,11 +314,11 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
 
     public void editProfile(int profileType) {
 
-        if (profileType == 0) {
-           createPersonalProfile();
-
-
-        } else if (profileType == 1) {
+        if (profileType == 0)
+        {
+            createPersonalProfile();
+        }
+        else if (profileType == 1) {
             Intent intent = new Intent(mContext, CreateBuisnessProfile.class);
             intent.putExtra("userdata", dataObj + "");
             intent.putExtra("type", "2"); //type 1 for personal  2 for buisness 4 for both
@@ -348,6 +350,27 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
       else  if(kycStatus.equalsIgnoreCase("5"))
        {
            //proff rejected
+           if(ProofType.equalsIgnoreCase("1"))
+           {
+               Intent ineIntent=new Intent(mainActivity,MessageActivity.class);
+               ineIntent.putExtra("Title","Passport");
+               ineIntent.putExtra(UtilClass.proofType,ProofType);
+               startActivityForResult(ineIntent,101);
+           }
+           else if(ProofType.equalsIgnoreCase("2"))
+           {
+               Intent ineIntent=new Intent(mainActivity,MessageActivity.class);
+               ineIntent.putExtra("Title","Driver`s Licence");
+               ineIntent.putExtra(UtilClass.proofType,ProofType);
+               startActivityForResult(ineIntent,101);
+           }
+           else
+           {
+               Intent ineIntent=new Intent(mainActivity,MessageActivity.class);
+               ineIntent.putExtra("Title","National Id Card");
+               ineIntent.putExtra(UtilClass.proofType,ProofType);
+               startActivityForResult(ineIntent,101);
+           }
 
        }
        else
@@ -379,17 +402,18 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101) {
+        if (requestCode == 101)
+         {
             // getProfileData();
-        }
+         }
     }
 
     private void changeKyCText()
     {
-        //4 Rejected
+        // 4 Rejected
         // 5 proof rejected
-        //2 no details added just signup
-        //1 pending and 3 is approved
+        // 2 no details added just signup
+        // 1 pending and 3 is approved
 
 
         if(kycStatus.equalsIgnoreCase("1"))
@@ -399,38 +423,56 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                     "We've received your submitted documents and other information for KYC. We'll review your information very soon and update you with the status via email. ");
 
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("Kyc:Inprogress");
-            txt_kyc_label.setTextColor(getResources().getColor(R.color.yellow_bt_color));
+            txt_kyc_label.setText("Verification In Review");
+            txt_kyc_label.setTextColor(getResources().getColor(R.color.blue));
+            txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.blue_bg));
 
-       }
+         }
         else if(kycStatus.equalsIgnoreCase("2"))
         {
             kyctext.setText("Note: To start sending money, please complete your profile and KYC.");
-            txt_kyc_label.setText("Kyc:Pending");
-            txt_kyc_label.setTextColor(getResources().getColor(R.color.blue_bt_color));
+            txt_kyc_label.setText("Verification Pending");
+            txt_kyc_label.setTextColor(getResources().getColor(R.color.blue));
+            txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.blue_bg));
         }
         else if(kycStatus.equalsIgnoreCase("3"))
         {
             kyctext.setVisibility(View.GONE);
             create_account.setText("EDIT YOUR PROFILE");
-            txt_kyc_label.setText("Kyc:Completed");
+            txt_kyc_label.setText("KYC: Completed");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.greencolor));
+            txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.green_bg));
 
         }
         else if(kycStatus.equalsIgnoreCase("4"))
         {
             kyctext.setText("We're having difficulties verifying your identity. The information you had submitted was unfortunately rejected. Please complete your profile and KYC again.");
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("Kyc:Rejected");
+            txt_kyc_label.setText("Declined");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.dark_red_color));
+            txt_kyc_label.setTextColor(getResources().getColor(R.color.red));
+            txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.red_bg));
         }
         else if(kycStatus.equalsIgnoreCase("5"))
         {
             kyctext.setText("We're having difficulties verifying your identity. The information you had submitted was unfortunately rejected. Please complete your profile and KYC again.");
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("Kyc:Rejected");
-            txt_kyc_label.setTextColor(getResources().getColor(R.color.dark_red_color));
+            txt_kyc_label.setText("Declined");
+            txt_kyc_label.setTextColor(getResources().getColor(R.color.red));
+            txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.red_bg));
         }
+
+
+        else if(kycStatus.equalsIgnoreCase("6"))
+        {
+            kyctext.setText("We're having difficulties verifying your identity. The information that you have submitted is not complete.");
+            create_account.setText("MY PROFILE");
+            txt_kyc_label.setText("In-Complete");
+            txt_kyc_label.setTextColor(getResources().getColor(R.color.red));
+            txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.red_bg));
+
+        }
+
 
     }
 
