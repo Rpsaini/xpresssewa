@@ -257,7 +257,7 @@
     <string name="creteourpin">Create Your PIN</string>
     <string name="usepin">Use this PIN to securely log into the app</string>
     <string name="forgotpassword">Forgot Password</string>
-    <string name="forgottonpassword">Forgotten password</string>
+    <string name="forgottonpassword">Reset Your password</string>
     <string name="reset">Reset Password</string>
     <string name="sendmoneyfast">Send Money Fast</string>
     <string name="securetransaction">95% transactions are authorized in seconds</string>
@@ -270,7 +270,7 @@
     <string name="transferpurpose">Reason of your transfer</string>
     <string name="referenceby">Reference by</string>
     <string name="choosepaymentoption">Choose payment method</string>
-    <string name="forgotpasswordtext">Please enter your email address associated with your account and we will send you an OTP.</string>
+    <string name="forgotpasswordtext">We will send you an email that will allow you to change your password.</string>
 
 
     <string-array name="array_name">

@@ -453,25 +453,14 @@ public class SendFragment extends Fragment implements View.OnClickListener {
                 if(tv_send_money.getTag().toString().equalsIgnoreCase("0"))
                 {
                     String isKycApproved = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
-
                     if((isKycApproved.equalsIgnoreCase("1")||isKycApproved.equalsIgnoreCase("3")))//approved   1 recipient,3 recipient {
                        {
-
-                       callRecipient();
-                    }
-                     else {
-
-//                         if(isKycApproved.equalsIgnoreCase("2"))
-//                        //if(DefaultConstatnts.isKyDockUploaded)
-//                        {
-//                            callRecipient();
-//                        }
-//                        else
-//                        {
-                            ((MainActivity) getActivity()).callMyProfileFragment("personal");
-                       // }
-
-                     }
+                           callRecipient();
+                       }
+                     else
+                         {
+                          ((MainActivity) getActivity()).callMyProfileFragment("personal");
+                         }
                 }
 
                 break;

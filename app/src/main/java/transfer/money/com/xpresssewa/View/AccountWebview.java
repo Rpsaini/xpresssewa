@@ -104,7 +104,7 @@ public class AccountWebview extends AppCompatActivity {
             @Override
             public void run() {
                 WebSettings webSettings = webview.getSettings();
-                //webSettings.setUserAgentString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/80.0.3987.163 Chrome/80.0.3987.163 Safari/537.36");
+                webSettings.setUserAgentString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/80.0.3987.163 Chrome/80.0.3987.163 Safari/537.36");
 
                 webSettings.setJavaScriptEnabled(true);
                 webSettings.setLoadWithOverviewMode(true);
@@ -117,19 +117,20 @@ public class AccountWebview extends AppCompatActivity {
                 webview.clearFormData();
                 webview.clearCache(true);
 
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
-                {
-                    webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-                }
-                else
-                {
-                    webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-                }
+//                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+//                {
+//                    webview.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+//                }
+//                else
+//                {
+//                    webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//                }
 
                 webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 
                 webview.setWebViewClient(new WebViewController());
                 webview.loadUrl(url);
+
 
                 webview.setDownloadListener(new DownloadListener() {
                     public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
@@ -187,9 +188,7 @@ public class AccountWebview extends AppCompatActivity {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             hideProgressDialog();
-
             System.out.println("Url===="+url);
-
             if(url.contains(UtilClass.frankieUpdateGenderUrl))
             {
                 getProfileData();
@@ -352,9 +351,9 @@ public class AccountWebview extends AppCompatActivity {
                         finish();
 
                     }
-
-
-                  } catch (Exception e) {
+                   }
+                catch(Exception e)
+                {
                     e.printStackTrace();
 
                 }

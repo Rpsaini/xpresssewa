@@ -223,7 +223,6 @@ public class RecipientFragment extends Fragment {
 
 
     ArrayList<JSONObject> mySelfAr = new ArrayList<>();
-
     private void selfRecipientData() {
         try {
             mySelfAr.clear();
@@ -233,7 +232,7 @@ public class RecipientFragment extends Fragment {
             m.put("Take", take + "");
             m.put("Skip", skip + "");
             m.put("Type", type + "");
-            System.out.println("Get recipient====" + m);
+
             getOtherReciient();
             new ServerHandler().sendToServer(getActivity(), "RecipientList", m, 1, 1, new CallBack() {
                 @Override
@@ -453,38 +452,47 @@ public class RecipientFragment extends Fragment {
     }
 
     public void redirectToReceipient() {
-        if (symbol.length() > 0) {
-            tv_title.setText(getResources().getString(R.string.select_recipent));
-            Intent i = new Intent(getActivity(), SelectRecipientsTypeActivity.class);
-            i.putExtra("SourceSymbol", args.getString("SourceSymbol"));
-            i.putExtra("DestinationSymbol", args.getString("DestinationSymbol"));
-            i.putExtra("FlagImageDestination", args.getString("FlagImageDestination"));
-            i.putExtra("callFrom", args.getString("callFrom"));
-            i.putExtra("SDCountryId", args.getString("SDCountryId"));
-            i.putExtra("CountryId", args.getString("CountryId"));
-            i.putExtra("data", args.getString("data"));
+        String isKycApproved = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
 
-            startActivityForResult(i, 101);
-        } else {
-            try {
-                String login = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.login_detail) + "";
-
-
-                JSONObject jsonObject = new JSONObject(login);
-
+        if(isKycApproved.equalsIgnoreCase("4")||isKycApproved.equalsIgnoreCase("6")||isKycApproved.equalsIgnoreCase("5"))
+        {
+            showtoast.showToast((MainActivity)getActivity(),"Verification pending","To start sending money, please complete your profile and KYC",view.findViewById(R.id.ll_recipientlayoutmain));
+            ((MainActivity) getActivity()).callMyProfileFragment("personal");
+        }
+        else {
+            if (symbol.length() > 0) {
+                tv_title.setText(getResources().getString(R.string.select_recipent));
                 Intent i = new Intent(getActivity(), SelectRecipientsTypeActivity.class);
-                i.putExtra("SourceSymbol", jsonObject.getString("SourceSymbol"));
-                i.putExtra("DestinationSymbol", jsonObject.getString("DestinationSymbol"));
-                i.putExtra("FlagImageDestination", jsonObject.getString("FlagImageDestination"));
-                i.putExtra("callFrom", "recipient");
-                i.putExtra("SDCountryId", jsonObject.getString("SDCountryId"));
-                i.putExtra("CountryId", jsonObject.getString("CountryId"));
+                i.putExtra("SourceSymbol", args.getString("SourceSymbol"));
+                i.putExtra("DestinationSymbol", args.getString("DestinationSymbol"));
+                i.putExtra("FlagImageDestination", args.getString("FlagImageDestination"));
+                i.putExtra("callFrom", args.getString("callFrom"));
+                i.putExtra("SDCountryId", args.getString("SDCountryId"));
+                i.putExtra("CountryId", args.getString("CountryId"));
+                i.putExtra("data", args.getString("data"));
 
-
-                System.out.println("Default cuntry===" + UtilClass.defaultDestinationSDCountryId + "===" + UtilClass.defaultDestinationCountryId);
                 startActivityForResult(i, 101);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
+                try {
+                    String login = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.login_detail) + "";
+
+
+                    JSONObject jsonObject = new JSONObject(login);
+
+                    Intent i = new Intent(getActivity(), SelectRecipientsTypeActivity.class);
+                    i.putExtra("SourceSymbol", jsonObject.getString("SourceSymbol"));
+                    i.putExtra("DestinationSymbol", jsonObject.getString("DestinationSymbol"));
+                    i.putExtra("FlagImageDestination", jsonObject.getString("FlagImageDestination"));
+                    i.putExtra("callFrom", "recipient");
+                    i.putExtra("SDCountryId", jsonObject.getString("SDCountryId"));
+                    i.putExtra("CountryId", jsonObject.getString("CountryId"));
+
+
+
+                    startActivityForResult(i, 101);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

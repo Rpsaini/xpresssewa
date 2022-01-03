@@ -137,7 +137,7 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
             img_show_warring.setVisibility(View.GONE);
 
             verification_subtext.setText("Verify your account");
-            verification_text.setText("Verification Pending");
+            verification_text.setText("Declined !");
             activityView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

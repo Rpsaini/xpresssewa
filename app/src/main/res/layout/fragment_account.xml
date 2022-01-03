@@ -8,8 +8,13 @@
     tools:context=".View.ActivityFragment">
 
     <include layout="@layout/myaccount_tool_bar"/>
-    <include layout="@layout/default_account_layout"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <include layout="@layout/default_account_layout"/>
+    </ScrollView>
 
 
 

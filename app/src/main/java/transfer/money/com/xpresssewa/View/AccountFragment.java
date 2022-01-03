@@ -423,7 +423,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                     "We've received your submitted documents and other information for KYC. We'll review your information very soon and update you with the status via email. ");
 
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("Verification In Review");
+            txt_kyc_label.setText("Kyc:Verification In Review");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.blue));
             txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.blue_bg));
 
@@ -431,7 +431,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         else if(kycStatus.equalsIgnoreCase("2"))
         {
             kyctext.setText("Note: To start sending money, please complete your profile and KYC.");
-            txt_kyc_label.setText("Verification Pending");
+            txt_kyc_label.setText("Kyc:Verification Pending");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.blue));
             txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.blue_bg));
         }
@@ -448,7 +448,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         {
             kyctext.setText("We're having difficulties verifying your identity. The information you had submitted was unfortunately rejected. Please complete your profile and KYC again.");
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("Declined");
+            txt_kyc_label.setText("Kyc:Declined");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.dark_red_color));
             txt_kyc_label.setTextColor(getResources().getColor(R.color.red));
             txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.red_bg));
@@ -457,7 +457,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         {
             kyctext.setText("We're having difficulties verifying your identity. The information you had submitted was unfortunately rejected. Please complete your profile and KYC again.");
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("Declined");
+            txt_kyc_label.setText("Kyc:Declined");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.red));
             txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.red_bg));
         }
@@ -467,7 +467,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         {
             kyctext.setText("We're having difficulties verifying your identity. The information that you have submitted is not complete.");
             create_account.setText("MY PROFILE");
-            txt_kyc_label.setText("In-Complete");
+            txt_kyc_label.setText("Kyc:In-Complete");
             txt_kyc_label.setTextColor(getResources().getColor(R.color.red));
             txt_kyc_label.setBackgroundColor(getResources().getColor(R.color.red_bg));
 
