@@ -432,7 +432,7 @@ public class MessageActivity extends AppCompatActivity {
         File file2 = new File(imagePathBack);
         File file3 = new File(imagePathAddress);
         if (file != null) {
-            BaseActivity.baseurl = "https://demo.webcomsystems.net.au/";
+            BaseActivity.baseurl = UtilClass.fileuploadurl;
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);//front
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
 
@@ -519,7 +519,7 @@ public class MessageActivity extends AppCompatActivity {
             });
 
 
-            BaseActivity.baseurl = "https://demoapi.webcomsystems.net.au/";
+            BaseActivity.baseurl = UtilClass.baseurlmain;
         }
     }
 

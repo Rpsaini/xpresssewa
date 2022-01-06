@@ -454,13 +454,35 @@ public class RecipientFragment extends Fragment {
     public void redirectToReceipient() {
         String isKycApproved = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.IsKycApproved).toString();
 
-        if(isKycApproved.equalsIgnoreCase("4")||isKycApproved.equalsIgnoreCase("6")||isKycApproved.equalsIgnoreCase("5"))
+        if(isKycApproved.equalsIgnoreCase("4")||isKycApproved.equalsIgnoreCase("6")||isKycApproved.equalsIgnoreCase("5")||isKycApproved.equalsIgnoreCase("2"))
         {
-            showtoast.showToast((MainActivity)getActivity(),"Verification pending","To start sending money, please complete your profile and KYC",view.findViewById(R.id.ll_recipientlayoutmain));
-            ((MainActivity) getActivity()).callMyProfileFragment("personal");
+            SimpleDialog simpleDialog = new SimpleDialog();
+            final Dialog confirmDialog = simpleDialog.simpleDailog((MainActivity)getActivity(), R.layout.confirmation_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
+
+            ImageView selected_Curreny = confirmDialog.findViewById(R.id.selected_Curreny);
+            TextView txt_currency_name = confirmDialog.findViewById(R.id.txt_currency_name);
+            TextView txt_no = confirmDialog.findViewById(R.id.txt_no);
+            txt_no.setVisibility(View.GONE);
+            TextView txt_yes = confirmDialog.findViewById(R.id.txt_yes);
+            TextView txt_msg = confirmDialog.findViewById(R.id.txt_msg);
+            selected_Curreny.setImageResource(R.drawable.verification_pending);
+
+                txt_currency_name.setText("Verification pending !");
+                txt_msg.setText("To start sending money, please complete your profile and KYC.");
+                txt_yes.setText("OK");
+
+                txt_yes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        confirmDialog.dismiss();
+                        ((MainActivity) getActivity()).callMyProfileFragment("personal");
+                    }
+                });
+
         }
         else {
-            if (symbol.length() > 0) {
+            if(symbol.length() > 0)
+            {
                 tv_title.setText(getResources().getString(R.string.select_recipent));
                 Intent i = new Intent(getActivity(), SelectRecipientsTypeActivity.class);
                 i.putExtra("SourceSymbol", args.getString("SourceSymbol"));
@@ -476,9 +498,7 @@ public class RecipientFragment extends Fragment {
                 try {
                     String login = new SaveImpPrefrences().reterivePrefrence(getActivity(), DefaultConstatnts.login_detail) + "";
 
-
                     JSONObject jsonObject = new JSONObject(login);
-
                     Intent i = new Intent(getActivity(), SelectRecipientsTypeActivity.class);
                     i.putExtra("SourceSymbol", jsonObject.getString("SourceSymbol"));
                     i.putExtra("DestinationSymbol", jsonObject.getString("DestinationSymbol"));
@@ -487,10 +507,9 @@ public class RecipientFragment extends Fragment {
                     i.putExtra("SDCountryId", jsonObject.getString("SDCountryId"));
                     i.putExtra("CountryId", jsonObject.getString("CountryId"));
 
-
-
                     startActivityForResult(i, 101);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -502,6 +521,10 @@ public class RecipientFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101) {
+            mySelfAr.clear();
+            otherRecipientAr.clear();
+            searchArOther.clear();
+            searchArMySelf.clear();
             selfRecipientData();
         }
 

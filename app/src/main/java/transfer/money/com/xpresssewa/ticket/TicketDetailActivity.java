@@ -473,7 +473,7 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     private void uploadImageToServer(String imagePath, String tag) {
         UtilClass.getUserData(TicketDetailActivity.this);
-        BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
+        BaseActivity.baseurl=UtilClass.fileuploadurl;
         System.out.println("member id===" + UtilClass.member_id);
         File file = new File(imagePath);
         if (file != null) {
@@ -515,7 +515,7 @@ public class TicketDetailActivity extends AppCompatActivity {
 
         }
 
-        BaseActivity.baseurl="https://demoapi.webcomsystems.net.au/";
+        BaseActivity.baseurl=UtilClass.baseurlmain;
     }
 
     private void showImages(String AttachFile, RecyclerView recycler_view,String type)

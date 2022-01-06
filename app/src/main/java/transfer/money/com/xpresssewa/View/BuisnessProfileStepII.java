@@ -268,7 +268,6 @@ public class BuisnessProfileStepII extends AppCompatActivity {
                                 {
                                     JSONObject obj=new JSONObject(dta);
 
-
                                     SimpleDialog simpleDialog = new SimpleDialog();
                                     final Dialog confirmDialog = simpleDialog.simpleDailog(BuisnessProfileStepII.this, R.layout.confirmation_dialog, new ColorDrawable(getResources().getColor(R.color.translucent_black)), WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, false);
                                     ImageView selected_Curreny = confirmDialog.findViewById(R.id.selected_Curreny);

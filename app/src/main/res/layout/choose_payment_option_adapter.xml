@@ -85,8 +85,9 @@
                 android:layout_width="match_parent"
                 android:text="0.75 is total aud fee so recipient will get 548 Ir"
                 style="@style/white12"
-                android:textSize="@dimen/font_fourteen"
-                android:textColor="@color/textcolor"
+                android:textSize="13dp"
+                android:textColor="@color/title_black_color"
+                android:alpha=".8"
 
                 ></TextView>
 

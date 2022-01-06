@@ -84,10 +84,9 @@ import transfer.money.com.xpresssewa.util.DefaultConstatnts;
 import transfer.money.com.xpresssewa.util.IsAnimationEndedCallback;
 import transfer.money.com.xpresssewa.util.UtilClass;
 
-public class MainActivity extends BaseActivity {
-
+public class MainActivity extends BaseActivity
+{
     public int tabCount=0;
-
     @BindView(R.id.navigationView)
     BottomNavigationView navigationView;
 
@@ -744,7 +743,7 @@ public class MainActivity extends BaseActivity {
 
 
     public void uploadImageToServer(String transactionId, Dialog uploadReceipt, int index, ArrayList<JSONObject> dataObjAr, ActivityAdapter activityAdapter) {
-        BaseActivity.baseurl="https://demo.webcomsystems.net.au/";
+        BaseActivity.baseurl=UtilClass.fileuploadurl;
         File file = new File(imagePath);
         if (file != null) {
 
@@ -765,7 +764,7 @@ public class MainActivity extends BaseActivity {
             final Disposable disposable = RxAPICallHelper.call(responseObservable, new RxAPICallback<String>() {
                 @Override
                 public void onSuccess(String uploadFileResponse) {
-                  //  String imageName = uploadFileResponse.substring(uploadFileResponse.lastIndexOf("!") + 1, uploadFileResponse.length());
+
                    try {
 
                        uploadReceipt.dismiss();
@@ -793,7 +792,7 @@ public class MainActivity extends BaseActivity {
 
         }
         //change url for image upload
-        BaseActivity.baseurl="https://demoapi.webcomsystems.net.au/";
+        BaseActivity.baseurl=UtilClass.baseurlmain;
     }
 
 

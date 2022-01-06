@@ -278,24 +278,19 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
                         new SaveImpPrefrences().savePrefrencesData(getActivity(),kycStatus,DefaultConstatnts.IsKycApproved);
                         if(getArguments() != null)
                             {
-                                if (getArguments().containsKey("Callfrom"))
+                                if(getArguments().containsKey("Callfrom"))
                                 {
                                     if(getArguments().getString("Callfrom").equalsIgnoreCase("edit_personal"))
                                     {
                                         getArguments().remove("Callfrom");
-                                        if(kycStatus.equalsIgnoreCase("2"))
+                                        if(kycStatus.equalsIgnoreCase("2")||kycStatus.equalsIgnoreCase("4")||kycStatus.equalsIgnoreCase("5")||kycStatus.equalsIgnoreCase("6"))
                                         {
-//                                            Intent i = new Intent(getActivity(), CreatePersonalProfile.class);
-//                                            i.putExtra("userdata", dataObj + "");
-//                                            startActivityForResult(i, 102);
-
                                             createPersonalProfile();
                                         }
                                     }
 
                                 }
                             }
-
                         ProofType=dataObj.getString("ProofType");
                         System.out.println("Proff type===="+ProofType);
                         changeKyCText();

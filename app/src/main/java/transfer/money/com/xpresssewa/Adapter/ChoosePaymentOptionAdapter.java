@@ -2,6 +2,7 @@ package transfer.money.com.xpresssewa.Adapter;
 
 import android.content.Context;
 
+import android.graphics.Typeface;
 import android.os.Build;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -44,6 +45,8 @@ public class ChoosePaymentOptionAdapter extends RecyclerView.Adapter<ChoosePayme
 
         public MyViewHolder(View view) {
             super(view);
+            Calligrapher calligrapher = new Calligrapher(ira1);
+            calligrapher.setFont(view, "MontserratRegular.ttf");
             txt_feededuction = view.findViewById(R.id.txt_feededuction);
             txt_paymentidname = view.findViewById(R.id.txt_paymentidname);
             ll_selectbank = view.findViewById(R.id.ll_selectbank);
@@ -54,8 +57,6 @@ public class ChoosePaymentOptionAdapter extends RecyclerView.Adapter<ChoosePayme
             DefaultConstatnts.setFont(ira1,txt_paymentidname);
             DefaultConstatnts.setFont(ira1,tv_exactfee);
 
-            Calligrapher calligrapher = new Calligrapher(ira1);
-            calligrapher.setFont(view, "MontserratRegular.ttf");
 
 
         }
@@ -105,22 +106,26 @@ public class ChoosePaymentOptionAdapter extends RecyclerView.Adapter<ChoosePayme
 
 
 
+
+
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                holder.txt_feededuction.setText(Html.fromHtml("<b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+"  "+calculationObj.getString("FromSymbol")+"</font><b> is total fee, so recipient will get <font color='#3F70BC'>"+amounttosybmol+".</font> Should arrive there by <font color='#3F70BC'>"+ProcessingDays+".</font>",Html.FROM_HTML_MODE_COMPACT));
+                holder.txt_feededuction.setText(Html.fromHtml("<b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+"  "+calculationObj.getString("FromSymbol")+"</font> is total fee, so recipient will get <font color='#3F70BC'>"+amounttosybmol+".</font> Should arrive there by <font color='#3F70BC'>"+ProcessingDays+".</font>",Html.FROM_HTML_MODE_COMPACT));
                 holder.tv_exactfee.setText(Html.fromHtml("Fees: <b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+" "+calculationObj.getString("FromSymbol")+"</font>",Html.FROM_HTML_MODE_COMPACT));
 
 
 
             } else {
 
-                holder.txt_feededuction.setText(Html.fromHtml("<b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+"  "+calculationObj.getString("FromSymbol")+"</font><b> is total fee, so recipient will get <font color='#3F70BC'>"+amounttosybmol+".</font> Should arrive there by <font color='#3F70BC'>"+ProcessingDays+".</font>"));
+                holder.txt_feededuction.setText(Html.fromHtml("<b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+"  "+calculationObj.getString("FromSymbol")+"</font> is total fee, so recipient will get <font color='#3F70BC'>"+amounttosybmol+".</font> Should arrive there by <font color='#3F70BC'>"+ProcessingDays+".</font>"));
                 holder.tv_exactfee.setText(Html.fromHtml("Fees: <b><font color='#3F70BC'><font color>"+obj.getString("totalfee")+" "+calculationObj.getString("FromSymbol")+"</font>"));
 
             }
 
 
 
-
+            Typeface face= Typeface.createFromAsset(ira1.getAssets(), "MontserratRegular.ttf");
+            holder.txt_feededuction.setTypeface(face);
+            holder.tv_exactfee.setTypeface(face);
 
            holder.ll_selectbank.setOnClickListener(new View.OnClickListener() {
                @Override

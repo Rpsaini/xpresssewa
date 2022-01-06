@@ -7,32 +7,35 @@
     android:background="@color/white_20"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rr_Selectbank"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:orientation="horizontal"
 
         >
     <ImageView
         android:padding="5dp"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
         android:id="@+id/img_back"
         android:layout_margin="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/back_button"
         ></ImageView>
 
 
     <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:gravity="left|center"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:layout_centerInParent="true"
         android:text="Select method of payment"
         android:textSize="17dp"
         android:textColor="@color/black_color"
         ></TextView>
-    </RelativeLayout>
+    </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView

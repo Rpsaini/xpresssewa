@@ -51,7 +51,7 @@ public class ForgotPassword extends AppCompatActivity {
 
         TextView createpin=findViewById(R.id.createpin);
         TextView tv_submit=findViewById(R.id.tv_submit);
-
+        TextView txtChangeemailpasswordtext=findViewById(R.id.txtChangeemailpasswordtext);
 
          callFrom=getIntent().getStringExtra("callFrom");
 
@@ -59,7 +59,10 @@ public class ForgotPassword extends AppCompatActivity {
          {
              createpin.setText("Forgot Pin");
              tv_submit.setText("Reset Pin");
+             txtChangeemailpasswordtext.setText(getResources().getString(R.string.forgotpintext));
          }
+
+
 
         vd=new Validation(this);
         final EditText et_email =findViewById(R.id.et_email);
