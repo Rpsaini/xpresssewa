@@ -27,11 +27,20 @@
               android:id="@+id/paymentTypeImg"
               android:layout_centerInParent="true"
               android:tint="@color/skybluecolorcode"
-              android:layout_height="40dp"
-              android:layout_width="40dp"
+              android:layout_height="35dp"
+              android:layout_width="35dp"
               android:scaleType="fitXY"
               android:src="@drawable/account_icon"
               ></ImageView>
+
+
+            //g-1111111
+            f-1111111
+            t-111
+
+            Bathroom-7 (2.5*6.5)
+            door-4 (3*6)
+            door-6 (3.5*7)
 
 
 
@@ -83,12 +92,10 @@
                 android:gravity="center|left"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="0.75 is total aud fee so recipient will get 548 Ir"
-                style="@style/white12"
+                android:text="0.00"
                 android:textSize="13dp"
                 android:textColor="@color/title_black_color"
                 android:alpha=".8"
-
                 ></TextView>
 
 

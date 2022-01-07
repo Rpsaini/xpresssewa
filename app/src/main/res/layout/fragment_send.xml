@@ -782,7 +782,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
-                    android:gravity="center|start"
+                    android:gravity="center"
                     android:text="Hello"
                     android:textColor="@color/dark_grey_color"
                     />
@@ -810,17 +810,14 @@
                 android:gravity="center"
                 android:text="@string/continue_"
                 android:textAllCaps="true"
-
                 android:textColor="@color/white_color"
                 android:textSize="@dimen/font_sixteen" />
-
-
         </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>
     </ScrollView>
+
 
     <RelativeLayout
         android:id="@+id/ll_price_comparison_hidden"

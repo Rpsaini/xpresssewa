@@ -19,8 +19,19 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view_for_notification"
         ></androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/no_data_found"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/no_activity"
+        ></ImageView>
 </LinearLayout>

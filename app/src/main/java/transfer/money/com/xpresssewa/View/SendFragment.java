@@ -266,39 +266,12 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         TextView txt_terms=view.findViewById(R.id.txt_terms);
 
 
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            txt_send_text.setText(Html.fromHtml("Click here for <font color='#226ED4'>Privacy Policy</font> <font color='#7B7B7B'>and</font> <font color='#226ED4'> Terms & Conditions </font>for Sam Remittance Service.", Html.FROM_HTML_MODE_COMPACT));
-//        } else {
-//            txt_send_text.setText(Html.fromHtml("Click here for <font color='#226ED4'>Privacy Policy</font> <font color='#7B7B7B'>and</font> <font color='#226ED4'>Terms & Conditions </font>for Sam Remittance Service."));
-//        }
-        String checkBoxText = "By continue accept our  <a href='https://xpressewa.com/term-conditions'>Terms of use </a>"
-                +" and <a href='https://xpressewa.com/privacy'>Privacy Policy</a>";
+        String checkBoxText = "By continue accept our  <a href="+UtilClass.baseurlmain+"term-conditions>Terms of use </a>"
+                +" and <a href="+UtilClass.baseurlmain+"privacy>Privacy Policy</a>";
 
         txt_terms.setText(Html.fromHtml(checkBoxText));
         txt_terms.setMovementMethod(LinkMovementMethod.getInstance());
-       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'>Terms of use</font> and ", Html.FROM_HTML_MODE_COMPACT));
-            txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> ", Html.FROM_HTML_MODE_COMPACT));
 
-        } else {
-            txt_terms.setText(Html.fromHtml("Click here for <font color='#226ED4'> Terms of use</font> and"));
-            txt_privacy.setText(Html.fromHtml("<font color='#226ED4'>Privacy Policy</font> "));
-        }
-
-        txt_terms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).openExternalUrls("https://xpressewa.com/term-conditions");
-
-            }
-        });
-        txt_privacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).openExternalUrls("https://xpressewa.com/privacy");
-            }
-        });*/
 
         ButterKnife.bind(this, view);
         init();

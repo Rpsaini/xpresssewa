@@ -2,6 +2,7 @@ package transfer.money.com.xpresssewa.View;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -31,7 +32,21 @@ public class NotificationActivity extends AppCompatActivity {
 
     private void init(JSONArray datAr)
     {
+
         RecyclerView recycler_view_for_notification = findViewById(R.id.recycler_view_for_notification);
+        ImageView no_data_found = findViewById(R.id.no_data_found);
+        if(datAr.length()==0)
+        {
+            recycler_view_for_notification.setVisibility(View.GONE);
+            no_data_found.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            recycler_view_for_notification.setVisibility(View.VISIBLE);
+            no_data_found.setVisibility(View.GONE);
+        }
+
+
         NotificationAdapter transferPurposeAdater = new NotificationAdapter(datAr, NotificationActivity.this);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -62,6 +77,10 @@ private void getNotification()
         {
             JSONArray jsonArray = new JSONArray(notificationData);
             init(jsonArray);
+        }
+        else
+        {
+            init(new JSONArray());
         }
     }
     catch (Exception e)

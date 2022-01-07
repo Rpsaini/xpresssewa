@@ -200,8 +200,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         });
 
 
-        String checkBoxText = "By continue accept our  <a href='https://xpressewa.com/term-conditions'>Terms of use </a>"
-                +" and <a href='https://xpressewa.com/privacy'>Privacy Policy</a>";
+        String checkBoxText = "By continue accept our  <a href="+UtilClass.baseurlmain+"term-conditions>Terms of use </a>"
+                +" and <a href="+UtilClass.baseurlmain+"privacy>Privacy Policy</a>";
 
         txt_terms.setText(Html.fromHtml(checkBoxText));
         txt_terms.setMovementMethod(LinkMovementMethod.getInstance());
