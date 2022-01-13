@@ -266,8 +266,8 @@ public class SendFragment extends Fragment implements View.OnClickListener {
         TextView txt_terms=view.findViewById(R.id.txt_terms);
 
 
-        String checkBoxText = "By continue accept our  <a href="+UtilClass.baseurlmain+"term-conditions>Terms of use </a>"
-                +" and <a href="+UtilClass.baseurlmain+"privacy>Privacy Policy</a>";
+        String checkBoxText = "By continue accept our  <a href="+UtilClass.termsurl+">Terms of use </a>"
+                +" and <a href="+UtilClass.privacyurl+">Privacy Policy</a>";
 
         txt_terms.setText(Html.fromHtml(checkBoxText));
         txt_terms.setMovementMethod(LinkMovementMethod.getInstance());

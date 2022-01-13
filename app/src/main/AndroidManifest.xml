@@ -36,7 +36,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".registration.VeriFyTransactionOTP"></activity>
+        <activity android:name=".registration.VeriFyTransactionOTP"
+            android:screenOrientation="portrait"
+            ></activity>
         <activity
             android:name=".registration.LoginWithOtp"
             android:screenOrientation="portrait" />

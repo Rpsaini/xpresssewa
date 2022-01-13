@@ -781,7 +781,7 @@
                     android:id="@+id/txt_terms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
+                    android:textSize="14dp"
                     android:gravity="center"
                     android:text="Hello"
                     android:textColor="@color/dark_grey_color"
@@ -794,7 +794,7 @@
                     android:gravity="center|start"
                     android:text="test"
                     android:textColor="@color/dark_grey_color"
-                    android:textSize="12dp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
 

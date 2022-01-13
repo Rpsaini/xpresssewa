@@ -1,5 +1,4 @@
 package transfer.money.com.xpresssewa.util;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.inputmethod.InputMethodManager;
 import org.json.JSONObject;
 
 import transfer.money.com.xpresssewa.savePrefrences.SaveImpPrefrences;
-
 public class UtilClass
 {
     public static String defaultToSymble="";
@@ -32,16 +30,14 @@ public class UtilClass
 
     public static String transferReason="transferReason";
     public static String transferReference="transferReference";
-    public static String termsur="https://xpressewa.com/term-conditions";
+    public static String termsurl="https://xpressewa.com/terms";
     public static String privacyurl="https://xpressewa.com/privacy";
     public static String fileuploadurl="https://xpressewa.com/";
     public static String baseurlmain ="https://api.xpressewa.com/";
-    public static String frankieKycUrl="https://https://xpressewa.com/frankiewidget/";
+    public static String frankieKycUrl="https://xpressewa.com/frankiewidget/";
     public static String proofType="proofType";
     public static String callfrom="callfrom";
     public static String frankieUpdateGenderUrl="index";//passactual url here
-
-
 
     public static JSONObject getUserData(Context ct)
     {
@@ -88,7 +84,8 @@ public class UtilClass
         return null;
     }
 
-    public static   void hideKeyboard(Activity activity) {
+    public static  void hideKeyboard(Activity activity)
+    {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         View view = activity.getCurrentFocus();
         if (view == null) {
@@ -97,7 +94,4 @@ public class UtilClass
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-
-
-
-}
+   }

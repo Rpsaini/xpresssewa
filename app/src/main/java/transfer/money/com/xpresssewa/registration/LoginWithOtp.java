@@ -160,11 +160,13 @@ public class LoginWithOtp extends BaseActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 1) {
+            public void afterTextChanged(Editable s)
+             {
+                if (s.length() == 1)
+                 {
                     ed_three.requestFocus();
-                }
-            }
+                 }
+             }
         });
 
         ed_three.addTextChangedListener(new TextWatcher() {
@@ -249,11 +251,11 @@ public class LoginWithOtp extends BaseActivity {
 
 
 
-        clearOTP();
+        addData();
 
     }
 
-    private void clearOTP() {
+    private void addData() {
         otpArray.clear();
         otpArray.add(ed_one);
         otpArray.add(ed_two);
@@ -287,6 +289,17 @@ public class LoginWithOtp extends BaseActivity {
         }
     }
 
+
+    private void clearField()
+    {
+        for(int x = 0; x < otpArray.size(); x++) {
+             otpArray.get(x).setText("");
+        }
+        otpArray.get(0).requestFocus();
+        addData();
+    }
+
+
     private void verifyOtp()
     {
         Map<String, String> m = new LinkedHashMap<>();
@@ -294,9 +307,6 @@ public class LoginWithOtp extends BaseActivity {
         m.put("Password",  getIntent().getStringExtra("Password"));
         m.put("OTP",  concateOtp);
 
-
-
-        System.out.println("Concated code==="+m);
         new ServerHandler().sendToServer(LoginWithOtp.this, "LoginWithOtp",m, 0, 1, new CallBack() {
             @Override
             public void getRespone(String dta, ArrayList<Object> respons) {
@@ -305,8 +315,7 @@ public class LoginWithOtp extends BaseActivity {
                     System.out.println("Concated code= response=="+dta);
                     JSONObject obj = new JSONObject(dta);
                     if(obj.getBoolean("status"))
-                    {
-
+                      {
                         SaveImpPrefrences saveImpPrefrences=new SaveImpPrefrences();
                         String memberId=obj.getString("MemberId");
                         saveImpPrefrences.savePrefrencesData(LoginWithOtp.this,obj.getString("IsKycApproved")+"",DefaultConstatnts.IsKycApproved);
@@ -320,21 +329,24 @@ public class LoginWithOtp extends BaseActivity {
                         signIn.putExtra(DefaultConstatnts.IsShowPin, "yes");
                         startActivity(signIn);
                         finishAffinity();
-
-                    }
-                    else {
+                      }
+                        else
+                        {
                         showtoast.showToast(LoginWithOtp.this, "Registration", obj.getString("Message"), ll_main_layout);
-                    }
+                        clearField();
+                        }
 
-                } catch (Exception e) {
+                  }
+                catch(Exception e)
+                   {
                     e.printStackTrace();
-                }
-
-
+                   }
             }
         });
 
     }
+
+
 
 
 
